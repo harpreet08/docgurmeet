@@ -170,7 +170,7 @@ Project Briefs
 
 Project Title - Financial Tools for Customer Loyalty Development Program
 Client - Coca Cola
-Role - Project Manager
+Role - Manager Technology
 Achievements
   - Conducted design iterations with client architects over product design, features and interaction flows.
   - Developed GWT based widgets with Spring back-end services for customer loyalty program.
@@ -213,8 +213,8 @@ Achievements -
   - Operated in a mode as a guest architect for helping with challenges unsurmountable by the rest of the group.
   - Actively sought and received creative collaboration between technical and domain experts for conceptual design the heart of the system
   - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
-  - Fund data system design for integration from multiple sources. Custom adaptors for XML processing and file transfer.
-Platform and Tools - Microsoft Visio, XML, stax
+  - Fund data system design for integration from multiple sources. Custom adaptors for XML processing and file transfer
+Platform and Tools - Microsoft Visio, XML, Servlets, Freemaker, SiteMesh
 
 
 Project Title - Dispatch Tool
@@ -226,8 +226,339 @@ Achievements
   - Gained domain experience on Trading and Risk Management in US/Canada Energy Market and free market dynamics
   - Delivery management and team management responsibilities for a team of 18 with various domain and technical expertise
   - Vendor management, procurement and purchase management for procurement. Setup of staging environments on Solaris Servers.
-  - Agile development with extensive testing through Mock tests. Daily builds on Cruise Control and code coverage analysis on Cobertura.
-  - Day to day project management, risk management, bug tracking and testing reporting on Sapient custom platform - ResultSpace.
+  - Agile development with extensive testing through Mock tests. Daily builds on Cruise Control and code coverage analysis on Cobertura
+  - Day to day project management, risk management, bug tracking, testing reporting and defect triaging
 Platform and Tools - Spring Framework 2.5, Spring MVC, Spring Remoting, Maven 2, Eclipse, Java Swing, Agile Development
+
+
+
+
+Genisys Information systems, Bangalore
+----------------------------------------
+
+Project Title - Online Policy Sales System
+Client - ING Vysya Limited, Bangalore
+Role - Project Manager
+Achievements
+- Developed sectioned proposal form Customer information with automated form population database in case of existing customer, captured product specific entries in terms of riders chosen, funds attached, Sum assured required and other relevant details along with underwriting questions with intricate calculations
+- Helped set up a 'low cost' distribution channel under the direct sales line of business
+- Helped monetize the flow of 'prospects' traffic to the ING website
+- Coordination and interfacing with marketing teams at ING for context sensitive information
+- Extensive interfacing with information management teams for field data analysis, queries development and optimization
+- Integrated application with the fulfillment process & application used by the telemarketing team
+- Integration with ODS for capturing interim operation, for lead generation and follow up, in case the customer aborts amidst
+- Automated alerts and emails to advisors for follow up on qualified leads
+Platform and Tools - Microsoft Office, Microsoft Project, Websphere Application Server 6.0
+
+
+
+Project Title - RFID based Asset Loss and Theft Prevention System
+Client - FirstSource, NY, US
+Role - Solutions Architect
+Achievements
+Platform and Tools
+
+
+Project Title - Supply Chain Exchange for Optical Equipment
+Client - OkiaDirect, Hong Kong
+Role - Solution Architect
+Achievements
+Platform and Tools
+
+
+
+Project Title - Single Sign On Implementation
+Client - New York University, NY, US
+Role - Architect
+Achievements
+Platform and Tools
+
+
+
+
+Project Title - Migration of Cyclone Commerce on Solaris to Synchrony Interchange on Linux
+Client - DHL Holdings Inc., Scottsdale, US
+Role - Integration Architect, Product Consultant
+Achievements
+- Served at DHL Holdings as a product specialist on Synchrony Interchange as a part of migration team from Solaris to RedHat Enterprise Linux.
+- Did comparison analysis of products features and helped in feasibility analysis with the DHL IT teams
+- Helped migrate a cluster of trading communities and over 40,000 partners through a series of migration exercises
+- Supported the project team in implementation including data loading & cutover/migration analysis
+- Supported the program management teams in planning and other day to day project management insights
+Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
+
+
+Project Title - Mission Critical Systems Support
+Client - Cardinal Health, Dublin, US
+Role - Support Consultant
+Achievements
+- Provided L2 support for Mission Critical support for one of the biggest healthcare supplier in US
+- Build relationships with client production support team and exchanged postive synergies
+- Supported clusters of Synchrony Gateway Interchange for nil downtime during engagement
+- Handled risk management, cross team collaboration, issue resolution and escalation
+Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
+
+Project Title - Axway, Scottsdale, US - Sentinel Dashboards (Business Activity Monitoring)
+Client - Axway Centre of Excellence, Scottsdale, Arizona
+Role - Product Specialist
+Achievements
+- Achieved certification on Axway's Synchrony suite of products for B2B integration and Business Activity monitoring
+- Built a variety of business activity monitoring dashboards with key performance indicators in Synchrony Sentinel
+- Built in custom events and automated alerts based on event triggers
+- Built multiple staging environments on VMWare virtual machines for presentations and demonstration exercises
+- Participated in building of presentations and training material for the centre of excellence in Axway
+- Tested support material, executed test exercises and helped streamline deliverables
+- Participated in demonstrations of system capabilities to various business teams through prototypes and proof of concepts
+Platform and Tools - Synchrony Sentinel, VMWare
+
+
+Project Title - Point of Sales Application
+Client - Proxis, Washington, US
+Role - Application Architect, Project Delivery Manager
+Achievements
+- Developed a Point of Sales System with chief components as Cash Register and Office
+- Integrated with custom printers for checkout slip generation
+- Integrated with bar code printing systems for in house inventory
+- Incorporated the many diverse taxation rules of different US states the software was deployed on
+- Build extensive reporting for a diverse set of Inventory, Sales & Financial Reports
+- Built customer management module with customer history tracking, reward points, loyalty programs and custom reminders
+- Built in authentication and agent's sales volume for commission calculations. Supervisor override for critical tasks.
+- Managed a team of 6 developers & 3 graphics designers for successful completion of the project.
+- Managed customer and executed full project management responsibilities with extensive reporting and planning
+Platform and Tools - Core Java, SQL Server 2005
+
+
+Project Title - Stern Global View
+Client - New York University, New York, US
+Role - Project Manager
+Achievements
+- Prepared proof of concepts. Hosted on public IP addresses for review with client representatives
+- Presented alternative solutions to clients and produced a win-all solution with key feedback from participating teams
+- Developed Project Proposal and carried through reviews with senior management and sales teams
+- Managed relationship with business partner for outsourcing non-core UI work
+- Architected the solution design. Responsible for development and delivery
+- Integrated effort estimates from multiple parties delivering on variety of platforms into a uniform timeline and schedule
+Platform and Tools - Google Maps API, Eclipse, AJAX, JavaScript, XML, Web Services
+
+
+
+
+Project Title - Global Financial Tools
+Client - General Motors Acceptance Corporation, UK
+Role - Business Analyst
+Achievements
+- Provided Business Consulting Services for General Motors IS&S teams for financial tools development
+- Developed functional specifications and system design specifications across 8 countries and 19 languages
+- Performed the As-Is vs. To-Be analysis for GMAC GSS and New Response systems.
+- Produced Interface designs and mock-up for discussions across a wide audience
+- Liaisoned with multiple business SME and core architects for requirements gathering to produce key deliverables
+- Delivered project artifacts on GMAC's strict development process SDP-21 V10
+- Part of the architectural development team. Partnered with multiple consultants across multiple service providers over a global base for System Requirement Specifications and Software Architecture documents
+- Provided key inputs for project scoping and planning purposes to key stakeholders in the project
+- Delivered customer presentations discussed solution options with customer
+- Conducted functional design workshops, iterated fit/gap analysis and partnered for solution design document
+Platform and Tools - CaliberRM, Microsoft Office, Microsoft Project
+
+
+Project Title - Consulting Architect
+Client - ING Vysya Life Insurance, Bangalore
+Role - SOA Consultant
+Achievements
+- Provided expertise on Portal Server Deployment and configuration.
+- Helped portalize existing applications at client side by imparting need basis training to client development team
+- Gained expertise on ING Insurance Application Architecture, a derivative of IBM Insurance Application Architecture
+- Provided regular consulting and helped CIO for roadmap definition in development projects in the India and Asia Pacific region
+- Helped form strategies, policies and complex technical issues to both business and technical issues
+- Effectively managed productive client relationships at different management levels and developed opportunities for new business
+Platform and Tools - Microsoft Project, Microsoft Visio.
+
+
+Project Title - British Telecom Retail & OpenReach Integration
+Client - BT Retail, London, UK
+Role - Product Specialist, Cyclone Interchange
+Achievements
+- Part of a team comprising of around 1600 consultants with 16 partnering companies in BT - OpenReach Integration
+- Worked on BT's Lead to Cash (L2C) and Trouble to Resolution (T2R) line of businesses.
+- Configured cyclone commerce trading engine to interface with BT Func-B BTR gateway and Func-B OpenReach Gateways
+- Setup trading communities in guidance with BT specific Collaboration Protocol Agreement (CPA) and Collaboration Protocol Profiles (CPP)
+- Interfaced with partnering consultants to integrate with business process engine running JPD files made in WebLogic Integration (WLI)
+- Configured inter-gateway interchange with cyclone commerce trading on AS2 (HTTP)
+- Gained expertise on ebXML and other integration technologies
+Platform and Tools - Cyclone Commerce, ebXML, UNIX SSH
+
+
+
+Project Title - ING Vysya Portal Development
+Client - ING Vysya Life Insurance, Bangalore
+Role - Portal Architect
+Achievements
+- Managed a team of technical experts for development of Customer Portal and Advisor Portal for ING Vysya Life Insurance
+- Portalized exiting application, reengineering them for the IBM Portal Server platform.
+- Part of the team for Query development and optimization at ING.
+- Integrated with ING ODS based on Life400 database. Gained valuable Insurance domain knowledge as a result.
+- Implemented virtual portals for hosting portals, thereby saving licensing, hardware and administration costs to ING
+- Example applications included View Policy Details, Policy Servicing, Fund Balance Statements, Emailers, Drop Box Locator etc.
+- Configured standard portal features such as Web Content Management, Site Analytics, Search and helped in Portal Installation and maintenance activities.
+- Managed a team of 8 consultants and domain specialists to portal deliverables. Interfaced with ING diverse and high specialty teams.
+- Client Management and extremely high visibility project. Received appreciation from ING CIO.
+Platform and Tools - IBM Portal Server 5.1, Rational Application Developer 6.0, LDAP, SQL Server 2005
+
+
+
+HCL Technologies
+--------------------
+
+Project Title - Work Management System - Carrier Access Inc.
+Client - Major North American Satellite Media Service
+Role - Project Lead
+Achievements
+- Built an all electronic system with minimal paperwork with central scrutiny, assignment and tracking of work orders.
+- Automatic and real time calculation of retailer and field engineer commission with a very low human overhead in work assignment management for field engineer
+- Automatic alerts to retailer about the status of work order via email
+- Standards based integration with XML data interchange for simplistic integration with partner IT infrastructure running on different platforms.
+- Enabled field engineers to be updated in proper time minimizing repeated trips to the same area saving financial and frustration to the engineers and the company.
+- Enabled easy integration with partners because of very low integration overhead with web services as the integration platform
+- Central monitoring and track business and resources over a network of 350 retailers taking orders for installation / repair
+- The system allowed for on the spot Work Order Confirmation and Reference number generation.
+- The system was web accessible anytime-anywhere and "to do" list for each field engineers with accessible details on request.
+- Client was extremely grateful by efficient response of the system over earlier process.
+Platform and Tools - Services Component Architecture (SCA) and Services Oriented Architecture (SOA), Web Services and Business Process Execution Language (BPEL), Websphere Business Integration Modeler (WBI-Modeler), Rational Software Architect (RSA) and Websphere Integration Developer (WID).
+
+
+Project Title - Internet Ordering and Fulfillment System
+Client - Major Wholesaler, Hong Kong
+Role - Project Lead
+Achievements
+- Developed an Internet Ordering System for a very large wholesaler in Hong Kong integrating with 40 factories spread out in China, distribution/warehousing and logistics capacity in Hong Kong, and main market in Europe.
+- The system integrated in the shops of opticians, eye doctors and independent delivery agents.
+- The system had a transaction platform capable of potentially 4000 sales points, with a transaction capacity of surpassing the requested 30 transactions per day.
+- Architected the system to be scalable to include wholesalers and chain stores as well as retail customers and was initially launched in Italy, Germany and France.
+- Responsible for technical architecting the complete solution and overall execution of the projects with a 10 member team.
+Platform and Tools - IBM Process Server with Business Process Execution Language (BPEL), Rational Software Architect (RSA) and WebSphere Integration Developer (WID)
+
+
+Project Title - Integrated Management Information System
+Client - Bangalore Development Authority, Bangalore
+Role - Module Lead, Domain Consultant, Product Architect
+Achievements
+- Developed Integrated Information System, a centrally managed Business Process Management solution for departmental automation
+- Complete IBM platform. Business process on WBISF interfacing with portlets on IBM Portal Server. Hosting on Red-Hat Linux Enterprise with development on Windows machines
+- Complete design and development on IBM Rational Platform. Used Rational software Architect to the fullest for implementing modules interacting with business processes.
+- Key player of the core architectural team. One of the four members to receive training in IBM on IBM SOA Jumpstart.
+- Led a team of developers for high stake key modules - Finance, Commissioner, Grievance, PRO & Post-Allotment
+- The solution has interfaces to Websphere Portal Server and measures business performance and Key Performance Indicators (KPI)
+- Played the role of business analyst with client, documented client processes and acted as domain specialist for development teams
+- Implemented virtualization as test beds for process engines running on virtual machines.
+Platform and Tools - BPEL, IBM Websphere Business Integration Server Foundation (WBISF) 5.1, IBM Portal Server 5.1, IBM Rational Software Architect 6.0. RedHat Enterprise Linux, IBM DB2 UDB 8.1
+
+
+
+Project Title - Insurance Business Processes Integration
+Client - Market Leaders in and Automotive Insurance
+Role - Developer (Team member)
+Achievements
+- Worked on business process integration on MQ platform to help integrate 2 diverse insurance clients and enhance market and product portfolio
+- Rationalization of overlapping organizational processes was a primary objective during the merger.
+- The integration was based upon an existing infrastructure based on S/390 mainframes with outsourced call center and direct agent distribution channels a architecture based on J2EE primarily JSP / Servlets.
+- Built an automated claims system for the joint customer base that connects the existing external services and provide a integrated view to business partners and customers with minimum disturbance to existing systems.
+- The system was required to quickly make product range available to customer thus enabling a Rapid Return On Investment (ROI) through direct customer channel, agents and call center.
+- A messaging system was developed that provided global access for a global partner and subscriber base.
+- The system provided reliable messaging and ability to monitor and manage policy and business processes thereby reducing inefficiencies.
+- The system was a Web services based workflow solution built with Websphere MQ Workflow based Process Choreography working with Websphere Business Integration Message Broker.
+- Executive dashboard and business process dashboards developed through the IBM Common Event infrastructure for a holistic view of the Business events captured
+Platform and Tools - Websphere Message Broker, WebSphere Web Services Gateway, Websphere Process Choreographer, Websphere MQ and Websphere MQ Workflow
+
+
+
+Tata Technologies
+---------------------
+Project Title - CNC Scheduler
+Client - Tata Motors
+Role - Developer in a team
+Achievements
+- Analyzed business requirements and co-developed the core architecture of the application using OOAD on Rational Rose
+- Worked as a part of a team with strict development standards producing industrial strength products
+- Shared responsibilities with DMA for data model design.
+- Implemented role based functionality for booking, viewing status, approvals and booking adjustments.
+- Reduced paper work and enabled near real time unified view into the schedule status
+- Used J2EE design patterns to enhance design robustness and improve upon application maintainability
+Platform and Tools - Core Java 1.2, JSP/Servlets, Websphere Application Server 4.0, Rational Rose, Oracle 8.1
+
+
+Project Title - Customer Support Desk Application
+Client - Tata Motors
+Role - Developer in a team
+Achievements
+- Developed support desk application for customer management with history of customer transactions through multiple channels
+- Interfaced with searchable knowledge base of frequently encountered support issues
+- Interfaced with Product Data Management tool to access product information from custom data repositories
+- Liased with DBAs for domain model and query design and optimization
+- Liased with product experts and third party development teams for custom interfaces and adaptors to external applications
+- Provisioned for requests submission through and processing internal to the application.
+- Harnessed the underlying OS capabilities and existing organizational infrastructure to generate automatic email notifications on specific stages of the requests
+- Co-developed custom report generation modules for system generated Reports on call transactions by support staff
+- Utilized OS specific job scheduling for and custom Response Templates for automatic escalation of customer request according to the time, status, product and other criteria.
+Platform and Tools - C++, Netscape 4.0, IRIX operating system, UNIX shell scripting
+
+
+
+Purolator
+----
+
+Project Title - Molding Machine Scheduling Tool
+Client - Purolator India Limited
+Role - Independent Consultant
+Achievements
+- Developed production planning software for schedule provisioning of molding machines
+- Interfaced with business stakeholders, shop floor personnel and IT teams through multiple stages of the project
+- Helped reduce WIP inventory by better scheduling reducing time queue time between operations
+- Helped improve job scheduling estimates and helped achieve on time delivery
+- Inbuilt machine run cost analysis with what-if scenarios to prioritize on job order requirements
+- Incorporated provisions for downtime and maintenance operations against per hour machine runs.
+- Organization wide real-time and unambiguous communication by a centrally database driven application
+- Provided post-implementation support to production and business teams
+Platform and Tools - Visual Studio 6, Microsoft SQL Server 7.0
+
+
+Autonomous Development
+------------------------
+Project Title - Nurse Scheduling Application
+Client - Healthcare facility
+Role - Independent Consultant
+Achievements
+- Developed a centrally deployed database driven easily accessible web based platform
+- Inbuilt admin functionality for managing application master data and configuration properties
+- Incorporated self service for the enrolling healthcare employees to ease clerical load on existing staff
+- Centrally managed with authorization built-in for allocation management according to skill base and load conditions
+- Enabled quick turn around times of application status over previous partly disconnected, difficult to manage legacy system
+Platform and Tools - JSP/Servlets, Apache Tomcat V 3.2
+
+
+Project Title - Employee Remuneration Record Keeping Application
+Client - Automotive Manufacturing Ancillary
+Role - Independent Consultant
+Achievements
+- Developed low budget basic payroll processing application for a small scale manufacturing industry
+- Ease of use and maintenance. Maintained low budget for implementation and maintenance
+- Built in authentication over sensitive data. Built in authorization over admin tasks and configuration changes
+- Provided functionality month end and year closing. Department wise expense report generation.
+- Provided functionality for monthly pay slip generation, leave status reporting and mailing labels generation
+- Month end transaction file generation for sending advise to bank as a one time account transfer for employees
+Platform and Tools - Unix Shell Scripting
+
+
+
+Project Title - Password Generator
+Client - Open Market Release
+Role - Independent Consultant
+Achievements
+- Conceptualized, designed and developed enterprise ready password generation tool for system administrators
+- Developed functionality for the tool to work in interactive mode and batch mode for unattended peak load operation
+- Enabled dynamic configuration over password length, complexity and active directory integration
+- Secured the generated passwords against dictionary attacks by comparing against custom dictionary
+- Released the product in Basic (freeware), Standard and Enterprise edition
+- Providing post deployment support to at deployed sites.
+Platform and Tools - Visual Studio 6
+
 
 
