@@ -177,7 +177,7 @@ Achievements
   - Conceptualized user widget interactions, improved upon usability and helped develop responsiveness of the product.
   - Enabled inter widget communication with the use of Tibco service bus implemented in JavaScript.
   - Supported multiple vendor sites across a common agency adapter. Used vendor specific style sheets and configuration to give consistent feel
-  - Abstracted vendor services by developing proxy layers.
+  - Abstracted vendor services by developing proxy adn integration layers and supported enabled application extensibility to new businesses
 Platform and Tools - Google Web Toolkit, Eclipse
 
 
@@ -192,18 +192,14 @@ Project Title - Traffic violation Dispatch System
 Client - The Division of Motor Vehicles, Utah, US
 Role - Technical Architect
 Achievements
-  - Hosted services as light weight Spring based services on light weight containers.
+  - Developed a light wieght dispatch system for dispatching traffic voilations with high degree of automation
   - Developed schedulers, reminders and automated emailers operating in interactive as well as scheduled jobs
-  - Use of dependency injection enabled decoupling. Easier and cleaner application design with AOP
-  - Caching - 
-  - Transactions - Do something failsafe
-  - Security - Authentication with LDAP
-  - Security - Authorization and selective functionality enablement. Role based security
-  - Webserices over Xfire
-  - Contract first SOAP based services
-  - POJO based messaging invoking RPC over JMS
-  - Spring MVC for rendering
-  - Spring Web flow for workflow
+  - Hosted services as light weight Spring based services on light weight containers.
+  - Use of dependency injection  minimal coupling. Easier and cleaner application design with AOP
+  - Cached often read, low frequency write portions of the application to improve read performance and ease DB load
+  - Used annotation driven transaction support and exception model for simplified code model.
+  - Implemented LDAP based authentication and voting based authorization for selective functionality enablement and role based security
+  - Developed contract first SOAP based services using annotation driven Spring-WS. Developed POJO based messaging invoking RPC over JMS
 Platform and Tools - Spring Framework, Quartz Scheduler, Apache Velocity, Agile Development
   
 
@@ -217,7 +213,7 @@ Achievements -
   - Operated in a mode as a guest architect for helping with challenges unsurmountable by the rest of the group.
   - Actively sought and received creative collaboration between technical and domain experts for conceptual design the heart of the system
   - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
-  - Fund data integration system design from multiple sources. Custom adaptors for XML processing and file transfer.
+  - Fund data system design for integration from multiple sources. Custom adaptors for XML processing and file transfer.
 Platform and Tools - Microsoft Visio, XML, stax
 
 
