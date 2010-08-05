@@ -176,7 +176,7 @@ Achievements
   - Developed GWT based widgets with Spring back-end services for customer loyalty program.
   - Conceptualized user widget interactions, improved upon usability and helped develop responsiveness of the product.
   - Enabled inter widget communication with the use of Tibco service bus implemented in JavaScript.
-  - Supported multiple vendor sites across a common agency adapter. Used vendor specific style sheets and configuration to give consistent look to end user.
+  - Supported multiple vendor sites across a common agency adapter. Used vendor specific style sheets and configuration to give consistent feel
   - Abstracted vendor services by developing proxy layers.
 Platform and Tools - Google Web Toolkit, Eclipse
 
@@ -192,7 +192,6 @@ Project Title - Traffic violation Dispatch System
 Client - The Division of Motor Vehicles, Utah, US
 Role - Technical Architect
 Achievements
-Platform and Tools - Spring Framework, Quartz Scheduler, Apache Velocity, Agile Development
   - Hosted services as light weight Spring based services on light weight containers.
   - Developed schedulers, reminders and automated emailers operating in interactive as well as scheduled jobs
   - Use of dependency injection enabled decoupling. Easier and cleaner application design with AOP
@@ -205,7 +204,8 @@ Platform and Tools - Spring Framework, Quartz Scheduler, Apache Velocity, Agile 
   - POJO based messaging invoking RPC over JMS
   - Spring MVC for rendering
   - Spring Web flow for workflow
-
+Platform and Tools - Spring Framework, Quartz Scheduler, Apache Velocity, Agile Development
+  
 
 Project Title - Financial Tools, Franklin Templeton
 Client - Franklin Templeton
@@ -218,9 +218,7 @@ Achievements -
   - Actively sought and received creative collaboration between technical and domain experts for conceptual design the heart of the system
   - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
   - Fund data integration system design from multiple sources. Custom adaptors for XML processing and file transfer.
-
-Platform and Tools
-Microsoft Visio, XML, stax
+Platform and Tools - Microsoft Visio, XML, stax
 
 
 Project Title - Dispatch Tool
