@@ -212,11 +212,12 @@ Client - Franklin Templeton
 Role - Technical Architect (Manager Technology)
 Achievements -
   - Actively sought and received creative collaboration between technical and domain experts for conceptual design the heart of the system
-  - Configured HtDig on Linux, a vintage search engine used by Google internally for crawking and search indexing
-  - IPP Design. Design of integration systems from multiple sources. Custom adaptors for XML processing and file transfer.
-  - Instilled Design based development and system thinking instead of code in the team
-  - Client presentations to multiple architects across globe for IPP. Instilled lost confidence and helped clear bottlenecks.
-  - Joined a running project. Quickly gained bearings and confidence with team.
+  - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
+  - Fund data integration system design from multiple sources. Custom adaptors for XML processing and file transfer.
+  - Instilled Design based development and system thinking instead of code constrained mindset in the team
+  - Client presentations to multiple architects across globe for IPP subsystem. Instilled lost confidence and helped clear bottlenecks.
+  - Operated in a mode as a guest architect for helping with challenges unsurmountable by the rest of the group.
+  - Helped as a cognitive architect and helped optimize user site interaction. Helped optimize test staregies and QA process.
 Platform and Tools
 
 
@@ -227,8 +228,7 @@ Role - Technical Architect (Manager Technology), Offshore Project Manager
 Achievements
   - Co-architected messaging exchange application between buyers and sellers of electricity of Alberta, Canada
   - Domain driven design and development. Built complex domain model containing domain entities and business logic
-
-  - Developed domain experience on Trading and Risk Management in US/Canada Energy Market
+  - Gained domain experience on Trading and Risk Management in US/Canada Energy Market and free market dynamics
   - Delivery management and team management responsibilities for a team of 18 with various domain and technical expertise
   - Vendor management, procurement and purchase management for procurement. Setup of staging environments on Solaris Servers.
   - Agile development with extensive testing through Mock tests. Daily builds on Cruise Control and code coverage analysis on Cobertura.
@@ -236,4 +236,3 @@ Achievements
 Platform and Tools - Spring Framework 2.5, Spring MVC, Spring Remoting, Maven 2, Eclipse, Java Swing, Agile Development
 
 
-reverted local changes lines
