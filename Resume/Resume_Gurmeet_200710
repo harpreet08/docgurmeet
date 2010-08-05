@@ -211,15 +211,16 @@ Project Title - Financial Tools, Franklin Templeton
 Client - Franklin Templeton
 Role - Technical Architect (Manager Technology)
 Achievements -
+  - Instilled Design based development and system thinking instead of code constrained mindset in the team
+  - Client presentations to multiple architects across globe for IPP subsystem. Instilled lost confidence and helped clear bottlenecks.
+  - Helped as a cognitive architect and helped optimize user site interaction. Helped optimize test staregies and QA process.  
+  - Operated in a mode as a guest architect for helping with challenges unsurmountable by the rest of the group.
   - Actively sought and received creative collaboration between technical and domain experts for conceptual design the heart of the system
   - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
   - Fund data integration system design from multiple sources. Custom adaptors for XML processing and file transfer.
-  - Instilled Design based development and system thinking instead of code constrained mindset in the team
-  - Client presentations to multiple architects across globe for IPP subsystem. Instilled lost confidence and helped clear bottlenecks.
-  - Operated in a mode as a guest architect for helping with challenges unsurmountable by the rest of the group.
-  - Helped as a cognitive architect and helped optimize user site interaction. Helped optimize test staregies and QA process.
+    
 Platform and Tools
-
+Microsoft Visio, XML, stax, 
 
 
 Project Title - Dispatch Tool
