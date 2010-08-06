@@ -2,7 +2,7 @@ Contact : +91 9873 026 358
 email :   gurmeet1109@gmail.com
  
 
-Area of Specialization: Enterprise Archtecture in SOA & J2EE based Server Side Business Application Development
+Area of Specialization: Enterprise Architecture in SOA & J2EE based Server Side Business Application Development
 
 
 Executive Synopsis
@@ -21,7 +21,7 @@ Executive Synopsis
 
 Core Skill Sets
 -------------------
-J2EE Application Solutions Architecture
+J2EE Application Solutions Architecture Design
 Planning, Team Management, Delivery Management
 Customer Management, Stakeholder and Expectation Management
 Sales Proposal Development, Pre-Sales Support, RFP Response
@@ -180,7 +180,7 @@ Achievements
   - Conceptualized user widget interactions, improved upon usability and helped develop responsiveness of the product
   - Enabled inter widget communication with the use of Tibco service bus implemented in JavaScript
   - Supported multiple vendor sites across a common agency adapter. Used vendor specific style sheets and configuration to give consistent feel
-  - Abstracted vendor services by developing proxy adn integration layers and supported enabled application extensibility to new businesses
+  - Abstracted vendor services by developing proxy and integration layers and supported enabled application extensibility to new businesses
 Platform and Tools - Google Web Toolkit, Eclipse
 
 
@@ -192,11 +192,11 @@ Platform and Tools - Aqualogic Service Bus
 
 
 
-Project Title - Traffic violation Dispatch System
+Project Title - Traffic Violation Dispatch System
 Client - The Division of Motor Vehicles, Utah, US
 Role - Technical Architect
 Achievements
-  - Developed a light wieght dispatch system for dispatching traffic voilations with high degree of automation
+  - Developed a light weight dispatch system for dispatching traffic violations with high degree of automation
   - Developed schedulers, reminders and automated emailers operating in interactive as well as scheduled jobs
   - Hosted services as light weight Spring based services on light weight containers
   - Use of dependency injection  minimal coupling. Easier and cleaner application design with AOP
@@ -214,11 +214,11 @@ Role - Technical Architect (Manager Technology)
 Achievements -
   - Instilled Design based development and system thinking instead of code constrained mindset in the team
   - Client presentations to multiple architects across globe for IPP subsystem. Instilled lost confidence and helped clear bottlenecks
-  - Helped as a cognitive architect and helped optimize user site interaction. Helped optimize test staregies and QA process
+  - Helped as a cognitive architect and helped optimize user site interaction. Helped optimize test strategy and QA process
   - Operated in a mode as a guest architect for helping with challenges unsurmountable by the rest of the group
   - Actively sought and received creative collaboration between technical and domain experts for conceptual design the heart of the system
   - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
-  - Fund data system design for integration from multiple sources. Custom adaptors for XML processing and file transfer
+  - Fund data system design for integration from multiple sources. Custom adapters for XML processing and file transfer
 Platform and Tools - Microsoft Visio, XML, Servlets, Freemaker, SiteMesh
 
 
@@ -269,12 +269,12 @@ Project Title - Internet Ordering and Fulfillment System
 Client - OkiaDirect, Hong Kong
 Role - Solutions Architect
 Achievements
-  - Integration plaform for a very large wholesaler with 40 factories spread out in China, distribution/warehousing and logistics capacity in Hong Kong, and main market in Europe
+  - Integration platform for a very large wholesaler with 40 factories spread out in China, distribution/warehousing and logistics capacity in Hong Kong, and main market in Europe
   - An integrated platform with users as opticians, eye doctors and independent delivery agents. Extensive reporting and logistical checkpoints at many key locations.
   - Transaction platform capable of potentially 4000 sales points, with a transaction capacity of surpassing the requested 30 transactions per day per sale point
-  - Easy scalibiity and extensibility by the use of ESB to include wholesalers and chain stores as well as retail customers and was initially launched in Italy, Germany and Francegedit
-  - Responsible for technical architecting the complete solution, concept selling and knowledge transfer and detailed documentation to the customer
-Platform and Tools - IBM Process Server with Business Process Execution Language (BPEL), Rational Software Architect (RSA) and WebSphere Integration Developer (WID)
+  - Easy scalability and extensibility by the use of ESB to include wholesalers and chain stores as well as retail customers and was initially launched in Italy, Germany and France
+  - Responsible for technical architectonic the complete solution, concept selling and knowledge transfer and detailed documentation to the customer
+Platform and Tools - IBM Process Server with Business Process Execution Language (BPEL), Rational Software Architect (RS) and WebSphere Integration Developer (WID)
 
 
 Project Title - Migration of Cyclone Commerce on Solaris to Synchrony Interchange on Linux
@@ -284,7 +284,7 @@ Achievements
   - Served at DHL Holdings as a product specialist on Synchrony Interchange as a part of migration team from Solaris to RedHat Enterprise Linux
   - Did comparison analysis of products features and helped in feasibility analysis with the DHL IT teams
   - Helped migrate a cluster of trading communities and over 40,000 partners through a series of migration exercises
-  - Supported the project team in implementation including data loading & cutover/migration analysis
+  - Supported the project team in implementation including data loading & cut-over/migration analysis
   - Supported the program management teams in planning and other day to day project management insights
 Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
 
@@ -294,7 +294,7 @@ Client - Cardinal Health, Dublin, US
 Role - Support Consultant
 Achievements
   - Provided L2 support for Mission Critical support for one of the biggest healthcare supplier in US
-  - Build relationships with client production support team and exchanged postive synergies
+  - Build relationships with client production support team and exchanged positive synergies
   - Supported clusters of Synchrony Gateway Interchange for nil downtime during engagement
   - Handled risk management, cross team collaboration, issue resolution and escalation
 Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
