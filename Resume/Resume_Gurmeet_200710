@@ -7,7 +7,7 @@ Area of Specialization: Enterprise Archtecture in SOA & J2EE based Server Side B
 
 Executive Synopsis
 -----------------------
-- Strong experience in product development and services industry
+- Strong experience in product development and services industry across multiple product concept to release cycles
 - Served in various customer facing capacities multiple times across the full product development life cycle
 - Worked for ISO 9002, QS, CMMI Level 5 certified companies. Experience working in highly process driven environments
 - Expertise working as part of vast multi-cultured teams across multiple geographies and time zones
@@ -15,7 +15,7 @@ Executive Synopsis
 - Hands on Java / J2EE experience and extensive experience in integration projects with specialization in the IBM Websphere middleware platform
 - Have co-authored and developed reference architectures for multiple implementations. Experience on ING Application Architecture
 - Knowledge of proprietary development processes like GMAC SDP, Sapient Approach along with general approaches like Agile, RUP and waterfall model
-- Experience authoring and analyzing requirements specifications for complex Information Systems
+- Experience authoring and analyzing requirements specifications for complex Information Systems and integration boundaries
 
 
 
@@ -38,17 +38,14 @@ Axway B2B Cyclone Interchange, Axway Synchrony Sentinel BAM
 Microsoft SQL Server, IBM DB2, Oracle MySQL
 Linux Red Hat Enterprise, Linux Ubuntu Server, Windows Server 2003
 
-Skill Sets
+
+Java Skill Sets
 -------------
 Object Oriented Design, Domain Driven Design
 Services Oriented Architecture, Web Services, BPEL
 UML. Round trip Engineering, Model Driven Design
 J2EE, EJB, JSP/Servlets, JMS
-Core Java, Spring Framework, 
-
-
-Methodologies Known / Practiced
----------------------------------
+Core Java, Spring Framework
 Rational Unified Approach, Agile, Scrum
 ING IA3, General Motors SDP-21, Sapient Approach
 
@@ -194,6 +191,7 @@ Achievements
 Platform and Tools - Aqualogic Service Bus
 
 
+
 Project Title - Traffic violation Dispatch System
 Client - The Division of Motor Vehicles, Utah, US
 Role - Technical Architect
@@ -209,6 +207,7 @@ Achievements
 Platform and Tools - Spring Framework, Quartz Scheduler, Apache Velocity, Agile Development
   
 
+
 Project Title - Financial Tools, Franklin Templeton
 Client - Franklin Templeton
 Role - Technical Architect (Manager Technology)
@@ -221,6 +220,7 @@ Achievements -
   - Configured HtDig on Linux, a vintage search engine used by Google internally for crawling and search indexing
   - Fund data system design for integration from multiple sources. Custom adaptors for XML processing and file transfer
 Platform and Tools - Microsoft Visio, XML, Servlets, Freemaker, SiteMesh
+
 
 
 Project Title - Dispatch Tool
@@ -267,7 +267,7 @@ Platform and Tools
 
 Project Title - Internet Ordering and Fulfillment System
 Client - OkiaDirect, Hong Kong
-Role - Project Lead
+Role - Solutions Architect
 Achievements
   - Integration plaform for a very large wholesaler with 40 factories spread out in China, distribution/warehousing and logistics capacity in Hong Kong, and main market in Europe
   - An integrated platform with users as opticians, eye doctors and independent delivery agents. Extensive reporting and logistical checkpoints at many key locations.
@@ -425,7 +425,6 @@ Achievements
   - The system was web accessible anytime-anywhere and "to do" list for each field engineers with accessible details on request
   - Client was extremely grateful by efficient response of the system over earlier process
 Platform and Tools - Services Component Architecture (SCA) and Services Oriented Architecture (SOA), Web Services and Business Process Execution Language (BPEL), Websphere Business Integration Modeler (WBI-Modeler), Rational Software Architect (RSA) and Websphere Integration Developer (WID)
-
 
 
 
