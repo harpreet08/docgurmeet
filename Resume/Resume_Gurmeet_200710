@@ -246,14 +246,14 @@ Project Title - Online Policy Sales System
 Client - ING Vysya Limited, Bangalore
 Role - Project Manager
 Achievements
-- Developed sectioned proposal form Customer information with automated form population database in case of existing customer, captured product specific entries in terms of riders chosen, funds attached, Sum assured required and other relevant details along with underwriting questions with intricate calculations
-- Helped set up a 'low cost' distribution channel under the direct sales line of business
-- Helped monetize the flow of 'prospects' traffic to the ING website
-- Coordination and interfacing with marketing teams at ING for context sensitive information
-- Extensive interfacing with information management teams for field data analysis, queries development and optimization
-- Integrated application with the fulfillment process & application used by the telemarketing team
-- Integration with ODS for capturing interim operation, for lead generation and follow up, in case the customer aborts amidst
-- Automated alerts and emails to advisors for follow up on qualified leads
+  - Developed multipart and sectioned customer information capture form for Insurance proposal relevant details along with underwriting questions for intricate calculations
+  - Automated database population in case of existing customer, capturing product specific entries in terms of riders chosen, funds attached, etc. 
+  - Helped set up a 'low cost' distribution channel under the direct sales line of business. Helped monetize the flow of 'prospects' traffic to the ING website
+  - Coordination and interfacing with marketing teams at ING for context sensitive information
+  - Extensive interfacing with information management teams for field data analysis, queries development and optimization
+  - Integrated application with the fulfillment process & application used by the telemarketing team
+  - Integration with ODS for capturing interim operation, for lead generation and follow up, in case the customer aborts amidst
+  - Automated alerts and emails to advisors for follow up on qualified leads
 Platform and Tools - Microsoft Office, Microsoft Project, Websphere Application Server 6.0
 
 
@@ -265,23 +265,27 @@ Achievements
 Platform and Tools
 
 
-Project Title - Supply Chain Exchange for Optical Equipment
+Project Title - Internet Ordering and Fulfillment System
 Client - OkiaDirect, Hong Kong
-Role - Solutions Architect
+Role - Project Lead
 Achievements
-Platform and Tools
-
+  - Integration plaform for a very large wholesaler with 40 factories spread out in China, distribution/warehousing and logistics capacity in Hong Kong, and main market in Europe
+  - An integrated platform with users as opticians, eye doctors and independent delivery agents. Extensive reporting and logistical checkpoints at many key locations.
+  - Transaction platform capable of potentially 4000 sales points, with a transaction capacity of surpassing the requested 30 transactions per day per sale point
+  - Easy scalibiity and extensibility by the use of ESB to include wholesalers and chain stores as well as retail customers and was initially launched in Italy, Germany and Francegedit
+  - Responsible for technical architecting the complete solution, concept selling and knowledge transfer and detailed documentation to the customer
+Platform and Tools - IBM Process Server with Business Process Execution Language (BPEL), Rational Software Architect (RSA) and WebSphere Integration Developer (WID)
 
 
 Project Title - Migration of Cyclone Commerce on Solaris to Synchrony Interchange on Linux
 Client - DHL Holdings Inc., Scottsdale, US
 Role - Integration Architect, Product Consultant
 Achievements
-- Served at DHL Holdings as a product specialist on Synchrony Interchange as a part of migration team from Solaris to RedHat Enterprise Linux
-- Did comparison analysis of products features and helped in feasibility analysis with the DHL IT teams
-- Helped migrate a cluster of trading communities and over 40,000 partners through a series of migration exercises
-- Supported the project team in implementation including data loading & cutover/migration analysis
-- Supported the program management teams in planning and other day to day project management insights
+  - Served at DHL Holdings as a product specialist on Synchrony Interchange as a part of migration team from Solaris to RedHat Enterprise Linux
+  - Did comparison analysis of products features and helped in feasibility analysis with the DHL IT teams
+  - Helped migrate a cluster of trading communities and over 40,000 partners through a series of migration exercises
+  - Supported the project team in implementation including data loading & cutover/migration analysis
+  - Supported the program management teams in planning and other day to day project management insights
 Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
 
 
@@ -289,10 +293,10 @@ Project Title - Mission Critical Systems Support
 Client - Cardinal Health, Dublin, US
 Role - Support Consultant
 Achievements
-- Provided L2 support for Mission Critical support for one of the biggest healthcare supplier in US
-- Build relationships with client production support team and exchanged postive synergies
-- Supported clusters of Synchrony Gateway Interchange for nil downtime during engagement
-- Handled risk management, cross team collaboration, issue resolution and escalation
+  - Provided L2 support for Mission Critical support for one of the biggest healthcare supplier in US
+  - Build relationships with client production support team and exchanged postive synergies
+  - Supported clusters of Synchrony Gateway Interchange for nil downtime during engagement
+  - Handled risk management, cross team collaboration, issue resolution and escalation
 Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
 
 
@@ -300,13 +304,13 @@ Project Title - Axway, Scottsdale, US - Sentinel Dashboards (Business Activity M
 Client - Axway Centre of Excellence, Scottsdale, Arizona
 Role - Product Specialist
 Achievements
-- Achieved certification on Axway's Synchrony suite of products for B2B integration and Business Activity monitoring
-- Built a variety of business activity monitoring dashboards with key performance indicators in Synchrony Sentinel
-- Built in custom events and automated alerts based on event triggers
-- Built multiple staging environments on VMWare virtual machines for presentations and demonstration exercises
-- Participated in building of presentations and training material for the centre of excellence in Axway
-- Tested support material, executed test exercises and helped streamline deliverables
-- Participated in demonstrations of system capabilities to various business teams through prototypes and proof of concepts
+  - Achieved certification on Axway's Synchrony suite of products for B2B integration and Business Activity monitoring
+  - Built a variety of business activity monitoring dashboards with key performance indicators in Synchrony Sentinel
+  - Built in custom events and automated alerts based on event triggers
+  - Built multiple staging environments on VMWare virtual machines for presentations and demonstration exercises
+  - Participated in building of presentations and training material for the centre of excellence in Axway
+  - Tested support material, executed test exercises and helped streamline deliverables
+  - Participated in demonstrations of system capabilities to various business teams through prototypes and proof of concepts
 Platform and Tools - Synchrony Sentinel, VMWare Server
 
 
@@ -314,15 +318,15 @@ Project Title - Point of Sales Application
 Client - Proxis, Washington, US
 Role - Application Architect, Project Delivery Manager
 Achievements
-- Developed a Point of Sales System with chief components as Cash Register and Office
-- Integrated with custom printers for checkout slip generation
-- Integrated with bar code printing systems for in house inventory
-- Incorporated the many diverse taxation rules of different US states the software was deployed on
-- Build extensive reporting for a diverse set of Inventory, Sales & Financial Reports
-- Built customer management module with customer history tracking, reward points, loyalty programs and custom reminders
-- Built in authentication and agent's sales volume for commission calculations. Supervisor override for critical tasks
-- Managed a team of 6 developers & 3 graphics designers for successful completion of the project
-- Managed customer and executed full project management responsibilities with extensive reporting and planning
+  - Developed a Point of Sales System with chief components as Cash Register and Office
+  - Integrated with custom printers for checkout slip generation
+  - Integrated with bar code printing systems for in house inventory
+  - Incorporated the many diverse taxation rules of different US states the software was deployed on
+  - Build extensive reporting for a diverse set of Inventory, Sales & Financial Reports
+  - Built customer management module with customer history tracking, reward points, loyalty programs and custom reminders
+  - Built in authentication and agent's sales volume for commission calculations. Supervisor override for critical tasks
+  - Managed a team of 6 developers & 3 graphics designers for successful completion of the project
+  - Managed customer and executed full project management responsibilities with extensive reporting and planning
 Platform and Tools - Core Java, SQL Server 2005
 
 
@@ -330,12 +334,12 @@ Project Title - Stern Global View
 Client - New York University, New York, US
 Role - Project Manager
 Achievements
-- Prepared proof of concepts. Hosted on public IP addresses for review with client representatives
-- Presented alternative solutions to clients and produced a win-all solution with key feedback from participating teams
-- Developed Project Proposal and carried through reviews with senior management and sales teams
-- Managed relationship with business partner for outsourcing non-core UI work
-- Architected the solution design. Responsible for development and delivery
-- Integrated effort estimates from multiple parties delivering on variety of platforms into a uniform timeline and schedule
+  - Prepared proof of concepts. Hosted on public IP addresses for review with client representatives
+  - Presented alternative solutions to clients and produced a win-all solution with key feedback from participating teams
+  - Developed Project Proposal and carried through reviews with senior management and sales teams
+  - Managed relationship with business partner for outsourcing non-core UI work
+  - Architected the solution design. Responsible for development and delivery
+  - Integrated effort estimates from multiple parties delivering on variety of platforms into a uniform timeline and schedule
 Platform and Tools - Google Maps API, Eclipse, AJAX, JavaScript, XML, Web Services
 
 
@@ -345,16 +349,16 @@ Project Title - Global Financial Tools
 Client - General Motors Acceptance Corporation, UK
 Role - Business Analyst
 Achievements
-- Provided Business Consulting Services for General Motors IS&S teams for financial tools development
-- Developed functional specifications and system design specifications across 8 countries and 19 languages
-- Performed the As-Is vs. To-Be analysis for GMAC GSS and New Response systems
-- Produced Interface designs and mock-up for discussions across a wide audience
-- Liaisoned with multiple business SME and core architects for requirements gathering to produce key deliverables
-- Delivered project artifacts on GMAC's strict development process SDP-21 V10
-- Part of the architectural development team. Partnered with multiple consultants across multiple service providers over a global base for System Requirement Specifications and Software Architecture documents
-- Provided key inputs for project scoping and planning purposes to key stakeholders in the project
-- Delivered customer presentations discussed solution options with customer
-- Conducted functional design workshops, iterated fit/gap analysis and partnered for solution design document
+  - Provided Business Consulting Services for General Motors IS&S teams for financial tools development
+  - Developed functional specifications and system design specifications across 8 countries and 19 languages
+  - Performed the As-Is vs. To-Be analysis for GMAC GSS and New Response systems
+  - Produced Interface designs and mock-up for discussions across a wide audience
+  - Liaisoned with multiple business SME and core architects for requirements gathering to produce key deliverables
+  - Delivered project artifacts on GMAC's strict development process SDP-21 V10
+  - Partnered with architectural development team and multiple consultants across multiple global service providers
+  - Provided key inputs for project scoping and planning purposes to key stakeholders in the project
+  - Delivered customer presentations discussed solution options with customer
+  - Conducted functional design workshops, iterated fit/gap analysis and partnered for solution design document
 Platform and Tools - CaliberRM, Microsoft Office, Microsoft Project
 
 
@@ -423,16 +427,7 @@ Achievements
 Platform and Tools - Services Component Architecture (SCA) and Services Oriented Architecture (SOA), Web Services and Business Process Execution Language (BPEL), Websphere Business Integration Modeler (WBI-Modeler), Rational Software Architect (RSA) and Websphere Integration Developer (WID)
 
 
-Project Title - Internet Ordering and Fulfillment System
-Client - Major Wholesaler, Hong Kong
-Role - Project Lead
-Achievements
-  - (<< Split /reword this line >>) Developed an Internet Ordering System for a very large wholesaler in Hong Kong integrating with 40 factories spread out in China, distribution/warehousing and logistics capacity in Hong Kong, and main market in Europe
-  - The system integrated in the shops of opticians, eye doctors and independent delivery agents
-  - The system had a transaction platform capable of potentially 4000 sales points, with a transaction capacity of surpassing the requested 30 transactions per day
-  - Architected the system to be scalable to include wholesalers and chain stores as well as retail customers and was initially launched in Italy, Germany and Francegedit remove trailing 
-  - Responsible for technical architecting the complete solution and overall execution of the projects with a 10 member team
-Platform and Tools - IBM Process Server with Business Process Execution Language (BPEL), Rational Software Architect (RSA) and WebSphere Integration Developer (WID)
+
 
 
 Project Title - Integrated Management Information System
@@ -474,12 +469,12 @@ Project Title - CNC Scheduler
 Client - Tata Motors
 Role - Developer in a team
 Achievements
-- Analyzed business requirements and co-developed the core architecture of the application using OOAD on Rational Rose
-- Worked as a part of a team with strict development standards producing industrial strength products
-- Shared responsibilities with DMA for data model design
-- Implemented role based functionality for booking, viewing status, approvals and booking adjustments
-- Reduced paper work and enabled near real time unified view into the schedule status
-- Used J2EE design patterns to enhance design robustness and improve upon application maintainability
+  - Analyzed business requirements and co-developed the core architecture of the application using OOAD on Rational Rose
+  - Worked as a part of a team with strict development standards producing industrial strength products
+  - Shared responsibilities with DMA for data model design
+  - Implemented role based functionality for booking, viewing status, approvals and booking adjustments
+  - Reduced paper work and enabled near real time unified view into the schedule status
+  - Used J2EE design patterns to enhance design robustness and improve upon application maintainability
 Platform and Tools - Core Java 1.2, JSP/Servlets, Websphere Application Server 4.0, Rational Rose, Oracle 8.1
 
 
@@ -487,15 +482,15 @@ Project Title - Customer Support Desk Application
 Client - Tata Motors
 Role - Developer in a team
 Achievements
-- Developed support desk application for customer management with history of customer transactions through multiple channels
-- Interfaced with searchable knowledge base of frequently encountered support issues
-- Interfaced with Product Data Management tool to access product information from custom data repositories
-- Liased with DBAs for domain model and query design and optimization
-- Liased with product experts and third party development teams for custom interfaces and adaptors to external applications
-- Provisioned for requests submission through and processing internal to the application
-- Harnessed the underlying OS capabilities and existing organizational infrastructure to generate automatic email notifications on specific stages of the requests
-- Co-developed custom report generation modules for system generated Reports on call transactions by support staff
-- Utilized OS specific job scheduling for and custom Response Templates for automatic escalation of customer request according to the time, status, product and other criteria
+  - Developed support desk application for customer management with history of customer transactions through multiple channels
+  - Interfaced with searchable knowledge base of frequently encountered support issues
+  - Interfaced with Product Data Management tool to access product information from custom data repositories
+  - Liased with DBAs for domain model and query design and optimization
+  - Liased with product experts and third party development teams for custom interfaces and adaptors to external applications
+  - Provisioned for requests submission through and processing internal to the application
+  - Harnessed the underlying OS capabilities and existing organizational infrastructure to generate automatic email notifications on specific stages of the requests
+  - Co-developed custom report generation modules for system generated Reports on call transactions by support staff
+  - Utilized OS specific job scheduling for and custom Response Templates for automatic escalation of customer request according to the time, status, product and other criteria
 Platform and Tools - C++, Netscape 4.0, IRIX operating system, UNIX shell scripting
 
 
@@ -503,18 +498,18 @@ Platform and Tools - C++, Netscape 4.0, IRIX operating system, UNIX shell script
 Purolator India Limited
 -------------------------
 
-Project Title - Molding Machine Scheduling Tool
+Project Title - Machine Scheduling Tool
 Client - Purolator India Limited
 Role - Independent Consultant
 Achievements
-- Developed production planning software for schedule provisioning of molding machines
-- Interfaced with business stakeholders, shop floor personnel and IT teams through multiple stages of the project
-- Helped reduce WIP inventory by better scheduling reducing time queue time between operations
-- Helped improve job scheduling estimates and helped achieve on time delivery
-- Inbuilt machine run cost analysis with what-if scenarios to prioritize on job order requirements
-- Incorporated provisions for downtime and maintenance operations against per hour machine runs
-- Organization wide real-time and unambiguous communication by a centrally database driven application
-- Provided post-implementation support to production and business teams
+  - Developed production planning software for schedule provisioning of molding machines
+  - Interfaced with business stakeholders, shop floor personnel and IT teams through multiple stages of the project
+  - Helped reduce WIP inventory by better scheduling reducing time queue time between operations
+  - Helped improve job scheduling estimates and helped achieve on time delivery
+  - Inbuilt machine run cost analysis with what-if scenarios to prioritize on job order requirements
+  - Incorporated provisions for downtime and maintenance operations against per hour machine runs
+  - Organization wide real-time and unambiguous communication by a centrally database driven application
+  - Provided post-implementation support to production and business teams
 Platform and Tools - Visual Studio 6, Microsoft SQL Server 7.0
 
 
@@ -524,11 +519,11 @@ Project Title - Nurse Scheduling Application
 Client - Healthcare facility
 Role - Independent Consultant
 Achievements
-- Developed a centrally deployed database driven easily accessible web based platform
-- Inbuilt admin functionality for managing application master data and configuration properties
-- Incorporated self service for the enrolling healthcare employees to ease clerical load on existing staff
-- Centrally managed with authorization built-in for allocation management according to skill base and load conditions
-- Enabled quick turn around times of application status over previous partly disconnected, difficult to manage legacy system
+  - Developed a centrally deployed database driven easily accessible web based platform
+  - Inbuilt admin functionality for managing application master data and configuration properties
+  - Incorporated self service for the enrolling healthcare employees to ease clerical load on existing staff
+  - Centrally managed with authorization built-in for allocation management according to skill base and load conditions
+  - Enabled quick turn around times of application status over previous partly disconnected, difficult to manage legacy system
 Platform and Tools - JSP/Servlets, Apache Tomcat V 3.2
 
 
@@ -536,12 +531,12 @@ Project Title - Employee Remuneration Record Keeping Application
 Client - Automotive Manufacturing Ancillary
 Role - Independent Consultant
 Achievements
-- Developed low budget basic payroll processing application for a small scale manufacturing industry
-- Ease of use and maintenance. Maintained low budget for implementation and maintenance
-- Built in authentication over sensitive data. Built in authorization over admin tasks and configuration changes
-- Provided functionality month end and year closing. Department wise expense report generation
-- Provided functionality for monthly pay slip generation, leave status reporting and mailing labels generation
-- Month end transaction file generation for sending advise to bank as a one time account transfer for employees
+  - Developed low budget basic payroll processing application for a small scale manufacturing industry
+  - Ease of use and maintenance. Maintained low budget for implementation and maintenance
+  - Built in authentication over sensitive data. Built in authorization over admin tasks and configuration changes
+  - Provided functionality month end and year closing. Department wise expense report generation
+  - Reporting capability for monthly pay slip generation, leave status reporting and mailing labels generation
+  - Bank Integration for month end transaction file generation for sending advise to bank as a one time account transfer for employees
 Platform and Tools - Unix Shell Scripting
 
 
@@ -550,12 +545,12 @@ Project Title - Password Generator
 Client - Open Market Release
 Role - Independent Consultant
 Achievements
-- Conceptualized, designed and developed enterprise ready password generation tool for system administrators
-- Developed functionality for the tool to work in interactive mode and batch mode for unattended peak load operation
-- Enabled dynamic configuration over password length, complexity and active directory integration
-- Secured the generated passwords against dictionary attacks by comparing against custom dictionary and filtering word occurences
-- Released the product in Basic (freeware), Standard and Enterprise edition with varied features and target markets
-- Providing post deployment support to at deployed sites
+  - Conceptualized, designed and developed enterprise ready password generation tool for system administrators
+  - Developed functionality for the tool to work in interactive mode and batch mode for unattended peak load operation
+  - Enabled dynamic configuration over password length, complexity and active directory integration
+  - Secured the generated passwords against dictionary attacks by comparing against custom dictionary and filtering word occurences
+  - Released the product in Basic (freeware), Standard and Enterprise edition with varied features and target markets
+  - Providing post deployment support to at deployed sites
 Platform and Tools - Visual Studio 6
 
 
