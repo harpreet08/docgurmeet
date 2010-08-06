@@ -353,7 +353,7 @@ Achievements
   - Developed functional specifications and system design specifications across 8 countries and 19 languages
   - Performed the As-Is vs. To-Be analysis for GMAC GSS and New Response systems
   - Produced Interface designs and mock-up for discussions across a wide audience
-  - Liaisoned with multiple business SME and core architects for requirements gathering to produce key deliverables
+  - Liaised with multiple business SME and core architects for requirements gathering to produce key deliverables
   - Delivered project artifacts on GMAC's strict development process SDP-21 V10
   - Partnered with architectural development team and multiple consultants across multiple global service providers
   - Provided key inputs for project scoping and planning purposes to key stakeholders in the project
@@ -395,11 +395,11 @@ Client - ING Vysya Life Insurance, Bangalore
 Role - Portal Architect
 Achievements
   - Managed a team of technical experts for development of Customer Portal and Advisor Portal for ING Vysya Life Insurance
-  - Portalized exiting application, reengineering them for the IBM Portal Server platform
+  - Portalized exiting application, re-engineering them for the IBM Portal Server platform
   - Part of the team for Query development and optimization at ING
   - Integrated with ING ODS based on Life400 database. Gained valuable Insurance domain knowledge as a result
   - Implemented virtual portals for hosting portals, thereby saving licensing, hardware and administration costs to ING
-  - Example applications included View Policy Details, Policy Servicing, Fund Balance Statements, Emailers, Drop Box Locator etc
+  - Example applications included View Policy Details, Policy Servicing, Fund Balance Statements, Emailers, Drop Box Locater etc
   - Configured standard portal features such as Web Content Management, Site Analytics, Search and helped in Portal Installation and maintenance activities
   - Managed a team of 8 consultants and domain specialists to portal deliverables. Interfaced with ING diverse and high specialty teams
   - Client Management and extremely high visibility project. Received appreciation from ING CIO
@@ -484,8 +484,8 @@ Achievements
   - Developed support desk application for customer management with history of customer transactions through multiple channels
   - Interfaced with searchable knowledge base of frequently encountered support issues
   - Interfaced with Product Data Management tool to access product information from custom data repositories
-  - Liased with DBAs for domain model and query design and optimization
-  - Liased with product experts and third party development teams for custom interfaces and adaptors to external applications
+  - Liaised with DBAs for domain model and query design and optimization
+  - Liaised with product experts and third party development teams for custom interfaces and adapters to external applications
   - Provisioned for requests submission through and processing internal to the application
   - Harnessed the underlying OS capabilities and existing organizational infrastructure to generate automatic email notifications on specific stages of the requests
   - Co-developed custom report generation modules for system generated Reports on call transactions by support staff
@@ -547,7 +547,7 @@ Achievements
   - Conceptualized, designed and developed enterprise ready password generation tool for system administrators
   - Developed functionality for the tool to work in interactive mode and batch mode for unattended peak load operation
   - Enabled dynamic configuration over password length, complexity and active directory integration
-  - Secured the generated passwords against dictionary attacks by comparing against custom dictionary and filtering word occurences
+  - Secured the generated passwords against dictionary attacks by comparing against custom dictionary and filtering word occurrences
   - Released the product in Basic (freeware), Standard and Enterprise edition with varied features and target markets
   - Providing post deployment support to at deployed sites
 Platform and Tools - Visual Studio 6
