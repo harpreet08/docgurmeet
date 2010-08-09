@@ -181,7 +181,7 @@ Achievements
   - Enabled inter widget communication with the use of Tibco service bus implemented in JavaScript
   - Supported multiple vendor sites across a common agency adapter. Used vendor specific style sheets and configuration to give consistent feel
   - Abstracted vendor services by developing proxy and integration layers and supported enabled application extensibility to new businesses
-  - High availblity and redundancy. Use of fluseterd configuration, SAN, load balancer and shared disks for transaction recovery
+  - High availability and redundancy. Use of clustered configuration, SAN, load balancer and shared disks for transaction recovery
 Platform and Tools - Google Web Toolkit, Eclipse
 
 
@@ -189,13 +189,13 @@ Project Title - NGWS Abstraction Layer - UPC Netherlands
 Client - UPC Netherlands B.V., Netherlands
 Role - Offshore Delivery Manager
 Achievements
-  - Joint architectual, design and development effort between UPC and multiple participating companies
-  - Build Abstraction Layer as a bridge between a Business Layer and many different per affilitate Integration Layers
+  - Joint architectural, design and development effort between UPC and multiple participating companies
+  - Build Abstraction Layer as a bridge between a Business Layer and many different per affiliate Integration Layers
   - Reduced the number of translators required by the use of Canonical data model for common language between applications
   - Implemented state machine and workflow services in Aqualogic Service bus. Use of shared information database for backend storage and retrieval
   - Developed proxy Services, pipelines and business services in Aqualogic Service Bus
-  - Interconnected internal systems through web services. Exposed EJB based services through custom adaptors
-  - Developed transalators and custom adaptors for data transformation and integration at various stages
+  - Interconnected internal systems through web services. Exposed EJB based services through custom adapters
+  - Developed translators and custom adapters for data transformation and integration at various stages
 Platform and Tools - Enterprise Integration Patterns, Aqualogic Service Bus
 
 
@@ -270,12 +270,12 @@ Project Title - RFID based Asset Loss and Theft Prevention System
 Client - FirstSource, NY, US
 Role - Solutions Architect
 Achievements
-  - Developed RFID based asset tracking and management solution for managing assets to clinical labs and store equipments
+  - Developed RFID based asset tracking and management solution for managing assets to laboratories and equipment stores
   - Ease of use with no wires for the end user. Triangulation helped pin point exact location superimposed over building layout
   - Door sensors, alarms and material movement without pre authorization helped assist in loss and theft prevention
   - Centralized database of high value assets helped optimally track, book and utilize asset's lifecycle and associated running costs
-  - Decentralized asset maangement and centralized tracking helped manage local assets on site and simplified commulative information flow
-  - Helped in better inventory management, cost tracking and utilization rates of coorporate assets requiring tighter cost control
+  - Decentralized asset management and centralized tracking helped manage local assets on site and simplified commutative information flow
+  - Helped in better inventory management, cost tracking and utilization rates of corporate assets requiring tighter cost control
   - Easier and faster processing over the counter for warehousing and booking and de-allocation 
 Platform and Tools - Rational Software Architect, Microsoft Office
 
