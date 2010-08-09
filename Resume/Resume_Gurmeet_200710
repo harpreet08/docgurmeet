@@ -270,6 +270,13 @@ Project Title - RFID based Asset Loss and Theft Prevention System
 Client - FirstSource, NY, US
 Role - Solutions Architect
 Achievements
+  - Developed RFID based asset tracking and management solution for managing assets to clinical labs and store equipments
+  - Ease of use with no wires for the end user. Triangulation helped pin point exact location superimposed over building layout
+  - Door sensors, alarms and material movement without pre authorization helped assist in loss and theft prevention
+  - Centralized database of high value assets helped optimally track, book and utilize asset's lifecycle and associated running costs
+  - Decentralized asset maangement and centralized tracking helped manage local assets on site and simplified commulative information flow
+  - Helped in better inventory management, cost tracking and utilization rates of coorporate assets requiring tighter cost control
+  - 
 Platform and Tools - Rational Software Architect, Microsoft Office
 
 
@@ -311,7 +318,6 @@ Platform and Tools - Synchrony Gateway Interchange, RedHat Enterprise Linux 5.1
 Project Title - Axway, Scottsdale, US - Sentinel Dashboards (Business Activity Monitoring)
 Client - Axway Centre of Excellence, Scottsdale, Arizona
 Role - Product Specialist
-Achievements
   - Achieved certification on Axway's Synchrony suite of products for B2B integration and Business Activity monitoring
   - Built a variety of business activity monitoring dashboards with key performance indicators in Synchrony Sentinel
   - Built in custom events and automated alerts based on event triggers
