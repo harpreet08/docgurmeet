@@ -181,6 +181,7 @@ Achievements
   - Enabled inter widget communication with the use of Tibco service bus implemented in JavaScript
   - Supported multiple vendor sites across a common agency adapter. Used vendor specific style sheets and configuration to give consistent feel
   - Abstracted vendor services by developing proxy and integration layers and supported enabled application extensibility to new businesses
+  - High availblity and redundancy. Use of fluseterd configuration, SAN, load balancer and shared disks for transaction recovery
 Platform and Tools - Google Web Toolkit, Eclipse
 
 
@@ -188,7 +189,14 @@ Project Title - NGWS Abstraction Layer - UPC Netherlands
 Client - UPC Netherlands B.V., Netherlands
 Role - Offshore Delivery Manager
 Achievements
-Platform and Tools - Aqualogic Service Bus
+  - Joint architectual, design and development effort between UPC and multiple participating companies
+  - Build Abstraction Layer as a bridge between a Business Layer and many different per affilitate Integration Layers
+  - Reduced the number of translators required by the use of Canonical data model for common language between applications
+  - Implemented state machine and workflow services in Aqualogic Service bus. Use of shared information database for backend storage and retrieval
+  - Developed proxy Services, pipelines and business services in Aqualogic Service Bus
+  - Interconnected internal systems through web services. Exposed EJB based services through custom adaptors
+  - Developed transalators and custom adaptors for data transformation and integration at various stages
+Platform and Tools - Enterprise Integration Patterns, Aqualogic Service Bus
 
 
 
@@ -196,7 +204,7 @@ Project Title - Traffic Violation Dispatch System
 Client - The Division of Motor Vehicles, Utah, US
 Role - Technical Architect
 Achievements
-  - Developed a light weight dispatch system for dispatching traffic violations with high degree of automation
+  - Developed a light weight dispatch system for dispatching traffic violation notifications with high degree of automation
   - Developed schedulers, reminders and automated emailers operating in interactive as well as scheduled jobs
   - Hosted services as light weight Spring based services on light weight containers
   - Use of dependency injection  minimal coupling. Easier and cleaner application design with AOP
@@ -262,7 +270,7 @@ Project Title - RFID based Asset Loss and Theft Prevention System
 Client - FirstSource, NY, US
 Role - Solutions Architect
 Achievements
-Platform and Tools
+Platform and Tools - Rational Software Architect, Microsoft Office
 
 
 Project Title - Internet Ordering and Fulfillment System
