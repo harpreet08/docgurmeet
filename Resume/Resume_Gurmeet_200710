@@ -2,7 +2,7 @@ Contact : +91 9873 026 358
 email :   gurmeet1109@gmail.com
  
 
-Area of Specialization: Enterprise Architecture in SOA & J2EE based Server Side Business Application Development
+Area of Specialization: J2EE based Server Side Business Application Development & Enterprise Architecture in SOA
 
 
 Executive Synopsis
@@ -13,8 +13,8 @@ Executive Synopsis
 - Expertise working as part of vast multi-cultured teams across multiple geographies and time zones
 - Experience setting up setting up of Windows / Linux staging / hosting environments. Knowledge of virtualization
 - Hands on Java / J2EE experience and extensive experience in integration projects with specialization in the IBM Websphere middleware platform
-- Have co-authored and developed reference architectures for multiple implementations. Experience on ING Application Architecture
-- Knowledge of proprietary development processes like GMAC SDP, Sapient Approach along with general approaches like Agile, RUP and waterfall model
+- Have co-authored and developed reference architectures for multiple implementations. Experience on ING Application Architecture & IBM Retail Operating Store
+- Knowledge of with general approaches like Agile, RUP, waterfall model and proprietary development processes like GMAC SDP, Sapient Approach along 
 - Experience authoring and analyzing requirements specifications for complex Information Systems and integration boundaries
 
 
@@ -29,6 +29,17 @@ Supplier Management, Risk and Issue Management
 Business Analysis, Requirements development
 
 
+Technology Skill Sets
+------------------------
+Object Oriented Design, Domain Driven Design
+Services Oriented Architecture, Web Services, BPEL
+UML. Round trip Engineering, Model Driven Design
+J2EE, EJB, JSP/Servlets, JMS
+Core Java, Spring Framework
+Rational Unified Approach, Agile, Scrum
+ING IA3, General Motors SDP-21, Sapient Approach
+
+
 Middleware
 ------------------------------
 IBM Websphere Integration Developer (WID),  IBM Websphere Process Server
@@ -37,17 +48,6 @@ Oracle Aqualogic Enterprise Service Bus, Oracle Weblogic Workshop
 Axway B2B Cyclone Interchange, Axway Synchrony Sentinel BAM
 Microsoft SQL Server, IBM DB2, Oracle MySQL
 Linux Red Hat Enterprise, Linux Ubuntu Server, Windows Server 2003
-
-
-Java Skill Sets
--------------
-Object Oriented Design, Domain Driven Design
-Services Oriented Architecture, Web Services, BPEL
-UML. Round trip Engineering, Model Driven Design
-J2EE, EJB, JSP/Servlets, JMS
-Core Java, Spring Framework
-Rational Unified Approach, Agile, Scrum
-ING IA3, General Motors SDP-21, Sapient Approach
 
 
 Professional Certifications
@@ -94,7 +94,7 @@ Manager Technology - Sapient Corporation, October 2008 - Nov 2009
   - Manage customer relationship with clear communication and represent organization with technical expertise on specific areas
   - Joint Risk management with internal and customer designated representatives. Timely risk identification and escalation and drive towards issue resolution. 
   - Manage choices and trade-offs in technical delivery with customer, internal management and external solution providers
-  - Guide cross functional customer representatives and internal teams to choose and implement technology stack with customer drivers and environment feasibility
+  - Guide cross functional customer representatives and internal teams to choose and implement technology stack with project drivers and environment feasibility
 
 
 Senior Consultant - Genisys Information Systems, June 2006 - Sept 2008
@@ -121,9 +121,9 @@ Senior Consultant - HCL Technologies Limited, August 2002 - June 2006
 
 
 Senior Consultant - Tata Technologies Limited, June 2001 - August 2002
-  - Used Object orientation and C++ to develop database driven centralized applications usable across the organization
   - Interfaced and liaised between business SME and senior architects to clarify and streamline design intents. 
   - Helped refine existing data models to introduce new product features. Co-tested functionally and helped in integration tests
+  - Used Object orientation and C++ to develop database driven centralized applications usable across the organization  
   - Developed UNIX shell scripts for database population and automated product deployment
   - Developed adapters to integrated new product functionality with existing code base
   - Used OS capabilities and underlying infrastructure to create automated search scripts and automated alerts
@@ -170,6 +170,8 @@ Product Development Engineer - Pranav Vikas (I) Ltd - Aug 1998 - Oct 1999
 Project Briefs
 ---------------
 
+Sapient Coorportation, Gurgaon
+---------------------------------
 
 Project Title - Financial Tools for Customer Loyalty Development Program
 Client - Coca Cola
@@ -185,13 +187,13 @@ Achievements
 Platform and Tools - Google Web Toolkit, Eclipse
 
 
-Project Title - NGWS Abstraction Layer - UPC Netherlands
+Project Title - NGWS Abstraction Layer
 Client - UPC Netherlands B.V., Netherlands
 Role - Offshore Delivery Manager
 Achievements
-  - Joint architectural, design and development effort between UPC and multiple participating companies
   - Build Abstraction Layer as a bridge between a Business Layer and many different per affiliate Integration Layers
   - Reduced the number of translators required by the use of Canonical data model for common language between applications
+  - Joint architectural, design and development effort between UPC and multiple participating companies
   - Implemented state machine and workflow services in Aqualogic Service bus. Use of shared information database for backend storage and retrieval
   - Developed proxy Services, pipelines and business services in Aqualogic Service Bus
   - Interconnected internal systems through web services. Exposed EJB based services through custom adapters
@@ -208,16 +210,16 @@ Achievements
   - Developed schedulers, reminders and automated emailers operating in interactive as well as scheduled jobs
   - Hosted services as light weight Spring based services on light weight containers
   - Use of dependency injection  minimal coupling. Easier and cleaner application design with AOP
-  - Cached often read, low frequency write portions of the application to improve read performance and ease DB load
-  - Used annotation driven transaction support and exception model for simplified code model
+  - Improved read performance and ease DB load caching often read, low frequency write portions of the application
+  - Used annotation driven transaction support and AOP exception model for simplified code model
   - Implemented LDAP based authentication and voting based authorization for selective functionality enablement and role based security
   - Developed contract first SOAP based services using annotation driven Spring-WS. Developed POJO based messaging invoking RPC over JMS
-Platform and Tools - Spring Framework, Quartz Scheduler, Apache Velocity, Agile Development
+Platform and Tools - Spring Framework, Agile Development
   
 
 
-Project Title - Financial Tools, Franklin Templeton
-Client - Franklin Templeton
+Project Title - Financial Tools for International Website
+Client - Franklin Templeton Investments
 Role - Technical Architect (Manager Technology)
 Achievements -
   - Instilled Design based development and system thinking instead of code constrained mindset in the team
