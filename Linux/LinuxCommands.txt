@@ -1,0 +1,4 @@
+Recursively delete all .svn folders
+----------------------------------------
+find . -type d -name “.svn” -exec rm -rf {} \;
+
