@@ -2,3 +2,9 @@ Recursively delete all .svn folders
 ----------------------------------------
 find . -type d -name “.svn” -exec rm -rf {} \;
 
+
+Edit GNome > Places placeholders directory
+--------------------------------------------
+sudo vi ~/.gtk-bookmarks
+
+
