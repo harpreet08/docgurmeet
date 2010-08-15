@@ -204,13 +204,13 @@ Linux Version
 Fri Apr 16 09:39:35 UTC 2010)
  
  
-uname -r / uname -a
+# uname -r / uname -a
 Linux ubmc1 2.6.32-21-generic-pae #32-Ubuntu SMP Fri Apr 16 09:39:35 UTC 2010 i686 GNU/Linux
  
  
 List Enviornment Variables
 ---------------------------
-env
+# env
  
 Apache 2 Configuration (More details - Page 410, Ubuntu.Unleashed.2010.Edition.Sams.Dec.2009)
 ---------------------------
@@ -225,7 +225,7 @@ Check status (if running) - sudo /etc/init.d/apache2 status
  
 Default Log Directory
 ---------------------------
-ls /var/log/
+# ls /var/log/
  
  
 Run PID of running processes
