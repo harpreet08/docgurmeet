@@ -35,3 +35,484 @@ export JAVA_HOME=/usr/lib/jvm/java-6-sun
 export PATH=$PATH:$JAVA_HOME/bin
 
 # java -version
+
+
+
+This document provides detailed steps to install, configure, optimize and maintain a Linux operating system with all relevant software needed to establish a working J2EE Linux environment.
+ 
+ 
+VirtualBox
+------------
+Start VM, Headless - vboxmanage startvm <vm name> --type headless
+ 
+ 
+Search Cache (Repository)
+---------------------------
+apt-cache search jdk
+apt-cache search ^sun-java
+ 
+ 
+Add partner repository
+---------------------------
+(For Ubuntu 10.04 - Lucid)
+Step 1: sudo apt-get install python-software-properties
+Step 2: sudo add-apt-repository “deb http://archive.canonical.com/ lucid partner”
+ 
+ 
+List sources (Repository)
+---------------------------
+/etc/apt/sources.list
+ 
+ 
+Update the source list
+---------------------------
+sudo apt-get update
+ 
+ 
+install sun java packages
+---------------------------
+Step 1 : Add repository for sun jdk (Refer add partner repository)
+Step 2 : sudo apt-get install sun-java6-jre sun-java6-plugin sun-java6-fonts
+ 
+ 
+Configure Java
+---------------------------
+Step 1: Install the .bin self extracting version (perferably to /usr/lib/jdk6_20)
+Step 2: Setup the environment variable
+  - $ vi $HOME/.bash_profile
+     export JAVA_HOME=/usr/lib/jvm/java-6-sun
+     export PATH=$PATH:$JAVA_HOME/bin
+Step 3: Test:
+  $ java -version
+ 
+ 
+Setup the default Java version
+---------------------------
+Step 1: $ sudo vi /etc/jvm
+Step 2: Make sure /usr/lib/jvm/java-6-sun is added to the top of JVM list
+Step 3: Verify: the file /etc/jvm should read as:
+    /usr/lib/jvm/java-6-sun
+    /usr/lib/jvm/java-gcj
+    /usr/lib/jvm/ia32-java-1.5.0-sun
+    /usr/lib/jvm/java-1.5.0-sun
+    /usr
+ 
+ 
+Specify a command to run at login or at shell open
+--------------------------------------------------------
+The commands in .bash_profile will be run every time the user logs in.
+The commands in .bashrc will be run everytime you open bash shell (the terminal). .bash_profile will not be run in this case.
+ 
+* Usually .bash_profile internally invokes .bashrc. So .bashrc will also be run once upon login.
+ 
+ 
+ 
+Extract a tar.bz2 file
+---------------------------
+Single Step:
+  tar xvfj file.tar.bz2
+  tar xvzf file.tar.gz
+Alternate:
+  bunzip2 <filename>.tar.bz2 which unzips to <filename>.tar
+  tar -tvf <filename>.tar (view contents in tar file)
+  tar -xvf <filename>.tar (extract contents in tar file)
+ 
+---------------------------
+ 
+ 
+Default M2_REPO, maven takes
+---------------------------
+/home/<username>/.m2/repository
+(change it in settings.xml in $MVN_HOME)
+ 
+ 
+ 
+Add mirror to mvn repository
+-------------------------------
+  <mirror>
+  <id>ibiblio.org</id>
+  <name>ibiblio Mirror of http://repo1.maven.org/maven2/</name>
+  <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+  <mirrorOf>central</mirrorOf>
+  </mirror>
+ 
+ 
+ 
+Mount CD-ROM
+---------------------------
+sudo mount /dev/scd0 /media/cdrom
+ 
+ 
+Install Guest-addons
+---------------------------
+- Mount Cd-Rom iso
+   - In Linux (sudo mount /dev/scd0 /cdrom) (ls /cdrom)
+- Invoke Installer (sudo ./VBoxLinuxAdditions-x86.run)
+ 
+ 
+Set a static address
+---------------------------
+Step 1: sudo nano /etc/network/interfaces
+Step 2: iface eth0 inet static
+            address 192.168.1.103
+            netmask 255.255.255.0
+            broadcast 192.168.1.255
+            gateway 192.168.1.1
+Step 3: sudo /etc/init.d/networking restart
+ 
+CPU Info / Memory Info
+---------------------------
+cat /proc/cpuinfo
+cat /proc/meminfo
+ 
+Disk partitions - List and Space allocations
+-------------------------------------
+cat /proc/partitions
+ 
+ 
+Linux Version
+---------------------------
+ cat /proc/version
+(Linux version 2.6.32-21-generic-pae (buildd@rothera)
+(gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) ) #32-Ubuntu SMP
+Fri Apr 16 09:39:35 UTC 2010)
+ 
+ 
+uname -r / uname -a
+Linux ubmc1 2.6.32-21-generic-pae #32-Ubuntu SMP Fri Apr 16 09:39:35 UTC 2010 i686 GNU/Linux
+ 
+ 
+List Enviornment Variables
+---------------------------
+env
+ 
+Apache 2 Configuration (More details - Page 410, Ubuntu.Unleashed.2010.Edition.Sams.Dec.2009)
+---------------------------
+Startup script - /etc/init.d/apache2
+Conf file - /etc/apache2/apache2.conf
+Default directory - /var/www
+Executable files - /usr/bin & /usr/sbin
+Log files - /var/log/apache2/
+Apache user - cat /etc/passwd | grep www (www-data:x:33:33:www-data:/var/www:/bin/sh)
+Check status (if running) - sudo /etc/init.d/apache2 status
+ 
+ 
+Default Log Directory
+---------------------------
+ls /var/log/
+ 
+ 
+Run PID of running processes
+---------------------------
+Step 1: ls /var/run
+Step 2 (e.g.) : cat /var/run/apache2
+ 
+ 
+Apache Virtual Hosts
+---------------------------
+[Best] http://ubuntu-tutorials.com/2008/01/09/setting-up-name-based-virtual-hosting/
+http://www.debuntu.org/2006/02/22/7-virtual-hosting-using-apache-2
+http://www.debian-administration.org/articles/357#virtual_host
+http://www.ubuntugeek.com/howto-create-name-based-and-ip-based-virtual-hosts-in-apache.html
+http://brucewampler.wordpress.com/2009/02/28/adding-virtual-hosts-to-ubuntu-apache/
+ 
+IP based routing
+---------------------------
+http://www.faqs.org/docs/Linux-mini/IP-Alias.html
+ 
+ 
+Reverse Proxying with Apache2 on Ubuntu
+---------------------------
+Step 1 : # apt-get install libapache2-mod-proxy-html
+Step 2 : # a2enmod proxy_http
+Step 3 :   http://ubuntuforums.org/showthread.php?t=313511
+  just put this in /etc/apache2/sites-available/default
+            NameVirtualHost *
+ 
+            <VirtualHost www.dnsname.com:80>
+              ProxyPass /site1/ http://internal1.local/
+              ProxyPassReverse /site1/ http://internal1.local/
+              ProxyPass /images2/ http://192.168.1.100/images/
+              ProxyPassReverse /images2/ http://192.168.1.100/images/
+              ProxyPreserveHost on
+            </VirtualHost>
+ 
+Step 4: (http://kukiel.instantspot.com/blog/Linux)
+            a2ensite myReverseProxySites
+            apt-get install libapache2-mod-proxy-html
+            a2enmod proxy
+            a2enmod proxy_html
+            a2enmod headers
+            a2enmod proxy_connect
+            a2enmod proxy_balancer
+ 
+ 
+Step 5 : Go to /etc/apache2/mods-available/proxy.conf and give required permissions (Allow from all)
+Step 6 : /etc/init.d/apache2 restart
+Step 7 : (if required) tail -f  /var/log/apache2/error.log
+ 
+IFrame - Scrolling
+---------------------------
+<div style='width: 580; overflow: hidden;'>
+<iframe src="./images3/" width="600" height="180" frameborder="0"></iframe>
+</div>
+ 
+ 
+Install Tomcat Manually
+---------------------------
+Step 1 : Check for and install Sun JDK (refer install Sun JDK)
+Step 2 : Download tomcat.tar.gz from Apache site (wget [www.ibiblio.org ... apache-tomcat-6.0.26.tar.gz]
+Step 3 : Untar to /opt/tomcat. [sudo mv apache-tomcat-6.0.26.tar.gz /opt/tomcat/] & [sudo tar xvzf apache-tomcat-6.0.26.tar.gz]
+Step 4 : Edit startup.sh file to contain JAVA_HOME variable.
+                        [cd /opt/tomcat/apache-tomcat-6.0.26/bin] & [sudo vi startup.sh]
+                        export JAVA_HOME=/opt/java/jdk1.6.0_20
+Step 5 : execute startup script and check for tomcat running
+                        [sudo ./startup.sh] & [ps -A | grep java] / [http://<ip_address>:8080]
+ 
+Step 6 : Similarly put JAVA_HOME in shutdown.sh
+Step 7 : [Optional] Export JAVA_HOME to .bashrc as a user variable
+ 
+ 
+Export variable to .bashrc
+---------------------------
+Step 1 : vi ~/.bashrc
+Step 2 : Declare as many variables as required (e.g. export JAVA_HOME=/opt/java/jdk1.6.0_20)
+ 
+ 
+Add Tomcat admin user
+---------------------------
+Step 1 : Shutdown tomcat if running [sudo /opt/tomcat/apache-tomcat-6.0.26/bin/shutdown.sh]
+Step 2 : vi /opt/tomcat/apache-tomcat-6.0.26/conf/tomcat-users.xml
+Step 3 : Add the following under tomcat-users tag. Remove everything else
+               <tomcat-users>
+                        <role rolename="manager"/>
+                        <role rolename="admin"/>
+                        <user username="tomcat" password="tomcat" roles="manager, admin"/>
+               </tomcat-users>
+ 
+ 
+ 
+Tomcat to run at system startup
+----------------------------------
+(http://www.howtogeek.com/howto/linux/installing-tomcat-6-on-ubuntu/)
+Step 1 : Create a new /etc/init.d/tomcat file [sudo vi /etc/init.d/tomcat]
+ 
+Step 2 : Add the following contents
+                            # Tomcat auto-start
+    #
+    # description: Auto-starts tomcat
+    # processname: tomcat
+    # pidfile: /var/run/tomcat.pid
+ 
+    export JAVA_HOME=/usr/lib/jvm/java-6-sun
+ 
+    case $1 in
+    start)
+            sh /usr/local/tomcat/bin/startup.sh
+            ;;
+    stop) 
+            sh /usr/local/tomcat/bin/shutdown.sh
+            ;;
+    restart)
+            sh /usr/local/tomcat/bin/shutdown.sh
+            sh /usr/local/tomcat/bin/startup.sh
+            ;;
+    esac  
+    exit 0
+ 
+ 
+Step 3 : Make the script executable [sudo chmod 755 /etc/init.d/tomcat]
+ 
+Step 4 : Link this script to the startup folders with a symbolic link
+                        sudo ln -s /etc/init.d/tomcat /etc/rc1.d/K08tomcat
+                        sudo ln -s /etc/init.d/tomcat /etc/rc2.d/S99tomcat
+ 
+ 
+RunLevel - Startup Service Management
+---------------------------
+ 
+http://www.unixtools.com/linux-runlevels.html
+The main runlevels are from 0 – 6. Here's what each runlevel is for:
+ 
+    Runlevel 0: Halt System - To shutdown the system
+    Runlevel 1: Single user mode
+    Runlevel 2: Basic multi user mode without NFS
+    Runlevel 3: Full multi user mode (text based)
+    Runlevel 4: unused
+    Runlevel 5: Multi user mode with Graphical User Interface
+    Runlevel 6: Reboot System
+ 
+ 
+ 
+http://wiki.linuxquestions.org/wiki/Run_Levels
+This script, then, looks in a runlevel control directory (usually /etc/rc.d/rcX.d), where it will find a series of symbolic links with special names. The first letter of the name is S ("start") or K ("kill"). The next two characters are two digits -- used to control the order in which the files will be processed -- and the remainder of the name is the name of a particular service
+When init is processing a "S"tart link, it will supply the parameter "start." When following a "K"ill link, it will supply "stop."
+There can be any number of symbolic-links pointing to the same file, and very frequently there are. If a service (daemon) needs to be started in more than one runlevel, you simply have a symbolic-link in each of the appropriate /etc/rc.d/rcX.d directories.
+ 
+ 
+http://linuxhelp.blogspot.com/2006/04/enabling-and-disabling-services-during_01.htm
+ 
+You did it the old fashioned way which was creating or deleting symbolic links in the respective /etc/rcX.d/ directories. Here X in rcX.d is a number which stands for the runlevel. There can be two kinds of symbolic links in the /etc/rcX.d/ directories. One starts with the character 'S' followed by a number between 0 and 99 to denote the priority, followed by the name of the service you want to enable. The second kind of symlink has a name which starts with a 'K' followed by a number and then the name of the service you want to disable. So in any runlevel, at any given time, for each service, there should be only one symlink of the 'S' or 'K' variety but not both.
+So taking the above example, suppose I want to enable apache webserver in the runlevel 5 but want to disable it in all other runlevels, I do the following:
+First to enable the service for run level 5, I move into /etc/rc5.d/ directory and create a symlink to the apache service script residing in the /etc/init.d/ directory as follows:
+            # cd /etc/rc5.d/
+            # ln -s /etc/init.d/apache2 S20apache2
+This creates a symbolic link in the /etc/rc5.d/ directory which the system interprets as - start (S) the apache service before all the services which have a priority number greater than 20.
+If you do a long listing of the directory /etc/rc5.d in your system, you can find a lot of symlinks similar to the one below.
+            lrwxrwxrwx  1 root root 17 Mar 31 13:02 S20apache2 -> ../init.d/apache2
+Now if I start a service, I will want to stop the service while rebooting or while moving to single user mode and so on. So in those run levels I have to create the symlinks starting with character 'K'. So going back to the apache2 service example, if I want to automatically stop the service when the system goes into runlevel 0, 1 or 6, I will have to create the symlinks as follows in the /etc/rc0.d, /etc/rc1.d/, /etc/rc6.d/ directories.
+            # ln -s /etc/init.d/apache2 K80apache2
+One interesting aspect here is the priority. Lower the number, the higher is the priority. So since the starting priority of apache2 is 20 - that is apache starts way ahead of other services during startup, we give it a stopping priority of 80. There is no hard and fast rule for this but usually, you follow the formula as follows:
+If you have 'N' as the priority number for starting a service, you use the number (100-N) for the stopping priority number and vice versa.
+ 
+ 
+Turn off Directory listings in Tomcat
+--------------------------------------
+Step 1 : vi /opt/tomcat/apache-tomcat-6.0.26/conf/web.xml
+Step 2 : Go to Servlet (approx line no. 93) 
+                        <servlet-name>default</servlet-name>
+                                    <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+Step 3 : In Init-param, check for "listings" to be false. Make as "false" if nessecary
+                        <init-param>
+                                    <param-name>listings</param-name>
+                                    <param-value>false</param-value>
+                        </init-param>
+ 
+ 
+ 
+ 
+Multiple Tomcat instances on Ubuntu
+---------------------------
+http://brian.pontarelli.com/2007/09/17/multiple-tomcat-instances-on-ubuntu/
+ 
+Install MySQL
+---------------------------
+Step 1 : sudo apt-get install mysql-server
+Step 2 : Check if MySQL is running [sudo netstat -tap | grep mysql]
+Step 3 : If not, [sudo /etc/init.d/mysql start] or [sudo /etc/init.d/mysql restart]
+Step 4 : Do configuration, e.g. change bind address
+                        - [sudo vi etc/mysql/my.cnf], change to [bind-address = 192.168.0.5]
+Step 5 : Change MySQL root password [if installation did not ask for changing]
+                        - [mysqladmin -u root password myPassword] or [sudo dpkg-reconfigure mysql-server-5.1]
+Step 6 : [Optional] Change permissions to user - mysql and group - mysql
+                        # groupadd mysql
+                        # useradd -g mysql mysql
+                        # chown -R mysql .
+                        # chgrp -R mysql . 
+Step 7 : Login to MySQL prompt
+                        # mysql -u root -p myPassword
+                        mysql> show databases;
+ 
+ 
+Connect Tomcat to MySQL
+---------------------------
+Step 1 : Copy (via WinSCP) JDBC driver jar (e.g. mysql-connector-java-5.1.12-bin.jar) to
+                        Tomcat lib directory (e.g /opt/tomcat/apache-tomcat-6.0.26/lib)
+Step 2 : Create a sample jsp as following and put it into ROOT folder of Tomcat_Install_Dir/webapps/ROOT/
+                        [Hint: Maintain hostname in connectionURL and bindAddress in my.cnf as localhost]
+                        ['Commenting bind-address' variable or binding to other ip address, results were not positive]
+            Sample JSP
+            <%@ page import="java.sql.*" %>
+            <%
+            String connectionURL = "jdbc:mysql://localhost:3306/test";
+            Connection connection = null;
+            Statement statement = null;
+            ResultSet rs = null;
+            %>
+            <html><body>
+            <%
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            connection = DriverManager.getConnection(connectionURL, "root", "root123");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM mytable order by id;");
+            while (rs.next()) {
+            out.println("--------------------" + "<br>");
+            out.println(rs.getString("id") + "  |  " + rs.getString("data") + "<br>" );
+            }
+            out.println("--------------------");
+            rs.close();
+            %>
+            </body></html>
+ 
+Step 3 : Restart Tomcat if nessecary [/etc/init.d/tomcat start] or [/opt/tomcat/
+Step 4 : Invoke the JSP [http://192.168.1.103:8080/mysql_sample.jsp]
+ 
+ 
+Start/Stop MySQL
+---------------------------
+Method 1 : mysqladmin -u root -p shutdown
+ 
+Method 2 : # /etc/init.d/mysql stop
+               # /etc/init.d/mysql start
+ 
+Method 3 : # sudo stop mysql
+               # sudo start mysql
+ 
+Method 2 : # /usr/sbin/mysqld stop
+               # /usr/sbin/mysqld start
+           {Hint: Very slow response]
+ 
+Check if mySQl is running
+            # ps aux | grep mysql
+ 
+ 
+{Hint : If recieved the following error, create the file [mysqld.sock] at the desired location and chown to the mysql user
+            Check that mysqld is running and that the socket: '/var/run/mysqld/mysqld.sock'
+ 
+            # sudo touch /var/run/mysqld/mysqld.sock
+            # chown mysql /var/run/mysqld/mysqld.sock
+            # /etc/init.d/mysql start
+ 
+ 
+Know MySQL log file locations
+---------------------------
+# cat /etc/mysql/my.cnf | grep mysql
+ 
+ 
+15 Practical Usages of Mysqladmin Command For Administering MySQL Server
+-------------------------------------------------------------------------
+http://www.thegeekstuff.com/2009/01/15-practical-usages-of-mysqladmin-command-for-administering-mysql-server/
+ 
+ 
+Unix LS Command: 15 Practical Examples
+---------------------------------------
+http://www.thegeekstuff.com/2009/07/linux-ls-command-examples/
+ 
+ 
+15 Practical Linux Find Command Examples
+------------------------------------------
+http://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/
+ 
+ 
+Install Continuum
+---------------------------
+Step 1 : Download the following into a directory
+                        # cd /opt/continumm
+                        # sudo wget http://mirrors.ibiblio.org/pub/mirrors/apache/continuum/binaries/apache-continuum-1.3.6-bin.tar.gz
+                        # sudo wget http://mirrors.ibiblio.org/pub/mirrors/apache/continuum/binaries/apache-continuum-buildagent-1.3.6-bin.tar.gz
+Step 2 : Check for JAVA_HOME variable. Create if nessecary
+                        # export JAVA_HOME=/opt/java/jdk1.6.0_20/bin
+Step 3 : [Important] Go to wrapper.conf and point directly to java executable
+                        # sudo vi /opt/continuum/apache-continuum-1.3.6/conf/wrapper.conf
+                        [Change (wrapper.java.command=java) to (wrapper.java.command=/opt/java/jdk1.6.0_20/bin/java)]
+Step 4 : [Optional] Edit jetty.conf and specify port number of application
+                        # sudo vi /opt/continuum/apache-continuum-1.3.6/conf/jetty.conf
+                        # Change ["jetty.port" default="8080] to ["jetty.port" default="8088]
+Step 5 : Invoke continuum
+                        # sudo /opt/continuum/apache-continuum-1.3.6/bin/continuum start
+                        [Monitor by ./continuum status or {ps | aux}]
+                        [Logs are in /opt/continuum/apache-continuum-1.3.6/logs]
+Step 6 : Get the UI in a web browser
+                        http://<machine_name>:8088/continuum
+Step 7 : Follow getting started article
+                        http://continuum.apache.org/docs/1.3.6/getting-started.html
+                        [mvn-scm plugin at http://maven.apache.org/scm/maven-scm-plugin/index.html]
+ 
+ 
+SVN Install
+---------------------------
+http://www.howtoforge.com/debian_subversion_websvn
+SVN Repos - /var/svn-repos
+[mvn-svn plugin at] http://maven.apache.org/scm/maven-scm-plugin/index.html
+ 
+---------------------------
