@@ -8,3 +8,30 @@ Edit GNome > Places placeholders directory
 sudo vi ~/.gtk-bookmarks
 
 
+Gstreamer missing plugin
+----------------------------
+sudo apt-get install ubuntu-restricted-extras [64MB]
+
+
+VLC media player for Ubuntu
+--------------------------------
+sudo apt-get install vlc vlc-plugin-pulse mozilla-plugin-vlc
+
+
+
+Update Java to choose Sun Jdk instead of OpenJDK
+---------------------------------------------------
+http://www.cyberciti.biz/faq/howto-ubuntu-linux-install-configure-jdk-jre/
+# sudo update-java-alternatives -s java-6-sun
+
+
+Update JVM List (No present in Ubuntu 10.04)
+# sudo vi /etc/jvm
+Make sure /usr/lib/jvm/java-6-sun is added to the top of JVM list 
+
+
+# vi $HOME/.bash_profile
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export PATH=$PATH:$JAVA_HOME/bin
+
+# java -version
