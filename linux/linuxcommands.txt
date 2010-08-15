@@ -38,6 +38,23 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 
 
+Choosing the default Java to use
+------------------------------------
+https://help.ubuntu.com/community/Java
+Just installing new Java flavours does not change the default Java pointed to by /usr/bin/java. You must explicitly set this:
+
+Open a Terminal window
+Run sudo update-java-alternatives -l to see the current configuration and possibilities.
+Run sudo update-java-alternatives -s XXXX to set the XXX java version as default. For Sun Java 6 this would be sudo update-java-alternatives -s java-6-sun
+Run java -version to ensure that the correct version is being called.
+You can also use the following command to interactively make the change;
+
+Open a Terminal window
+Run sudo update-alternatives --config java
+Follow the onscreen prompt
+
+
+
 This document provides detailed steps to install, configure, optimize and maintain a Linux operating system with all relevant software needed to establish a working J2EE Linux environment.
  
  
