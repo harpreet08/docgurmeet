@@ -1,0 +1,94 @@
+Linux
+========
+
+Priority 1
+------------
+
+- HP Deskjet F735 Print Driver (hplip)
+- HP Scanner driver for F735 printer (xsane)
+- Gimp / F735 integration
+- Read Outlook PST into Evolution and set up historical email data.
+- flash player for x64 ununtu
+
+
+Priority 2
+-------------
+
+- Citrix XenServer (freeware)
+
+
+Deffered
+-----------
+[Deffered] 
+[Deffered] JDK. Wait till v21 comes out.
+[Deffered] Eclipse. Wait till JDK comes out.
+[Deffered] Virtualbox in favor of KVM. To test with KVM Virtualization.
+[Deffered] VMWare Player. To test with KVM and then (if required) with Virtualbox. Test results will dicate VMWare nessecity. Compiling and loading modules at startup has to be avoided.
+
+
+-------------
+[Done] Kernel Image  -> linux-image-server
+[Done] linux-header
+[Done] Chrome Browser
+[Done] ttf-mscorefonts-installer
+[Done] sudo apt-get upgrade
+[Done] Smaller Toolbar size (by reducing the DPI)
+[Done] Skype (sudo apt-get install skype)
+[Done] openssh-server
+[Done] Acrobat Reader - (sudo apt-get install acroread)
+[Done] nVidia Graphics Driver. Use in build driver detection to v195. v216 also avaialbe but not installed as might be unsupported by Canonical.
+[Done] JDK
+[Done] Wordweb Alternative - artha (sudo apt-get install artha)
+[Done] chm viewer - kchmviewer / xchm
+[Done] HP Battery Replacement program - Unqualified
+[Done] Battery Reconditioning - Solution: Shorted charge / recharge cycles
+[Done] PDF Writer - Supported out of the box. (Print to file)
+[Done] Ext4 -> NTFS Partition sharing. Deffered with downloading in Linux and copy/paste to NTFS. External drives and network sharing to a temp computer can manage this once in a while job. 20GB shared NTFS partition not created.
+[Done] Editplus Alternative. Use Bluefish (sudo apt-get install bluefish)
+[Done] NHC / Thermal control. Linux handle it pretty well. No need.
+[Done] Adove Flash plugin installer. (sudo apt-get install flashplugin-installer). High CPU usage. Research required.
+[Done] WinePPA
+
+******************************************************************************
+
+Windows
+=========
+
+
+Priority 1
+-------------
+Win XP x64 SP2
+Microsoft Office
+gurmeet_mail
+Nero
+Skype
+Acrobat Reader
+HP Deskjet Print Driver
+NHC / xxxx temp controller
+Editplus
+CCCleaner
+Defraggler
+
+
+Priority 2
+------------
+JDK
+Eclipse
+VMWare Player
+
+Deffered
+----------
+
+
+----------
+[Done] Free Download Manager
+[Done] nVidia Driver
+[Done] Internet Explorer 8
+[Done] CCCleaner 
+[Done] Defraggler
+[Done] 
+[Done] 
+[Done] 
+[Done] 
+[Done] 
+
