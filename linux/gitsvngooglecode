@@ -55,3 +55,155 @@ We've seen it's easy to setup Git with a Google Code project. If distributed ver
 But what if you keep your project in a Git repository, and you want to export it to Google Code? So you'd have a canonical read-only Subversion mirror of your project?
 
 Exporting a Git project to Google Code requires only a handful of commands. We'll show you how in a future post.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+http://quirkygba.blogspot.com/2007/10/using-git-with-google-code-hosting.html
+
+Sunday, October 07, 2007
+Using Git with Google Code Hosting
+The open source hosting at Google Code uses Subversion as its source code management system. The advantages of Subversion are:
+Easy to use - it is conceptually straight forward
+Simple UI - commit, diff, ls and so on are all familiar
+Multi platform clients - svn, TortoiseSVN, Eclipse plugins, etc
+The main disadvantages of Subversion are:
+Merging requires lots of user input
+Online access required for committing or doing history diffs
+These disadvantages can be overcome using git, and in particular git-svn. However, git undoes at least one of subversion's advantages as it is Linux only. There is a Windows port available, but this guide was written with a Linux user in mind. Git may also be labelled "difficult to use" but it has a graphical interface that is pretty straight forward, and its cross-branch merge options are much better than subversion.
+
+So here is my guide on using git with Google Code. This assumes two things: first that you are familiar with subversion and its usage, and second that you are not publishing your git repository online. Instead we will use the Google Code hosting service as a kind of back-up for the code base and use git-svn as a subversion client. That means that you will eventually push all your commits to the subversion repository. Despite what Linus said in his talk about SCM I trust Google to make better backups of my code than I do, especially after my hard drive failure.
+
+Checking out the repository and making a change.
+
+You will need to install the latest version of git. This guide was written using version 1.5.3 - remember to install the man pages too. After installing, we need to create our local repository. Unlike a svn checkout, which is a snapshot of the latest version in the repository, a git "checkout" contains the whole history of the project. This first step therefore takes a while. I'll refer to the repository as $SVNREP - as if I'd done this first:
+export SVNREP=https://<project>.googlecode.com/svn
+So to create the git repository with the history of our branches and tags you would use this line:
+git-svn clone $SVNREP -T trunk -b branches -t tags
+(The -T, -b, -t flags can be replaced by "-s" if you use the svn standard branches and tags directories). For my repository of 350+ commits this step took about 10-15 minutes. This creates a directory "svn" (the last path-component of $SVNREP) with the subversion trunk checked out. It's worth noting that git uses master instead of trunk - by default git-svn will checkout your working copy of the master branch, which will probably be the svn trunk. However if the last subversion commit was to a different svn branch then master will point to that branch. To see all the branches available use:
+$ git branch -a
+* master
+release-0.2.1
+release-0.3
+... etc ...
+The * shows which branch you have checked out. (To get the coloured output use git config color.branch auto). Since git works locally, there is no separate workspace and repository - you "check out" to the current directory. This means that unlike subversion where you might have directories for "release-0.3" and "trunk", here you have just one and use:
+$ git checkout ${branch-name}
+to change between them. Okay, so now we have our trunk checked out. This is roughly where we would be had we done this with svn:
+svn co $SVNREP/trunk
+The branches that map directly to subversion can't be changed, instead we have to make a local branch. For example:
+git checkout -b local/release-0.3 release-0.3
+This is roughly the equivalent of
+svn co $SVNREP/branches/release-0.3
+cd release-0.3
+If we want to make changes, then just hack away on our files. For example, in one of my projects I would do this:
+$ cd bunjalloo
+$ vi arm9/Main.cpp
+hackity hack..
+$ git status
+# On branch master
+# Changed but not updated:
+# (use "git add <file>..." to update what will be committed)
+#
+# modified: bunjalloo/arm9/Main.cpp
+no changes added to commit (use "git add" and/or "git commit -a")
+Note that the modified file is not relative to where we are (the current working directory) but relative to the top level of our repository. [Note that this has changed in later git releases, and is now more copy-paste friendly, showing files relative to the cwd]. The output of git status is different to svn status. A bit more chatty. This is to remind you that if you commit now, nothing will be committed! For a svn user this sounds odd, but can actually be a really handy feature. You have to either manually add files to be committed, or use commit -a to commit all modified files. Manually adding can even add by hunk - use git add -i - so you can commit only parts of a changed file if you like. Anyway, to commit this change either:
+git commit -a
+or add the file to the index and commit:
+git add arm9/Main.cpp
+git commit
+Additionally, I use git commit -v which shows the changes in your editor's buffer for the commit message. I used to do this with subversion:
+svn diff | less
+<open a new terminal>
+svn commit
+to view the changes of what I was committing, so git's -v flag is a nice bonus.
+
+This commit is only to our local repository remember. In order to push the change into the Google Code svn repository the following step is needed:
+git svn dcommit
+In order to see what is uncommitted to svn, use:
+$ git svn dcommit -n
+Committing to https://quirkysoft.googlecode.com/svn/trunk ...
+diff-tree c531c~1 c531c
+... etc ...
+The dcommit -n trick also tells us to which svn branch the current git branch pushes its changes. So if I change to a different branch:
+$ git svn dcommit -n
+Committing to https://q.gc.com/svn/branches/bunjalloo-0.3-release ...
+diff-tree 5ef0~1 5ef0
+.. then I can see where it is going to commit the changes. This step is the same as svn commit but git-svn automatically commits to our Google Code repository using the message that we gave in the previous local git commit step.
+
+If someone else makes a change to the svn repository, then to get these changes use:
+git svn rebase --all
+Passing the --all flag will also pull any new branches. If you create the branch in git, then it would be completely local. So any changes made would be "lost" if you have a HD failure. One solution is to create the branch with svn, but handle the merges with git. My work flow is to create release branches from the trunk with subversion, then pull these into the git repository using the above command. That way my branches are backed up too. My git local branches are throw-away changes that either go into the trunk or get deleted after a few days.
+
+So a new release would be:
+svn cp $SVNREP/trunk $SVNREP/branches/release-0.1
+git svn rebase --all
+Note that "git-svn" and "git svn" are synonyms, it doesn't matter which we use. Sadly this step takes a while - at least as long as doing a complete "svn co" from the trunk, as the branch copy-from-svn does not appear to be cheap with git-svn. Regular, not-backed-up-on-googlecode branches in git are cheap, of course. Update: This has been fixed in newer (1.5.3.4) versions, now git-svn realises that branches are copies and it takes very little time to create them.
+
+One word of warning - don't use git-merge between your local/release* and master branches. It screws up the mapping of the git branches to svn branches. Merging only local branches is fine, but my advice is don't use git-merge and instead cherry pick the changes across from branch to branch. It is far safer.
+
+For example, if we have $SVNREP/trunk and $SVNREP/branches/release-0.1, then in git we have created our local working branches as follows:
+$ git branch -a
+* local/release-0.1
+master
+release-0.1
+trunk
+To check where we are commiting to subversion, use:
+git svn dcommit -n
+this will say $SVNREP/branches/release-0.1 at the moment. If we do git merge master then it merges all the changes from master into local/release-0.1 but it also changes our commit branch to $SVNREP/trunk, which is not what we want.
+
+Note that while svn update will pull new changes to your checked out copy even if you have local modifications, git will not allow you to do this. You have to have a "clean tree" as git calls it. If you have local changes, a "dirty tree" in git speak, then you can stash them away, pull the new changes from the subversion repository, then apply your stashed changes again. So to simulate svn update with local changes, use the following:
+git stash
+git svn rebase --all
+git stash apply
+Development and stable branches.
+
+I mentioned cherry picking in the last section. This is where a change set is "picked" from one branch and merged into another. This is perfect for the usual development-stable branch model that most svn projects have. Normally all the changes go to /trunk, then when we make a release, we copy /trunk to /branches/release-NNN. Then carry on hacking on trunk. If someone finds a bug that is easy to fix (a one-liner, localised change, etc.) then we can make the change on the release branch knowing that it won't add all the instability that may exist on the trunk in its current state. Additionally, we merge the change onto the trunk so the next release has the fix too. With svn this is usually achieved as follows:
+$ cd working-copy-of-trunk
+$ svn merge -c 123 $SVNREP/branches/release-0.1 .
+<patch changes from commit number 123 into working copy>
+$ svn commit -m"Merged from r123 from branches/release-0.1 to trunk"
+That is fine as long as all is well, but "svn merge" is little better than using "patch" - it handles adds and deletes, but if a file moves it just skips the change. Also, there is no way to see which changes have been merged from one branch to another - you have to do it manually or use the "svnmerge" script. Version 1.5 should fix this problem, but it won't fix the moved-file one, which is a common use case when refactoring code. And you need to have a network connection to perform any of this.
+
+The git way is as follows. To see which changes have not been merged to the master (trunk) branch:
+git cherry -v master
+- sha1 <commit message>
+- sha1 <commit message>
++ sha1 <commit message>
+The '+' shows that the last commit has not been merged. '-' shows that it has. To merge the change across, use:
+git cherry-pick <sha1>
+If the file moved, that'll get picked up and the change applied to the new file name/location. One caveat is that git cherry may not pick up on applied patches to moved files, even though the original git cherry-pick patched the change correctly. Trying to cherry-pick again gives a conflict error and the old file name is re-added. Since this is a corner case, and is handled infinitely better than with subversion, I can live with it. EDIT: I couldn't live with it - so this script does pathless cherry checking.
+
+Now, instead of all those command line options it would have been easier to use gitk. But explaining a GUI is tougher. This is what I usually do:
+gitk --all
+From here I choose the release branch - right click the branch, "Check out this branch". I make my change and test it. Assuming it works I'm ready to merge to the master branch. If I've added a test case, then first I'll cherry pick the test case across to the master branch - a couple of clicks in the GUI. Compile, test case fails. Then I cherry pick the fix across, compile, test case passes. Now I commit all that to subversion with git-svn dcommit and make a bug-fix release.
+
+So summary time - equivalent svn/git commands
+svn checkout $SVNREP/trunk ->
+git svn clone $SVNREP -T trunk -b branches -t tags
+
+svn checkout $SVNREP/branches/release-0.3 ->
+git checkout -b local/release-0.3 release-0.3
+
+svn commit -> git commit -a, or git add then
+git commit followed by git-svn dcommit
+
+svn diff|less, svn commit -> git commit -v
+
+svn merge -> git cherry-pick or use "gitk --all"
+
+svn status -> git status
+
+svn revert, --recursive -> git checkout , git checkout -f or git reset --hard
+
+svn diff -> git diff
+
+svn update -> git svn rebase --all (see also git stash)
+There are many more options with git - some of which are less useful when using Google Code and subversion in this way - and I haven't tried to cover everything here. Hopefully everything you need to start using git as an improved svn client is covered and it will at least give you a good start when reading the documentation.
+
+Additional links:
+Git crash course for SVN users
+Good article, assumes you have used SVK
+Posted by Richard Quirk at 4:51 PM  
+Labels: Git, HOWTO
