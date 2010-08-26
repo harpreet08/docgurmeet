@@ -1,0 +1,51 @@
+Ubuntu – Monitor your Boot Sequence with Bootchart
+
+1. About Bootchart
+2. Installation
+3. Disabling and Enabling Bootchart
+
+
+About Bootchart
+------------------
+
+
+Bootchart is a tool used to analyse your system performance in linux boot process. It process all the required information accumulated during the boot process (CPU usage and disk usage) which will then display as PNG, SVG, EPS encoded chart. 
+First of all you will have to Install Bootchart on Ubuntu. 
+
+
+Installation
+-----------------
+
+To active or install Bootchart you will have to open command console
+Type in this code:
+
+sudo aptitude install bootchart
+Reboot your PC
+
+
+When you restart your computer Bootchart will create a graphical illustration in .png format. 
+Disabling and Enabling Bootchart
+
+To disable Bootchart just use these code: 
+----------------------------------------
+
+cd /etc/init.d
+sudo update-rc.d -f stop-bootchart remove
+ Removing any system startup links for /etc/init.d/stop-bootchart ...
+   /etc/rc2.d/S99stop-bootchart
+   /etc/rc3.d/S99stop-bootchart
+   /etc/rc4.d/S99stop-bootchart
+   /etc/rc5.d/S99stop-bootchart
+
+
+And to re-enable just use these codes: 
+------------------------------------
+
+cd /etc/init.d
+sudo update-rc.d stop-bootchart start 99 2 3 4 5 .
+ Adding system startup for /etc/init.d/stop-bootchart ...
+   /etc/rc2.d/S99stop-bootchart -> ../init.d/stop-bootchart
+   /etc/rc3.d/S99stop-bootchart -> ../init.d/stop-bootchart
+   /etc/rc4.d/S99stop-bootchart -> ../init.d/stop-bootchart
+   /etc/rc5.d/S99stop-bootchart -> ../init.d/stop-bootchart
+
