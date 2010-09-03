@@ -1,0 +1,21 @@
+WINS - Let Linux Ping Windows NetBIOS Host Names
+--------------------------------------------------
+
+Wins
+
+http://www.linuxquestions.org/questions/linux-networking-3/ping-netbios-names-from-linux-samba-271336/
+the part of interest would be
+"...and the "wins" parameter needs to be added to the "hosts:" line in the /etc/nsswitch.conf file"
+
+so then...
+grab you favorite editor
+edit your /etc/nsswitch.conf file
+search for the line starting with hosts (my line was like this "hosts: files dns")
+add "wins" to the line ("hosts: files dns wins")
+
+now ping netbios name should also work from the linux pcs
+
+
+------------------------------------------------------------------------------------------------
+
+
