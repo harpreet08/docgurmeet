@@ -542,3 +542,13 @@ SVN Repos - /var/svn-repos
 [mvn-svn plugin at] http://maven.apache.org/scm/maven-scm-plugin/index.html
  
 ---------------------------
+
+Black background color for tooltips on Linux/Ubuntu/GTK
+(Hard to see Black font on Black Background in Eclipse Context Menus)
+
+Go to System > Preferences > Appearance > Theme > Colours > Tooltips and change color from Black to a lighter shade of gray.
+This is a system wide setting and will affect all programs, including eclipse and beyond.
+
+------------------------------------------------------
+
+
