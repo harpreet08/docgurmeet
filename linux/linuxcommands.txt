@@ -602,9 +602,8 @@ Method 1: Tell eclipse to use a custom (containing gtk-2.0) theme
 
 Note: 
   - In one article (quoted above), the tab vertical size was made smaller.
-  - The best look and feel came through choosing 'HighContrastInverse' theme with gray instead of black backgrounds on menus and 'view' windows. 
-    However, work has to be done to make tab vertical size smaller.
-    Pop-up text still remains huge
+  - The best look and feel came through choosing 'HighContrastInverse' theme with gray instead of black backgrounds on menus and 'view' windows. 'Mist' theme is also OK on 'view' windows but Menus is not OK. 'Simple' theme is good in 'view' windows background. Menus becomes very small if that is not a issue.
+  - However, work has to be done to make tab vertical size smaller. Pop-up text still remains huge
 
 
 ------------------------------------------------------
