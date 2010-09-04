@@ -1,0 +1,90 @@
+---------------------------------------------------------------------------------------------------------------------------------
+
+http://techtavern.wordpress.com/2008/09/24/smaller-font-sizes-for-eclipse-on-linux/
+
+Smaller font sizes for Eclipse on Linux
+This article describes some approaches to launch Eclipse on Linux with smaller font sizes and customized graphical user interface (GUI).
+
+The modern desktop environments like KDE or Gnome use larger font sizes to enhance readability of screen contents. However, Eclipse, looks better with a clean design and small fonts.
+
+Views like Package Explorer or Outline may contain very large listings of important information. Eclipse uses are not willing to waste precious space neither with large fonts nor with fancy window decorations.
+
+
+Customizing window manager and themes
+GTK and Gnome offer nice dialogs to customize decorations and font sizes. There is also a QT-GTK on KDE binding that applies KDE design on GTK/Gnome applications.
+
+The naive approach is reducing the global font size for the applications.
+
+Pros:
+
+Easy for newbies
+Cons:
+
+The changes affect all applications, while we want to preserve default font and decorations for (most of) them. Thunderbird and Firefox will look very annoying with small fonts.
+Customizing eclipse GUI
+Another approach is configuring each GUI element individually in details from within Eclipse preferences dialog (Menu Windows->Preferences, tab General->Appearance->Color and Fonts). See documentation.
+
+Pros:
+
+Reasonably easy, once you understand the preferences “Color and Fonts” dialog.
+Affects only Eclipse, while other applications keep the default font and decorations.
+Cons:
+
+The customization keeps restricted to the workspace. On new/other workspaces, all customization is reseted.
+There are many, many items to change manually.
+For some mysterious reason, it is not possible to set font for the content of views.
+Too bad! It happens that the content of views requires the largest amount of space (specially horizontal space). There is no use in reducing font sizes for other GUI elements while it is not possible to reduce font in views.
+
+Loading eclipse with another theme
+Eclipse inherits GUI configuration from the GTK engine (assuming you have downloaded eclipse-gtk, and not eclipse-motif). It is possible to set the GTK-theme with the GTK2_RC_FILES environment variable. You may point to a gtkrc file with a less space consuming theme.
+
+For example, Raleigh is a nice looking, but clean theme. I also Like the Clearlooks theme. Both are very simplistic, the do not waste space with fancy borders or shadows. Often, by using the default Gnome theme, you are prevented from recognizing which item is selected in menus, lists and combo boxes, because the them uses the same font color as the background color on the selected item. Both Raleigh and Clearlooks solve this issue.
+
+Launch eclipse as follows (changing paths according to your eclipse installation):
+
+GTK2_RC_FILES=/usr/share/themes/Raleigh/gtk-2.0/gtkrc /opt/eclipse-3.3/eclipse
+or, if you are creating a icon for your desktop (thanks Alban Browaeys for this advice!):
+
+env GTK2_RC_FILES=/usr/share/themes/Raleigh/gtk-2.0/gtkrc /opt/eclipse-3.3/eclipse
+Pros:
+
+Affects only eclipse, but on all workspaces,
+Configures all GUI elements at once.
+Cons:
+
+Due to Alban Browaeys advice, I have no cons anymore.
+My favorite: Overwriting the theme
+Although it is theoretically possible to create a new GTK theme from scratch just to launch eclipse, this would require an extraneous amount of work. Or you can create a modified copy of your preferred theme, but this would not easily portable to other machines or to newer versions of GTK. It is much easier to use an existing theme, just overwriting some parameters (the font and size).
+
+Somewhere on your home directory, create a gtkrc file (like: ~/.gtkrc-eclipse) with following content:
+
+style "eclipse" {
+        font_name = "Sans Condensed 8"
+}
+class "GtkWidget" style "eclipse"
+Finally, to launch eclipse, use following command line:
+
+GTK2_RC_FILES=/usr/share/themes/Clearlooks/gtk-2.0/gtkrc:/home/user/.gtkrc-eclipse '/opt/eclipse-3.3/eclipse'
+or, for a desktop icon:
+
+GTK2_RC_FILES=/usr/share/themes/Clearlooks/gtk-2.0/gtkrc:/home/user/.gtkrc-eclipse '/opt/eclipse-3.3/eclipse'
+Note that GTK loads the gtkrc files in the order that they appear in the GTK2_RC_FILES variable. Files to the right may overwrite configuration from files to the left. In this case, the .gtkrc-eclipse file overwrite the font settings for elements based on GtkWidget (that means, all GTK widgets).
+
+Pros:
+
+Affects only eclipse, but on all workspaces.
+Configures all GUI elements at once.
+Easily portable to other machines.
+Reuses work of someone who is surely better in graphical design as you.
+Cons:
+
+As far, no that I knew.
+This entry was posted on Wednesday, September 24th, 2008 at 4:16 am and is filed under Java & Eclipse, planetLTC.	 You can follow any responses to this entry through the RSS 2.0 feed. You can leave a response, or trackback from your own site.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

@@ -590,6 +590,16 @@ I have tried this in Ubuntu 9.10 and 10.04 – should work for other distros as 
 
 ------------------------------------------------------
 
+To use a seperate theme to run eclipse
+-----------------------
+
+http://techtavern.wordpress.com/2008/09/24/smaller-font-sizes-for-eclipse-on-linux/
+
+Eclipse uses gtk-2.0 supporting themes. So take care to use a theme that contains the gtk-2.0 folder.
+
+Method 1: Tell eclipse to use a custom (containing gtk-2.0) theme
+  # GTK2_RC_FILES=/usr/share/themes/HighContrastInverse/gtk-2.0/gtkrc /usr/share/eclipse/eclipse
+
 
 
 ------------------------------------------------------
