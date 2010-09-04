@@ -600,6 +600,11 @@ Eclipse uses gtk-2.0 supporting themes. So take care to use a theme that contain
 Method 1: Tell eclipse to use a custom (containing gtk-2.0) theme
   # GTK2_RC_FILES=/usr/share/themes/HighContrastInverse/gtk-2.0/gtkrc /usr/share/eclipse/eclipse
 
+Note: 
+  - In one article (quoted above), the tab vertical size was made smaller.
+  - The best look and feel came through choosing 'HighContrastInverse' theme with gray instead of black backgrounds on menus and 'view' windows. 
+    However, work has to be done to make tab vertical size smaller.
+    Pop-up text still remains huge
 
 
 ------------------------------------------------------
