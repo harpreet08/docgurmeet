@@ -1,0 +1,239 @@
+List of PDF Editing tools for Ubuntu
+
+http://www.ubuntugeek.com/list-of-pdf-editing-tools-for-ubuntu.html
+
+
+
+
+This tutorial will give some useful pdf editing tools for ubuntu users.
+
+flpsed
+
+flpsed is a WYSIWYG pseudo PostScript1 editor. “Pseudo”, because you can’t remove or modify existing elements of a document. But flpsed lets you add arbitrary text lines to existing PostScript 1 documents. Added lines can later be reedited with flpsed. Using pdftops, which is part of xpdf one can convert PDF documents to PostScript and also add text to them. flpsed is useful for filling in forms, adding notes etc. GsWidget is now part of flpsed.
+flpsed is released under the GPL.
+
+Features:
+
+* Add arbitrary text to existing PostScript documents.
+* Reedit text, that has been added with flpsed.
+* The overall structure of the PostScript document is not modified. flpsed only adds the additional text.
+* Batch processing (no X11 required) to modify tagged text lines that have been entered interactively with flpsed before. This is very useful for repeatedly filling in forms.
+* Text lines can be imported from other flpsed-modified documents.
+* Import and export PDF. Therefore it can be used as a PDF editor as well.
+
+Install flpsed in ubuntu
+
+sudo apt-get install flpsed
+
+Pdftk
+
+If PDF is electronic paper, then pdftk is an electronic staple-remover, hole-punch, binder, secret-decoder-ring, and X-Ray-glasses. Pdftk is a simple tool for doing everyday things with PDF documents. Keep one in the top drawer of your desktop and use it to:
+
+Merge PDF Documents
+
+Split PDF Pages into a New Document
+
+Rotate PDF Pages or Documents
+
+Decrypt Input as Necessary (Password Required)
+
+Encrypt Output as Desired
+
+Fill PDF Forms with FDF Data or XFDF Data and/or Flatten Forms
+
+Apply a Background Watermark or a Foreground Stamp
+
+Report on PDF Metrics such as Metadata, Bookmarks, and Page Labels
+
+Update PDF Metadata
+
+Attach Files to PDF Pages or the PDF Document
+
+Unpack PDF Attachments
+
+Burst a PDF Document into Single Pages
+
+Uncompress and Re-Compress Page Streams
+
+Repair Corrupted PDF (Where Possible)
+
+Pdftk allows you to manipulate PDF easily and freely. It does not require Acrobat, and it runs on Windows, Linux, Mac OS X, FreeBSD and Solaris.
+
+Install pdftk in ubuntu
+
+sudo apt-get install pdftk
+
+Examples
+
+Merge Two or More PDFs into a New Document
+
+pdftk 1.pdf 2.pdf 3.pdf cat output 123.pdf
+
+or (Using Handles):
+
+pdftk A=1.pdf B=2.pdf cat A B output 12.pdf
+
+or (Using Wildcards):
+
+pdftk *.pdf cat output combined.pdf
+
+Split Select Pages from Multiple PDFs into a New Document
+
+pdftk A=one.pdf B=two.pdf cat A1-7 B1-5 A8 output combined.pdf
+
+Rotate the First Page of a PDF to 90 Degrees Clockwise
+
+pdftk in.pdf cat 1E 2-end output out.pdf
+
+Rotate an Entire PDF Document’s Pages to 180 Degrees
+
+pdftk in.pdf cat 1-endS output out.pdf
+
+Encrypt a PDF using 128-Bit Strength (the Default) and Withhold All Permissions (the Default)
+
+pdftk mydoc.pdf output mydoc.128.pdf owner_pw foopass
+
+Same as Above, Except a Password is Required to Open the PDF
+
+pdftk mydoc.pdf output mydoc.128.pdf owner_pw foo user_pw baz
+
+Same as Above, Except Printing is Allowed (after the PDF is Open)
+
+pdftk mydoc.pdf output mydoc.128.pdf owner_pw foo user_pw baz allow printing
+
+Decrypt a PDF
+
+pdftk secured.pdf input_pw foopass output unsecured.pdf
+
+Join Two Files, One of Which is Encrypted (the Output is Not Encrypted)
+
+pdftk A=secured.pdf mydoc.pdf input_pw A=foopass cat output combined.pdf
+
+Uncompress PDF Page Streams for Editing the PDF Code in a Text Editor
+
+pdftk mydoc.pdf output mydoc.clear.pdf uncompress
+
+Repair a PDF’s Corrupted XREF Table and Stream Lengths (If Possible)
+
+pdftk broken.pdf output fixed.pdf
+
+Burst a Single PDF Document into Single Pages and Report its Data to doc_data.txt
+
+pdftk mydoc.pdf burst
+
+Report on PDF Document Metadata, Bookmarks and Page Labels
+
+pdftk mydoc.pdf dump_data output report.txt
+
+Pdfedit
+
+Complete editing of pdf documents is made possible with PDFedit. You can change either raw pdf objects (for advanced users) or use predefined gui functions. Functions can be easily added as everything is based on a scripts.
+
+Scripting is used to a great extent in editor and almost anything can be scripted, it is possible to create own scripts or plugins.
+
+Install pdfedit in ubuntu
+
+sudo apt-get install pdfedit
+
+Using GIMP
+
+Install krita using the following command
+
+sudo apt-get install krita
+
+Open the Gimp, and open the PDF document you wish to edit. For multiple page documents, it is easier on your computer to edit them one page at a time. If you choose more than one page, they will open in individual windows.
+
+Make the necessary changes to the document.Save the document as a Gimp XCF file (you’ll have to save several different pages if it is a multi-page document). Close the document, then open the resulting image in Krita.
+
+Printing to PDF with Krita Go to File>Print, then choose Print to PDF. In the same dialogue box, choose the destination folder and name of the output document (such as file1.pdf).
+
+PdfMod
+
+PDF Mod is a simple application for modifying PDF documents.
+
+You can reorder, rotate, and remove pages, export images from a document, edit the title, subject, author, and keywords, and combine documents via drag and drop.
+
+Inkscape
+
+An Open Source vector graphics editor, with capabilities similar to Illustrator, CorelDraw, or Xara X, using the W3C standard Scalable Vector Graphics (SVG) file format.
+Inkscape supports many advanced SVG features (markers, clones, alpha blending, etc.) and great care is taken in designing a streamlined interface. It is very easy to edit nodes, perform complex path operations, trace bitmaps and much more. We also aim to maintain a thriving user and developer community by using open, community-oriented development.
+
+Install inkscape in Ubuntu
+
+sudo apt-get install inkscape
+
+PDF Import Extension for Openoffice
+
+The PDF Import Extension allows you to import and modify PDF documents. Best results with 100% layout accuracy can be achieved with the “PDF/ODF hybrid file” format, which this extension also enables. A hybrid PDF/ODF file is a PDF file that contains an embedded ODF source file. Hybrid PDF/ODF files will be opened in OpenOffice.org as an ODF file without any layout changes. Users without this extension can open the PDF part of the hybrid file with their PDF viewer.
+
+The PDF Import Extension also allows you to import and modify PDF documents for non hybrid PDF/ODF files. PDF documents are imported in Draw to preserve the layout and to allow basic editing. This is the perfect solution for changing dates, numbers or small portions of text with a minimum loss of formatting information for simple formatted documents.
+
+Features:
+
+* Text attributes like font family, font size, weight (bold, not bold), style (italic, not italic) are imported together with their respective text
+* Retain font appearance, when a PDF file uses a font not installed on your system, the font is replaced with the best alternative font
+* Converts images and vector graphics
+* Each line in a paragraph is converted into one text object
+* Import of password-protected PDF files
+* Import shapes with default style
+* Support for colors and bitmaps
+* Backgrounds remain behind other elements
+
+Not supported:
+
+* Native PDF forms
+* Proper paragraphs
+* Processing layout of LaTeX PDF
+* Import of complex vector graphics elements
+* Conversion of tables
+* Import of EPS graphics
+* RTL (right-to-left) text/font support
+
+Download PDF Import Extension for openoffice from here
+
+PDF-Shuffler
+
+PDF-Shuffler is a small python-gtk application, which helps the user to merge or split pdf documents and rotate, crop and rearrange their pages using an interactive and intuitive graphical interface. It is a frontend for python-pyPdf.
+
+Install PDF-Shuffler in ubuntu
+
+Edit the /etc/apt/sources.list file
+
+gksudo gedit /etc/apt/sources.list
+
+For Jaunty users add following lines
+
+deb http://ppa.launchpad.net/pdfshuffler/ppa/ubuntu jaunty main
+deb-src http://ppa.launchpad.net/pdfshuffler/ppa/ubuntu jaunty main
+
+For Intrepid  users add following lines
+
+deb http://ppa.launchpad.net/pdfshuffler/ppa/ubuntu intrepid main
+deb-src http://ppa.launchpad.net/pdfshuffler/ppa/ubuntu intrepid main
+
+For Hardy users add following lines
+
+deb http://ppa.launchpad.net/pdfshuffler/ppa/ubuntu hardy main
+deb-src http://ppa.launchpad.net/pdfshuffler/ppa/ubuntu hardy main
+
+Save and exit the file
+
+Download GPG key
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EE17E
+
+Update sourcelist
+
+sudo apt-get update
+
+Install pdf-shuffler
+
+sudo apt-get install pdfshuffler
+
+Other tools
+
+Okular
+
+Xournal
+
+If you know some application for editing pdf files in ubuntu please share .
