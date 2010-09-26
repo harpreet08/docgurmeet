@@ -607,8 +607,20 @@ Note:
 
 
 ------------------------------------------------------
+Typing in Hindi
+------------------
 
+Ubuntu Linux
 
+1) Go to the menu system/preferences/keyboard.
+2) Select Layouts.
+3) Select Add.
+4) Select India, Bolnagri.
+5) Make USA your default layout and Close the preferences.
+6) Go to an empty space on your panel.
+7) Right click and select Add to panel.
+8) Select keyboard indicator and then Add.
+To start typing in Hindi, click in the USA indicator in your panel, it will switch to Ind and you विल बे तैपिन्ग :) (will be typing) in Hindi
 
 ------------------------------------------------------
 
