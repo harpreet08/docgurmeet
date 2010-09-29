@@ -1,0 +1,25 @@
+Configure ATM PVC
+	VPI - 0 [0-255]
+	VCI - 35 [0-65535] (For BSNL Broadband)
+	Service Category: UBR with PCR
+	Peak Cell Rate - 8000 [0-8000]
+
+Encapsulation Type: 
+	LLC/SNAP
+
+Configure WAN IP : 
+	Obtain an IP address automatically
+	Enable NAT [Check]
+	Add Default Route [Check]
+
+
+Internet Connection Configuration:
+	Service Name : <Leave Blank>
+	BroadBand User Name : hi<phoneno>
+	Password : password <default password>
+	Session : Always On
+
+
+Internet Connection -> ADSL
+	Defaults : G.DMT [from default AmmexM2PlusAuto], [T1.413 for MPBS connections]
+	BitSwap : Enabled [Default = Enbaled]

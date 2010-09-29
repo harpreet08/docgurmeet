@@ -1,0 +1,109 @@
+http://www.techlineinfo.com/what-is-vpi-and-vci-settings-of-broadband-connections/
+
+Virtual Path Identifier (VPI) refers to an 8-bit (user to network packets) or 12-bit (network-network packets) field within the header of an Asynchronous Transfer Mode packet. The VPI, together with the VCI (Virtual Channel Identifier) is used to identify the next destination of a cell as it passes through a series of ATM switches on its way to its destination. VPI is useful to reduce the switching table for some Virtual Circuits which have common path. In simple words these two numbers simply tell the DSL equipment on both the sides that the communication to be established between them.
+
+VPI/ VCI settings are very much important to establish the connection between your Modem and Internet Service Providers. These settings varies from ISP to ISP. It is important that you should enter the correct VPI/VCI settings while configuring the MODEM. The  VPI/VCI settings used by different ISPs at different countries are listed below:
+
+nternet Service Provider	VPI	VCI	Encapsulation
+Australia – Telstra	8	35	PPPoA LLC
+Argentina – Telecom	0	33	PPPoE LLC
+Argentina – Telefonica	8	35	PPPoE LLC
+Argentina	1	33	PPPoA VC-MUX
+Belgium-ADSL Office	8	35	1483 Routed IP LLC
+Belgium – Turboline	8	35	PPPoA LLC
+Bhutan- Druknet	0	35	PPPoE LLC
+Bolivia	0	34	1483 Routed IP LLC
+Brazil – Brasil Telcom	0	35	PPPoE LLC
+Brazil – Telefonica	8	35	PPPoE LLC
+Brazil – Telmar	0	33	PPPoE LLC
+Brazil – South Region	1	32	PPPoE LLC
+Colombia – EMCALI	0	33	PPPoA VC-MUX
+Columbia – ETB	0	33	PPPoE LLC
+Costa Rica – ICE	1	50	1483 Routed IP LLC
+Denmark-Cybercity, Tiscali	0	35	PPPoA VC-MUX
+France (1)	8	35	PPPoE LLC
+France (2)	8	67	PPPoE LLC
+France (3)	8	35	PPPoA VC-MUX
+Germany	1	32	PPPoE LLC
+Hungary – Sci-Network	0	35	PPPoE LLC
+Iceland – Islandssimi	0	35	PPPoA VC-MUX
+Iceland – Siminn	8	48	PPPoA VC-MUX
+India- BSNL	0	35	LLC PPoA/PPoE
+India- Airtle broadband	1	32	LLC PPPoE /PPPoA
+India-MTNL	0	32	LLC PPPoE /PPPoA
+India Reliance	0	35	LLC/SNAP
+India – Tata Indicom	0	32	LLC PPPoE /PPPoA
+Israel	8	35	PPPoA VC-MUX
+Italy	8	35	PPPoA VC-MUX
+Jamaica (1)	8	35	PPPoA VC-MUX
+Jamaica (2)	0	35	PPPoA VC-MUX
+Jamaica (3)	8	35	1483 Bridged IP LLC SNAP
+Jamaica (4)	0	35	1483 Bridged IP LLC SNAP
+Kazakhstan	0	33	PPPoA VC-MUX
+Mexico	8	35	PPPoE LLC
+Netherlands – BBNED	0	35	PPPoA VC-MUX
+Netherlands – MX Stream	8	48	PPPoA VC-MUX
+New Zealand – Slingshot	0	100	PPPoA VC-MUX
+Pakistan- PTCL	0	102	PPPoE LLC
+Pakistan Micronet BroadBand	1	32	PPPoE LLC
+Portugal	0	35	PPPoE LLC
+Puerto Rico – Coqui.net	0	35	PPPoA LLC
+Saudi Arabia (1)	0	33	PPPoE LLC
+Saudi Arabia (2)	0	35	PPPoE LLC
+Saudi Arabia (3)	0	33	1483 Bridged IP LLC
+Saudi Arabia (4)	0	33	1483 Routed IP LLC
+Saudi Arabia (5)	0	35	1483 Bridged IP LLC
+Saudi Arabia (6)	0	35	1483 Routed IP LLC
+Spain – Albura, Tiscali	1	32	PPPoA VC-MUX
+Spain – Colt Telecom, Ola Internet	0	35	PPPoA VC-MUX
+Spain – EresMas, Retevision	8	35	PPPoA VC-MUX
+Spain – Telefonica (1)	8	32	PPPoE LLC
+Spain – Telefonica (2), Terra	8	32	1483 Routed IP LLC
+Spain – Wanadoo (1)	8	35	PPPoA VC-MUX
+Spain – Wanadoo (2)	8	32	PPPoE LLC
+Spain – Wanadoo (3)	8	32	1483 Routed IP LLC
+Sreelanka	8	35	PPPoE/PPPoA
+Sweden – Telenordia	8	35	PPPoE
+Sweden – Telia	8	35	1483 Routed IP LLC
+Switzerland	8	35	PPPoE LLC
+Trinidad & Tobago – TSTT	0	35	PPPoA VC-MUX
+Turkey (1)	8	35	PPPoE LLC
+Turkey (2)	8	35	PPPoA VC-MUX
+United Kingdom (1)	0	38	PPPoA VC-MUX
+United Kingdom (2)	0	38	PPPoE LLC
+United Kingdom – AOL	0	38	PPPoE VC-MUX
+United Kingdom – Karoo	1	50	PPPoA LLC
+Venezuela – CANTV	0	33	1483 Routed IP LLC
+United States
+4DV.Net	0	32	PPPoA VC-MUX
+All Tel (1)	0	35	PPPoE LLC
+All Tel (2)	0	35	1483 Bridged IP LLC
+August.net (1)	0	35	1483 Bridged IP LLC
+August.net (2)	8	35	1483 Bridged IP LLC
+BellSouth	8	35	PPPoE LLC
+CenturyTel (1)	8	35	PPPoE LLC
+CenturyTel (2)	8	35	1483 Bridged IP LLC
+Coqui.net	0	35	PPPoA LLC
+Covad	0	35	PPPoE LLC
+Earthlink (1)	0	35	PPPoE LLC
+Earthlink (2)	8	35	PPPoE LLC
+Earthlink (3)	0	32	PPPoALLC
+Embarq	8	35	1483 Bridged IP LLC
+GWI	0	35	1483 Bridged IP LLC
+QWest (1)	0	32	PPPoALLC
+QWest (2)	0	32	PPPoA VC-MUX
+QWest (3)	0	32	1483 Bridged IP LLC
+SBC (1)	0	35	PPPoE LLC
+SBC (2)	0	35	1483 Bridged IP LLC
+SBC (3)	8	35	1483 Bridged IP LLC
+SouthWestern Bell	0	35	1483 Bridged IP LLC
+Sprint (1)	0	35	PPPoALLC
+Sprint (2)	8	35	PPPoE LLC
+SureWest Communications(1)	0	34	1483 Bridged LLC Snap
+SureWest Communications(2)	0	32	PPPoE LLC
+SureWest Communications(3)	0	32	PPPoA LLC
+Toast.Net	0	35	PPPoE LLC
+US West	0	32	PPPoA VC-MUX
+Verizon (1)	0	35	PPPoE LLC
+Verizon (2)	0	35	1483 Bridged IP LLC
+
