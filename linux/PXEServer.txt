@@ -1,0 +1,146 @@
+
+
+http://ubuntu-tutorials.com/2007/10/11/how-to-configure-pxe-network-booting-on-ubuntu-for-network-based-installations/
+How To Configure PXE (Network) Booting on Ubuntu For Network Based Installations
+
+How To Configure PXE (Network) Booting on Ubuntu For Network Based Installations
+October 11th, 2007Christer EdwardsLeave a commentGo to comments
+Previously I outlined how to install Ubuntu over the network using a netboot install CD or USB image. This tutorial takes it a step further and allows you to boot your machine from the network environment and select from a list of what you would like to install. This comes to the same end result as the previous tutorial (an installed machine without having to burn a CD), but doesn’t require the boot CD or USB image.
+
+This will take more work and should also be considered intermediate to advanced. Please read through the tutorial in its entirety before diving in, researching any aspects of the tutorial you’re not familiar with prior to attempting these steps.
+
+Requirements
+
+There are a few things that we’ll need in order to set this up. These are outlined below:
+
+DHCP Server (sudo aptitude install dhcp3-server)
+Ubuntu CD Image (alternate CD, not Desktop LiveCD)
+TFTP Server (sudo aptitude install tftpd)
+Apache (sudo aptitude install apache2)
+The way that these services will be used, as a quick overview, is that the DHCP server will listen for and assign IP addresses for machines on the local network. The TFTP server will hand a small kernel and ramdisk image to the client as it boots from the network environment and the contents of the Ubuntu CD will be used to install, being shared over the web via the Apache server. This is, again, an extension of the previous tutorial on network-based installations, this simply removes the need for a CD or USB image to boot the machine.
+
+DHCP Setup
+
+First of all we’ll install the DHCP server to initially hand out the IP addresses and point to the network boot images:
+
+sudo aptitude install dhcp3-server
+
+Now that we have the DHCP server installed there are a few small changes we need to make to the core configuration. Full detail on DHCP configuration is outside of the scope of this tutorial, but this should give you enough to achieve the goal of this tutorial.
+
+We’ll first edit the DHCP configuration file, normally found in /etc/dhcp.conf:
+
+sudo vim /etc/dhcp.conf
+
+We’ll add two lines into this file outlining the address of the TFTP server (probably the same machine) and the path to the pxelinux.0 file we want to hand off to the client machines.
+
+next-server 192.168.0.254 (the IP address of your DHCP/TFTP server)
+
+filename "/tftpboot/pxelinux.0";
+
+After we have made these changes we need to restart the DHCP server. We can do this using the command:
+
+sudo /etc/init.d/dhcpd restart
+
+Apache Setup
+
+We need to export the contents of the CD over the web so that the network based installer can find them for use with deb. For this we’ll install apache. The base configuration should be enough for what we need here. Further details on configuring Apache are outside of the scope of this tutorial.
+
+sudo aptitude install apache2
+
+CD Image Contents
+
+We’ll need to extract the contents of the CD onto the DHCP/TFTP server so that we can access the packages and the installer kernel. We can locally mount and copy the CD contents using these commands:
+
+sudo mkdir /var/www/html/ubuntu7.10 (or, if you're going to export multiple versions select something more unique)
+
+sudo mount -o loop CD.iso /mnt
+
+sudo cp -a /mnt/* /var/www/html/ubuntu.710
+
+PXELinux Setup
+
+Now that the DHCP server knows where the tftp server is and the path to the file that it should direct clients to we need to configure the PXE end of things, which is what allows us to boot a kernel over the network or select from a list of kernels to boot over the network.
+
+Relative to the location of the pxelinux.0 file we can make a directory for the distribution/version that we want to boot. For example we might want to install Ubuntu 7.10 so we’d create a folder U7.10, or ubuntu7.10–something to specify what version and variant this will hold.
+
+sudo mkdir /tftboot/ubuntu7.10
+
+We then need to copy the network-based installer kernel and initrd.gz into the newly created folder:
+
+sudo cp /var/www/html/ubuntu7.10/install/netboot/ubuntu-installer/i386/{linux, initrd.gz} /tftboot/ubuntu7.10/
+
+We now need to build the file that will list what is available and how to select it from a (optional) list.
+
+pxelinux.cfg/default
+
+We’ll now move into the /tftpboot/pxelinux.cfg directory and edit the file “default”. If this file doesn’t exist that is OK, we’ll create one.
+
+sudo vim /tftpboot/pxelinux.cfg/default
+
+We’ll now make a list of the boot options that might be available on this network booting system:
+
+default 0
+
+prompt 1
+
+display msgs/boot.msg
+
+# begin list of available boot options
+
+label ubuntu7.10
+
+kernel ubuntu7.10/linux
+
+append initrd=ubuntu7.10/initrd.gz
+
+This file basically outlines that a list will be presented to the user booting over the network, which we’ll create in the next step, and defines what will be loaded for each menu item.
+
+pxelinux.cfg/msgs/boot.msg
+
+We’ll now create a file that will give a display of the different boot options available. Your setup may only have one option outlined for installation, others might have three, four, five–a dozen different versions and variations available to install. We’ll create a list here outlining what is available and what option to enter to select the option.
+
+This file can be something as simple as:
+
+ubuntu7.10 - Select this to install Ubuntu 7.10
+
+kubuntu7.10 - Select this to install Kubuntu 7.10
+
+ubuntu7.04 - Select this to install Ubuntu 7.04
+
+kubuntu7.04 - Select this to install Kubuntu 7.10
+
+…etc. Creating a list such as this after having repeated the above steps for each version and variant you want to make available and you should be ready to go. One thing to note is that the boot option entered at the list prompt should match the label defined in the pxelinux.cfg/default file.
+
+Starting The Installer
+
+You should now be ready to install your machine by booting and instructing your machine to boot from the network. If you have trouble booting to either of those devices you might check your BIOS settings to see that one of them takes priority over the main hard drive.
+
+You’ll be presented with a very basic menu when the netboot installer loads.
+
+To install only the base system type ’server’, then ENTER.
+
+For the default installation, press ENTER.
+
+The default installation is suitable for most desktop or laptop systems.
+
+Navigate through the installer as normal but watch for the step entitled:
+
+Choose a mirror of the Ubuntu archive
+
+At this step we will tell the installer to use a custom repository, in this case being the locally shared CD contents we set up previously.
+
+Instead of selecting your country in this step go up to the first option listed: (pg-up to the top)
+
+enter information manually
+
+I don’t think the option of entering custom information is very intuitive so I missed this the first few times through. Watch for this step. If you are given a prompt offering us.archive.ubuntu.com or CC.archive.ubuntu.com you’ve gone too far!
+
+The next step will prompt you for the hostname or IP address of the server you will be installing from. This is the IP address of the server you copied the CD contents and installed Apache to.
+
+After the hostname or IP is entered the installer will prompt you for the path to the publicly shared contents. If you closely followed these steps the default entry of /ubuntu/ should work. If you copied your CD contents into a folder other than /ubuntu/ you’ll need to update this accordingly.
+
+At this point navigate through the installer as normal and enjoy what should be faster installation speeds as network-based is usually faster than CD-based.
+
+As I mentioned before. This should be considered more technical in nature than many of my previous tutorials. Best of luck, and enjoy network based booting and installation!
+
+If this article has been helpful, please consider linking to it.
