@@ -623,8 +623,14 @@ Ubuntu Linux
 To start typing in Hindi, click in the USA indicator in your panel, it will switch to Ind and you विल बे तैपिन्ग :) (will be typing) in Hindi
 
 ------------------------------------------------------
+Recreate gnome panel (Top panel)
 
+# gconftool-2 --shutdown
+  [Alternative to above] gconftool --recursive-unset /apps/panel
 
+# rm -rf ~/.gconf/apps/panel
+
+# pkill gnome-panel
 
 ------------------------------------------------------
 
