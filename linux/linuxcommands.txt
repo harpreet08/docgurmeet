@@ -639,6 +639,51 @@ Recreate gnome panel (Top panel)
 
 
 ------------------------------------------------------
+Google Earth Installation Error - 
+-------------------------------------
+
+./GoogleEarthLinux.bin
+Verifying archive integrity... All good.
+Uncompressing Google Earth for GNU/Linux 5.1.3533.1731...............................................................
+setup.data/setup.xml:1: parser error : Document is empty
+
+^
+setup.data/setup.xml:1: parser error : Start tag expected, '<' not found
+
+^
+Couldn't load 'setup.data/setup.xml'
+
+hi, i was have too this error you only need do this
+in terminal like root write this  
+
+./GoogleEarthLinux.bin --target /tmp/ge
+cd /tmp/ge/setup.data/bin/Linux/x86/
+mv setup.gtk setup.gtk2
+cd /tmp/ge
+./setup.sh
+
+
+
+
+Google Earth writing to Cache problem
+-------------------------------------------
+
+----SOLVED-----
+I have had this problem, and dug around and found it.
+
+The /root/.googleearth/Cache problem is when you install it with sudo ./googleearth.bin , and then click start. It runs as root, and writes some preferences into ~/.config/Google. To fix the root cache error do this:
+
+rm -rf ~/.config/Google
+
+Then you can run Google earth and it will make the .config/Google directory again.
+
+To solve the OPENSSL_0.9.8 error, you need to go to your google-earth install directory. Mine is in /opt/google-earth.
+
+cd /opt/google-earth
+sudo mv libcrypto.so.0.9.8 libcrypto.so.0.9.8.old
+sudo ln -s /usr/lib/libcrypto.so libcrypto.so.0.9.8
+55 of 58 people found this answer helpful. Did you? Sign in to vote.
+
 
 
 ------------------------------------------------------
