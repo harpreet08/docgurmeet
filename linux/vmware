@@ -1,0 +1,28 @@
+
+VMWare install issue [vmnet not compiling on Meerkat]
+[Failed to compile module vmmon!]
+-------------------------------------------------------
+
+[Link - Solution] http://art.ubuntuforums.org/showthread.php?t=1593900
+[Link - Other] https://answers.launchpad.net/vmware-ubuntu/+question/128677
+[Link - Other] http://www.linuxgeek.ca/wordpress/?p=297
+
+
+Do these things...
+cd /tmp
+wget http://www.sputnick-area.net/scripts...el-2.6.35.bash
+sudo chmod +x vmware7.1.1-patch-kernel-2.6.35.bash
+sudo ./vmware7.1.1-patch-kernel-2.6.35.bash
+
+The script will say...
+
+sudo vmware-modconfig --console --install-all
+
+
+Then...
+
+start the VMWare workstation as usual from...
+Applications > System Tools > VMWare Workstation
+
+OK that's it 
+Enjoy Virtualization....
