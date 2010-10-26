@@ -688,6 +688,14 @@ sudo ln -s /usr/lib/libcrypto.so libcrypto.so.0.9.8
 
 ------------------------------------------------------
 
+Add custom wallpapers to system wide list in System -> Preferences -> Appearence -> Wallpaper
+
+Step 1 : 'cd' to the picture container directory and change 'chown' and 'chgrp' to root.
+Step 2 : Copy (sudo cp ./*) all custom pictures to /usr/share/backgrounds.
+Step 3 : cd to /usr/share/gnome-background-properties. ubuntu-wallpapers.xml is the file. [make a backup if required]
+Step 4 : Gedit and make the nessecary entries by copy/paste the above entries as a template and adding the full path of the new images.
+Step 5 : Verify in the System -> Preferences -> Appearence -> Wallpaper
+
 
 ------------------------------------------------------
 
