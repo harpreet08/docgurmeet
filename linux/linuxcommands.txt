@@ -705,6 +705,17 @@ Step 5 : Verify in the System -> Preferences -> Appearence -> Wallpaper
 
 ------------------------------------------------------
 
+
+How to recursively compare directories
+http://www.unixtutorial.org/2008/06/how-to-compare-directories-in-unix/
+
+If you're dealing with a complex directory structure, you'll be glad to know that –recursive parameter for the diff command compares not only the immediate directories pointed to from the command line, but also walks through the full tree of subdirectories:
+
+ubuntu$ diff --recursive --brief /tmp/dir1 /tmp/dir2
+Files /tmp/dir1/dir11/file12 and /tmp/dir2/dir11/file12 differ
+Files /tmp/dir1/file1 and /tmp/dir2/file1 differ
+Only in /tmp/dir1: file2
+Only in /tmp/dir2: file3
 ------------------------------------------------------
 
 
