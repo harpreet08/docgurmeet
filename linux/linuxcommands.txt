@@ -723,12 +723,79 @@ Only in /tmp/dir2: file3
 ------------------------------------------------------
 
 
+How to hide users from the login screen?
 
+http://askubuntu.com/questions/2471/how-to-hide-users-from-the-login-screen
 
+Edit the file /etc/gdm/gdm.schema find the section that currently looks like this:
 
+  <schema>
+    <key>greeter/Exclude</key>
+    <signature>s</signature>
+    <default>bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobody,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap</default>
+  </schema>
+And to exclude a user called qmail for example add qmail to the default list so the section looks like this.
+
+  <schema>
+    <key>greeter/Exclude</key>
+    <signature>s</signature>
+    <default>qmail, bin,root,daemon,adm,lp,sync,shutdown,halt,mail,news,uucp,operator,nobody,nobody4,noaccess,postgres,pvm,rpm,nfsnobody,pcap</default>
+  </schema>
+That will stop user qmail appearing in the gdm greeter. There used to be a nice GUI tool to do this but is has not been in Ubuntu for the last few releases.
+
+The other alternative is to set the UID of the user to under 1000. Those are considered to be system accounts which are excluded in the GDM greeter too.
 
 ------------------------------------------------------
 
+Webcams
+---------
+
+# sudo apt-cache show v4l2ucp
+ Video for Linux 2 Universal Control Panel
+ V4L2UCP is an universal control panel for V4L and V4L2 devices. It reads
+ the description of the controls that the device supports from the device
+ device, and presents the user with a graphical means for adjusting those
+ controls; it allows for controlling multiple devices.
+ .
+ Controls can be updated with the device status either manually, or
+ periodically. There is an easy way to reset one or all the controls to their
+ default state.
+
+
+# sudo apt-cache search guvcview
+      guvcview - GTK+ base UVC Viewer
+
+
+# sudo apt-get install dov4l
+
+# dov4l -q
+dov4l v0.9, (C) 2003-2006 by folkert@vanheusden.com
+
+Canonical name for this interface: HP Webcam
+Type of interface:
+ Can capture to memory
+
+Number of radio/tv channels if appropriate: 1
+Number of audio devices if appropriate: 0
+Maximum capture width in pixels: 640
+Maximum capture height in pixels: 480
+Minimum capture width in pixels: 48
+Minimum capture height in pixels: 32
+
+Image size (x,y): 640, 480
+
+The channel number: 0
+ The input name: Camera 1
+ Number of tuners for this input: 0
+ The input is a camera
+ The norm for this channel: 0
+Brightness: 32896
+Hue: 32768
+Colour: 0
+Contrast: 0
+Whiteness: 0
+Depth: 16
+Palette: Describe me
 
 
 

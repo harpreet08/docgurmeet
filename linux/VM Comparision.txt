@@ -1,0 +1,23 @@
+Test System - 
+
+
+VMWare Player 1.3 - Windows XP OEM SP3 VM with 832 MB RAM, Display Memory Automatic (128 MB SVGA II reported), Hardware Accel ON, Virtualization Extension Automatic, SCSI HDD
+
+Interupts/sec (Idling) - Total [(vmware-vmx = 397)   (VMPlayer = 11)  (vmware-unity-helper = 11)]
+CPU Temp [Before Start] - 30 / 33
+CPU Temp Non-unity [Idling post boot] - 34 / 37
+CPU Temp Non-unity [Decompressing FS Scenery at Install] - 57 / 54 degC
+CPU Temp Unity Mode [Idling post boot] - Not Checked.
+HDD Size - 5.03 GB internal reported / 9.1 GB external
+FS Run Performance - 57 / 59 degC with 7.4 frames/sec. Interupts/sec - 1089.5 vmware-rtc + 255.0 vmware-vmx + 11.0 + 11.0
+
+
+Virtualbox 3.2.10 - Windows XP OEM SP3 VM with 883 MB RAM, Display memory 96 MB, VT-x/AMD-V enabled, IDE HDD
+
+Interupts/sec (Idling) - 216.4 Virtualbox non-seamless mode / 209.4 seamless mode / [299.4 VBoxHeadless + 3.4 VBoxSVC]
+CPU Temp [Before Start] - 
+CPU Temp Non-Seamless mode [Idling post boot] - 40/42 degC
+CPU Temp Non-Seamless Mode [Decompressing FS Scenery at Install] - 59/66 degC
+CPU Temp Seamless Mode [Idling post boot] - 40/42 degC
+HDD Size - 5.23 GB internal reported (with FS2004) /  GB external
+FS Run Performance - 46/48 degC with null frames/sec. Interupts/sec not applicable. FS does not run with VirtualBox graphics adaptor. Switches from 16 bit graphics to 32 bit in software mode but FS does not run.
