@@ -805,23 +805,66 @@ Palette: Describe me
 
 ------------------------------------------------------
 
+High interrupts due to kworker as reigstered in powertop
 
+1. Add this to /etc/rc.local
+# echo disable > /sys/firmware/acpi/interrupts/gpe01
 
+2. Add this to /etc/default/grub at the kernel param line and "sudo update-grub"
 
+    Add this "pcie_ports=compat" to look like
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash pcie_ports=compat"
 
-
-
+3. After reboot, check with
+# grep . /sys/firmware/acpi/interrupts/*
+gpe1 should be disabled
 
 ------------------------------------------------------
 
+Increase EXT4 Journaling time -> Reduce hard disk activity
+
+    [/etc/fstab options -> https://wiki.archlinux.org/index.php/Fstab#atime_options]
+
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/607560
+Add this to "Options" in /etc/fstab to look like
+
+# /etc/fstab: static file system information.
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+proc            /proc           proc    nodev,noexec,nosuid 0       0
+/dev/sda1       /               ext4    defaults,commit=60  0       0
+/dev/sda5       none            swap    sw              0       0
 
 
-
-
+Or disable journaling. HDD suspectible to corruption especially during un-intended power failures
+(next step)
 
 ------------------------------------------------------
+Disable EXT4 journaling -> To reduce disk activity and let it sleep
 
+http://forum.eeeuser.com/viewtopic.php?id=85230
 
+Regarding the jbd2/sda1-8 "bug", if you will, mentioned in the File System section of the 1st post, disabling journaling does indeed solve it.
+
+First thing's first, we can confirm that our ext4 partition is running a journal with
+
+$sudo dumpe2fs /dev/sdaX | grep has_journal
+
+Disabling journaling is rather easy, the only drag is that to make structural changes to a filesystem, the filesystem cannot be mounted with read/write privileges. So, run a live cd and hit
+
+$sudo tune2fs -O ^has_journal /dev/sdaX
+
+And it's done. Now when you boot, the change will be noted and the disk will be checked for errors. When the system is finally up we can run this again to confirm that in fact ext4 is running without a journal
+
+$sudo dumpe2fs /dev/sdaX | grep has_journal
+should now return nothing.
+
+-------------------------
+
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/607560
+ # tune2fs -O ^has_journal /dev/sda5
+ # e2fsck -f /dev/sda5
+
+(or whatever your disk is called). Your disk will be more vulnerable for data corruption on uncontrolled shut-downs without journaling.
 
 ------------------------------------------------------
 
