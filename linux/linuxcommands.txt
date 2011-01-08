@@ -876,6 +876,23 @@ Make Chromium Browser to use RAM as cache -> Reduce Disk Activity
 
 ------------------------------------------------------
 
+Ubuntu ureadahead Error on Bootup
+
+(http://macsushi.livejournal.com/41290.html)
+
+On Ubuntu 10.10, during bootup, the following error shows up during bootup (in the console):
+
+"ureadahead main process (367) terminated with status 5"
+
+The cause of the problem was that ureadahead depends on /var/lib/ureadahead (read-ahead data are cached there), and ureadahead was run before /var was mounted. This happens when /var is on a separate partition. This race condition is a result of the default configuration of ureadahead (in /etc/init/ureadahead.conf), which tries to run this concurrently with the mounting process (probably to minimize boot time on netbooks).
+
+To eliminate this race condition, change this line /etc/init/ureadahead.conf:
+"start on starting mountall"
+to
+"start on mounted MOUNTPOINT=/var"
+
+This can also be accomplished with the command:
+sudo sed -i 's+^start on starting mountall+start on mounted MOUNTPOINT=/var+' /etc/init/ureadahead.conf
 
 
 
