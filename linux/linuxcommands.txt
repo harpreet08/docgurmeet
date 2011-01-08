@@ -897,8 +897,16 @@ sudo sed -i 's+^start on starting mountall+start on mounted MOUNTPOINT=/var+' /e
 
 
 ------------------------------------------------------
+swap_1 error on boot
+
+/dev/mapper/<hostname>-swap_1 is not ready yet or not present
+Continue to wait; or Press S to skip mounting or M for manual recovery
 
 
+# cat /etc/fstab
+# sudo swapoff /dev/mapper/ubnode6-swap_1
+# sudo mkswap /dev/VolGroup00/LogVol02
+# sudo swapon /dev/mapper/ubnode6-swap_1
 
 ------------------------------------------------------
 
