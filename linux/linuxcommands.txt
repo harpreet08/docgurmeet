@@ -909,7 +909,25 @@ Continue to wait; or Press S to skip mounting or M for manual recovery
 # sudo swapon /dev/mapper/ubnode6-swap_1
 
 ------------------------------------------------------
+Reduce Swap in Red Hat 5
+http://apaton.blogspot.com/
 
+Red Hat recommended SWAP to be no larger than 4Gb, 
+
+1) Show current swap
+swapon -s 
+
+2) Unmount Swap
+swapoff /dev/mapper/VolGroup00-LogVol01
+
+3) Reduce from 54Gb to 4Gb (Each LV Extent is 32Mb)
+lvreduce -l -1600 /dev/VolGroup00/LogVol01
+
+4) Reformat swap
+mkswap /dev/VolGroup00/LogVol01
+
+5) Mount swap as defined in /etc/fstab
+swapon -a
 
 
 ------------------------------------------------------
