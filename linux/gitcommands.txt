@@ -1,0 +1,68 @@
+http://cheat.errtheblog.com/s/git
+
+
+Setup
+-----
+
+git clone <repo>
+  clone the repository specified by <repo>; this is similar to "checkout" in
+  some other version control systems such as Subversion and CVS
+
+Add colors to your ~/.gitconfig file:
+
+  [color]
+    ui = auto
+  [color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+  [color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+  [color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+Highlight whitespace in diffs
+
+  [color]
+    ui = true
+  [color "diff"]
+    whitespace = red reverse
+  [core]
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+Add aliases to your ~/.gitconfig file:
+
+  [alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+
+Configuration
+-------------
+
+git config -e [--global]
+  edit the .git/config [or ~/.gitconfig] file in your $EDITOR
+
+git config --global user.name 'John Doe'
+git config --global user.email johndoe@example.com
+  sets your name and email for commit messages
+
+git config branch.autosetupmerge true
+  tells git-branch and git-checkout to setup new branches so that git-pull(1)
+  will appropriately merge from that remote branch.  Recommended.  Without this,
+  you will have to add --track to your branch command or manually merge remote
+  tracking branches with "fetch" and then "merge".
+
+git config core.autocrlf true
+  This setting tells git to convert the newlines to the system
