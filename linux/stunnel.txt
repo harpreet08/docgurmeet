@@ -1,0 +1,394 @@
+https://bbs.archlinux.org/viewtopic.php?id=101866
+
+Hi,
+I'm trying to get stunnel working om my system, which previously worked flawlessly on my Debian and Ubuntu systems.
+What did I do:
+# install stunnel
+sudo pacman -S stunnel
+
+# create certificate
+cd /etc/stunnel
+openssl req -new -x509 -days 3650 -nodes -out mail.pem -keyout mail.pem
+
+# edit my config file
+sudo cp /etc/stunnel/stunnel.conf-sample /etc/stunnel/stunnel.conf
+sudo kwrite /etc/stunnel/stunnel.conf
+
+# The following describes the content of my stunnel.conf:
+; protocol version (all, SSLv2, SSLv3, TLSv1)
+sslVersion = TLSv1
+
+; security enhancements for UNIX systems - comment them out on Win32
+; for chroot a copy of some devices and files is needed within the jail
+chroot = /var/run/stunnel
+setuid = stunnel
+setgid = stunnel
+; PID is created inside the chroot jail
+pid = /stunnel.pid
+
+; performance tunings
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+;compression = zlib
+
+; workaround for Eudora bug
+;options = DONT_INSERT_EMPTY_FRAGMENTS
+
+; authentication stuff needs to be configured to prevent MITM attacks
+; it is not enabled by default!
+;verify = 2
+; don't forget to c_rehash CApath
+; CApath is located inside chroot jail
+;CApath = /certs
+; it's often easier to use CAfile
+;CAfile = /etc/stunnel/certs.pem
+; don't forget to c_rehash CRLpath
+; CRLpath is located inside chroot jail
+;CRLpath = /crls
+; alternatively CRLfile can be used
+;CRLfile = /etc/stunnel/crls.pem
+
+; debugging stuff (may useful for troubleshooting)
+debug = 7
+output = /var/log/stunnel.log
+
+; SSL client mode
+client = yes
+
+; service-level configuration
+
+[GMail_POP]
+accept  = 127.0.0.1:3001
+connect = pop.gmail.com:995
+
+[GMail_SMTP]
+accept  = 127.0.0.1:3002
+connect = smtp.gmail.com:465
+
+[GMail_IMAP]
+accept  = 127.0.0.1:3003
+connect = imap.gmail.com:993
+
+[VFEmail]
+accept  = 127.0.0.1:3004
+connect = mail.vfemail.net:465
+The above described process was enough to get it running on my previous systems.
+However it does not suffice on Arch. Googling around I found that my /etc/hosts.allow should be altered.
+# allow requests from 127.0.0.1
+sudo kwrite /etc/hosts.allow
+
+# added the following line:
+stunnel: 127.0.0.1
+However, its still not working, Because I want to debug the problem, I try to read the log /var/log/stunnel.log , but its not present.
+This is strange, because I clearly enabled the logging function in the config file.
+Note that I start stunnel manually once my internet connection is established with:
+sudo /etc/rc.d/stunnel start
+I'm a bit confused, why there are  no log files. Also I noticed that several files in the var/log folder are just empty:
+- auth.log, crond.log, deamon.log, error.log
+Could there be something wrong with the syslog-ng module? The dmesg.log and Xorg,0.log look normal by the way.
+Help would be much appreciated
+
+
+
+Ok, I found the solution to the logging problem.
+Because stunnel in running in a chroot environment (set as /var/run/stunnel) the logging parameter /var/log/stunnel.log was invalid.
+Therefore changing it to just "stunnel.log" fixed the issue and now the logs appear in the folder "/var/run/stunnel"
+Below I have included my log file, which I yet have to inspect,
+2010.07.28 19:03:19 LOG5[2017:3075229376]: Reading configuration from file /etc/stunnel/stunnel.conf
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Snagged 64 random bytes from /home/jan/.rnd
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Wrote 1024 new random bytes to /home/jan/.rnd
+2010.07.28 19:03:19 LOG7[2017:3075229376]: RAND_status claims sufficient entropy for the PRNG
+2010.07.28 19:03:19 LOG7[2017:3075229376]: PRNG seeded successfully
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Certificate: /etc/stunnel/mail.pem
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Certificate loaded
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Key file: /etc/stunnel/mail.pem
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Private key loaded
+2010.07.28 19:03:19 LOG7[2017:3075229376]: SSL context initialized for service GMail_POP
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Certificate: /etc/stunnel/mail.pem
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Certificate loaded
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Key file: /etc/stunnel/mail.pem
+2010.07.28 19:03:19 LOG7[2017:3075229376]: Private key loaded
+2010.07.28 19:03:19 LOG7[2017:3075229376]: SSL context initialized for service GMail_SMTP
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Certificate: /etc/stunnel/mail.pem
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Certificate loaded
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Key file: /etc/stunnel/mail.pem
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Private key loaded
+2010.07.28 19:03:20 LOG7[2017:3075229376]: SSL context initialized for service GMail_IMAP
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Certificate: /etc/stunnel/mail.pem
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Certificate loaded
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Key file: /etc/stunnel/mail.pem
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Private key loaded
+2010.07.28 19:03:20 LOG7[2017:3075229376]: SSL context initialized for service VFEmail
+2010.07.28 19:03:20 LOG5[2017:3075229376]: Configuration successful
+2010.07.28 19:03:20 LOG5[2017:3075229376]: No limit detected for the number of clients
+2010.07.28 19:03:20 LOG7[2017:3075229376]: FD=9 in non-blocking mode
+2010.07.28 19:03:20 LOG7[2017:3075229376]: FD=10 in non-blocking mode
+2010.07.28 19:03:20 LOG7[2017:3075229376]: FD=11 in non-blocking mode
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Option SO_REUSEADDR set on accept socket
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service GMail_POP bound to 127.0.0.1:3001
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service GMail_POP opened FD=11
+2010.07.28 19:03:20 LOG7[2017:3075229376]: FD=12 in non-blocking mode
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Option SO_REUSEADDR set on accept socket
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service GMail_SMTP bound to 127.0.0.1:3002
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service GMail_SMTP opened FD=12
+2010.07.28 19:03:20 LOG7[2017:3075229376]: FD=13 in non-blocking mode
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Option SO_REUSEADDR set on accept socket
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service GMail_IMAP bound to 127.0.0.1:3003
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service GMail_IMAP opened FD=13
+2010.07.28 19:03:20 LOG7[2017:3075229376]: FD=14 in non-blocking mode
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Option SO_REUSEADDR set on accept socket
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service VFEmail bound to 127.0.0.1:3004
+2010.07.28 19:03:20 LOG7[2017:3075229376]: Service VFEmail opened FD=14
+2010.07.28 19:03:20 LOG7[2023:3075229376]: Created pid file /stunnel.pid
+2010.07.28 19:03:20 LOG5[2023:3075229376]: stunnel 4.33 on x86_64-unknown-linux-gnu with OpenSSL 1.0.0a 1 Jun 2010
+2010.07.28 19:03:20 LOG5[2023:3075229376]: Threading:PTHREAD SSL:ENGINE Sockets:POLL,IPv6 Auth:LIBWRAP
+2010.07.28 19:04:43 LOG7[2023:3075229376]: Service GMail_POP accepted FD=0 from 127.0.0.1:50264
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Service GMail_POP started
+2010.07.28 19:04:43 LOG7[2023:3078929264]: FD=0 in non-blocking mode
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Option TCP_NODELAY set on local socket
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Waiting for a libwrap process
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Acquired libwrap process #0
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Releasing libwrap process #0
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Released libwrap process #0
+2010.07.28 19:04:43 LOG4[2023:3078929264]: Service GMail_POP REFUSED by libwrap from 127.0.0.1:50264
+2010.07.28 19:04:43 LOG7[2023:3078929264]: See hosts_access(5) manual for details
+2010.07.28 19:04:43 LOG5[2023:3078929264]: Connection reset: 0 bytes sent to SSL, 0 bytes sent to socket
+2010.07.28 19:04:43 LOG7[2023:3078929264]: Service GMail_POP finished (0 left)
+Apparently my services get blocked: Service GMail_POP REFUSED by libwrap from 127.0.0.1:50264
+Any suggestions on fixing this?
+
+
+Wow, I'm amazed of myself! Managed to get this problem fixed, before anyone had the chance to reply. ^_^
+So what did I do?
+Simply add a line for every service I use to the /etc/hosts.allow file like this:
+#
+# /etc/hosts.allow
+#
+
+stunnel: ALL: ALLOW
+GMail_POP: ALL: ALLOW
+GMail_SMTP: ALL: ALLOW
+VFEmail: ALL: ALLOW
+
+# End of file
+It might be a good idea to convert this topic into a wiki, how to get your stunnel up and running!
+
+alternatively, and I think this is a new option, you can specify "libwrap=no"
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+http://thejavashop.net/blog/?p=3
+
+Ubuntu, Pan and Stunnel
+After failing to get Giganews Accelerator to run under wine I decided to proceed in getting Pan to run ssl using stunnel.
+
+Here’s how I did it.
+
+First off get stunnel installed:
+
+sudo apt-get install stunnel
+Second edit the stunnel.conf
+
+sudo gedit /etc/stunnel/stunnel.conf
+Here is mine, replace the news server with yours:
+
+; Sample stunnel configuration file by Michal Trojnara 2002-2006
+; Some options used here may not be adequate for your particular configuration
+; Please make sure you understand them (especially the effect of chroot jail)
+
+; Certificate/key is needed in server mode and optional in client mode
+; cert = /etc/stunnel/mail.pem
+;key = /etc/stunnel/mail.pem
+
+; Protocol version (all, SSLv2, SSLv3, TLSv1)
+sslVersion = SSLv3
+
+; Some security enhancements for UNIX systems - comment them out on Win32
+chroot = /var/lib/stunnel4/
+setuid = stunnel4
+setgid = stunnel4
+; PID is created inside chroot jail
+pid = /stunnel4.pid
+
+; Some performance tunings
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+;compression = rle
+
+; Workaround for Eudora bug
+;options = DONT_INSERT_EMPTY_FRAGMENTS
+
+; Authentication stuff
+;verify = 2
+; Don't forget to c_rehash CApath
+; CApath is located inside chroot jail
+;CApath = /certs
+; It's often easier to use CAfile
+;CAfile = /etc/stunnel/certs.pem
+; Don't forget to c_rehash CRLpath
+; CRLpath is located inside chroot jail
+;CRLpath = /crls
+; Alternatively you can use CRLfile
+;CRLfile = /etc/stunnel/crls.pem
+
+; Some debugging stuff useful for troubleshooting
+debug = 7
+output = /var/log/stunnel4/stunnel.log
+
+; Use it for client mode
+client = yes
+
+; Service-level configuration
+
+[nntp]
+accept = localhost:119
+connect = YOUR.NEWSGROUP.HERE:PORT
+
+; [pop3s]
+; accept  = 995
+; connect = 110
+
+; [imaps]
+; accept  = 993
+; connect = 143
+
+; [ssmtp]
+; accept  = 465
+; connect = 25
+
+; [https]
+; accept  = 443
+; connect = 80
+; TIMEOUTclose = 0
+
+; vim:ft=dosini
+Edit stunnel4:
+
+sudo gedit /etc/default/stunnel4
+Set Enabled=1
+
+# /etc/default/stunnel
+# Julien LEMOINE
+# September 2003
+
+# Change to one to enable stunnel
+ENABLED=1
+FILES="/etc/stunnel/*.conf"
+OPTIONS=""
+
+# Change to one to enable ppp restart scripts
+PPP_RESTART=0
+Start stunnel4:
+
+/etc/init.d/stunnel4 start
+Fire up Pan and set set your server to localhost on port 119
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using stunnel to telnet into GMail IMAP
+By edwin - Posted on 12 February 2009
+
+Here is a case study of how stunnel can be used to test an SSL based protocol. We will create an stunnel configuration that reroutes the IMAP port (TCP 143) to the Secure IMAP port (TCP 993) on GMail's IMAP server (imap.gmail.com). We will than test the setup by using telnet.
+
+I will be using Ubuntu 8.10 (Intrepid Ibex).
+
+First, let's install stunnel.
+
+sudo apt-get install stunnel
+Edit /etc/default/stunnel4, change ENABLED=0 to ENABLED=1
+
+Edit /etc/stunnel/stunnel.conf as shown in the example below:
+
+; Sample stunnel configuration file by Michal Trojnara 2002-2006
+; Some options used here may not be adequate for your particular configuration
+; Please make sure you understand them (especially the effect of chroot jail)
+; Certificate/key is needed in server mode and optional in client mode
+;cert = /etc/stunnel/mail.pem
+;key = /etc/stunnel/mail.pem
+; Protocol version (all, SSLv2, SSLv3, TLSv1)
+sslVersion = SSLv3
+; Some security enhancements for UNIX systems - comment them out on Win32
+chroot = /var/lib/stunnel4/
+setuid = stunnel4
+setgid = stunnel4
+; PID is created inside chroot jail
+pid = /stunnel4.pid
+; Some performance tunings
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+;compression = rle
+; Workaround for Eudora bug
+;options = DONT_INSERT_EMPTY_FRAGMENTS
+; Authentication stuff
+;verify = 2
+; Don't forget to c_rehash CApath
+; CApath is located inside chroot jail
+;CApath = /certs
+; It's often easier to use CAfile
+;CAfile = /etc/stunnel/certs.pem
+; Don't forget to c_rehash CRLpath
+; CRLpath is located inside chroot jail
+;CRLpath = /crls
+; Alternatively you can use CRLfile
+;CRLfile = /etc/stunnel/crls.pem
+; Some debugging stuff useful for troubleshooting
+debug = 7
+output = /var/log/stunnel4/stunnel.log
+; Use it for client mode
+client = yes
+; Service-level configuration
+;[pop3s]
+;accept = 995
+;connect = 110
+[imaps]
+accept = 143
+connect = imap.gmail.com:993
+;[ssmtp]
+;accept = 465
+;connect = 25
+;[https]
+;accept = 443
+;connect = 80
+;TIMEOUTclose = 0
+; vim:ft=dosini
+Start up Stunnel
+
+sudo /etc/init.d/stunnel4 start
+Verify that the IMAP is listening on the local server.
+
+netstat -an | grep -iw LISTEN
+tcp 0 0 0.0.0.0:143 0.0.0.0:* LISTEN
+The following requires that your GMail account have IMAP enabled. This is not enabled by default. Replace username@gmail.com with your real email address. Replace password with your real password.
+
+telnet localhost 143
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+* OK Gimap ready for requests from 71.65.199.7 c5if2789008nfi.67
+)
+01 LOGIN username@gmail.com password
+01 OK username@gmail.com authenticated (Success)
+02 LOGOUT
+* BYE LOGOUT Requested
+02 OK 73 good day (Success)
+Connection closed by foreign host.
+That's it. If you're feeling adventourous you can use Hydra to brute force an account you own.
+
+./hydra -l yourfriend@gmail.com -P password.txt -V localhost imap
+
