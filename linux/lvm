@@ -1,0 +1,188 @@
+Mount LVM Volumes 
+---------------------
+(Used for System Recovery)
+
+- Boot from Live CD / USB Stick
+
+- Become root
+# sudo -i
+
+# sudo apt-get install lvm2
+
+# modprobe dm-mod
+
+- Activate the volume
+# vgchange -a y
+
+-----------------------
+    LVM Volume Ready
+-----------------------
+
+# lvm help
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+http://tldp.org/HOWTO/LVM-HOWTO/recipemovevgtonewsys.html
+Moving a volume group to another system
+
+13.6. Moving a volume group to another system
+
+
+It is quite easy to move a whole volume group to another system if, for example, a user department acquires a new server. To do this we use the vgexport and vgimport commands.
+[vgexport/vgimport is not necessary to move drives from one system to another. It is an administrative policy tool to prevent access to volumes in the time it takes to move them.]
+
+
+13.6.1. Unmount the file system
+First, make sure that no users are accessing files on the active volume, then unmount it
+# unmount /mnt/design/users
+          
+
+13.6.2. Mark the volume group inactive
+Marking the volume group inactive removes it from the kernel and prevents any further activity on it.
+
+# vgchange -an design
+    vgchange -- volume group "design" successfully deactivated
+          
+
+13.6.3. Export the volume group
+It is now necessary to export the volume group. This prevents it from being accessed on the ``old'' host system and prepares it to be removed.
+
+# vgexport design
+vgexport -- volume group "design" successfully exported
+          
+When the machine is next shut down, the disk can be unplugged and then connected to it's new machine
+
+
+======= Move the disk to the new machine ==========
+
+
+13.6.4. Import the volume group
+
+ When plugged into the new system it becomes /dev/sdb so an initial pvscan shows:
+
+# pvscan
+pvscan -- reading all physical volumes (this may take a while...)
+pvscan -- inactive PV "/dev/sdb1"  is in EXPORTED VG "design" [996 MB / 996 MB free]
+pvscan -- inactive PV "/dev/sdb2"  is in EXPORTED VG "design" [996 MB / 244 MB free]
+pvscan -- total: 2 [1.95 GB] / in use: 2 [1.95 GB] / in no VG: 0 [0]
+          
+
+We can now import the volume group (which also activates it) and mount the file system.
+
+If you are importing on an LVM 2 system, run:
+# vgimport design
+  Volume group "vg" successfully imported
+          
+If you are importing on an LVM 1 system, add the PVs that need to be imported:
+# vgimport design /dev/sdb1 /dev/sdb2
+vgimport -- doing automatic backup of volume group "design"
+vgimport -- volume group "design" successfully imported and activated
+          
+
+13.6.5. Activate the volume group
+ You must activate the volume group before you can access it.
+# vgchange -ay design
+          
+
+13.6.6. Mount the file system
+# mkdir -p /mnt/design/users
+# mount /dev/design/users /mnt/design/users
+          
+The file system is now available for use.
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+http://tldp.org/HOWTO/LVM-HOWTO/index.html
+LVM HOWTO
+
+
+Table of Contents
+Introduction
+1. Latest Version
+2. Disclaimer
+3. Contributors
+1. What is LVM?
+2. What is Logical Volume Management?
+2.1. Why would I want it?
+2.2. Benefits of Logical Volume Management on a Small System
+2.3. Benefits of Logical Volume Management on a Large System
+3. Anatomy of LVM
+3.1. volume group (VG)
+3.2. physical volume (PV)
+3.3. logical volume (LV)
+3.4. physical extent (PE)
+3.5. logical extent (LE)
+3.6. Tying it all together
+3.7. mapping modes (linear/striped)
+3.8. Snapshots
+4. Frequently Asked Questions
+4.1. LVM 2 FAQ
+4.2. LVM 1 FAQ
+5. Acquiring LVM
+5.1. Download the source
+5.2. Download the development source via CVS
+5.3. Before You Begin
+5.4. Initial Setup
+5.5. Checking Out Source Code
+5.6. Code Updates
+5.7. Starting a Project
+5.8. Hacking the Code
+5.9. Conflicts
+6. Building the kernel modules
+6.1. Building the device-mapper module
+6.2. Build the LVM 1 kernel module
+7. LVM 1 Boot time scripts
+7.1. Caldera
+7.2. Debian
+7.3. Mandrake
+7.4. Redhat
+7.5. Slackware
+7.6. SuSE
+8. LVM 2 Boot Time Scripts
+9. Building LVM from the Source
+9.1. Make LVM library and tools
+9.2. Install LVM library and tools
+9.3. Removing LVM library and tools
+10. Transitioning from previous versions of LVM to LVM 1.0.8
+10.1. Upgrading to LVM 1.0.8 with a non-LVM root partition
+10.2. Upgrading to LVM 1.0.8 with an LVM root partition and initrd
+11. Common Tasks
+11.1. Initializing disks or disk partitions
+11.2. Creating a volume group
+11.3. Activating a volume group
+11.4. Removing a volume group
+11.5. Adding physical volumes to a volume group
+11.6. Removing physical volumes from a volume group
+11.7. Creating a logical volume
+11.8. Removing a logical volume
+11.9. Extending a logical volume
+11.10. Reducing a logical volume
+11.11. Migrating data off of a physical volume
+12. Disk partitioning
+12.1. Multiple partitions on the same disk
+12.2. Sun disk labels
+13. Recipes
+13.1. Setting up LVM on three SCSI disks
+13.2. Setting up LVM on three SCSI disks with striping
+13.3. Add a new disk to a multi-disk SCSI system
+13.4. Taking a Backup Using Snapshots
+13.5. Removing an Old Disk
+13.6. Moving a volume group to another system
+13.7. Splitting a volume group
+13.8. Converting a root filesystem to LVM 1
+13.9. Recover physical volume metadata
+A. Dangerous Operations
+A.1. Restoring the VG UUIDs using uuid_fixer
+A.2. Sharing LVM volumes
+B. Reporting Errors and Bugs
+C. Contact and Links
+C.1. Mail lists
+C.2. Links

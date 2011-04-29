@@ -1,0 +1,236 @@
+Mount NFS Volumes as Client - Remotely
+----------------------------------------
+
+# sudo rmmod nfs
+# sudo modprobe nfs
+
+# sudo apt-get install openssh-server portmap nfs-common
+
+# sudo mkdir /media/remote_mount
+
+# sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.10.102:/remote_backup /media/remote_mount
+
+# showmount -e 192.168.10.102
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+
+http://www.cyberciti.biz/faq/how-to-ubuntu-nfs-server-configuration-howto/
+
+Ubuntu Linux NFS Server installation and Configuration
+by VIVEK GITE on DECEMBER 18, 2007 · 1 COMMENT
+
+Q. How do I install and configure NFS 4 Server under Ubuntu Linux ?
+A. In order to set NFS server you need to install the following packages:
+=> nfs-kernel-server - Linux NFS Server
+=> nfs-common - NFS Common programs
+=> portmap - The RPC portmapper
+
+
+Use apt-get command to install all required packages:
+$ sudo apt-get install nfs-kernel-server portmap nfs-common
+
+
+Sharing directory with /etc/exports
+
+The NFS file systems being exported / shared using /etc/exports file. You need to specify directory (file system) to share with rest of the nfs client computers. The file /etc/exports serves as the access control list for file systems which may be exported to NFS clients.
+$ sudo vi /etc/exports
+
+To export /data directory to 192.168.1.0/24 network enter the following in /etc/exports file:
+/data 192.168.1.0/24(rw,rsync)
+
+To export /sales to hostname tom and jerry, enter:
+/sales tom(ro,sync) jerry(ro,sync)
+
+To export /users to 192.168.1.0/24 in read write format, enter:
+/users 192.168.1.0/24(ro,sync) jerry(rw,fsid=0,insecure,no_subtree_check,async)
+
+Where,
+
+rw : Allow clients to read as well as write access
+ro : Read only access
+insecure : Tells the NFS server to use unpriveledged ports (ports > 1024).
+no_subtree_check : If the entire volume (/users) is exported, disabling this check will speed up transfers.
+async : async will speed up transfers.
+Save and close the file. Just restart nfs-server:
+$ sudo /etc/init.d/nfs-kernel-server restart
+
+Now your NFS sever is sharing /sales and /data directories.
+
+------------------------------------------------------
+
+How do I access shared directories from Linux client computer?
+
+Login to Linux desktop system and enter the following command to mount shared directories. First, create a mountpoint on your client computer:
+# mkdir /mnt/data
+
+Mount the server:
+# mount nfs-server:/data /mnt/data
+
+You can also use following syntax for NFS client version 4:
+# mount -t nfs4 -o proto=tcp,port=2049 nfs-server:/data /mnt/data
+
+OR
+# mount -t nfs4 -o proto=tcp,port=2049 192.168.1.100:/data /mnt/data
+
+Where,
+
+192.168.1.100 : NFS Server IP address
+proto=tcp,port=2049 : Force to use TCP protocol i.e. mount the NFS filesystem using TCP. The numeric value of the port to connect to the NFS server on. If the port number is 0 (the default) then query the remote host’s portmapper for the port number to use. If the remote host’s NFS daemon is not registered with its portmapper, the standard NFS port number 2049 is used instead.
+How do I access my files?
+
+To access shared files use regular commands or GUI file manager:
+$ cd /mnt/data
+$ ls
+$ mkdir office
+$ pwd
+
+See Linux NFS client how to for more information.
+
+---------------------------------------------------------
+
+To see mounted file system and available disk space use df command:
+$ df -h
+
+Output:
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/sda2              92G   23G   65G  26% /
+varrun               1013M  128K 1013M   1% /var/run
+varlock              1013M     0 1013M   0% /var/lock
+udev                 1013M   84K 1013M   1% /dev
+devshm               1013M     0 1013M   0% /dev/shm
+/dev/sda1              98G   22G   77G  23% /media/sda1
+/dev/sda5             274G   29G  245G  11% /share
+/dev/sdb2             230G  4.9G  213G   3% /backup.iscsi
+nfs-server:/data/     230G   31G  188G  14% /mnt/data
+How do I see all shared directories from client computer?
+
+
+Use showmount command to query the mount daemon (NFS Server) on a remote host for information about the state of the NFS server on that machine:
+$ showmount -a
+
+Output:
+All mount points on nfs-server:
+nfs-server:/olddisk
+nfs-server:/sales
+nfs-server:/data
+nfs-server:/mp3s-video
+nfs-server:/wwwroot
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+http://www.cyberciti.biz/tips/ubuntu-linux-nfs-client-configuration-to-mount-nfs-share.html
+Ubuntu Linux: NFS Client Configuration To Mount NFS Share
+
+NFS (Network File System) client allows you to access shared directory from Linux client. The computer sharing the directory is called the NFS server (it can be NAS server too) and the computers or devices connecting to that server are called clients. The clients need to use the mount command to access the shared directory.
+
+You need to install nfs-command package as follows (open terminal and type the following command):
+$ sudo apt-get update
+$ sudo apt-get install nfs-common
+
+
+Task: See The List Of All Shared Directories
+
+Type the following command:
+$ showmount -e server-Ip-address
+$ showmount -e 192.168.1.1
+
+Sample outputs from my 192.168.1.1 NFS server:
+
+Export list for 192.168.1.1:
+/viveks
+/Web
+/Usb
+/Recordings
+/Public
+/Network Recycle Bin 1
+/Multimedia
+/Download
+Task: Mount Shared Directory
+
+Now mount /viveks directory as follows>:
+$ sudo mkdir /nfs
+$ sudo mount -o soft,intr,rsize=8192,wsize=8192 192.168.1.1:/viveks /nfs
+$ df -h
+
+Sample outputs:
+
+/dev/sda5              477G    25G   428G   6% /
+none                   4.2G   398k   4.2G   1% /dev
+none                   4.2G   377k   4.2G   1% /dev/shm
+none                   4.2G   230k   4.2G   1% /var/run
+none                   4.2G      0   4.2G   0% /var/lock
+none                   4.2G      0   4.2G   0% /lib/init/rw
+192.168.1.1:/viveks    491G   208M   491G   1% /nfs
+How do I Access My Files Using NFS?
+
+Just go to mount point i.e. /nfs directory with the cd command:
+cd /nfs
+ls
+gedit file.c
+
+How Do I Mount NFS Automatically After Reboot?
+
+Edit /etc/fstab, enter:
+$ sudo vi /etc/fstab
+
+OR use gui text editor such as gedit:
+$ sudo gedit /etc/fstab
+
+Append the following line:
+
+192.168.1.1:/viveks  /nfs  nfs   soft,intr,rsize=8192,wsize=8192
+Save and close the file.
+
+How Do I Remove Mounted NFS Directory (unmount NFS)?
+
+Type the following command:
+$ cd
+$ sudo umount /nfs
+$ df -H
+
+
+-------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+
+http://www.handson.ca/tutorials/diy.html
+Install and Configure NFS (*nix file sharing)
+
+Install the NFS software on the server.
+# sudo apt-get install nfs-kernel-server
+# sudo apt-get install nfs-common-portmap
+
+Create the shared NFS directory in the users home directory.
+# mkdir /home/tom/nfsshare
+
+Change permissions/ownership. At the command prompt type:
+# chown tom:users /home/tom/nfsshare
+# chmod 755 /home/tom/nfsshare
+
+Configure NFS to share the directory
+
+Edit: /etc/exports. Add :
+/home/tom/nfsshare 192.168.1.0/255.255.255.0(rw)
+
+Edit: /etc/hosts.allow
+portmap: 192.168.1.0/255.255.255.255.0
+portmap: 255.255.255.255/0.0.0.0
+
+At the command prompt type:
+# exportfs -ra
+
+
+To automount the NFS directory on a client.
+
+Create a mount point on the client.
+# sudo mkdir /media/upload
+
+Edit: /etc/fstab (Edit the client's fstab file, not the server's)
+192.168.1.20:/home/tom/nfsshare /media/upload nfs users,rw	0	0
+
+At the command prompt type:
+# sudo mount -a
