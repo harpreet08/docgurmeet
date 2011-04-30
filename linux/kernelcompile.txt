@@ -1,0 +1,46 @@
+http://ubuntuguide.net/install-latest-kernel-2-6-37-2-6-38-in-ubuntu-10-04-from-ppa
+
+Install latest kernel 2.6.37 & 2.6.38 in Ubuntu 10.04 from PPA
+
+Ubuntu 11.04 Natty will use Linux Kernel 2.6.38 as its default kernel. And if you want to try this kernel & the latest 2.6.37 in Ubuntu 10.04 LTS, you can install it from this PPA.
+
+Open up a terminal window first and type following commands:
+To install kernel 2.6.38:
+# sudo add-apt-repository ppa:kernel-ppa/ppa
+# sudo apt-get update
+# sudo apt-get install linux-headers-2.6.38-1-generic linux-image-2.6.38-1-generic
+
+
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+
+In addition, for those who want to install 2.6.37 in Ubuntu 10.10(the latest Linux kernel downloaded from www.kernel.org) there’s also a compile and install way (following steps tried in Ubuntu 10.04)
+
+1. Download the latest kernel from www.kernel.org (so far it is kernel 2.6.37) and save it in the master directory (/home/user/ or ~/).
+
+2. Extract the package:
+# tar xvf linux-2.6.37.tar.bz2
+
+3. use default .config file:
+# sudo cp  /boot/config-2.6.32-21-generic ~/linux-2.6.37
+
+4. make and install:
+# cd ~/linux-2.6.37
+# make menuconfig
+# make
+# make modules_install
+# make install
+
+5. Create initrd:
+# sudo update-initramfs -k -c 2.6.37
+
+6. Update grub:
+# sudo update-grub
+
+7. Update Nvidia driver after reboot:
+# sudo sh -c "echo 'deb http://ppa.launchpad.net/nvidia-vdpau/ppa/Ubuntu lucid main' >> /etc/apt/sources.list"
+# sudo sh -c "echo 'deb-src http://ppa.launchpad.net/nvidia-vdpau/ppa/Ubuntu lucid main' >> /etc/apt/sources.list"
+
+# sudo apt-get update
+# sudo apt-get install nvidia-current nvidia-current-modaliases nvidia-settings
+
