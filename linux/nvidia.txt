@@ -1,3 +1,21 @@
+http://ubuntuguide.net/how-to-install-nvidia-graphics-driver-in-ubuntu-10-10-maverick-meerkat
+How to Install Nvidia Graphics Driver in Ubuntu 10.10 (Maverick Meerkat)
+
+Install from the default local repository:
+Open a terminal window from Applications ->Accessories menu,and run this command:
+sudo apt-get install nvidia-current
+
+then restart you computer,run the command to create the configuration file:
+sudo nvidia-xconfig
+
+Log out and back in ,and you can now change nvidia settings by System – > Administration -> Nvidia X server Settings
+
+
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+
+
+
 http://ubuntuguide.net/install-latest-nvidia-graphics-drivers-in-ubuntu-linux
 
 Install Nvidia Graphics Drivers with .Run file in Ubuntu Linux
