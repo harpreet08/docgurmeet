@@ -1,0 +1,152 @@
+http://blog.avirtualhome.com/2010/11/06/how-to-compile-a-ubuntu-10-10-maverick-kernel/
+
+
+How to compile a Ubuntu 10.10 (Maverick) kernel
+November 6, 2010 10:40 pm UTC | 7 Comments
+
+Ubuntu 10.10 was released in October and I have been writing articles on “How to compile a kernel for Ubuntu …” for a few releases and there is no exception for Ubuntu 10.10.
+The Ubuntu kernel developers have decided to change things up yet again for the Ubuntu 10.10 kernel, I guess it will change every Ubuntu release.
+
+Introduction
+git
+I’ll be using git to get the latest kernel version. This is my favorite way to get the sources and it is in my opinion the fastest way to make changes later on when you want to update your own kernel to the latest version.
+I suggest adding my Launchpad repository to your system. The repository holds the latest version of git and is usually updated within a day of a new release of git, follow the instructions on the page Git Packages for Ubuntu to add my repository. There is a version available for Ubuntu 10.10 as well.
+
+Architecture
+I am compiling the i386 version, if you want to compile for amd64 you need replace i386 for amd64 throughout this article.
+
+Flavor
+I choose the name core2 as the flavor name as for my personal use I’ll build a kernel for a Core2 processor. Besides the change of processor type in the configuration I also select support for 64GB as my laptop has 4GB, which is the main reason I started compiling my own kernels. I have some other changes but that’s beyond this article.
+
+Preparations
+Let’s get started by preparing our machine for compiling the Ubuntu Maverick kernel.
+Open a terminal.
+
+sudo su -
+apt-get install fakeroot build-essential
+apt-get install crash kexec-tools makedumpfile kernel-wedge
+apt-get build-dep linux
+apt-get install git-core libncurses5 libncurses5-dev
+apt-get install libelf-dev libdw-dev asciidoc binutils-dev
+exit
+Create a directory where you would like to build your kernel, this directory will hold the kernel source in a sub directory and all the deb files will end up in this folder. I choose /d1/development/kernel/maverick
+
+Getting the source
+cd /d1/development/kernel/maverick
+git clone git://kernel.ubuntu.com/ubuntu/ubuntu-maverick.git  source
+cd source
+The source code is installed in the directory source.
+
+Creating a branch
+We will create a branch in which we will be doing our modifications. That way the master branch will stay in tact which will make it a whole lot easier when we want to update our own Ubuntu 10.10 kernel to a newer version.
+
+To see all the available kernels available type the following command:
+
+git tag -l | sort -V
+The Ubuntu kernel developers tag each version as Ubuntu- and therefore we can checkout the version we want as
+
+git checkout Ubuntu-2.6.35-23.37 -b core2
+This will create a branch called core2.
+
+Creating a new config
+I’ll be using the method of creating a new flavor, this adds a bit more work but this way you can always compile the original kernels.
+
+We’ll use the generic flavor as the base for our own flavor being core2.
+
+cp debian.master/config/i386/config.flavour.generic debian.master/config/i386/config.flavour.core2
+fakeroot debian/rules clean
+debian/rules updateconfigs
+To make changes to the configuration file we need to edit the configuration file. The kernel developers have created a script to edit kernel configurations which has to be called through the debian/rules makefile, unfortunately you will have to go through all the flavors for this script to work properly.
+
+debian/rules editconfigs
+The script will ask you if you want to edit the particular configuration. You should not make changes to any of the configurations until you see the core2 configuration
+
+Do you want to edit config: i386/config.flavour.core2? [Y/n]
+Make your changes, save the configuration and then keep going until the script ends.
+
+When you’re done, make a backup of the config flavor file.
+
+cp debian.master/config/i386/config.flavour.core2 ../.
+Now we need to clean up the git tree in order to get ready for compilation.
+
+git reset --hard
+git clean -xdf
+Getting ready for compilation
+Because we are going to be creating a new flavor based on a existing flavor (generic in my case) we need to create some extra files. During compilation the process checks the previous release for some settings, as we’re creating a local flavor it doesn’t exist in the source, so we’re creating it. The previous release in this case is 2.6.35-23.36
+
+ls debian.master/abi
+cp debian.master/abi/2.6.35-23.36/i386/generic debian.master/abi/2.6.35-23.36/i386/core2
+cp debian.master/abi/2.6.35-23.36/i386/generic.modules debian.master/abi/2.6.35-23.36/i386/core2.modules
+Copy our flavored configuration file back.
+
+cp ../config.flavour.core2 debian.master/config/i386/
+We need to edit some files:
+
+File: debian.master/etc/getabis
+Search for the line:
+
+getall i386 generic generic-pae virtual
+Change it in:
+
+getall i386 generic generic-pae virtual core2
+File: debian.master/rules.d/i386.mk
+Search for the line:
+
+flavours        = generic generic-pae virtual
+Change it in:
+
+flavours        = generic generic-pae virtual core2
+We need to make the compilation process aware of our own flavor we want to compile.
+
+cp debian.master/control.d/vars.generic debian.master/control.d/vars.core2
+You can edit the file and make it your own.
+
+arch="i386 amd64"
+supported="Core2"
+target="Geared toward Core2 desktop systems."
+desc="x86/x86_64"
+bootloader="grub-pc | grub | lilo (>= 19.1)"
+provides="kvm-api-4, redhat-cluster-modules, ivtv-modules, ndiswrapper-modules-1.9"
+We need to commit our changes in the git repository.
+
+git add .
+git commit -a -m "Core2 modifications"
+The text after -m is the message you add to your commit.
+
+Compilation
+It’s finally time for compiling but before we can start the compilation process there is one more step to do. I didn’t put this in the Preparations section as you need to the following step whether you make changes to the configuration or not
+
+fakeroot debian/rules clean
+All the packages will be created in the directory /d1/development/kernel/maverick
+Create independent packages:
+
+skipabi=true skipmodule=true fakeroot debian/rules binary-indep
+The above statement will create the following deb files:
+
+linux-headers-2.6.35-23_2.6.35-23.37_all.deb
+linux-tools-common_2.6.35-23.37_all.deb
+linux-doc_2.6.35-23.37_all.deb
+linux-source-2.6.35_2.6.35-23.37_all.deb
+Create the tools package:
+
+skipabi=true skipmodule=true fakeroot debian/rules binary-perarch
+The above statement will create the following deb file:
+
+linux-tools-2.6.35-23_2.6.35-23.37_i386.deb
+Create the flavour depended files:
+
+skipabi=true skipmodule=true fakeroot debian/rules binary-core2
+The above statement will create the following deb files:
+
+linux-headers-2.6.35-23-core2_2.6.35-23.37_i386.deb
+linux-image-2.6.35-23-core2_2.6.35-23.37_i386.deb
+Installation
+After the compilation is finished we’ll have the above packages in the parent directory.
+
+To install the files
+
+cd ..
+sudo dpkg -i  linux-headers-2.6.35-23-core2_2.6.35-23.37_i386.deb linux-headers-2.6.35-23_2.6.35-23.37_all.deb linux-image-2.6.35-23-core2_2.6.35-23.37_i386.deb
+Check your bootloader if the newly installed kernel is the default one, for grub check the file /boot/grub/menu.lst or if you run grub2 check /boot/grub/grub.cfg
+
+Reboot and enjoy your newly installed kernel.

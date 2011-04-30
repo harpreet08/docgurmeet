@@ -1,0 +1,50 @@
+http://ubuntuguide.net/install-latest-nvidia-graphics-drivers-in-ubuntu-linux
+
+Install Nvidia Graphics Drivers with .Run file in Ubuntu Linux
+
+This tutorial shows how to install latest nvidia graphics drivers download from nvidia homepage in ubuntu.
+If you didn’t installed an old graphics driver in your machine,please skip step4 and step6
+
+Step1: Backup xorg.conf
+Use this command in terminal to backup:
+sudo cp /etc/X11/xorg.conf /etc/X11/xorg.conf.backup
+So,if encounter something error,use following to restore:
+sudo cp /etc/X11/xorg.conf.backup /etc/X11/xorg.conf
+
+Step2:Download latest nvidia graphics drivers
+Download the latest version from Nvidia download page:http://www.nvidia.com/object/unix.html
+By now,the latest version is 190.42,so we can also use this command to download:
+For amd64:
+wget http://us.download.nvidia.com/XFree86/Linux-x86_64/190.42/NVIDIA-Linux-x86_64-190.42-pkg2.run
+For i386:
+wget http://us.download.nvidia.com/XFree86/Linux-x86/190.42/NVIDIA-Linux-x86-190.42-pkg1.run
+Make this executable(change filename to which you downloaded):
+chmod u+x NVIDIA-Linux-x86_64-190.42-pkg2.run
+
+Step3:Install compiling tool
+sudo apt-get install linux-headers-$(uname -r) build-essential
+
+Step4: If you have installed an old version graphics driver,search nvidia in “Applications->Ubuntu Software Center->Installed Software” and remove this old driver.Then run this in terminal:
+sudo apt-get autoremove
+
+Step5:Close gdm (You need to do following steps in text mode,so you’d better write following code in paper)
+Press Ctrl+Alt+F1 key combination and login from tty1.
+Tip: Don’t use number pad to input numbers if there are numbers in password,this won’t take effect.
+Once login,use this command to close X server:
+sudo /etc/init.d/gdm stop
+
+Step6:Delete the remains of old graphics driver
+sudo rmmod nvidia
+sudo rm -r -f /lib/modules/$(uname -r)/kernel/drivers/video/nvidia
+change 2.6.31-14-generic to your ubuntu kernel version
+
+Step7:Install this latest nvidia graphics driver:
+sudo ./NVIDIA-Linux-x86_64-190.42-pkg2.run
+Accept license and start install
+
+Step8 Restart gdm
+sudo /etc/init.d/gdm start
+
+Now,check in System->Preferences->Nvidia X sever settings
+
+
