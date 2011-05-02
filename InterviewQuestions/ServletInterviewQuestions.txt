@@ -1,0 +1,29 @@
+http://www.techinterviews.com/servlet-interview-questions
+
+Servlet interview questions
+By admin | September 1, 2004
+What is a servlet?
+Servlets are modules that extend request/response-oriented servers,such as Java-enabled web servers. For example, a servlet might be responsible for taking data in an HTML order-entry form and applying the business logic used to update a company’s order database. Servlets are to servers what applets are to browsers. Unlike applets, however, servlets have no graphical user interface.
+
+Whats the advantages using servlets over using CGI?
+Servlets provide a way to generate dynamic documents that is both easier to write and faster to run. Servlets also address the problem of doing server-side programming with platform-specific APIs: they are developed with the Java Servlet API, a standard Java extension.
+What are the general advantages and selling points of Servlets?
+A servlet can handle multiple requests concurrently, and synchronize requests. This allows servlets to support systems such as online
+real-time conferencing. Servlets can forward requests to other servers and servlets. Thus servlets can be used to balance load among several servers that mirror the same content, and to partition a single logical service over several servers, according to task type or organizational boundaries.
+Which package provides interfaces and classes for writing servlets? javax
+What’s the Servlet Interface?
+The central abstraction in the Servlet API is the Servlet interface. All servlets implement this interface, either directly or, more
+commonly, by extending a class that implements it such as HttpServlet.Servlets > Generic Servlet > HttpServlet > MyServlet.
+The Servlet interface declares, but does not implement, methods that manage the servlet and its communications with clients. Servlet writers provide some or all of these methods when developing a servlet.
+When a servlet accepts a call from a client, it receives two objects. What are they?
+ServletRequest (which encapsulates the communication from the client to the server) and ServletResponse (which encapsulates the communication from the servlet back to the client). ServletRequest and ServletResponse are interfaces defined inside javax.servlet package.
+What information does ServletRequest allow access to?
+Information such as the names of the parameters passed in by the client, the protocol (scheme) being used by the client, and the names
+of the remote host that made the request and the server that received it. Also the input stream, as ServletInputStream.Servlets use the input stream to get data from clients that use application protocols such as the HTTP POST and GET methods.
+What type of constraints can ServletResponse interface set on the client?
+It can set the content length and MIME type of the reply. It also provides an output stream, ServletOutputStream and a Writer through
+which the servlet can send the reply data.
+Explain servlet lifecycle?
+Each servlet has the same life cycle: first, the server loads and initializes the servlet (init()), then the servlet handles zero or more client requests (service()), after that the server removes the servlet (destroy()). Worth noting that the last step on some servers is done when they shut down.
+How does HTTP Servlet handle client requests?
+An HTTP Servlet handles client requests through its service method. The service method supports standard HTTP client requests by dispatching each request to a method designed to handle that request.
