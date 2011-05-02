@@ -255,3 +255,75 @@ finally
 
 What is the Locale class? The Locale class is used to tailor program output to the conventions of a particular geographic, political, or cultural region.
 What must a class do to implement an interface? It must provide all of the methods in the interface and identify the interface in its implements clause.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/large-collection-of-java-interview-questions
+Large collection of Java interview questions
+
+What is the difference between an Abstract class and Interface ?
+What is user defined exception ?
+What do you know about the garbage collector ?
+What is the difference between C++ & Java ?
+Explain RMI Architecture?
+How do you communicate in between Applets & Servlets ?
+What is the use of Servlets ?
+What is JDBC? How do you connect to the Database ?
+In an HTML form I have a Button which makes us to open another page in 15 seconds. How will do you that ?
+What is the difference between Process and Threads ?
+What is the difference between RMI & Corba ?
+What are the services in RMI ?
+How will you initialize an Applet ?
+What is the order of method invocation in an Applet ?
+When is update method called ?
+How will you pass values from HTML page to the Servlet ?
+Have you ever used HashTable and Dictionary ?
+How will you communicate between two Applets ?
+What are statements in JAVA ?
+What is JAR file ?
+What is JNI ?
+What is the base class for all swing components ?
+What is JFC ?
+What is Difference between AWT and Swing ?
+Considering notepad/IE or any other thing as process, What will happen if you start notepad or IE 3 times? Where 3 processes are started or 3 threads are started ?
+How does thread synchronization occurs inside a monitor ?
+How will you call an Applet using a Java Script function ?
+Is there any tag in HTML to upload and download files ?
+Why do you Canvas ?
+How can you push data from an Applet to Servlet ?
+What are 4 drivers available in JDBC ?
+How you can know about drivers and database information ?
+If you are truncated using JDBC, How can you know ..that how much data is truncated ?
+And What situation , each of the 4 drivers used ?
+How will you perform transaction using JDBC ?
+In RMI, server object first loaded into the memory and then the stub reference is sent to the client ? or whether a stub reference is directly sent to the client ?
+Suppose server object is not loaded into the memory, and the client request for it , what will happen?
+What is serialization ?
+Can you load the server object dynamically? If so, what are the major 3 steps involved in it ?
+What is difference RMI registry and OSAgent ?
+To a server method, the client wants to send a value 20, with this value exceeds to 20,. a message should be sent to the client ? What will you do for achieving for this ?
+What are the benefits of Swing over AWT ?
+Where the CardLayout is used ?
+What is the Layout for ToolBar ?
+What is the difference between Grid and GridbagLayout ?
+How will you add panel to a Frame ?
+What is the corresponding Layout for Card in Swing ?
+What is light weight component ?
+Can you run the product development on all operating systems ?
+What is the webserver used for running the Servlets ?
+What is Servlet API used for connecting database ?
+What is bean ? Where it can be used ?
+What is difference in between Java Class and Bean ?
+Can we send object using Sockets ?
+What is the RMI and Socket ?
+How to communicate 2 threads each other ?
+What are the files generated after using IDL to Java Compilet ?
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
