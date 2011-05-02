@@ -1,0 +1,73 @@
+http://www.techinterviews.com/java-applet-interview-questions
+
+Java applet interview questions
+By admin | September 1, 2004
+Thanks to Sachin Rastogi for sending this set in.
+
+What is an Applet? Should applets have constructors?
+- Applets are small programs transferred through Internet, automatically installed and run as part of web-browser. Applets implements functionality of a client. Applet is a dynamic and interactive program that runs inside a Web page displayed by a Java-capable browser. We don’t have the concept of Constructors in Applets. Applets can be invoked either through browser or through Appletviewer utility provided by JDK.
+What are the Applet’s Life Cycle methods? Explain them? - Following are methods in the life cycle of an Applet:
+init() method - called when an applet is first loaded. This method is called only once in the entire cycle of an applet. This method usually intialize the variables to be used in the applet.
+start( ) method - called each time an applet is started.
+paint() method - called when the applet is minimized or refreshed. This method is used for drawing different strings, figures, and images on the applet window.
+stop( ) method - called when the browser moves off the applet’s page.
+destroy( ) method - called when the browser is finished with the applet.
+
+What is the sequence for calling the methods by AWT for applets? - When an applet begins, the AWT calls the following methods, in this sequence:
+init()
+start()
+paint()
+When an applet is terminated, the following sequence of method calls takes place :
+
+stop()
+destroy()
+How do Applets differ from Applications? - Following are the main differences: Application: Stand Alone, doesn’t need
+web-browser. Applet: Needs no explicit installation on local machine. Can be transferred through Internet on to the local machine and may run as part of web-browser. Application: Execution starts with main() method. Doesn’t work if main is not there. Applet: Execution starts with init() method. Application: May or may not be a GUI. Applet: Must run within a GUI (Using AWT). This is essential feature of applets.
+Can we pass parameters to an applet from HTML page to an applet? How? - We can pass parameters to an applet using <param> tag in the following way:
+<param name=”param1″ value=”value1″>
+<param name=”param2″ value=”value2″>
+Access those parameters inside the applet is done by calling getParameter() method inside the applet. Note that getParameter() method returns String value corresponding to the parameter name.
+
+How do we read number information from my applet’s parameters, given that Applet’s getParameter() method returns a string?
+- Use the parseInt() method in the Integer Class, the Float(String) constructor or parseFloat() method in the Class Float, or the
+Double(String) constructor or parseDoulbl() method in the class Double.
+How can I arrange for different applets on a web page to communicate with each other?
+- Name your applets inside the Applet tag and invoke AppletContext’s getApplet() method in your applet code to obtain references to the
+other applets on the page.
+How do I select a URL from my Applet and send the browser to that page? - Ask the applet for its applet context and invoke showDocument() on that context object.
+URL targetURL;
+String URLString
+AppletContext context = getAppletContext();
+try
+{
+	targetURL = new URL(URLString);
+}
+catch (MalformedURLException e)
+{
+	// Code for recover from the exception
+}
+context. showDocument (targetURL);
+Can applets on different pages communicate with each other?
+- No, Not Directly. The applets will exchange the information at one meeting place either on the local file system or at remote system.
+How do I determine the width and height of my application?
+- Use the getSize() method, which the Applet class inherits from the Component class in the Java.awt package. The getSize() method returns the size of the applet as a Dimension object, from which you extract separate width, height fields. The following code snippet explains this:
+Dimension dim = getSize();
+int appletwidth = dim.width();
+int appletheight = dim.height();
+Which classes and interfaces does Applet class consist? - Applet class consists of a single class, the Applet class and three interfaces: AppletContext, AppletStub, and AudioClip.
+What is AppletStub Interface?
+- The applet stub interface provides the means by which an applet and the browser communicate. Your code will not typically implement this interface.
+What tags are mandatory when creating HTML to display an applet?
+name, height, width
+code, name
+codebase, height, width
+code, height, width
+Correct answer is d.
+
+What are the Applet’s information methods?
+- The following are the Applet’s information methods: getAppletInfo() method: Returns a string describing the applet, its author, copyright information, etc. getParameterInfo( ) method: Returns an array of string describing the applet’s parameters.
+What are the steps involved in Applet development? - Following are the steps involved in Applet development:
+Create/Edit a Java source file. This file must contain a class which extends Applet class.
+Compile your program using javac
+Execute the appletviewer, specifying the name of your applet’s source file or html file. In case the applet information is stored in html file then Applet can be invoked using java enabled web browser.
+Which method is used to output a string to an applet? Which function is this method included in? - drawString( ) method is used to output a string to an applet. This method is included in the paint method of the Applet.
