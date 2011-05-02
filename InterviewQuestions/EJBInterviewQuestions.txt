@@ -73,3 +73,29 @@ What is the difference between a “Coarse Grained” Entity Bean and a “Fine 
 
 
 What is EJBDoclet? - EJBDoclet is an open source JavaDoc doclet that generates a lot of the EJB related source files from custom JavaDoc comments tags embedded in the EJB source file.
+
+
+
+I want to know what are the transactions used when there is one to many relationship between two tables
+
+
+what is the difference between EJBContext and SessionContext objects? - Session beans use a subclass of EJBContext, called SessionContext.
+
+
+How to communicate a session bean or an entity bean from a jsp page
+
+
+How to position the jar files of struts in an apache server
+
+
+When a value in a table changes will the value in the CMP Entity bean change as well
+
+
+How to connect a entity bean from a session bean?
+
+
+Why does the EJB architecture need Home and Remote interface? What is significance of both? Can both class reside on different JVM?
+
+
+How to use SessionContext in EJB?
+
