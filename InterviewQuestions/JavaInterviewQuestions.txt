@@ -326,4 +326,38 @@ What are the files generated after using IDL to Java Compilet ?
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
 
+http://www.techinterviews.com/java-interview-questions-and-answers-2
 
+
+Java interview questions and answers
+By admin | September 19, 2004
+What is the Collections API? - The Collections API is a set of classes and interfaces that support operations on collections of objects
+What is the List interface? - The List interface provides support for ordered collections of objects.
+
+What is the Vector class? - The Vector class provides the capability to implement a growable array of objects
+What is an Iterator interface? - The Iterator interface is used to step through the elements of a Collection
+Which java.util classes and interfaces support event handling? - The EventObject class and the EventListener interface support event processing
+What is the GregorianCalendar class? - The GregorianCalendar provides support for traditional Western calendars
+What is the Locale class? - The Locale class is used to tailor program output to the conventions of a particular geographic, political, or cultural region
+What is the SimpleTimeZone class? - The SimpleTimeZone class provides support for a Gregorian calendar
+What is the Map interface? - The Map interface replaces the JDK 1.1 Dictionary class and is used associate keys with values
+What is the highest-level event class of the event-delegation model? - The java.util.EventObject class is the highest-level class in the event-delegation class hierarchy
+What is the Collection interface? - The Collection interface provides support for the implementation of a mathematical bag - an unordered collection of objects that may contain duplicates
+What is the Set interface? - The Set interface provides methods for accessing the elements of a finite mathematical set. Sets do not allow duplicate elements
+What is the purpose of the enableEvents() method? - The enableEvents() method is used to enable an event for a particular object. Normally, an event is enabled when a listener is added to an object for a particular event. The enableEvents() method is used by objects that handle events by overriding their event-dispatch methods.
+What is the ResourceBundle class? - The ResourceBundle class is used to store locale-specific resources that can be loaded by a program to tailor the program’s appearance to the particular locale in which it is being run.
+What is the difference between yielding and sleeping? - When a task invokes its yield() method, it returns to the ready state. When a task invokes its sleep() method, it returns to the waiting state.
+When a thread blocks on I/O, what state does it enter? - A thread enters the waiting state when it blocks on I/O.
+When a thread is created and started, what is its initial state? - A thread is in the ready state after it has been created and started.
+What invokes a thread’s run() method? - After a thread is started, via its start() method or that of the Thread class, the JVM invokes the thread’s run() method when the thread is initially executed.
+What method is invoked to cause an object to begin executing as a separate thread? - The start() method of the Thread class is invoked to cause an object to begin executing as a separate thread.
+What is the purpose of the wait(), notify(), and notifyAll() methods? - The wait(),notify(), and notifyAll() methods are used to provide an efficient way for threads to wait for a shared resource. When a thread executes an object’s wait() method, it enters the waiting state. It only enters the ready state after another thread invokes the object’s notify() or notifyAll() methods.
+What are the high-level thread states? - The high-level thread states are ready, running, waiting, and dead
+What happens when a thread cannot acquire a lock on an object? - If a thread attempts to execute a synchronized method or synchronized statement and is unable to acquire an object’s lock, it enters the waiting state until the lock becomes available.
+How does multithreading take place on a computer with a single CPU? - The operating system’s task scheduler allocates execution time to multiple tasks. By quickly switching between executing tasks, it creates the impression that tasks execute sequentially.
+What happens when you invoke a thread’s interrupt method while it is sleeping or waiting? - When a task’s interrupt() method is executed, the task enters the ready state. The next time the task enters the running state, an InterruptedException is thrown.
+What state is a thread in when it is executing? - An executing thread is in the running state
+What are three ways in which a thread can enter the waiting state? - A thread can enter the waiting state by invoking its sleep() method, by blocking on I/O, by unsuccessfully attempting to acquire an object’s lock, or by invoking an object’s wait() method. It can also enter the waiting state by invoking its (deprecated) suspend() method.
+What method must be implemented by all threads? - All tasks must implement the run() method, whether they are a subclass of Thread or implement the Runnable interface.
+What are the two basic ways in which classes that can be run as threads may be defined? - A thread class may be declared as a subclass of Thread, or it may implement the Runnable interface.
+How can you store international / Unicode characters into a cookie? - One way is, before storing the cookie URLEncode it. URLEnocder.encoder(str); And use URLDecoder.decode(str) when you get the stored cookie.

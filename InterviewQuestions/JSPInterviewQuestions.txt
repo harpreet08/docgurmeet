@@ -1,7 +1,7 @@
 http://www.techinterviews.com/jsp-interview-questions-and-answers
 
 JSP interview questions and answers
-By admin | April 25, 2004
+
 What is JSP? Describe its concept. JSP is a technology that combines HTML/XML markup languages and elements of Java programming Language to return dynamic content to the Web client, It is normally used to handle Presentation logic of a web application, although it may have business logic.
 What are the lifecycle phases of a JSP?
 JSP page looks like a HTML page but is a servlet. When presented with JSP page the JSP engine does the following 7 phases.
@@ -44,3 +44,221 @@ Complex operations can be reduced to a significantly simpler form with custom ta
 Custom tags require quite a bit more work to set up than do beans.
 Custom tags usually define relatively self-contained behavior, whereas beans are often defined in one servlet and used in a different servlet or JSP page.
 Custom tags are available only in JSP 1.1 and later, but beans can be used in all JSP 1.x versions.
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/common-jsp-interview-questions
+Common JSP interview questions
+
+What are the implicit objects? - Implicit objects are objects that are created by the web container and contain information related to a particular request, page, or application. They are: request, response, pageContext, session, application, out, config, page, exception.
+
+
+Is JSP technology extensible? - Yes. JSP technology is extensible through the development of custom actions, or tags, which are encapsulated in tag libraries.
+
+
+How can I implement a thread-safe JSP page? What are the advantages and Disadvantages of using it? - You can make your JSPs thread-safe by having them implement the SingleThreadModel interface. This is done by adding the directive <%@ page isThreadSafe="false" %> within your JSP page. With this, instead of a single instance of the servlet generated for your JSP page loaded in memory, you will have N instances of the servlet loaded and initialized, with the service method of each instance effectively synchronized. You can typically control the number of instances (N) that are instantiated for all servlets implementing SingleThreadModel through the admin screen for your JSP engine. More importantly, avoid using the <%! DECLARE %>tag for variables. If you do use this tag, then you should set isThreadSafe to true, as mentioned above. Otherwise, all requests to that page will access those variables, causing a nasty race condition. SingleThreadModel is not recommended for normal use. There are many pitfalls, including the example above of not being able to use <%! %>. You should try really hard to make them thread-safe the old fashioned way: by making them thread-safe
+
+
+How does JSP handle run-time exceptions? - You can use the errorPage attribute of the page directive to have uncaught run-time exceptions automatically forwarded to an error processing page. For example: <%@ page errorPage="error.jsp" %>
+redirects the browser to the JSP page error.jsp if an uncaught exception is encountered during request processing. Within error.jsp, if you indicate that it is an error-processing page, via the directive: <%@ page isErrorPage="true" %> Throwable object describing the exception may be accessed within the error page via the exception implicit object. Note: You must always use a relative URL as the value for the errorPage attribute.
+
+
+How do I prevent the output of my JSP or Servlet pages from being cached by the browser? - You will need to set the appropriate HTTP header attributes to prevent the dynamic content output by the JSP page from being cached by the browser. Just execute the following scriptlet at the beginning of your JSP pages to prevent them from being cached at the browser. You need both the statements to take care of some of the older browser versions.
+<%
+response.setHeader("Cache-Control","no-store"); //HTTP 1.1
+response.setHeader("Pragma","no-cache"); //HTTP 1.0
+response.setDateHeader ("Expires", 0); //prevents caching at the proxy server
+%>
+
+
+
+How do I use comments within a JSP page? - You can use “JSP-style” comments to selectively block out code while debugging or simply to comment your scriptlets. JSP comments are not visible at the client. For example:
+	<%-- the scriptlet is now commented out
+	<%
+	out.println("Hello World");
+	%>
+	--%>
+You can also use HTML-style comments anywhere within your JSP page. These comments are visible at the client. For example:
+
+<!-- (c) 2004 -->
+Of course, you can also use comments supported by your JSP scripting language within your scriptlets. For example, assuming Java is the scripting language, you can have:
+
+	<%
+	//some comment
+	/**
+	yet another comment
+	**/
+	%>
+Response has already been commited error. What does it mean? - This error show only when you try to redirect a page after you already have written something in your page. This happens because HTTP specification force the header to be set up before the lay out of the page can be shown (to make sure of how it should be displayed, content-type=”text/html” or “text/xml” or “plain-text” or “image/jpg”, etc.) When you try to send a redirect status (Number is line_status_402), your HTTP server cannot send it right now if it hasn’t finished to set up the header. If not starter to set up the header, there are no problems, but if it ’s already begin to set up the header, then your HTTP server expects these headers to be finished setting up and it cannot be the case if the stream of the page is not over… In this last case it’s like you have a file started with <HTML Tag><Some Headers><Body>some output (like testing your variables.) Before you indicate that the file is over (and before the size of the page can be setted up in the header), you try to send a redirect status. It s simply impossible due to the specification of HTTP 1.0 and 1.1
+
+
+How do I use a scriptlet to initialize a newly instantiated bean? - A jsp:useBean action may optionally have a body. If the body is specified, its contents will be automatically invoked when the specified bean is instantiated. Typically, the body will contain scriptlets or jsp:setProperty tags to initialize the newly instantiated bean, although you are not restricted to using those alone.
+The following example shows the “today” property of the Foo bean initialized to the current date when it is instantiated. Note that here, we make use of a JSP expression within the jsp:setProperty action.
+<jsp:useBean id="foo" class="com.Bar.Foo" >
+<jsp:setProperty name="foo" property="today"
+value="<%=java.text.DateFormat.getDateInstance().format(new java.util.Date()) %>"/ >
+<%-- scriptlets calling bean setter methods go here --%>
+</jsp:useBean >
+
+
+How can I enable session tracking for JSP pages if the browser has disabled cookies? - We know that session tracking uses cookies by default to associate a session identifier with a unique user. If the browser does not support cookies, or if cookies are disabled, you can still enable session tracking using URL rewriting. URL rewriting essentially includes the session ID within the link itself as a name/value pair. However, for this to be effective, you need to append the session ID for each and every link that is part of your servlet response. Adding the session ID to a link is greatly simplified by means of of a couple of methods: response.encodeURL() associates a session ID with a given URL, and if you are using redirection, response.encodeRedirectURL() can be used by giving the redirected URL as input. Both encodeURL() and encodeRedirectedURL() first determine whether cookies are supported by the browser; if so, the input URL is returned unchanged since the session ID will be persisted as a cookie. Consider the following example, in which two JSP files, say hello1.jsp and hello2.jsp, interact with each other. Basically, we create a new session within hello1.jsp and place an object within this session. The user can then traverse to hello2.jsp by clicking on the link present within the page.Within hello2.jsp, we simply extract the object that was earlier placed in the session and display its contents. Notice that we invoke the encodeURL() within hello1.jsp on the link used to invoke hello2.jsp; if cookies are disabled, the session ID is automatically appended to the URL, allowing hello2.jsp to still retrieve the session object. Try this example first with cookies enabled. Then disable cookie support, restart the brower, and try again. Each time you should see the maintenance of the session across pages. Do note that to get this example to work with cookies disabled at the browser, your JSP engine has to support URL rewriting.
+	hello1.jsp
+	<%@ page session="true" %>
+	<%
+	Integer num = new Integer(100);
+	session.putValue("num",num);
+	String url =response.encodeURL("hello2.jsp");
+	%>
+	<a href='<%=url%>'>hello2.jsp</a>
+	hello2.jsp
+	<%@ page session="true" %>
+	<%
+	Integer i= (Integer )session.getValue("num");
+	out.println("Num value in session is "+i.intValue());
+
+
+How can I declare methods within my JSP page? - You can declare methods for use within your JSP page as declarations. The methods can then be invoked within any other methods you declare, or within JSP scriptlets and expressions. Do note that you do not have direct access to any of the JSP implicit objects like request, response, session and so forth from within JSP methods. However, you should be able to pass any of the implicit JSP variables as parameters to the methods you declare. For example:
+	<%!
+	public String whereFrom(HttpServletRequest req) {
+	HttpSession ses = req.getSession();
+	...
+	return req.getRemoteHost();
+	}
+	%>
+	<%
+	out.print("Hi there, I see that you are coming in from ");
+	%>
+	<%= whereFrom(request) %>
+	Another Example
+	file1.jsp:
+	<%@page contentType="text/html"%>
+	<%!
+	public void test(JspWriter writer) throws IOException{
+	writer.println("Hello!");
+	}
+	%>
+	file2.jsp
+	<%@include file="file1.jsp"%>
+	<html>
+	<body>
+	<%test(out);% >
+	</body>
+	</html>
+
+
+Is there a way I can set the inactivity lease period on a per-session basis? - Typically, a default inactivity lease period for all sessions is set within your JSP engine admin screen or associated properties file. However, if your JSP engine supports the Servlet 2.1 API, you can manage the inactivity lease period on a per-session basis. This is done by invoking the HttpSession.setMaxInactiveInterval() method, right after the session has been created. For example:
+	<%
+	session.setMaxInactiveInterval(300);
+	%>
+would reset the inactivity period for this session to 5 minutes. The inactivity interval is set in seconds.
+
+
+
+How can I set a cookie and delete a cookie from within a JSP page? - A cookie, mycookie, can be deleted using the following scriptlet:
+	<%
+	//creating a cookie
+	Cookie mycookie = new Cookie("aName","aValue");
+	response.addCookie(mycookie);
+	//delete a cookie
+	Cookie killMyCookie = new Cookie("mycookie", null);
+	killMyCookie.setMaxAge(0);
+	killMyCookie.setPath("/");
+	response.addCookie(killMyCookie);
+	%>
+
+
+How does a servlet communicate with a JSP page? - The following code snippet shows how a servlet instantiates a bean and initializes it with FORM data posted by a browser. The bean is then placed into the request, and the call is then forwarded to the JSP page, Bean1.jsp, by means of a request dispatcher for downstream processing.
+	public void doPost (HttpServletRequest request, HttpServletResponse response) {
+	try {
+		govi.FormBean f = new govi.FormBean();
+		String id = request.getParameter("id");
+		f.setName(request.getParameter("name"));
+		f.setAddr(request.getParameter("addr"));
+		f.setAge(request.getParameter("age"));
+		//use the id to compute
+		//additional bean properties like info
+		//maybe perform a db query, etc.
+		// . . .
+		f.setPersonalizationInfo(info);
+		request.setAttribute("fBean",f);
+		getServletConfig().getServletContext().getRequestDispatcher
+                      ("/jsp/Bean1.jsp").forward(request, response);
+		} catch (Exception ex) {
+	. . .
+	   }
+	}
+The JSP page Bean1.jsp can then process fBean, after first extracting it from the default request scope via the useBean action.
+
+jsp:useBean id="fBean" class="govi.FormBean" scope="request"
+/ jsp:getProperty name="fBean" property="name"
+/ jsp:getProperty name="fBean" property="addr"
+/ jsp:getProperty name="fBean" property="age"
+/ jsp:getProperty name="fBean" property="personalizationInfo" /
+
+
+How do I have the JSP-generated servlet subclass my own custom servlet class, instead of the default?
+One should be very careful when having JSP pages extend custom servlet classes as opposed to the default one generated by the JSP engine. In doing so, you may lose out on any advanced optimization that may be provided by the JSP engine. In any case, your new superclass has to fulfill the contract with the JSP engine by:
+Implementing the HttpJspPage interface, if the protocol used is HTTP, or implementing JspPage otherwise Ensuring that all the methods in the Servlet interface are declared final Additionally, your servlet superclass also needs to do the following:
+The service() method has to invoke the _jspService() method
+The init() method has to invoke the jspInit() method
+The destroy() method has to invoke jspDestroy()
+If any of the above conditions are not satisfied, the JSP engine may throw a translation error.
+Once the superclass has been developed, you can have your JSP extend it as follows:
+
+	<%@ page extends="packageName.ServletName" %>
+How can I prevent the word "null" from appearing in my HTML input text fields when I populate them with a resultset that has null values? - You could make a simple wrapper function, like
+	<%!
+	String blanknull(String s) {
+	return (s == null) ? "" : s;
+	}
+	%>
+	then use it inside your JSP form, like
+	<input type="text" name="shoesize" value="<%=blanknull(shoesize)% >" >
+
+
+How can I get to print the stacktrace for an exception occuring within my JSP page? - By printing out the exception’s stack trace, you can usually diagonse a problem better when debugging JSP pages. By looking at a stack trace, a programmer should be able to discern which method threw the exception and which method called that method. However, you cannot print the stacktrace using the JSP out implicit variable, which is of type JspWriter. You will have to use a PrintWriter object instead. The following snippet demonstrates how you can print a stacktrace from within a JSP error page:
+	<%@ page isErrorPage="true" %>
+	<%
+	out.println("	");
+	 PrintWriter pw = response.getWriter();
+	 exception.printStackTrace(pw);
+	out.println(" ");
+	%>
+
+
+How do you pass an InitParameter to a JSP? - The JspPage interface defines the jspInit() and jspDestroy() method which the page writer can use in their pages and are invoked in much the same manner as the init() and destory() methods of a servlet. The example page below enumerates through all the parameters and prints them to the console.
+	<%@ page import="java.util.*" %>
+	<%!
+	ServletConfig cfg =null;
+	public void jspInit(){
+	ServletConfig cfg=getServletConfig();
+	for (Enumeration e=cfg.getInitParameterNames(); e.hasMoreElements();) {
+	String name=(String)e.nextElement();
+	String value = cfg.getInitParameter(name);
+	System.out.println(name+"="+value);
+	}
+	}
+	%>
+
+
+How can my JSP page communicate with an EJB Session Bean? - The following is a code snippet that demonstrates how a JSP page can interact with an EJB session bean:
+	<%@ page import="javax.naming.*, javax.rmi.PortableRemoteObject, foo.AccountHome, foo.Account" %>
+	<%!
+	//declare a "global" reference to an instance of the home interface of the session bean
+	AccountHome accHome=null;
+	public void jspInit() {
+	//obtain an instance of the home interface
+	InitialContext cntxt = new InitialContext( );
+	Object ref= cntxt.lookup("java:comp/env/ejb/AccountEJB");
+	accHome = (AccountHome)PortableRemoteObject.narrow(ref,AccountHome.class);
+	}
+	%>
+	<%
+	//instantiate the session bean
+	Account acct = accHome.create();
+	//invoke the remote methods
+	acct.doWhatever(...);
+	// etc etc...
+	%>
