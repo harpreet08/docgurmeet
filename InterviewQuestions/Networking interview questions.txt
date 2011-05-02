@@ -1,0 +1,71 @@
+Networking interview questions
+
+http://www.techinterviews.com/networking-interview-questions
+Networking interview questions
+
+
+Q1. Name of seven layers in Open System Interconnection model.
+A. They are Application, Presentation, Session, Transport, Network, Data link, and Physical.
+
+
+Q2. What is the time complexity of matrix multiplication ?
+
+void Mult_Matrix(matrix A, matrix B, matrix C)
+{
+int i, j, k;
+for ( i = 1; i < N; i++)
+for ( j = 1; j < N; j++ )
+{
+C[i][j] = 0;
+for ( k = 0; k < N; k++ )
+C[i][j] = A[i][j]*B[k][j];
+}
+retrun;
+}
+
+A. The time comlexity of matrix mulitiplication is O(N^3)
+
+
+Q3. What is the null pointer in C++ ?
+A. The null pointer is a special C++ pointer value that can be used for any pointer that doesn’t pointer anywhere. It can be written as the constant NULL form stlib.h
+
+Q4. What is the goal of the shortest distance algorithm ?
+A. The goal is to completely fill the distance array so that for each vertex v, the value of distance[v] is the weight of the shortest path from start to v.
+
+Q5. What is the difference between an abstract class and an interface?
+A. An abstract class may have fields and some implemented methods.
+
+An interface has no implementation; only constants and method declarations.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+Network programming interview questions
+http://www.techinterviews.com/network-programming-interview-questions
+
+Question 1: How does the race condition occur?
+It occurs when two or more processes are reading or writing some shared data and the final result depends on who runs precisely when.
+
+
+Question 2: What is multiprogramming?
+Multiprogramming is a rapid switching of the CPU back and forth between processes.
+
+Question 3: Name the seven layers of the OSI Model and describe them briefly.
+Physical Layer - covers the physical interface between devices and the rules by which bits are passed from one to another.
+Data Link Layer - attempts o make the physical link reliable and provides the means to activate, maintain, and deactivate the link.
+Network Layer - provides for the transfer of information between end systems across some sort communications network.
+Transport Layer - provides a mechanism for the exchange of data between end system.
+Session Layer - provides the mechanism for controlling the dialogue between applications in end systems.
+Presentation Layer - defines the format of the data to be exchanged between applicationsand offers application programs a set of data transformation services.
+Application Layer - provides a means for application programs to access the OSI environment.
+
+Question 4: What is the difference between TCP and UDP?
+TCP and UDP are both transport-level protocols. TCP is designed to provide reliable communication across a variety of reliable and unreliable networks and internets.
+UDP provides a connectionless service for application-level procedures. Thus, UDP is basically
+an unreliable service; delivery and duplicate protection are not guareented.
+
+Question 5: What does a socket consists of?
+The combination of an IP address and a port number is called a socket.
+
