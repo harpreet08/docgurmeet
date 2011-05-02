@@ -1,7 +1,7 @@
 http://www.techinterviews.com/servlet-interview-questions
 
 Servlet interview questions
-By admin | September 1, 2004
+
 What is a servlet?
 Servlets are modules that extend request/response-oriented servers,such as Java-enabled web servers. For example, a servlet might be responsible for taking data in an HTML order-entry form and applying the business logic used to update a company’s order database. Servlets are to servers what applets are to browsers. Unlike applets, however, servlets have no graphical user interface.
 
@@ -27,3 +27,32 @@ Explain servlet lifecycle?
 Each servlet has the same life cycle: first, the server loads and initializes the servlet (init()), then the servlet handles zero or more client requests (service()), after that the server removes the servlet (destroy()). Worth noting that the last step on some servers is done when they shut down.
 How does HTTP Servlet handle client requests?
 An HTTP Servlet handles client requests through its service method. The service method supports standard HTTP client requests by dispatching each request to a method designed to handle that request.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+Basic Java servlet interview questions
+
+What is the difference between CGI and Servlet?
+What is meant by a servlet?
+
+What are the types of servlets? What is the difference between 2 types of Servlets?
+What is the type of method for sending request from HTTP server ?
+What are the exceptions thrown by Servlets? Why?
+What is the life cycle of a servlet?
+What is meant by cookies? Why is Cookie used?
+What is HTTP Session?
+What is the difference between GET and POST methods?
+How can you run a Servlet Program?
+What is the middleware? What is the functionality of Webserver?
+What webserver is used for running the Servlets?
+How do you invoke a Servelt? What is the difference in between doPost and doGet methods?
+What is the difference in between the HTTPServlet and Generic Servlet? Explain their methods? Tell me their parameter names also?
+What are session variable in Servlets?
+What is meant by Session? Tell me something about HTTPSession Class?
+What is Session Tracking?
+Difference between doGet and doPost?
+What are the methods in HttpServlet?
+What are the types of SessionTracking? Why do you use Session Tracking in HttpServlet?
