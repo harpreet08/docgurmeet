@@ -1,0 +1,46 @@
+http://www.techinterviews.com/jsp-interview-questions-and-answers
+
+JSP interview questions and answers
+By admin | April 25, 2004
+What is JSP? Describe its concept. JSP is a technology that combines HTML/XML markup languages and elements of Java programming Language to return dynamic content to the Web client, It is normally used to handle Presentation logic of a web application, although it may have business logic.
+What are the lifecycle phases of a JSP?
+JSP page looks like a HTML page but is a servlet. When presented with JSP page the JSP engine does the following 7 phases.
+Page translation: -page is parsed, and a java file which is a servlet is created.
+Page compilation: page is compiled into a class file
+Page loading : This class file is loaded.
+Create an instance :- Instance of servlet is created
+jspInit() method is called
+_jspService is called to handle service calls
+_jspDestroy is called to destroy it when the servlet is not required.
+What is a translation unit? JSP page can include the contents of other HTML pages or other JSP files. This is done by using the include directive. When the JSP engine is presented with such a JSP page it is converted to one servlet class and this is called a translation unit, Things to remember in a translation unit is that page directives affect the whole unit, one variable declaration cannot occur in the same unit more than once, the standard action jsp:useBean cannot declare the same bean twice in one unit.
+How is JSP used in the MVC model? JSP is usually used for presentation in the MVC pattern (Model View Controller ) i.e. it plays the role of the view. The controller deals with calling the model and the business classes which in turn get the data, this data is then presented to the JSP for rendering on to the client.
+What are context initialization parameters? Context initialization parameters are specified by the <context-param> in the web.xml file, these are initialization parameter for the whole application and not specific to any servlet or JSP.
+What is a output comment? A comment that is sent to the client in the viewable page source. The JSP engine handles an output comment as un-interpreted HTML text, returning the comment in the HTML output sent to the client. You can see the comment by viewing the page source from your Web browser.
+What is a Hidden Comment? A comment that documents the JSP page but is not sent to the client. The JSP engine ignores a hidden comment, and does not process any code within hidden comment tags. A hidden comment is not sent to the client, either in the displayed JSP page or the HTML page source. The hidden comment is useful when you want to hide or “comment out” part of your JSP page.
+What is a Expression? Expressions are act as place holders for language expression, expression is evaluated each time the page is accessed.
+What is a Declaration? It declares one or more variables or methods for use later in the JSP source file. A declaration must contain at least one complete declarative statement. You can declare any number of variables or methods within one declaration tag, as long as semicolons separate them. The declaration must be valid in the scripting language used in the JSP file.
+What is a Scriptlet? A scriptlet can contain any number of language statements, variable or method declarations, or expressions that are valid in the page scripting language. Within scriptlet tags, you can declare variables or methods to use later in the file, write expressions valid in the page scripting language, use any of the JSP implicit objects or any object declared with a <jsp:useBean>.
+What are the implicit objects? List them. Certain objects that are available for the use in JSP documents without being declared first. These objects are parsed by the JSP engine and inserted into the generated servlet. The implicit objects are:
+request
+response
+pageContext
+session
+application
+out
+config
+page
+exception
+What’s the difference between forward and sendRedirect? When you invoke a forward request, the request is sent to another resource on the server, without the client being informed that a different resource is going to process the request. This process occurs completely with in the web container And then returns to the calling method. When a sendRedirect method is invoked, it causes the web container to return to the browser indicating that a new URL should be requested. Because the browser issues a completely new request any object that are stored as request attributes before the redirect occurs will be lost. This extra round trip a redirect is slower than forward.
+What are the different scope values for the <jsp:useBean>? The different scope values for <jsp:useBean> are:
+page
+request
+session
+application
+Why are JSP pages the preferred API for creating a web-based client program? Because no plug-ins or security policy files are needed on the client systems(applet does). Also, JSP pages enable cleaner and more module application design because they provide a way to separate applications programming from web page design. This means personnel involved in web page design do not need to understand Java programming language syntax to do their jobs.
+Is JSP technology extensible? Yes, it is. JSP technology is extensible through the development of custom actions, or tags, which are encapsulated in tag libraries.
+What is difference between custom JSP tags and beans? Custom JSP tag is a tag you defined. You define how a tag, its attributes and its body are interpreted, and then group your tags into collections called tag libraries that can be used in any number of JSP files. Custom tags and beans accomplish the same goals — encapsulating complex behavior into simple and accessible forms. There are several differences:
+Custom tags can manipulate JSP content; beans cannot.
+Complex operations can be reduced to a significantly simpler form with custom tags than with beans.
+Custom tags require quite a bit more work to set up than do beans.
+Custom tags usually define relatively self-contained behavior, whereas beans are often defined in one servlet and used in a different servlet or JSP page.
+Custom tags are available only in JSP 1.1 and later, but beans can be used in all JSP 1.x versions.

@@ -205,7 +205,7 @@ Answer: Because behind every swing component are many Java objects and resources
 
 http://www.techinterviews.com/java-interview-questions
 Java interview questions
-By admin | May 16, 2004
+
 What are synchronized methods and synchronized statements? Synchronized methods are methods that are used to control access to an object. For example, a thread only executes a synchronized method after it has acquired the lock for the method’s object or class. Synchronized statements are similar to synchronized methods. A synchronized statement can only be executed after a thread has acquired the lock for the object or class referenced in the synchronized statement.
 What are different ways in which a thread can enter the waiting state? A thread can enter the waiting state by invoking its sleep() method, blocking on I/O, unsuccessfully attempting to acquire an object’s lock, or invoking an object’s wait() method. It can also enter the waiting state by invoking its (deprecated) suspend() method.
 Can a lock be acquired on a class? Yes, a lock can be acquired on a class. This lock is acquired on the class’s Class object.
