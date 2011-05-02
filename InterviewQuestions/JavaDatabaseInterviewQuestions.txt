@@ -1,0 +1,69 @@
+http://www.techinterviews.com/java-database-interview-questions-and-answers
+
+
+Java database interview questions and answers
+
+How do you call a Stored Procedure from JDBC? - The first step is to create a CallableStatement object. As with Statement and PreparedStatement objects, this is done with an open Connection object. A CallableStatement object contains a call to a stored procedure.
+	CallableStatement cs =
+		con.prepareCall("{call SHOW_SUPPLIERS}");
+	ResultSet rs = cs.executeQuery();
+
+
+Is the JDBC-ODBC Bridge multi-threaded? - No. The JDBC-ODBC Bridge does not support concurrent access from different threads. The JDBC-ODBC Bridge uses synchronized methods to serialize all of the calls that it makes to ODBC. Multi-threaded Java programs may use the Bridge, but they won’t get the advantages of multi-threading.
+Does the JDBC-ODBC Bridge support multiple concurrent open statements per connection? - No. You can open only one Statement object per connection when you are using the JDBC-ODBC Bridge.
+
+
+What is cold backup, hot backup, warm backup recovery? - Cold backup (All these files must be backed up at the same time, before the databaseis restarted). Hot backup (official name is ‘online backup’) is a backup taken of each tablespace while the database is running and is being accessed by the users.
+
+
+When we will Denormalize data? - Data denormalization is reverse procedure, carried out purely for reasons of improving performance. It maybe efficient for a high-throughput system to replicate data for certain data.
+
+
+What is the advantage of using PreparedStatement? - If we are using PreparedStatement the execution time will be less. The PreparedStatement object contains not just an SQL statement, but the SQL statement that has been precompiled. This means that when the PreparedStatement is executed,the RDBMS can just run the PreparedStatement’s Sql statement without having to compile it first.
+
+
+What is a “dirty read”? - Quite often in database processing, we come across the situation wherein one transaction can change a value, and a second transaction can read this value before the original change has been committed or rolled back. This is known as a dirty read scenario because there is always the possibility that the first transaction may rollback the change, resulting in the second transaction having read an invalid value. While you can easily command a database to disallow dirty reads, this usually degrades the performance of your application due to the increased locking overhead. Disallowing dirty reads also leads to decreased system concurrency.
+
+
+What is Metadata and why should I use it?
+Metadata (’data about data’) is information about one of two things: Database information (java.sql.DatabaseMetaData), or Information about a specific ResultSet (java.sql.ResultSetMetaData). Use DatabaseMetaData to find information about your database, such as its capabilities and structure. Use ResultSetMetaData to find information about the results of an SQL query, such as size and types of columns
+
+
+Different types of Transaction Isolation Levels? - The isolation level describes the degree to which the data being updated is visible to other transactions. This is important when two transactions are trying to read the same row of a table. Imagine two transactions: A and B. Here three types of inconsistencies can occur:
+Dirty-read: A has changed a row, but has not committed the changes. B reads the uncommitted data but his view of the data may be wrong if A rolls back his changes and updates his own changes to the database.
+Non-repeatable read: B performs a read, but A modifies or deletes that data later. If B reads the same row again, he will get different data.
+Phantoms: A does a query on a set of rows to perform an operation. B modifies the table such that a query of A would have given a different result. The table may be inconsistent.
+TRANSACTION_READ_UNCOMMITTED : DIRTY READS, NON-REPEATABLE READ AND PHANTOMS CAN OCCUR.
+TRANSACTION_READ_COMMITTED : DIRTY READS ARE PREVENTED, NON-REPEATABLE READ AND PHANTOMS CAN OCCUR.
+TRANSACTION_REPEATABLE_READ : DIRTY READS , NON-REPEATABLE READ ARE PREVENTED AND PHANTOMS CAN OCCUR.
+TRANSACTION_SERIALIZABLE : DIRTY READS, NON-REPEATABLE READ AND PHANTOMS ARE PREVENTED.
+
+What is 2 phase commit? - A 2-phase commit is an algorithm used to ensure the integrity of a committing transaction. In Phase 1, the transaction coordinator contacts potential participants in the transaction. The participants all agree to make the results of the transaction permanent but do not do so immediately. The participants log information to disk to ensure they can complete In phase 2 f all the participants agree to commit, the coordinator logs that agreement and the outcome is decided. The recording of this agreement in the log ends in Phase 2, the coordinator informs each participant of the decision, and they permanently update their resources.
+
+
+How do you handle your own transaction ? - Connection Object has a method called setAutocommit(Boolean istrue)
+- Default is true. Set the Parameter to false , and begin your transaction
+
+
+What is the normal procedure followed by a java client to access the db.? - The database connection is created in 3 steps:
+Find a proper database URL
+Load the database driver
+Ask the Java DriverManager class to open a connection to your database
+In java code, the steps are realized in code as follows:
+
+Create a properly formatted JDBR URL for your database. (See FAQ on JDBC URL for more information). A JDBC URL has the form
+jdbc:someSubProtocol://myDatabaseServer/theDatabaseName
+Class.forName(”my.database.driver”);
+Connection conn = DriverManager.getConnection(”a.JDBC.URL”, “databaseLogin”,”databasePassword”);
+
+
+What is a data source? - A DataSource class brings another level of abstraction than directly using a connection object. Data source can be referenced by JNDI. Data Source may point to RDBMS, file System , any DBMS etc.
+
+
+What are collection pools? What are the advantages? - A connection pool is a cache of database connections that is maintained in memory, so that the connections may be reused
+
+
+How do you get Column names only for a table (SQL Server)? Write the Query. -
+	select name from syscolumns
+		where id=(select id from sysobjects where name='user_hdr')
+		order by colid --user_hdr is the table name
