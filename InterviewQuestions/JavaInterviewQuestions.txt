@@ -7,7 +7,7 @@ Is “abc” a primitive value?
 Answer: The String literal “abc” is not a primitive value. It is a String object.
 
 What restrictions are placed on the values of each case of a switch statement?
-Answer: During compilation, the values of each case of a switch statement must evaluate to a value that can be promoted to an int value.
+Answer: During compilation, the values of each chttp://www.techinterviews.com/basic-java-interview-questionsase of a switch statement must evaluate to a value that can be promoted to an int value.
 
 What modifiers may be used with an interface declaration?
 Answer: An interface may be declared as public or abstract.
@@ -207,38 +207,97 @@ http://www.techinterviews.com/java-interview-questions
 Java interview questions
 
 What are synchronized methods and synchronized statements? Synchronized methods are methods that are used to control access to an object. For example, a thread only executes a synchronized method after it has acquired the lock for the method’s object or class. Synchronized statements are similar to synchronized methods. A synchronized statement can only be executed after a thread has acquired the lock for the object or class referenced in the synchronized statement.
+
+
 What are different ways in which a thread can enter the waiting state? A thread can enter the waiting state by invoking its sleep() method, blocking on I/O, unsuccessfully attempting to acquire an object’s lock, or invoking an object’s wait() method. It can also enter the waiting state by invoking its (deprecated) suspend() method.
+
+
 Can a lock be acquired on a class? Yes, a lock can be acquired on a class. This lock is acquired on the class’s Class object.
+
+
 What’s new with the stop(), suspend() and resume() methods in new JDK 1.2? The stop(), suspend() and resume() methods have been deprecated in JDK 1.2.
+
+
 What is the preferred size of a component? The preferred size of a component is the minimum component size that will allow the component to display normally.
+
+
 What method is used to specify a container’s layout? The setLayout() method is used to specify a container’s layout. For example, setLayout(new FlowLayout()); will be set the layout as FlowLayout.
+
+
 Which containers use a FlowLayout as their default layout? The Panel and Applet classes use the FlowLayout as their default layout.
+
+
 What state does a thread enter when it terminates its processing? When a thread terminates its processing, it enters the dead state.
+
+
 What is the Collections API? The Collections API is a set of classes and interfaces that support operations on collections of objects. One example of class in Collections API is Vector and Set and List are examples of interfaces in Collections API.
+
+
 What is the List interface? The List interface provides support for ordered collections of objects. It may or may not allow duplicate elements but the elements must be ordered.
+
+
 How does Java handle integer overflows and underflows? It uses those low order bytes of the result that can fit into the size of the type allowed by the operation.
+
+
 What is the Vector class? The Vector class provides the capability to implement a growable array of objects. The main visible advantage of this class is programmer needn’t to worry about the number of elements in the Vector.
+
+
 What modifiers may be used with an inner class that is a member of an outer class? A (non-local) inner class may be declared as public, protected, private, static, final, or abstract.
+
+
 If a method is declared as protected, where may the method be accessed? A protected method may only be accessed by classes or interfaces of the same package or by subclasses of the class in which it is declared.
+
+
 What is an Iterator interface? The Iterator interface is used to step through the elements of a Collection.
+
+
 How many bits are used to represent Unicode, ASCII, UTF-16, and UTF-8 characters? Unicode requires 16 bits, ASCII require 7 bits (although the ASCII character set uses only 7 bits, it is usually represented as 8 bits), UTF-8 represents characters using 8, 16, and 18 bit patterns, UTF-16 uses 16-bit and larger bit patterns
+
+
 What is the difference between yielding and sleeping? Yielding means a thread returning to a ready state either from waiting, running or after creation, where as sleeping refers a thread going to a waiting state from running state. With reference to Java, when a task invokes its yield() method, it returns to the ready state and when a task invokes its sleep() method, it returns to the waiting state
+
+
 What are wrapper classes? Wrapper classes are classes that allow primitive types to be accessed as objects. For example, Integer, Double. These classes contain many methods which can be used to manipulate basic data types
+
+
 Does garbage collection guarantee that a program will not run out of memory? No, it doesn’t. It is possible for programs to use up memory resources faster than they are garbage collected. It is also possible for programs to create objects that are not subject to garbage collection. The main purpose of Garbage Collector is recover the memory from the objects which are no longer required when more memory is needed.
+
+
 Name Component subclasses that support painting? The following classes support painting: Canvas, Frame, Panel, and Applet.
+
+
 What is a native method? A native method is a method that is implemented in a language other than Java. For example, one method may be written in C and can be called in Java.
+
+
 How can you write a loop indefinitely?
 for(;;)	 //for loop
 while(true);	//always true
 
+
 Can an anonymous class be declared as implementing an interface and extending a class? An anonymous class may implement an interface or extend a superclass, but may not be declared to do both.
+
+
 What is the purpose of finalization? The purpose of finalization is to give an unreachable object the opportunity to perform any cleanup processing before the object is garbage collected. For example, closing a opened file, closing a opened database Connection.
+
+
 What invokes a thread’s run() method? After a thread is started, via its start() method or that of the Thread class, the JVM invokes the thread’s run() method when the thread is initially executed.
+
+
 What is the GregorianCalendar class? The GregorianCalendar provides support for traditional Western calendars.
+
+
 What is the SimpleTimeZone class? The SimpleTimeZone class provides support for a Gregorian calendar.
+
+
 What is the Properties class? The properties class is a subclass of Hashtable that can be read from or written to a stream. It also provides the capability to specify a set of default values to be used.
+
+
 What is the purpose of the Runtime class? The purpose of the Runtime class is to provide access to the Java runtime system.
+
+
 What is the purpose of the System class? The purpose of the System class is to provide access to system resources.
+
+
 What is the purpose of the finally clause of a try-catch-finally statement? The finally clause is used to provide the capability to execute code no matter whether or not an exception is thrown or caught. For example,
 try
 {
@@ -253,10 +312,306 @@ finally
 //statements executed whether exception occurs or not
 }
 
+
 What is the Locale class? The Locale class is used to tailor program output to the conventions of a particular geographic, political, or cultural region.
+
+
 What must a class do to implement an interface? It must provide all of the methods in the interface and identify the interface in its implements clause.
 
 
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+http://www.techinterviews.com/java-interview-questions-2
+
+Java interview questions and answers
+
+
+Describe what happens when an object is created in Java?
+Several things happen in a particular order to ensure the object is constructed properly: 
+1. Memory is allocated from heap to hold all instance variables and implementation-specific data of the object and its superclasses. Implementation-specific data includes pointers to class and method data. 
+2. The instance variables of the objects are initialized to their default values. 
+3. The constructor for the most derived class is invoked. The first thing a constructor does is call the constructor for its uppercase. This process continues until the constructor for java.lang.Object is called, as java.lang.Object is the base class for all objects in java. 
+4. Before the body of the constructor is executed, all instance variable initializers and initialization blocks are executed. Then the body of the constructor is executed. Thus, the constructor for the base class completes first and constructor for the most derived class completes last.
+
+
+In Java, you can create a String object as below : String str = "abc"; & String str = new String("abc");  Why cant a button object be created as : Button bt = "abc"? Why is it compulsory to create a button object as: Button bt = new Button("abc"); Why this is not compulsory in String’s case?
+
+Button bt1= "abc"; It is because "abc" is a literal string (something slightly different than a String object, by-the-way) and bt1 is a Button object. That simple. The only object in Java that can be assigned a literal String is java.lang.String. Important to not that you are NOT calling a java.lang.String constuctor when you type String s = "abc"; For example String x = "abc"; String y = "abc"; refer to the same object. While String x1 = new String("abc"); 
+String x2 = new String("abc"); refer to two different objects.
+
+
+
+What is the advantage of OOP?
+You will get varying answers to this question depending on whom you ask. Major advantages of OOP are: 
+1. Simplicity: software objects model real world objects, so the complexity is reduced and the program structure is very clear; 
+2. Modularity: each object forms a separate entity whose internal workings are decoupled from other parts of the system; 
+3. Modifiability: it is easy to make minor changes in the data representation or the procedures in an OO program. Changes inside a class do not affect any other part of a program, since the only public interface that the external world has to a class is through the use of methods; 
+4. Extensibility: adding new features or responding to changing operating environments can be solved by introducing a few new objects and modifying some existing ones; 
+5. Maintainability: objects can be maintained separately, making locating and fixing problems easier; 
+6. Re-usability: objects can be reused in different programs
+
+
+
+What are the main differences between Java and C++?
+Everything is an object in Java( Single root hierarchy as everything gets derived from java.lang.Object). Java does not have all the complicated aspects of C++ ( For ex: Pointers, templates, unions, operator overloading, structures etc..)  The Java language promoters initially said "No pointers!", but when many programmers questioned how you can work without pointers, the promoters began saying "Restricted pointers." You can make up your mind whether it’s really a pointer or not. In any event, there’s no pointer arithmetic. There are no destructors in Java. (automatic garbage collection),  Java does not support conditional compile (#ifdef/#ifndef type). Thread support is built into java but not in C++. Java does not support default arguments. There’s no scope resolution operator :: in Java. Java uses the dot for everything, but can get away with it since you can define elements only within a class. Even the method definitions must always occur within a class, so there is no need for scope resolution there either. There’s no "goto " statement in Java. Java doesn’t provide multiple inheritance (MI), at least not in the same sense that C++ does. Exception handling in Java is different because there are no destructors. Java has method overloading, but no operator overloading. The String class does use the + and += operators to concatenate strings and String expressions use automatic type conversion, but that’s a special built-in case. Java is interpreted for the most part and hence platform independent
+
+
+
+What are interfaces?
+Interfaces provide more sophisticated ways to organize and control the objects in your system. 
+The interface keyword takes the abstract concept one step further. You could think of it as a “pure” abstract class. It allows the creator to establish the form for a class: method names, argument lists, and return types, but no method bodies. An interface can also contain fields, but The interface keyword takes the abstract concept one step further. You could think of it as a “pure” abstract class. It allows the creator to establish the form for a class: method names, argument lists, and return types, but no method bodies. An interface can also contain fields, but an interface says: “This is what all classes that implement this particular interface will look like.” Thus, any code that uses a particular interface knows what methods might be called for that interface, and that’s all. So the interface is used to establish a “protocol” between classes. (Some object-oriented programming languages have a keyword called protocol to do the same thing.)  Typical example from "Thinking in Java":
+
+import java.util.*; 
+interface Instrument { 
+int i = 5; // static & final 
+// Cannot have method definitions: 
+void play(); // Automatically public 
+String what(); 
+void adjust(); 
+} 
+class Wind implements Instrument { 
+public void play() { 
+System.out.println("Wind.play()"); 
+public String what() { return "Wind"; } 
+public void adjust() {} 
+}
+
+
+
+
+How can you achieve Multiple Inheritance in Java?
+Java’s interface mechanism can be used to implement multiple inheritance, with one important difference from c++ way of doing MI: the inherited interfaces must be abstract. This obviates the need to choose between different implementations, as with interfaces there are no implementations.
+
+interface CanFight { 
+void fight(); 
+interface CanSwim { 
+void swim(); 
+interface CanFly { 
+void fly(); 
+class ActionCharacter { 
+public void fight() {} 
+class Hero extends ActionCharacter implements CanFight, CanSwim, CanFly {
+public void swim() {} 
+public void fly() {} 
+}
+
+You can even achieve a form of multiple inheritance where you can use the *functionality* of classes rather than just the interface:
+
+interface A { 
+void methodA(); 
+} 
+class AImpl implements A { 
+void methodA() { //do stuff } 
+} 
+interface B { 
+void methodB(); 
+} 
+class BImpl implements B { 
+void methodB() { //do stuff } 
+} 
+class Multiple implements A, B { 
+private A a = new A(); 
+private B b = new B(); 
+void methodA() { a.methodA(); } 
+void methodB() { b.methodB(); } 
+} 
+This completely solves the traditional problems of multiple inheritance in C++ where name clashes occur between multiple base classes. The coder of the derived class will have to explicitly resolve any clashes. Don’t you hate people who point out minor typos? Everything in the previous example is correct, except you need to instantiate an AImpl and BImpl. So class Multiple would look like this: 
+class Multiple implements A, B { 
+private A a = new AImpl(); 
+private B b = new BImpl(); 
+void methodA() { a.methodA(); } 
+void methodB() { b.methodB(); } 
+}
+
+
+
+What is the difference between StringBuffer and String class?
+A string buffer implements a mutable sequence of characters. A string buffer is like a String, but can be modified. At any point in time it contains some particular sequence of characters, but the length and content of the sequence can be changed through certain method calls. The String class represents character strings. All string literals in Java programs, such as "abc" are constant and implemented as instances of this class; their values cannot be changed after they are created. Strings in Java are known to be immutable. What it means is that every time you need to make a change to a String variable, behind the scene, a "new" String is actually being created by the JVM. For an example: if you change your String variable 2 times, then you end up with 3 Strings: one current and 2 that are ready for garbage collection. The garbage collection cycle is quite unpredictable and these additional unwanted Strings will take up memory until that cycle occurs. For better performance, use StringBuffers for string-type data that will be reused or changed frequently. There is more overhead per class than using String, but you will end up with less overall classes and consequently consume less memory. Describe, in general, how java’s garbage collector works? The Java runtime environment deletes objects when it determines that they are no longer being used. This process is known as garbage collection. The Java runtime environment supports a garbage collector that periodically frees the memory used by objects that are no longer needed. The Java garbage collector is a mark-sweep garbage collector that scans Java’s dynamic memory areas for objects, marking those that are referenced. After all possible paths to objects are investigated, those objects that are not marked (i.e. are not referenced) are known to be garbage and are collected. (A more complete description of our garbage collection algorithm might be "A compacting, mark-sweep collector with some conservative scanning".) The garbage collector runs synchronously when the system runs out of memory, or in response to a request from a Java program. Your Java program can ask the garbage collector to run at any time by calling System.gc(). The garbage collector requires about 20 milliseconds to complete its task so, your program should only run the garbage collector when there will be no performance impact and the program anticipates an idle period long enough for the garbage collector to finish its job. Note: Asking the garbage collection to run does not guarantee that your objects will be garbage collected. The Java garbage collector runs asynchronously when the system is idle on systems that allow the Java runtime to note when a thread has begun and to interrupt another thread (such as Windows 95). As soon as another thread becomes active, the garbage collector is asked to get to a consistent state and then terminate.
+
+
+What’s the difference between == and equals method?
+equals checks for the content of the string objects while == checks for the fact that the two String objects point to same memory location ie they are same references.
+
+
+What are abstract classes, abstract methods?
+Simply speaking a class or a method qualified with "abstract" keyword is an abstract class or abstract method. You create an abstract class when you want to manipulate a set of classes through a common interface. All derived-class methods that match the signature of the base-class declaration will be called using the dynamic binding mechanism. If you have an abstract class, objects of that class almost always have no meaning. That is, abstract class is meant to express only the interface and sometimes some default method implementations, and not a particular implementation, so creating an abstract class object makes no sense and are not allowed ( compile will give you an error message if you try to create one). An abstract method is an incomplete method. It has only a declaration and no method body. Here is the syntax for an abstract method declaration: abstract void f(); If a class contains one or more abstract methods, the class must be qualified an abstract. (Otherwise, the compiler gives you an error message.). It’s possible to create a class as abstract without including any abstract methods. This is useful when you’ve got a class in which it doesn’t make sense to have any abstract methods, and yet you want to prevent any instances of that class. Abstract classes and methods are created because they make the abstractness of a class explicit, and tell both the user and the compiler how it was intended to be used. 
+For example: 
+abstract class Instrument { 
+int i; // storage allocated for each 
+public abstract void play(); 
+public String what() { 
+return "Instrument"; 
+public abstract void adjust(); 
+} 
+class Wind extends Instrument { 
+public void play() { 
+System.out.println("Wind.play()"); 
+} 
+public String what() { return "Wind"; } 
+public void adjust() {} 
+Abstract classes are classes for which there can be no instances at run time. i.e. the implementation of the abstract classes are not complete. Abstract methods are methods which have no defintion. i.e. abstract methods have to be implemented in one of the sub classes or else that class will also become Abstract.
+
+
+What is the difference between an Applet and an Application?
+A Java application is made up of a main() method declared as public static void that accepts a string array argument, along with any other classes that main() calls. It lives in the environment that the host OS provides. A Java applet is made up of at least one public class that has to be subclassed from java.awt.Applet. The applet is confined to living in the user’s Web browser, and the browser’s security rules, (or Sun’s appletviewer, which has fewer restrictions).  The differences between an applet and an application are as follows: 
+1. Applets can be embedded in HTML pages and downloaded over the Internet whereas Applications have no special support in HTML for embedding or downloading. 
+2. Applets can only be executed inside a java compatible container, such as a browser or appletviewer whereas Applications are executed at command line by java.exe or jview.exe. 
+3. Applets execute under strict security limitations that disallow certain operations(sandbox model security) whereas Applications have no inherent security restrictions. 
+4. Applets don’t have the main() method as in applications. Instead they operate on an entirely different mechanism where they are initialized by init(),started by start(),stopped by stop() or destroyed by destroy().
+
+
+Java says "write once, run anywhere". What are some ways this isn’t quite true?
+As long as all implementaions of java are certified by sun as 100% pure java this promise of "Write once, Run everywhere" will hold true. But as soon as various java core implemenations start digressing from each other, this won’t be true anymore. A recent example of a questionable business tactic is the surreptitious behavior and interface modification of some of Java’s core classes in their own implementation of Java. Programmers who do not recognize these undocumented changes can build their applications expecting them to run anywhere that Java can be found, only to discover that their code works only on Microsoft’s own Virtual Machine, which is only available on Microsoft’s own operating systems.
+
+
+What is the difference between a Vector and an Array. Discuss the advantages and disadvantages of both?
+Vector can contain objects of different types whereas array can contain objects only of a single type. 
+- Vector can expand at run-time, while array length is fixed. 
+- Vector methods are synchronized while Array methods are not
+
+
+What are java beans?
+JavaBeans is a portable, platform-independent component model written in the Java programming language, developed in collaboration with industry leaders. It enables developers to write reusable components once and run them anywhere — benefiting from the platform-independent power of Java technology. JavaBeans acts as a Bridge between proprietary component models and provides a seamless and powerful means for developers to build components that run in ActiveX container applications. JavaBeans are usual Java classes which adhere to certain coding conventions: 
+1. Implements java.io.Serializable interface 
+2. Provides no argument constructor 
+3. Provides getter and setter methods for accessing it’s properties
+
+
+What is RMI?
+RMI stands for Remote Method Invocation. Traditional approaches to executing code on other machines across a network have been confusing as well as tedious and error-prone to implement. The nicest way to think about this problem is that some object happens to live on another machine, and that you can send a message to the remote object and get a result as if the object lived on your local machine. This simplification is exactly what Java Remote Method Invocation (RMI) allows you to do. Above excerpt is from "Thinking in java". For more information refer to any book on Java.
+
+What does the keyword "synchronize" mean in java. When do you use it? What are the disadvantages of synchronization?
+
+
+Synchronize is used when you want to make your methods thread safe. The disadvantage of synchronize is it will end up in slowing down the program. Also if not handled properly it will end up in dead lock.
+
+
+What gives java it’s "write once and run anywhere" nature?
+
+
+Java is compiled to be a byte code which is the intermediate language between source code and machine code. This byte code is not platorm specific and hence can be fed to any platform. After being fed to the JVM, which is specific to a particular operating system, the code platform specific machine code is generated thus making java platform independent.
+
+
+What are native methods? How do you use them?
+Native methods are methods written in other languages like C, C++, or even assembly language. You can call native methods from Java using JNI. Native methods are used when the implementation of a particular method is present in language other than Java say C, C++. To use the native methods in java we use the keyword native 
+public native method_a(). This native keyword is signal to the java compiler that the implementation of this method is in a language other than java. Native methods are used when we realize that it would take up a lot of rework to write that piece of already existing code in other language to Java.
+
+
+What is JDBC? Describe the steps needed to execute a SQL query using JDBC.
+We can connect to databases from java using JDBC. It stands for Java DataBase Connectivity. 
+Here are the steps: 
+1. Register the jdbc driver with the driver manager 
+2. Establish jdbc connection 
+3. Execute an sql statement 
+4. Process the results 
+5. Close the connection 
+Before doing these do import java.sql.* 
+JDBC is java based API for accessing data from the relational databases. JDBC provides a set of classes and interfaces for doing various database operations. The steps are: 
+Register/load the jdbc driver with the driver manager. 
+Establish the connection thru DriverManager.getConnection(); 
+Fire a SQL thru conn.executeStatement(); 
+Fetch the results in a result set 
+Process the results 
+Close statement/result set and connection object.
+
+
+How many different types of JDBC drivers are present? Discuss them.
+There are four JDBC driver types. 
+Type 1: JDBC-ODBC Bridge plus ODBC Driver: 
+The first type of JDBC driver is the JDBC-ODBC Bridge. It is a driver that provides JDBC access to databases through ODBC drivers. The ODBC driver must be configured on the client for the bridge to work. This driver type is commonly used for prototyping or when there is no JDBC driver available for a particular DBMS. 
+Type 2: Native-API partly-Java Driver: 
+The Native to API driver converts JDBC commands to DBMS-specific native calls. This is much like the restriction of Type 1 drivers. The client must have some binary code loaded on its machine. These drivers do have an advantage over Type 1 drivers because they interface directly with the database. 
+Type 3: JDBC-Net Pure Java Driver: 
+The JDBC-Net drivers are a three-tier solution. This type of driver translates JDBC calls into a database-independent network protocol that is sent to a middleware server. This server then translates this DBMS-independent protocol into a DBMS-specific protocol, which is sent 
+to a particular database. The results are then routed back through the middleware server and sent back to the client. This type of solution makes it possible to implement a pure Java client. It also makes it possible to swap databases without affecting the client. 
+Type 4: Native-Protocol Pure Java Driver 
+These are pure Java drivers that communicate directly with the vendor’s database. They do this by converting JDBC commands directly into the database engine’s native protocol. This driver has no additional translation or middleware layer, which improves performance tremendously. 
+What does the "static" keyword mean in front of a variable? A method? A class? Curly braces {}? 
+static variable 
+- means a class level variable 
+static method: 
+-does not have "this". It is not allowed to access the not static members of the class. 
+can be invoked enev before a single instance of a class is created. 
+eg: main 
+static class: 
+no such thing. 
+static free floating block: 
+is executed at the time the class is loaded. There can be multiple such blocks. This may be useful to load native libraries when using native methods. 
+eg: 
+native void doThis(){ 
+static{ 
+System.loadLibrary("myLibrary.lib"); 
+}
+
+Access specifiers: "public", "protected", "private", nothing?
+
+
+In the case of Public, Private and Protected, that is used to describe which programs can access that class or method: Public – any other class from any package can instantiate and execute the classes and methods. Protected – only subclasses and classes inside of the package can access the classes and methods. Private – the original class is the only class allowed to executed the methods.
+
+
+What does the "final" keyword mean in front of a variable? A method? A class?
+FINAL for a variable : value is constant 
+FINAL for a method : cannot be overridden 
+FINAL for a class : cannot be derived 
+A final variable cannot be reassigned, 
+but it is not constant. For instance, 
+final StringBuffer x = new StringBuffer() 
+x.append("hello"); 
+is valid. X cannot have a new value in it,but nothing stops operations on the object 
+that it refers, including destructive operations. Also, a final method cannot be overridden 
+or hidden by new access specifications.This means that the compiler can choose 
+to in-line the invocation of such a method.(I don’t know if any compiler actually does 
+this, but it’s true in theory.) The best example of a final class is 
+String, which defines a class that cannot be derived.
+
+
+Does Java have "goto"?
+No.
+
+
+What synchronization constructs does Java provide? How do they work?
+The two common features that are used are: 
+1. Synchronized keyword - Used to synchronize a method or a block of code. When you synchronize a method, you are in effect synchronizing the code within the method using the monitor of the current object for the lock. 
+The following have the same effect. 
+synchronized void foo() { 
+} 
+and 
+void foo() { 
+synchronized(this) { 
+} 
+If you synchronize a static method, then you are synchronizing across all objects of the same class, i.e. the monitor you are using for the lock is one per class, not one per object. 
+2. wait/notify. wait() needs to be called from within a synchronized block. It will first release the lock acquired from the synchronization and then wait for a signal. In Posix C, this part is equivalent to the pthread_cond_wait method, which waits for an OS signal to continue. When somebody calls notify() on the object, this will signal the code which has been waiting, and the code will continue from that point. If there are several sections of code that are in the wait state, you can call notifyAll() which will notify all threads that are waiting on the monitor for the current object. Remember that both wait() and notify() have to be called from blocks of code that are synchronized on the monitor for the current object.
+
+
+
+Does Java have multiple inheritance?
+Java does not support multiple inheritence directly but it does thru the concept of interfaces. 
+We can make a class implement a number of interfaces if we want to achieve multiple inheritence type of functionality of C++.
+
+
+How does exception handling work in Java?
+1.It separates the working/functional code from the error-handling code by way of try-catch clauses. 
+2.It allows a clean path for error propagation. If the called method encounters a situation it can’t manage, it can throw an exception and let the calling method deal with it. 
+3.By enlisting the compiler to ensure that "exceptional" situations are anticipated and accounted for, it enforces powerful coding. 
+4.Exceptions are of two types: Compiler-enforced exceptions, or checked exceptions. Runtime exceptions, or unchecked exceptions. Compiler-enforced (checked) exceptions are instances of the Exception class or one of its subclasses — excluding the RuntimeException branch. The compiler expects all checked exceptions to be appropriately handled. Checked exceptions must be declared in the throws clause of the method throwing them — assuming, of course, they’re not being caught within that same method. The calling method must take care of these exceptions by either catching or declaring them in its throws clause. Thus, making an exception checked forces the us to pay heed to the possibility of it being thrown. An example of a checked exception is java.io.IOException. As the name suggests, it throws whenever an input/output operation is abnormally terminated.
+
+Does Java have destructors?
+Garbage collector does the job working in the background 
+Java does not have destructors; but it has finalizers that does a similar job. 
+the syntax is 
+public void finalize(){ 
+} 
+if an object has a finalizer, the method is invoked before the system garbage collects the object
+
+
+What does the "abstract" keyword mean in front of a method? A class?
+Abstract keyword declares either a method or a class. 
+If a method has a abstract keyword in front of it,it is called abstract method.Abstract method hs no body.It has only arguments and return type.Abstract methods act as placeholder methods that are implemented in the subclasses. 
+Abstract classes can’t be instantiated.If a class is declared as abstract,no objects of that class can be created.If a class contains any abstract method it must be declared as abstract
+
+
+Are Java constructors inherited ? If not, why not?
+You cannot inherit a constructor. That is, you cannot create a instance of a subclass using a constructor of one of it’s superclasses. One of the main reasons is because you probably don’t want to overide the superclasses constructor, which would be possible if they were inherited. By giving the developer the ability to override a superclasses constructor you would erode the encapsulation abilities of the language.
 
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
@@ -291,6 +646,8 @@ What is Difference between AWT and Swing ?
 Considering notepad/IE or any other thing as process, What will happen if you start notepad or IE 3 times? Where 3 processes are started or 3 threads are started ?
 How does thread synchronization occurs inside a monitor ?
 How will you call an Applet using a Java Script function ?
+
+
 Is there any tag in HTML to upload and download files ?
 Why do you Canvas ?
 How can you push data from an Applet to Servlet ?
@@ -330,34 +687,2614 @@ http://www.techinterviews.com/java-interview-questions-and-answers-2
 
 
 Java interview questions and answers
-By admin | September 19, 2004
+
 What is the Collections API? - The Collections API is a set of classes and interfaces that support operations on collections of objects
+
 What is the List interface? - The List interface provides support for ordered collections of objects.
 
 What is the Vector class? - The Vector class provides the capability to implement a growable array of objects
+
+
 What is an Iterator interface? - The Iterator interface is used to step through the elements of a Collection
+
+
 Which java.util classes and interfaces support event handling? - The EventObject class and the EventListener interface support event processing
+
+
 What is the GregorianCalendar class? - The GregorianCalendar provides support for traditional Western calendars
+
+
 What is the Locale class? - The Locale class is used to tailor program output to the conventions of a particular geographic, political, or cultural region
+
+
 What is the SimpleTimeZone class? - The SimpleTimeZone class provides support for a Gregorian calendar
+
+
 What is the Map interface? - The Map interface replaces the JDK 1.1 Dictionary class and is used associate keys with values
+
+
 What is the highest-level event class of the event-delegation model? - The java.util.EventObject class is the highest-level class in the event-delegation class hierarchy
+
+
 What is the Collection interface? - The Collection interface provides support for the implementation of a mathematical bag - an unordered collection of objects that may contain duplicates
+
+
 What is the Set interface? - The Set interface provides methods for accessing the elements of a finite mathematical set. Sets do not allow duplicate elements
+
+
 What is the purpose of the enableEvents() method? - The enableEvents() method is used to enable an event for a particular object. Normally, an event is enabled when a listener is added to an object for a particular event. The enableEvents() method is used by objects that handle events by overriding their event-dispatch methods.
+
+
 What is the ResourceBundle class? - The ResourceBundle class is used to store locale-specific resources that can be loaded by a program to tailor the program’s appearance to the particular locale in which it is being run.
+
+
 What is the difference between yielding and sleeping? - When a task invokes its yield() method, it returns to the ready state. When a task invokes its sleep() method, it returns to the waiting state.
+
+
 When a thread blocks on I/O, what state does it enter? - A thread enters the waiting state when it blocks on I/O.
+
+
 When a thread is created and started, what is its initial state? - A thread is in the ready state after it has been created and started.
+
+
 What invokes a thread’s run() method? - After a thread is started, via its start() method or that of the Thread class, the JVM invokes the thread’s run() method when the thread is initially executed.
+
+
 What method is invoked to cause an object to begin executing as a separate thread? - The start() method of the Thread class is invoked to cause an object to begin executing as a separate thread.
+
+
 What is the purpose of the wait(), notify(), and notifyAll() methods? - The wait(),notify(), and notifyAll() methods are used to provide an efficient way for threads to wait for a shared resource. When a thread executes an object’s wait() method, it enters the waiting state. It only enters the ready state after another thread invokes the object’s notify() or notifyAll() methods.
+
+
 What are the high-level thread states? - The high-level thread states are ready, running, waiting, and dead
+
+
 What happens when a thread cannot acquire a lock on an object? - If a thread attempts to execute a synchronized method or synchronized statement and is unable to acquire an object’s lock, it enters the waiting state until the lock becomes available.
+
+
 How does multithreading take place on a computer with a single CPU? - The operating system’s task scheduler allocates execution time to multiple tasks. By quickly switching between executing tasks, it creates the impression that tasks execute sequentially.
+
+
 What happens when you invoke a thread’s interrupt method while it is sleeping or waiting? - When a task’s interrupt() method is executed, the task enters the ready state. The next time the task enters the running state, an InterruptedException is thrown.
+
+
 What state is a thread in when it is executing? - An executing thread is in the running state
+
+
 What are three ways in which a thread can enter the waiting state? - A thread can enter the waiting state by invoking its sleep() method, by blocking on I/O, by unsuccessfully attempting to acquire an object’s lock, or by invoking an object’s wait() method. It can also enter the waiting state by invoking its (deprecated) suspend() method.
+
+
 What method must be implemented by all threads? - All tasks must implement the run() method, whether they are a subclass of Thread or implement the Runnable interface.
+
+
 What are the two basic ways in which classes that can be run as threads may be defined? - A thread class may be declared as a subclass of Thread, or it may implement the Runnable interface.
 How can you store international / Unicode characters into a cookie? - One way is, before storing the cookie URLEncode it. URLEnocder.encoder(str); And use URLDecoder.decode(str) when you get the stored cookie.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/30-simple-java-questions
+
+
+30 simple Java questions
+
+How could Java classes direct program messages to the system console, but error messages, say to a file?
+The class System has a variable out that represents the standard output, and the variable err that represents the standard error device. By default, they both point at the system console. This how the standard output could be re-directed:
+Stream st = new Stream (new
+  FileOutputStream ("techinterviews_com.txt"));
+System.setErr(st);
+System.setOut(st); 
+
+
+What’s the difference between an interface and an abstract class?
+An abstract class may contain code in method bodies, which is not allowed in an interface. With abstract classes, you have to inherit your class from it and Java does not allow multiple inheritance. On the other hand, you can implement multiple interfaces in your class.
+
+
+Why would you use a synchronized block vs. synchronized method?
+Synchronized blocks place locks for shorter periods than synchronized methods.
+
+
+Explain the usage of the keyword transient?
+This keyword indicates that the value of this member variable does not have to be serialized with the object. When the class will be de-serialized, this variable will be initialized with a default value of its data type (i.e. zero for integers).
+
+
+How can you force garbage collection?
+You can’t force GC, but could request it by calling System.gc(). JVM does not guarantee that GC will be started immediately.
+
+
+How do you know if an explicit object casting is needed?
+If you assign a superclass object to a variable of a subclass’s data type, you need to do explicit casting. For example:
+Object a;Customer b; b = (Customer) a;
+
+
+When you assign a subclass to a variable having a supeclass type, the casting is performed automatically.
+
+What’s the difference between the methods sleep() and wait()
+The code sleep(1000); puts thread aside for exactly one second. The code wait(1000), causes a wait of up to one second. A thread could stop waiting earlier if it receives the notify() or notifyAll() call. The method wait() is defined in the class Object and the method sleep() is defined in the class Thread.
+
+
+Can you write a Java class that could be used both as an applet as well as an application?
+Yes. Add a main() method to the applet.
+
+
+What’s the difference between constructors and other methods?
+Constructors must have the same name as the class and can not return a value. They are only called once while regular methods could be called many times.
+Can you call one constructor from another if a class has multiple constructors
+Yes. Use this() syntax.
+
+
+Explain the usage of Java packages.
+This is a way to organize files when a project consists of multiple modules. It also helps resolve naming conflicts when different packages have classes with the same names. Packages access level also allows you to protect data from being used by the non-authorized classes.
+
+
+If a class is located in a package, what do you need to change in the OS environment to be able to use it?
+
+
+You need to add a directory or a jar file that contains the package directories to the CLASSPATH environment variable. LetÃ¢â‚¬â„¢s say a class Employee belongs to a package com.xyz.hr; and is located in the file c:/dev/com.xyz.hr.Employee.java. In this case, you’d need to add c:/dev to the variable CLASSPATH. If this class contains the method main(), you could test it from a command prompt window as follows:
+c:\>java com.xyz.hr.Employee
+
+
+What’s the difference between J2SDK 1.5 and J2SDK 5.0?
+There’s no difference, Sun Microsystems just re-branded this version.
+
+
+What would you use to compare two String variables - the operator == or the method equals()?
+I’d use the method equals() to compare the values of the Strings and the = = to check if two variables point at the same instance of a String object.
+
+
+Does it matter in what order catch statements for FileNotFoundException and IOExceptipon are written?
+A. Yes, it does. The FileNoFoundException is inherited from the IOException. Exception’s subclasses have to be caught first.
+Can an inner class declared inside of a method access local variables of this method?
+It’s possible if these variables are final.
+
+
+What can go wrong if you replace && with & in the following code:
+String a=null;
+if (a!=null && a.length()>10)
+{...}
+A single ampersand here would lead to a NullPointerException.
+
+
+What’s the main difference between a Vector and an ArrayList
+Java Vector class is internally synchronized and ArrayList is not.
+
+
+When should the method invokeLater()be used?
+This method is used to ensure that Swing components are updated through the event-dispatching thread.
+
+
+How can a subclass call a method or a constructor defined in a superclass?
+
+
+Use the following syntax: super.myMethod(); To call a constructor of the superclass, just write super(); in the first line of the subclass’s constructor.
+
+
+What’s the difference between a queue and a stack?
+Stacks works by last-in-first-out rule (LIFO), while queues use the FIFO rule.
+
+
+You can create an abstract class that contains only abstract methods. On the other hand, you can create an interface that declares the same methods. So can you use abstract classes instead of interfaces? 
+Sometimes. But your class may be a descendent of another class and in this case the interface is your only option.
+
+
+What comes to mind when you hear about a young generation in Java?
+Garbage collection.
+
+
+What comes to mind when someone mentions a shallow copy in Java?
+Object cloning.
+
+
+If you’re overriding the method equals() of an object, which other method you might also consider?
+hashCode()
+
+
+You are planning to do an indexed search in a list of objects. Which of the two Java collections should you use: ArrayList or LinkedList?
+ArrayList
+
+
+How would you make a copy of an entire Java object with its state?
+
+
+Have this class implement Cloneable interface and call its method clone().
+
+
+How can you minimize the need of garbage collection and make the memory use more effective?
+
+
+Use object pooling and weak object references.
+There are two classes: A and B. The class B need to inform a class A when some important event has happened. What Java technique would you use to implement it?
+If these classes are threads I’d consider notify() or notifyAll(). For regular classes you can use the Observer interface.
+
+
+What access level do you need to specify in the class declaration to ensure that only classes from the same directory can access it?
+You do not need to specify any access level, and Java will use a default package access level.
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/basic-java-interview-questions
+Basic Java interview questions
+
+What is a Marker Interface? - An interface with no methods. Example: Serializable, Remote, Cloneable
+
+
+What interface do you implement to do the sorting? - Comparable
+
+
+What is the eligibility for a object to get cloned? - It must implement the Cloneable interface
+
+
+What is the purpose of abstract class? - It is not an instantiable class. It provides the concrete implementation for some/all the methods. So that they can reuse the concrete functionality by inheriting the abstract class.
+
+
+What is the difference between interface and abstract class? - Abstract class defined with methods. Interface will declare only the methods. Abstract classes are very much useful when there is a some functionality across various classes. Interfaces are well suited for the classes which varies in functionality but with the same method signatures.
+
+
+What do you mean by RMI and how it is useful? - RMI is a remote method invocation. Using RMI, you can work with remote object. The function calls are as though you are invoking a local variable. So it gives you a impression that you are working really with a object that resides within your own JVM though it is somewhere.
+
+
+What is the protocol used by RMI? - RMI-IIOP
+
+
+What is a hashCode? - hash code value for this object which is unique for every object.
+
+
+What is a thread? - Thread is a block of code which can execute concurrently with other threads in the JVM.
+
+
+What is the algorithm used in Thread scheduling? - Fixed priority scheduling.
+
+
+What is hash-collision in Hashtable and how it is handled in Java? - Two different keys with the same hash value. Two different entries will be kept in a single hash bucket to avoid the collision.
+
+
+What are the different driver types available in JDBC? - 1. A JDBC-ODBC bridge 2. A native-API partly Java technology-enabled driver 3. A net-protocol fully Java technology-enabled driver 4. A native-protocol fully Java technology-enabled driver For more information: Driver Description
+
+
+Is JDBC-ODBC bridge multi-threaded? - No
+
+
+Does the JDBC-ODBC Bridge support multiple concurrent open statements per connection? - No
+
+
+What is the use of serializable? - To persist the state of an object into any perminant storage device.
+
+
+What is the use of transient? - It is an indicator to the JVM that those variables should not be persisted. It is the users responsibility to initialize the value when read back from the storage.
+
+
+What are the different level lockings using the synchronization keyword? - Class level lock Object level lock Method level lock Block level lock
+
+
+What is the use of preparedstatement? - Preparedstatements are precompiled statements. It is mainly used to speed up the process of inserting/updating/deleting especially when there is a bulk processing.
+
+
+What is callable statement? Tell me the way to get the callable statement? - Callablestatements are used to invoke the stored procedures. You can obtain the callablestatement from Connection using the following methods prepareCall(String sql) prepareCall(String sql, int resultSetType, int resultSetConcurrency)
+
+
+In a statement, I am executing a batch. What is the result of the execution? - It returns the int array. The array contains the affected row count in the corresponding index of the SQL.
+
+
+Can a abstract method have the static qualifier? - Yes
+
+
+What are the different types of qualifier and what is the default qualifier? - public, protected, private, package (default)
+
+
+What is the super class of Hashtable? - Dictionary
+
+
+What is a lightweight component? - Lightweight components are the one which doesn’t go with the native call to obtain the graphical units. They share their parent component graphical units to render them. Example, Swing components
+
+
+What is a heavyweight component? - For every paint call, there will be a native call to get the graphical units. Example, AWT.
+
+
+What is an applet? - Applet is a program which can get downloaded into a client environment and start executing there.
+
+
+What do you mean by a Classloader? - Classloader is the one which loads the classes into the JVM.
+
+
+What are the implicit packages that need not get imported into a class file? - java.lang
+
+
+What is the difference between lightweight and heavyweight component? - Lightweight components reuses its parents graphical units. Heavyweight components goes with the native graphical unit for every component. Lightweight components are faster than the heavyweight components.
+
+
+What are the ways in which you can instantiate a thread? - Using Thread class By implementing the Runnable interface and giving that handle to the Thread class.
+
+
+What are the states of a thread? - 1. New 2. Runnable 3. Not Runnable 4. Dead
+Ready, Waiting, Running and Dead
+
+
+What is a socket? - A socket is an endpoint for communication between two machines.
+
+
+How will you establish the connection between the servlet and an applet? - Using the URL, I will create the connection URL. Then by openConnection method of the URL, I will establish the connection, through which I can be able to exchange data.
+
+
+What are the threads will start, when you start the java program? - Finalizer, Main, Reference Handler, Signal Dispatcher
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/core-java-interview-questions
+Core Java interview questions
+
+Can there be an abstract class with no abstract methods in it? - Yes
+
+
+Can an Interface be final? - No
+
+
+Can an Interface have an inner class? - Yes.
+	public interface abc
+	{
+		static int i=0; void dd();
+		class a1
+		{
+			a1()
+			{
+				int j;
+				System.out.println("inside");
+			};
+			public static void main(String a1[])
+			{
+				System.out.println("in interfia");
+			}
+		}
+	}
+
+
+Can we define private and protected modifiers for variables in interfaces? - No
+
+
+What is Externalizable? - Externalizable is an Interface that extends Serializable Interface. And sends data into Streams in Compressed Format. It has two methods, writeExternal(ObjectOuput out) and readExternal(ObjectInput in)
+
+
+What modifiers are allowed for methods in an Interface? - Only public and abstract modifiers are allowed for methods in interfaces.
+
+
+What is a local, member and a class variable? - Variables declared within a method are “local” variables. Variables declared within the class i.e not within any methods are “member” variables (global variables). Variables declared within the class i.e not within any methods and are defined as “static” are class variables
+
+
+What are the different identifier states of a Thread? - The different identifiers of a Thread are: R - Running or runnable thread, S - Suspended thread, CW - Thread waiting on a condition variable, MW - Thread waiting on a monitor lock, MS - Thread suspended waiting on a monitor lock
+
+
+What are some alternatives to inheritance? - Delegation is an alternative to inheritance. Delegation means that you include an instance of another class as an instance variable, and forward messages to the instance. It is often safer than inheritance because it forces you to think about each message you forward, because the instance is of a known class, rather than a new class, and because it doesn’t force you to accept all the methods of the super class: you can provide only the methods that really make sense. On the other hand, it makes you write more code, and it is harder to re-use (because it is not a subclass).
+
+
+Why isn’t there operator overloading? - Because C++ has proven by example that operator overloading makes code almost impossible to maintain. In fact there very nearly wasn’t even method overloading in Java, but it was thought that this was too useful for some very basic methods like print(). Note that some of the classes like DataOutputStream have unoverloaded methods like writeInt() and writeByte().
+
+
+What does it mean that a method or field is “static”? - Static variables and methods are instantiated only once per class. In other words they are class variables, not instance variables. If you change the value of a static variable in a particular object, the value of that variable changes for all instances of that class. Static methods can be referenced with the name of the class rather than the name of a particular object of the class (though that works too). That’s how library methods like System.out.println() work. out is a static field in the java.lang.System class.
+
+
+How do I convert a numeric IP address like 192.18.97.39 into a hostname like java.sun.com?
+	String hostname = InetAddress.getByName("192.18.97.39").getHostName();
+
+
+Difference between JRE/JVM/JDK?
+
+
+Why do threads block on I/O? - Threads block on i/o (that is enters the waiting state) so that other threads may execute while the I/O operation is performed.
+
+
+What is synchronization and why is it important? - With respect to multithreading, synchronization is the capability to control the access of multiple threads to shared resources. Without synchronization, it is possible for one thread to modify a shared object while another thread is in the process of using or updating that object’s value. This often leads to significant errors.
+
+
+Is null a keyword? - The null value is not a keyword.
+
+
+Which characters may be used as the second character of an identifier,but not as the first character of an identifier? - The digits 0 through 9 may not be used as the first character of an identifier but they may be used after the first character of an identifier.
+
+
+What modifiers may be used with an inner class that is a member of an outer class? - A (non-local) inner class may be declared as public, protected, private, static, final, or abstract.
+
+
+How many bits are used to represent Unicode, ASCII, UTF-16, and UTF-8 characters? - Unicode requires 16 bits and ASCII require 7 bits. Although the ASCII character set uses only 7 bits, it is usually represented as 8 bits. UTF-8 represents characters using 8, 16, and 18 bit patterns. UTF-16 uses 16-bit and larger bit patterns.
+
+
+What are wrapped classes? - Wrapped classes are classes that allow primitive types to be accessed as objects.
+
+
+What restrictions are placed on the location of a package statement within a source code file? - A package statement must appear as the first line in a source code file (excluding blank lines and comments).
+
+
+What is the difference between preemptive scheduling and time slicing? - Under preemptive scheduling, the highest priority task executes until it enters the waiting or dead states or a higher priority task comes into existence. Under time slicing, a task executes for a predefined slice of time and then reenters the pool of ready tasks. The scheduler then determines which task should execute next, based on priority and other factors.
+
+
+What is a native method? - A native method is a method that is implemented in a language other than Java.
+
+
+What are order of precedence and associativity, and how are they used? - Order of precedence determines the order in which operators are evaluated in expressions. Associatity determines whether an expression is evaluated left-to-right or right-to-left
+
+
+What is the catch or declare rule for method declarations? - If a checked exception may be thrown within the body of a method, the method must either catch the exception or declare it in its throws clause.
+
+
+Can an anonymous class be declared as implementing an interface and extending a class? - An anonymous class may implement an interface or extend a superclass, but may not be declared to do both.
+
+
+What is the range of the char type? - The range of the char type is 0 to 2^16 - 1.
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/programming-interview-questions
+Programming interview questions
+
+How can you defined OOP?
+
+
+How can you use OOP in your projects/products/applications?
+
+
+What is copy constructor?
+
+
+How many types of copy constructor are there?
+
+
+What shallow copy constructor does/behaves?
+
+
+Does C++ support copy constructor?
+
+
+Does Java support copy constructor?
+(If the answer to the previous question was correct) Why doesn’t Java support copy constructor?
+
+
+What is software life cycle?
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/master-list-of-java-interview-questions
+
+Master list of Java interview questions - 115 questions
+
+What is the difference between procedural and object-oriented programs?- a) In procedural program, programming logic follows certain procedures and the instructions are executed one after another. In OOP program, unit of program is object, which is nothing but combination of data and code. b) In procedural program, data is exposed to the whole program whereas in OOPs program, it is accessible with in the object and which in turn assures the security of the code.
+
+
+What are Encapsulation, Inheritance and Polymorphism?- Encapsulation is the mechanism that binds together code and data it manipulates and keeps both safe from outside interference and misuse. Inheritance is the process by which one object acquires the properties of another object. Polymorphism is the feature that allows one interface to be used for general class actions.
+
+
+What is the difference between Assignment and Initialization?- Assignment can be done as many times as desired whereas initialization can be done only once.
+
+
+
+What is OOPs?- Object oriented programming organizes a program around its data, i. e. , objects and a set of well defined interfaces to that data. An object-oriented program can be characterized as data controlling access to code.
+
+
+What are Class, Constructor and Primitive data types?- Class is a template for multiple objects with similar features and it is a blue print for objects. It defines a type of object according to the data the object can hold and the operations the object can perform. Constructor is a special kind of method that determines how an object is initialized when created. Primitive data types are 8 types and they are: byte, short, int, long, float, double, boolean, char.
+
+
+What is an Object and how do you allocate memory to it?- Object is an instance of a class and it is a software unit that combines a structured set of data with a set of operations for inspecting and manipulating that data. When an object is created using new operator, memory is allocated to it.
+
+
+What is the difference between constructor and method?- Constructor will be automatically invoked when an object is created whereas method has to be called explicitly.
+
+
+What are methods and how are they defined?- Methods are functions that operate on instances of classes in which they are defined. Objects can communicate with each other using methods and can call methods in other classes. Method definition has four parts. They are name of the method, type of object or primitive type the method returns, a list of parameters and the body of the method. A method’s signature is a combination of the first three parts mentioned above.
+
+
+What is the use of bin and lib in JDK?- Bin contains all tools such as javac, appletviewer, awt tool, etc., whereas lib contains API and all packages.
+
+
+What is casting?- Casting is used to convert the value of one type to another.
+
+
+How many ways can an argument be passed to a subroutine and explain them?- An argument can be passed in two ways. They are passing by value and passing by reference. Passing by value: This method copies the value of an argument into the formal parameter of the subroutine. Passing by reference: In this method, a reference to an argument (not the value of the argument) is passed to the parameter.
+
+
+What is the difference between an argument and a parameter?- While defining method, variables passed in the method are called parameters. While using those methods, values passed to those variables are called arguments.
+
+
+What are different types of access modifiers?- public: Any thing declared as public can be accessed from anywhere. private: Any thing declared as private can’t be seen outside of its class. protected: Any thing declared as protected can be accessed by classes in the same package and subclasses in the other packages. default modifier : Can be accessed only to classes in the same package.
+
+
+What is final, finalize() and finally?- final : final keyword can be used for class, method and variables. A final class cannot be subclassed and it prevents other programmers from subclassing a secure class to invoke insecure methods. A final method can’t be overridden. A final variable can’t change from its initialized value. finalize() : finalize() method is used just before an object is destroyed and can be called just prior to garbage collection. finally : finally, a key word used in exception handling, creates a block of code that will be executed after a try/catch block has completed and before the code following the try/catch block. The finally block will execute whether or not an exception is thrown. For example, if a method opens a file upon exit, then you will not want the code that closes the file to be bypassed by the exception-handling mechanism. This finally keyword is designed to address this contingency.
+
+
+What is UNICODE?- Unicode is used for internal representation of characters and strings and it uses 16 bits to represent each other.
+
+
+What is Garbage Collection and how to call it explicitly?- When an object is no longer referred to by any variable, java automatically reclaims memory used by that object. This is known as garbage collection. System. gc() method may be used to call it explicitly.
+
+
+What is finalize() method?- finalize () method is used just before an object is destroyed and can be called just prior to garbage collection.
+
+
+What are Transient and Volatile Modifiers?- Transient: The transient modifier applies to variables only and it is not stored as part of its object’s Persistent state. Transient variables are not serialized. Volatile: Volatile modifier applies to variables only and it tells the compiler that the variable modified by volatile can be changed unexpectedly by other parts of the program.
+
+
+What is method overloading and method overriding?- Method overloading: When a method in a class having the same method name with different arguments is said to be method overloading. Method overriding : When a method in a class having the same method name with same arguments is said to be method overriding.
+
+
+What is difference between overloading and overriding?- a) In overloading, there is a relationship between methods available in the same class whereas in overriding, there is relationship between a superclass method and subclass method. b) Overloading does not block inheritance from the superclass whereas overriding blocks inheritance from the superclass. c) In overloading, separate methods share the same name whereas in overriding, subclass method replaces the superclass. d) Overloading must have different method signatures whereas overriding must have same signature.
+
+
+What is meant by Inheritance and what are its advantages?- Inheritance is the process of inheriting all the features from a class. The advantages of inheritance are reusability of code and accessibility of variables and methods of the super class by subclasses.
+
+
+What is the difference between this() and super()?- this() can be used to invoke a constructor of the same class whereas super() can be used to invoke a super class constructor.
+
+
+What is the difference between superclass and subclass?- A super class is a class that is inherited whereas sub class is a class that does the inheriting.
+
+
+What modifiers may be used with top-level class?- public, abstract and final can be used for top-level class.
+
+
+What are inner class and anonymous class?- Inner class : classes defined in other classes, including those defined in methods are called inner classes. An inner class can have any accessibility including private. Anonymous class : Anonymous class is a class defined inside a method without a name and is instantiated and declared in the same place and cannot have explicit constructors.
+
+
+What is a package?- A package is a collection of classes and interfaces that provides a high-level layer of access protection and name space management.
+
+
+What is a reflection package?- java. lang. reflect package has the ability to analyze itself in runtime.
+
+
+What is interface and its use?- Interface is similar to a class which may contain method’s signature only but not bodies and it is a formal set of method and constant declarations that must be defined by the class that implements it. Interfaces are useful for: a)Declaring methods that one or more classes are expected to implement b)Capturing similarities between unrelated classes without forcing a class relationship. c)Determining an object’s programming interface without revealing the actual body of the class.
+
+
+What is an abstract class?- An abstract class is a class designed with implementation gaps for subclasses to fill in and is deliberately incomplete.
+
+
+What is the difference between Integer and int?- a) Integer is a class defined in the java. lang package, whereas int is a primitive data type defined in the Java language itself. Java does not automatically convert from one to the other. b) Integer can be used as an argument for a method that requires an object, whereas int can be used for calculations.
+
+
+What is a cloneable interface and how many methods does it contain?- It is not having any method because it is a TAGGED or MARKER interface.
+
+
+What is the difference between abstract class and interface?- a) All the methods declared inside an interface are abstract whereas abstract class must have at least one abstract method and others may be concrete or abstract. b) In abstract class, key word abstract must be used for the methods whereas interface we need not use that keyword for the methods. c) Abstract class must have subclasses whereas interface can’t have subclasses.
+
+
+Can you have an inner class inside a method and what variables can you access?- Yes, we can have an inner class inside a method and final variables can be accessed.
+
+
+What is the difference between String and String Buffer?- a) String objects are constants and immutable whereas StringBuffer objects are not. b) String class supports constant strings whereas StringBuffer class supports growable and modifiable strings.
+
+
+What is the difference between Array and vector?- Array is a set of related data type and static whereas vector is a growable array of objects and dynamic.
+
+
+What is the difference between exception and error?- The exception class defines mild error conditions that your program encounters. Exceptions can occur when trying to open the file, which does not exist, the network connection is disrupted, operands being manipulated are out of prescribed ranges, the class file you are interested in loading is missing. The error class defines serious error conditions that you should not attempt to recover from. In most cases it is advisable to let the program terminate when such an error is encountered.
+
+
+What is the difference between process and thread?- Process is a program in execution whereas thread is a separate path of execution in a program.
+
+
+What is multithreading and what are the methods for inter-thread communication and what is the class in which these methods are defined?- Multithreading is the mechanism in which more than one thread run independent of each other within the process. wait (), notify () and notifyAll() methods can be used for inter-thread communication and these methods are in Object class. wait() : When a thread executes a call to wait() method, it surrenders the object lock and enters into a waiting state. notify() or notifyAll() : To remove a thread from the waiting state, some other thread must make a call to notify() or notifyAll() method on the same object.
+
+
+What is the class and interface in java to create thread and which is the most advantageous method?- Thread class and Runnable interface can be used to create threads and using Runnable interface is the most advantageous method to create threads because we need not extend thread class here.
+
+
+What are the states associated in the thread?- Thread contains ready, running, waiting and dead states.
+
+
+What is synchronization?- Synchronization is the mechanism that ensures that only one thread is accessed the resources at a time.
+
+
+When you will synchronize a piece of your code?- When you expect your code will be accessed by different threads and these threads may change a particular data causing data corruption.
+
+
+What is deadlock?- When two threads are waiting each other and can’t precede the program is said to be deadlock.
+
+
+What is daemon thread and which method is used to create the daemon thread?- Daemon thread is a low priority thread which runs intermittently in the back ground doing the garbage collection operation for the java runtime system. setDaemon method is used to create a daemon thread.
+Are there any global variables in Java, which can be accessed by other part of your program?- No, it is not the main method in which you define variables. Global variables is not possible because concept of encapsulation is eliminated here.
+
+
+What is an applet?- Applet is a dynamic and interactive program that runs inside a web page displayed by a java capable browser.
+
+
+What is the difference between applications and applets?- a)Application must be run on local machine whereas applet needs no explicit installation on local machine. b)Application must be run explicitly within a java-compatible virtual machine whereas applet loads and runs itself automatically in a java-enabled browser. d)Application starts execution with its main method whereas applet starts execution with its init method. e)Application can run with or without graphical user interface whereas applet must run within a graphical user interface.
+
+
+How does applet recognize the height and width?- Using getParameters() method.
+When do you use codebase in applet?- When the applet class file is not in the same directory, codebase is used.
+
+
+What is the lifecycle of an applet?- init() method - Can be called when an applet is first loaded start() method - Can be called each time an applet is started. paint() method - Can be called when the applet is minimized or maximized. stop() method - Can be used when the browser moves off the applet’s page. destroy() method - Can be called when the browser is finished with the applet.
+
+
+How do you set security in applets?- using setSecurityManager() method
+
+
+What is an event and what are the models available for event handling?- An event is an event object that describes a state of change in a source. In other words, event occurs when an action is generated, like pressing button, clicking mouse, selecting a list, etc. There are two types of models for handling events and they are: a) event-inheritance model and b) event-delegation model
+
+
+What are the advantages of the model over the event-inheritance model?- The event-delegation model has two advantages over the event-inheritance model. They are: a)It enables event handling by objects other than the ones that generate the events. This allows a clean separation between a component’s design and its use. b)It performs much better in applications where many events are generated. This performance improvement is due to the fact that the event-delegation model does not have to be repeatedly process unhandled events as is the case of the event-inheritance.
+
+
+What is source and listener?- source : A source is an object that generates an event. This occurs when the internal state of that object changes in some way. listener : A listener is an object that is notified when an event occurs. It has two major requirements. First, it must have been registered with one or more sources to receive notifications about specific types of events. Second, it must implement methods to receive and process these notifications.
+
+
+What is adapter class?- An adapter class provides an empty implementation of all methods in an event listener interface. Adapter classes are useful when you want to receive and process only some of the events that are handled by a particular event listener interface. You can define a new class to act listener by extending one of the adapter classes and implementing only those events in which you are interested. For example, the MouseMotionAdapter class has two methods, mouseDragged()and mouseMoved(). The signatures of these empty are exactly as defined in the MouseMotionListener interface. If you are interested in only mouse drag events, then you could simply extend MouseMotionAdapter and implement mouseDragged() .
+
+
+What is meant by controls and what are different types of controls in AWT?- Controls are components that allow a user to interact with your application and the AWT supports the following types of controls: Labels, Push Buttons, Check Boxes, Choice Lists, Lists, Scrollbars, Text Components. These controls are subclasses of Component.
+
+
+What is the difference between choice and list?- A Choice is displayed in a compact form that requires you to pull it down to see the list of available choices and only one item may be selected from a choice. A List may be displayed in such a way that several list items are visible and it supports the selection of one or more list items.
+
+
+What is the difference between scrollbar and scrollpane?- A Scrollbar is a Component, but not a Container whereas Scrollpane is a Conatiner and handles its own events and perform its own scrolling.
+
+
+What is a layout manager and what are different types of layout managers available in java AWT?- A layout manager is an object that is used to organize components in a container. The different layouts are available are FlowLayout, BorderLayout, CardLayout, GridLayout and GridBagLayout.
+
+
+How are the elements of different layouts organized?- FlowLayout: The elements of a FlowLayout are organized in a top to bottom, left to right fashion. BorderLayout: The elements of a BorderLayout are organized at the borders (North, South, East and West) and the center of a container. CardLayout: The elements of a CardLayout are stacked, on top of the other, like a deck of cards. GridLayout: The elements of a GridLayout are of equal size and are laid out using the square of a grid. GridBagLayout: The elements of a GridBagLayout are organized according to a grid. However, the elements are of different size and may occupy more than one row or column of the grid. In addition, the rows and columns may have different sizes.
+Which containers use a Border layout as their default layout?- Window, Frame and Dialog classes use a BorderLayout as their layout.
+Which containers use a Flow layout as their default layout?- Panel and Applet classes use the FlowLayout as their default layout.
+
+
+What are wrapper classes?- Wrapper classes are classes that allow primitive types to be accessed as objects.
+
+
+What are Vector, Hashtable, LinkedList and Enumeration?- Vector : The Vector class provides the capability to implement a growable array of objects. Hashtable : The Hashtable class implements a Hashtable data structure. A Hashtable indexes and stores objects in a dictionary using hash codes as the object’s keys. Hash codes are integer values that identify objects. LinkedList: Removing or inserting elements in the middle of an array can be done using LinkedList. A LinkedList stores each object in a separate link whereas an array stores object references in consecutive locations. Enumeration: An object that implements the Enumeration interface generates a series of elements, one at a time. It has two methods, namely hasMoreElements() and nextElement(). HasMoreElemnts() tests if this enumeration has more elements and nextElement method returns successive elements of the series.
+
+
+What is the difference between set and list?- Set stores elements in an unordered way but does not contain duplicate elements, whereas list stores elements in an ordered way but may contain duplicate elements.
+
+
+What is a stream and what are the types of Streams and classes of the Streams?- A Stream is an abstraction that either produces or consumes information. There are two types of Streams and they are: Byte Streams: Provide a convenient means for handling input and output of bytes. Character Streams: Provide a convenient means for handling input & output of characters. Byte Streams classes: Are defined by using two abstract classes, namely InputStream and OutputStream. Character Streams classes: Are defined by using two abstract classes, namely Reader and Writer.
+
+
+What is the difference between Reader/Writer and InputStream/Output Stream?- The Reader/Writer class is character-oriented and the InputStream/OutputStream class is byte-oriented.
+
+
+What is an I/O filter?- An I/O filter is an object that reads from one stream and writes to another, usually altering the data in some way as it is passed from one stream to another.
+
+
+What is serialization and deserialization?- Serialization is the process of writing the state of an object to a byte stream. Deserialization is the process of restoring these objects.
+
+
+What is JDBC?- JDBC is a set of Java API for executing SQL statements. This API consists of a set of classes and interfaces to enable programs to write pure Java Database applications.
+
+
+What are drivers available?- a) JDBC-ODBC Bridge driver b) Native API Partly-Java driver c) JDBC-Net Pure Java driver d) Native-Protocol Pure Java driver
+
+
+What is the difference between JDBC and ODBC?- a) OBDC is for Microsoft and JDBC is for Java applications. b) ODBC can’t be directly used with Java because it uses a C interface. c) ODBC makes use of pointers which have been removed totally from Java. d) ODBC mixes simple and advanced features together and has complex options for simple queries. But JDBC is designed to keep things simple while allowing advanced capabilities when required. e) ODBC requires manual installation of the ODBC driver manager and driver on all client machines. JDBC drivers are written in Java and JDBC code is automatically installable, secure, and portable on all platforms. f) JDBC API is a natural Java interface and is built on ODBC. JDBC retains some of the basic features of ODBC.
+
+
+What are the types of JDBC Driver Models and explain them?- There are two types of JDBC Driver Models and they are: a) Two tier model and b) Three tier model Two tier model: In this model, Java applications interact directly with the database. A JDBC driver is required to communicate with the particular database management system that is being accessed. SQL statements are sent to the database and the results are given to user. This model is referred to as client/server configuration where user is the client and the machine that has the database is called as the server. Three tier model: A middle tier is introduced in this model. The functions of this model are: a) Collection of SQL statements from the client and handing it over to the database, b) Receiving results from database to the client and c) Maintaining control over accessing and updating of the above.
+
+
+What are the steps involved for making a connection with a database or how do you connect to a database?a) Loading the driver : To load the driver, Class. forName() method is used. Class. forName(”sun. jdbc. odbc. JdbcOdbcDriver”); When the driver is loaded, it registers itself with the java. sql. DriverManager class as an available database driver. b) Making a connection with database: To open a connection to a given database, DriverManager. getConnection() method is used. Connection con = DriverManager. getConnection (”jdbc:odbc:somedb”, “user”, “password”); c) Executing SQL statements : To execute a SQL query, java. sql. statements class is used. createStatement() method of Connection to obtain a new Statement object. Statement stmt = con. createStatement(); A query that returns data can be executed using the executeQuery() method of Statement. This method executes the statement and returns a java. sql. ResultSet that encapsulates the retrieved data: ResultSet rs = stmt. executeQuery(”SELECT * FROM some table”); d) Process the results : ResultSet returns one row at a time. Next() method of ResultSet object can be called to move to the next row. The getString() and getObject() methods are used for retrieving column values: while(rs. next()) { String event = rs. getString(”event”); Object count = (Integer) rs. getObject(”count”);
+
+
+What type of driver did you use in project?- JDBC-ODBC Bridge driver (is a driver that uses native(C language) libraries and makes calls to an existing ODBC driver to access a database engine).
+
+
+What are the types of statements in JDBC?- Statement: to be used createStatement() method for executing single SQL statement PreparedStatement — To be used preparedStatement() method for executing same SQL statement over and over. CallableStatement — To be used prepareCall() method for multiple SQL statements over and over.
+
+
+What is stored procedure?- Stored procedure is a group of SQL statements that forms a logical unit and performs a particular task. Stored Procedures are used to encapsulate a set of operations or queries to execute on database. Stored procedures can be compiled and executed with different parameters and results and may have any combination of input/output parameters.
+
+
+How to create and call stored procedures?- To create stored procedures: Create procedure procedurename (specify in, out and in out parameters) BEGIN Any multiple SQL statement; END; To call stored procedures: CallableStatement csmt = con. prepareCall(”{call procedure name(?,?)}”); csmt. registerOutParameter(column no. , data type); csmt. setInt(column no. , column name) csmt. execute();
+
+
+What is servlet?- Servlets are modules that extend request/response-oriented servers, such as java-enabled web servers. For example, a servlet might be responsible for taking data in an HTML order-entry form and applying the business logic used to update a company’s order database.
+
+
+What are the classes and interfaces for servlets?- There are two packages in servlets and they are javax. servlet and
+
+
+What is the difference between an applet and a servlet?- a) Servlets are to servers what applets are to browsers. b) Applets must have graphical user interfaces whereas servlets have no graphical user interfaces.
+
+
+What is the difference between doPost and doGet methods?- a) doGet() method is used to get information, while doPost() method is used for posting information. b) doGet() requests can’t send large amount of information and is limited to 240-255 characters. However, doPost()requests passes all of its data, of unlimited length. c) A doGet() request is appended to the request URL in a query string and this allows the exchange is visible to the client, whereas a doPost() request passes directly over the socket connection as part of its HTTP request body and the exchange are invisible to the client.
+
+
+What is the life cycle of a servlet?- Each Servlet has the same life cycle: a) A server loads and initializes the servlet by init () method. b) The servlet handles zero or more client’s requests through service() method. c) The server removes the servlet through destroy() method.
+Who is loading the init() method of servlet?- Web server
+
+
+What are the different servers available for developing and deploying Servlets?- a) Java Web Server b) JRun g) Apache Server h) Netscape Information Server i) Web Logic
+
+
+How many ways can we track client and what are they?- The servlet API provides two ways to track client state and they are: a) Using Session tracking and b) Using Cookies.
+
+
+What is session tracking and how do you track a user session in servlets?- Session tracking is a mechanism that servlets use to maintain state about a series requests from the same user across some period of time. The methods used for session tracking are: a) User Authentication - occurs when a web server restricts access to some of its resources to only those clients that log in using a recognized username and password. b) Hidden form fields - fields are added to an HTML form that are not displayed in the client’s browser. When the form containing the fields is submitted, the fields are sent back to the server. c) URL rewriting - every URL that the user clicks on is dynamically modified or rewritten to include extra information. The extra information can be in the form of extra path information, added parameters or some custom, server-specific URL change. d) Cookies - a bit of information that is sent by a web server to a browser and which can later be read back from that browser. e) HttpSession- places a limit on the number of sessions that can exist in memory. This limit is set in the session. maxresidents property.
+
+
+What is Server-Side Includes (SSI)?- Server-Side Includes allows embedding servlets within HTML pages using a special servlet tag. In many servlets that support servlets, a page can be processed by the server to include output from servlets at certain points inside the HTML page. This is accomplished using a special internal SSINCLUDE, which processes the servlet tags. SSINCLUDE servlet will be invoked whenever a file with an. shtml extension is requested. So HTML files that include server-side includes must be stored with an . shtml extension.
+
+
+What are cookies and how will you use them?- Cookies are a mechanism that a servlet uses to have a client hold a small amount of state-information associated with the user. a) Create a cookie with the Cookie constructor: public Cookie(String name, String value) b) A servlet can send a cookie to the client by passing a Cookie object to the addCookie() method of HttpServletResponse: public void HttpServletResponse. addCookie(Cookie cookie) c) A servlet retrieves cookies by calling the getCookies() method of HttpServletRequest: public Cookie[ ] HttpServletRequest. getCookie().
+Is it possible to communicate from an applet to servlet and how many ways and how?- Yes, there are three ways to communicate from an applet to servlet and they are: a) HTTP Communication(Text-based and object-based) b) Socket Communication c) RMI Communication
+
+
+What is connection pooling?- With servlets, opening a database connection is a major bottleneck because we are creating and tearing down a new connection for every page request and the time taken to create connection will be more. Creating a connection pool is an ideal approach for a complicated servlet. With a connection pool, we can duplicate only the resources we need to duplicate rather than the entire servlet. A connection pool can also intelligently manage the size of the pool and make sure each connection remains valid. A number of connection pool packages are currently available. Some like DbConnectionBroker are freely available from Java Exchange Works by creating an object that dispenses connections and connection Ids on request. The ConnectionPool class maintains a Hastable, using Connection objects as keys and Boolean values as stored values. The Boolean value indicates whether a connection is in use or not. A program calls getConnection() method of the ConnectionPool for getting Connection object it can use; it calls returnConnection() to give the connection back to the pool.
+Why should we go for interservlet communication?- Servlets running together in the same server communicate with each other in several ways. The three major reasons to use interservlet communication are: a) Direct servlet manipulation - allows to gain access to the other currently loaded servlets and perform certain tasks (through the ServletContext object) b) Servlet reuse - allows the servlet to reuse the public methods of another servlet. c) Servlet collaboration - requires to communicate with each other by sharing specific information (through method invocation)
+Is it possible to call servlet with parameters in the URL?- Yes. You can call a servlet with parameters in the syntax as (?Param1 = xxx || m2 = yyy).
+
+
+What is Servlet chaining?- Servlet chaining is a technique in which two or more servlets can cooperate in servicing a single request. In servlet chaining, one servlet’s output is piped to the next servlet’s input. This process continues until the last servlet is reached. Its output is then sent back to the client.
+
+
+How do servlets handle multiple simultaneous requests?- The server has multiple threads that are available to handle requests. When a request comes in, it is assigned to a thread, which calls a service method (for example: doGet(), doPost() and service()) of the servlet. For this reason, a single servlet object can have its service methods called by many threads at once.
+
+
+What is the difference between TCP/IP and UDP?- TCP/IP is a two-way communication between the client and the server and it is a reliable and there is a confirmation regarding reaching the message to the destination. It is like a phone call. UDP is a one-way communication only between the client and the server and it is not a reliable and there is no confirmation regarding reaching the message to the destination. It is like a postal mail.
+
+
+What is Inet address?- Every computer connected to a network has an IP address. An IP address is a number that uniquely identifies each computer on the Net. An IP address is a 32-bit number.
+
+
+What is Domain Naming Service(DNS)?- It is very difficult to remember a set of numbers(IP address) to connect to the Internet. The Domain Naming Service(DNS) is used to overcome this problem. It maps one particular IP address to a string of characters. For example, www. mascom. com implies com is the domain name reserved for US commercial sites, moscom is the name of the company and www is the name of the specific computer, which is mascom’s server.
+
+
+What is URL?- URL stands for Uniform Resource Locator and it points to resource files on the Internet. URL has four components: http://www. address. com:80/index.html, where http - protocol name, address - IP address or host name, 80 - port number and index.html - file path.
+
+
+What is RMI and steps involved in developing an RMI object?- Remote Method Invocation (RMI) allows java object that executes on one machine and to invoke the method of a Java object to execute on another machine. The steps involved in developing an RMI object are: a) Define the interfaces b) Implementing these interfaces c) Compile the interfaces and their implementations with the java compiler d) Compile the server implementation with RMI compiler e) Run the RMI registry f) Run the application
+
+
+What is RMI architecture?- RMI architecture consists of four layers and each layer performs specific functions: a) Application layer - contains the actual object definition. b) Proxy layer - consists of stub and skeleton. c) Remote Reference layer - gets the stream of bytes from the transport layer and sends it to the proxy layer. d) Transportation layer - responsible for handling the actual machine-to-machine communication.
+
+
+What is UnicastRemoteObject?- All remote objects must extend UnicastRemoteObject, which provides functionality that is needed to make objects available from remote machines.
+
+
+Explain the methods, rebind() and lookup() in Naming class?- rebind() of the Naming class(found in java. rmi) is used to update the RMI registry on the server machine. Naming. rebind(”AddSever”, AddServerImpl); lookup() of the Naming class accepts one argument, the rmi URL and returns a reference to an object of type AddServerImpl.
+
+
+What is a Java Bean?- A Java Bean is a software component that has been designed to be reusable in a variety of different environments.
+
+
+What is a Jar file?- Jar file allows to efficiently deploying a set of classes and their associated resources. The elements in a jar file are compressed, which makes downloading a Jar file much faster than separately downloading several uncompressed files. The package java. util. zip contains classes that read and write jar files.
+
+
+What is BDK?- BDK, Bean Development Kit is a tool that enables to create, configure and connect a set of set of Beans and it can be used to test Beans without writing a code.
+
+
+What is JSP?- JSP is a dynamic scripting capability for web pages that allows Java as well as a few special tags to be embedded into a web file (HTML/XML, etc). The suffix traditionally ends with .jsp to indicate to the web server that the file is a JSP files. JSP is a server side technology - you can’t do any client side validation with it. The advantages are: a) The JSP assists in making the HTML more functional. Servlets on the other hand allow outputting of HTML but it is a tedious process. b) It is easy to make a change and then let the JSP capability of the web server you are using deal with compiling it into a servlet and running it.
+
+
+What are JSP scripting elements?- JSP scripting elements lets to insert Java code into the servlet that will be generated from the current JSP page. There are three forms: a) Expressions of the form <%= expression %> that are evaluated and inserted into the output, b) Scriptlets of the form<% code %>that are inserted into the servlet’s service method, and c) Declarations of the form <%! Code %>that are inserted into the body of the servlet class, outside of any existing methods.
+
+
+What are JSP Directives?- A JSP directive affects the overall structure of the servlet class. It usually has the following form:<%@ directive attribute=”value” %> However, you can also combine multiple attribute settings for a single directive, as follows:<%@ directive attribute1=”value1″ attribute 2=”value2″ . . . attributeN =”valueN” %> There are two main types of directive: page, which lets to do things like import classes, customize the servlet superclass, and the like; and include, which lets to insert a file into the servlet class at the time the JSP file is translated into a servlet
+
+
+What are Predefined variables or implicit objects?- To simplify code in JSP expressions and scriptlets, we can use eight automatically defined variables, sometimes called implicit objects. They are request, response, out, session, application, config, pageContext, and page.
+
+
+What are JSP ACTIONS?- JSP actions use constructs in XML syntax to control the behavior of the servlet engine. You can dynamically insert a file, reuse JavaBeans components, forward the user to another page, or generate HTML for the Java plugin. Available actions include: jsp:include - Include a file at the time the page is requested. jsp:useBean - Find or instantiate a JavaBean. jsp:setProperty - Set the property of a JavaBean. jsp:getProperty - Insert the property of a JavaBean into the output. jsp:forward - Forward the requester to a newpage. Jsp: plugin - Generate browser-specific code that makes an OBJECT or EMBED
+
+
+How do you pass data (including JavaBeans) to a JSP from a servlet?- (1) Request Lifetime: Using this technique to pass beans, a request dispatcher (using either “include” or forward”) can be called. This bean will disappear after processing this request has been completed. Servlet: request. setAttribute(”theBean”, myBean); RequestDispatcher rd = getServletContext(). getRequestDispatcher(”thepage. jsp”); rd. forward(request, response); JSP PAGE:<jsp: useBean id=”theBean” scope=”request” class=”. . . . . ” />(2) Session Lifetime: Using this technique to pass beans that are relevant to a particular session (such as in individual user login) over a number of requests. This bean will disappear when the session is invalidated or it times out, or when you remove it. Servlet: HttpSession session = request. getSession(true); session. putValue(”theBean”, myBean); /* You can do a request dispatcher here, or just let the bean be visible on the next request */ JSP Page:<jsp:useBean id=”theBean” scope=”session” class=”. . . ” /> 3) Application Lifetime: Using this technique to pass beans that are relevant to all servlets and JSP pages in a particular app, for all users. For example, I use this to make a JDBC connection pool object available to the various servlets and JSP pages in my apps. This bean will disappear when the servlet engine is shut down, or when you remove it. Servlet: GetServletContext(). setAttribute(”theBean”, myBean); JSP PAGE:<jsp:useBean id=”theBean” scope=”application” class=”. . . ” />
+
+
+How can I set a cookie in JSP?- response. setHeader(”Set-Cookie”, “cookie string”); To give the response-object to a bean, write a method setResponse (HttpServletResponse response) - to the bean, and in jsp-file:<% bean. setResponse (response); %>
+
+
+How can I delete a cookie with JSP?- Say that I have a cookie called “foo, ” that I set a while ago & I want it to go away. I simply: <% Cookie killCookie = new Cookie(”foo”, null); KillCookie. setPath(”/”); killCookie. setMaxAge(0); response. addCookie(killCookie); %>
+
+
+How are Servlets and JSP Pages related?- JSP pages are focused around HTML (or XML) with Java codes and JSP tags inside them. When a web server that has JSP support is asked for a JSP page, it checks to see if it has already compiled the page into a servlet. Thus, JSP pages become servlets and are transformed into pure Java and then compiled, loaded into the server and executed.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/newbie-java-questions
+Newbie Java questions
+
+If Runnable interface is better than Thread class, than why we are using Thread class? What is the need for Thread class?
+
+
+Why we are calling System.gc() method to garbage collection of unused object, if garbage collection is automatically done in Java by daemon thread in background process with regular interval?
+
+
+What is the significance of Marker interface? Why are we using, even though it has no method?
+
+
+Why we are always doing rs.next() in first line of while loop in retrieving data from database through result set?
+
+
+Please give me the details of synchronization? And which are the methods and elements used in it and why only that methods and variables?
+
+
+Why we are not using Java in real time based application, but instead we are using C or C++?
+
+
+Detail difference between 4 types of driver and their use in different different applications?
+
+
+Is Java code with native methods platform-independent?
+
+
+Why is the compiler platform-independent, while JVM is platform-dependent?\
+
+
+Mention different type of compilers and interpreters in Java?
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/64-java-questions-for-any-job-interview
+
+64 Java questions for any job interview
+By admin | May 4, 2006
+1. Which
+of the following are valid definitions of an application’s main( ) method?
+a) public static void main();
+b) public static void main( String args );
+c) public static void main( String args[] );
+d) public static void main( Graphics g );
+e) public static boolean main( String args[] );
+2. If MyProg.java were compiled as an
+application and then run from the command line as:
+
+              java MyProg I like tests
+what would be the value of args[ 1 ] inside
+the main( ) method?
+a) MyProg
+b) "I"
+c) "like"
+d) 3
+e) 4
+f) null until a value is assigned
+
+3. Which of the following are Java keywords?
+a) array
+b) boolean
+c) Integer
+d) protect
+e) super
+4. After the declaration:
+
+char[] c = new char[100];
+
+what is the value of c[50]?
+a) 50
+b) 49
+c) ‘\u0000′
+d) ‘\u0020′
+e) " "
+f) cannot be determined
+g) always null until a value is
+assigned
+5. After the declaration:
+
+int x;
+
+the range of x is:
+a) -231 to 231-1
+
+b) -216 to 216 -
+1 
+c) -232 to 232 
+d) -216 to 216
+e) cannot be determined; it depends on
+the machine
+6. Which identifiers are valid?
+a) _xpoints
+b) r2d2
+c) bBb$
+d) set-flow
+e) thisisCrazy
+7. Represent the number 6 as a hexadecimal
+literal.
+
+8. Which of the following statements assigns "Hello Java" to the
+String variable s?
+a) String s = "Hello Java";
+b) String s[] = "Hello Java";
+c) new String s = "Hello Java";
+d) String s = new String("Hello Java");
+9. An integer, x has a binary value (using 1
+byte) of 10011100. What is the binary value of z after these statements:
+
+int y = 1 << 7;
+int z = x & y;
+
+a) 1000 0001
+b) 1000 0000
+c) 0000 0001
+d) 1001 1101
+e) 1001 1100
+10. Which statements are accurate:
+a) >>
+performs signed shift while >>> performs an unsigned shift.
+b) >>> performs a
+signed shift while >> performs an unsigned shift.
+c) << performs a
+signed shift while <<< performs an insigned shift.
+d) <<< performs a
+signed shift while << performs an unsigned shift.
+11. The statement …
+
+String s = "Hello" +
+"Java";
+
+yields the same value for s as …
+
+String s = "Hello";
+String s2= "Java";
+s.concat( s2 );
+
+True
+False
+12. If you compile and execute an application
+with the following code in its main() method:
+
+        String s = new String( "Computer" );
+        
+        if( s == "Computer" )
+               System.out.println( "Equal A" );
+        if( s.equals( "Computer" ) )
+               System.out.println( "Equal B" );
+a) It will not compile because the
+String class does not support the = = operator.
+b) It will compile and run, but
+nothing is printed.
+c) "Equal A" is the only
+thing that is printed.
+d) "Equal B" is the only
+thing that is printed.
+e) Both "Equal A" and
+"Equal B" are printed.
+13. Consider the two statements:
+
+        1. boolean passingScore = false && grade == 70;
+        2. boolean passingScore = false & grade == 70;
+The expression
+
+grade == 70
+
+is evaluated:
+a) in both 1 and 2
+b) in neither 1 nor 2
+c) in 1 but not 2
+d) in 2 but not 1
+e) invalid because false should be
+FALSE
+14. Given the variable declarations below:
+
+byte myByte;
+int myInt;
+long myLong;
+char myChar;
+float myFloat;
+double myDouble;
+
+Which one of the following assignments would
+need an explicit cast?
+a) myInt
+= myByte;
+b) myInt
+= myLong;
+c) myByte
+= 3;
+d) myInt
+= myChar;
+e) myFloat
+= myDouble;
+f) myFloat
+= 3;
+g) myDouble
+= 3.0;
+15. Consider this class example:
+
+class MyPoint 
+{  void myMethod() 
+   {  int x, y;
+      x = 5; y = 3;
+      System.out.print( " ( " + x + ", " + y + " ) " );
+      switchCoords( x, y );
+      System.out.print( " ( " + x + ", " + y + " ) " );
+   }
+   void switchCoords( int x, int y ) 
+   {  int temp;
+      temp = x;
+      x = y;
+      y = temp;
+      System.out.print( " ( " + x + ", " + y + " ) " );
+   }
+}
+What is printed to standard output if myMethod()
+is executed?
+a) (5, 3) (5, 3) (5, 3)
+b) (5, 3) (3, 5) (3, 5)
+c) (5, 3) (3, 5) (5, 3)
+16. To declare an array of 31 floating
+point numbers representing snowfall for each day of March in Gnome, Alaska,
+which declarations would be valid?
+a) double
+snow[] = new double[31];
+b) double
+snow[31] = new array[31];
+c) double
+snow[31] = new array;
+d) double[]
+snow = new double[31];
+17. If arr[] contains only positive integer values, what does this
+function do?
+
+public int guessWhat( int arr[] )
+{  int x= 0;
+   for( int i = 0; i < arr.length; i++ )
+      x = x < arr[i] ? arr[i] : x;
+   return x;
+}
+a) Returns the index of the highest
+element in the array
+b) Returns true/false if there
+are any elements that repeat in the array
+c) Returns how many even numbers are
+in the array
+d) Returns the highest element in the
+array
+e) Returns the number of question
+marks in the array
+18. Consider the code below:
+
+arr[0] = new int[4];
+arr[1] = new int[3];
+arr[2] = new int[2];
+arr[3] = new int[1];
+for( int n = 0; n < 4; n++ )
+System.out.println( /* what goes here? */ );
+
+Which statement below, when inserted as the
+body of the for loop, would print the number of values in each row?
+a) arr[n].length();
+b) arr.size;
+c) arr.size-1;
+d) arr[n][size];
+e) arr[n].length;
+19. If size = 4, triArraylooks like:
+
+ 
+int[][] makeArray( int size) 
+{  int[][] triArray = new int[size] [];
+   int val=1;
+   for( int i = 0; i < triArray.length; i++ ) 
+   {  triArray[i] = new int[i+1];
+          for( int j=0; j < triArray[i].length; j++ )
+      {  triArray[i][j] = val++;
+      }
+   }
+   return triArray;
+}
+ 
+a) 
+1 2 3 4
+5 6 7
+8 9
+10
+
+b) 
+1 4 9 16
+
+c) 
+1 2 3 4
+
+d) 
+1 2 3 4
+5 6 7 8
+9 10 11 12
+13 14 15 16
+
+e) 
+1
+2 3 
+4 5 6 
+7 8 9 10
+
+20. Which of the following are legal
+declarations of a two-dimensional array of integers?
+a) int[5][5]a = new int[][];
+b) int a = new int[5,5]; 
+c) int[]a[] = new int[5][5];
+d) int[][]a = new[5]int[5];
+21. Which of the following are correct methods
+for initializing the array "dayhigh" with 7 values?
+a) int dayhigh = { 24, 23, 24, 25, 25, 23, 21 };
+b) int dayhigh[] = { 24, 23, 24, 25, 25, 23, 21 };
+c) int[] dayhigh = { 24, 23, 24, 25, 25, 23, 21 };
+d) int dayhigh [] = new int[24, 23, 24, 25, 25, 23, 21];
+e) int dayhigh = new[24, 23, 24, 25, 25, 23, 21];
+22. If you want subclasses to access, but not to
+override a superclass member method, what keyword should precede the name of
+the superclass method?
+
+23. If you want a member variable to not be accessible outside the current
+class at all, what keyword should precede the name of the variable when
+declaring it?
+
+24. Consider the code below:
+
+ 
+public static void main( String args[] )
+{  int a = 5;
+   System.out.println( cube( a ) );
+}
+int cube( int theNum )
+{
+   return theNum * theNum * theNum;
+}
+ 
+What will happen when you attempt to compile and run this code?
+a) It will not compile because cube is
+already defined in the java.lang.Math class.
+b) It will not compile because cube is
+not static.
+c) It will compile, but throw an
+arithmetic exception.
+d) It will run perfectly and print
+"125" to standard output.
+25. Given the variables defined below:
+
+int one = 1;
+int two = 2;
+char initial = ‘2′;
+boolean flag = true;
+
+Which of the following are valid?
+a) if(
+one ){}
+b) if(
+one = two ){}
+c) if(
+one == two ){}
+d) if(
+flag ){}
+e) switch(
+one ){}
+f) switch(
+flag ){}
+g) switch(
+initial ){}
+26. If val = 1 in the code below:
+
+ 
+switch( val ) 
+{  case 1: System.out.print( "P" );
+   case 2: 
+   case 3: System.out.print( "Q" );
+      break;
+   case 4: System.out.print( "R" );
+   default: System.out.print( "S" );
+}
+ 
+Which values would be printed?
+a) P
+b) Q
+c) R
+d) S
+27. Assume that val has been defined as an int for the
+code below:
+
+ 
+if( val > 4 ) 
+{  System.out.println( "Test A" );
+}
+else if( val > 9 ) 
+{  System.out.println( "Test B" );
+}
+else System.out.println( "Test C" );
+ 
+Which values of val will
+result in "Test C" being printed:
+
+a) val < 0 
+b) val between 0 and 4 
+c) val between 4 and 9 
+d) val > 9 
+e) val = 0 
+f) no values for val will be satisfactory
+
+28. What exception might a wait()
+method throw?
+
+29. For the code:
+
+ 
+m = 0;
+while( m++ < 2 )
+   System.out.println( m );
+ 
+Which of the following are printed to
+standard output?
+a) 0
+b) 1
+c) 2
+d) 3
+e) Nothing and an exception
+is thrown
+30. Consider the code fragment below:
+
+ 
+outer: for( int i = 1; i <3; i++ )
+   {  inner: for( j = 1; j < 3; j++ )
+      {  if( j==2 )
+            continue outer;
+            System.out.println( "i = " +i ", j = " + j );
+      }
+   }    
+ 
+Which of the following would be printed to standard output?
+a) i = 1, j = 1
+b) i = 1, j = 2
+c) i = 1, j = 3
+d) i = 2, j = 1
+e) i = 2, j = 2
+f) i = 2, j = 3
+g) i = 3, j = 1
+h) i = 3, j = 2
+31. Consider the code below:
+
+void myMethod() 
+{  try 
+   {  
+      fragile();
+   }
+   catch( NullPointerException npex ) 
+   {  
+      System.out.println( "NullPointerException thrown " );
+   }
+   catch( Exception ex ) 
+      {  
+         System.out.println( "Exception thrown " );
+      }
+   finally 
+   {  
+      System.out.println( "Done with exceptions " ); 
+   }
+   System.out.println( "myMethod is done" );
+}
+What is printed to standard output if fragile()
+throws an IllegalArgumentException?
+a) "NullPointerException thrown"
+b) "Exception thrown"
+c) "Done with exceptions"
+d) "myMethod is done"
+e) Nothing is printed
+32. Consider the following code sample:
+
+class Tree{}
+class Pine extends Tree{}
+class Oak extends Tree{}
+public class Forest 
+{  public static void main( String[] args ) 
+   {  Tree tree = new Pine();
+ 
+      if( tree instanceof Pine )
+      System.out.println( "Pine" );
+ 
+      if( tree instanceof Tree )
+      System.out.println( "Tree" );
+ 
+      if( tree instanceof Oak )
+      System.out.println( "Oak" );
+ 
+      else System.out.println( "Oops" );
+   }
+}
+Select all choices that will be printed:
+a) Pine
+b) Tree
+c) Forest
+d) Oops
+e) (nothing printed)
+33. Consider the classes defined below:
+
+import java.io.*;
+class Super 
+{
+        int methodOne( int a, long b ) throws IOException 
+        { // code that performs some calculations
+    }
+        float methodTwo( char a, int b )
+        { // code that performs other calculations
+    }
+}
+public class Sub extends Super
+{
+ 
+}
+Which of the following are legal method
+declarations to add to the class Sub? Assume that each method is the only one being added.
+
+a) public static void main( String args[] ){}
+b) float methodTwo(){}
+c) long methodOne( int c, long d ){}
+d) int methodOne( int c, long d ) throws
+ArithmeticException{}
+e) int methodOne( int c, long d ) throws
+FileNotFoundException{}
+34. Assume that Sub1 and Sub2 are both
+subclasses of class Super.
+Given the declarations:
+Super super = new Super();
+Sub1 sub1 = new Sub1();
+Sub2 sub2 = new Sub2(); 
+Which statement best describes the result of
+attempting to compile and execute the following statement:
+super = sub1;
+a) Compiles and definitely legal at
+runtime
+b) Does not compile
+c) Compiles and may be illegal at
+runtime
+35. For the following code:
+
+class Super 
+{  int index = 5;
+   public void printVal() 
+      {  System.out.println( "Super" );
+      }
+}
+class Sub extends Super
+{  int index = 2;
+   public void printVal() 
+   {  System.out.println( "Sub" );
+   }
+}
+public class Runner 
+{  public static void main( String argv[] ) 
+   {  Super sup = new Sub();
+      System.out.print( sup.index + "," );
+      sup.printVal();
+   }
+}
+What will be printed to standard output?
+a) The code will not compile.
+b) The code compiles and "5,
+Super" is printed to standard output.
+c) The code compiles and "5,
+Sub" is printed to standard output.
+d) The code compiles and "2,
+Super" is printed to standard output.
+e) The code compiles and "2,
+Sub" is printed to standard output.
+f) The code compiles, but throws an
+exception.
+36. How many objects are eligible for garbage
+collection once execution has reached the line labeled Line A?
+String name;
+String newName = "Nick";
+newName = "Jason";
+name = "Frieda";
+String newestName = name;
+name = null;
+//Line A
+a) 0
+b) 1
+c) 2
+d) 3
+e) 4
+37. Which of the following statements about
+Java’s garbage collection are true?
+a) The garbage
+collector can be invoked explicitly using a Runtime object.
+b) The finalize method is
+always called before an object is garbage collected.
+c) Any class that includes
+a finalize method should invoke its superclass’ finalize method.
+d) Garbage collection
+behavior is very predictable.
+38. What line of code would begin execution of a
+thread named myThread?
+
+39. Which methods are required to implement the interface Runnable.
+a) wait()
+b) run()
+c) stop()
+d) update()
+e) resume()
+40. What class defines the wait() method?
+
+41. For what reasons might a thread stop execution?
+a) A thread with higher priority
+began execution.
+b) The thread’s wait() method was invoked.
+c) The thread invoked its yield() method.
+d) The thread’s pause() method was invoked.
+e) The thread’s sleep() method was invoked.
+42. Which method below can change a String object, s ?
+a) equals( s )
+b) substring(
+s )
+c) concat(
+s )
+d) toUpperCase(
+s )
+e) none of the above will change s
+43. If s1 is declared as: 
+String s1 =
+"phenobarbital";
+What will be the value of s2 after
+the following line of code:
+
+String s2 = s1.substring( 3, 5 );
+
+a) null
+b) "eno"
+c) "enoba"
+d) "no"
+44. What method(s)
+from the java.lang.Math class might method() be if the statement
+
+method( -4.4 )
+== -4;
+
+is true.
+
+a)
+round()
+b) min()
+c) trunc()
+d) abs()
+e) floor()
+f) ceil()
+
+45. Which methods
+does java.lang.Math include for trigonometric computations?
+
+a)
+sin()
+b) cos()
+c) tan()
+d) aSin()
+e) aCos()
+f) aTan()
+g) toDegree()
+
+46. This piece of
+code:
+
+TextArea ta =
+new TextArea( 10, 3 );
+
+Produces (select
+all correct statements):
+
+a)
+a TextArea with 10 rows and up to 3 columns
+b) a TextArea with a
+variable number of columns not less than 10 and 3 rows
+c) a TextArea that may not
+contain more than 30 characters
+d) a TextArea that can be
+edited
+
+47. In the list below, which subclass(es) of Component cannot be directly
+instantiated:
+
+a)
+Panel
+b) Dialog
+c) Container
+d) Frame
+
+48. Of the five Component methods listed below, only one is also a method
+of the class MenuItem. Which one?
+
+a)
+setVisible(
+boolean b )
+b) setEnabled( boolean b )
+c) getSize()
+d) setForeground( Color c )
+e) setBackground( Color c )
+
+49. If a font with
+variable width is used to construct the string text for a column, the
+initial size of the column is:
+
+a)
+determined by the number of characters in the string, multiplied by the
+width of a character in this font
+b) determined by the number of
+characters in the string, multiplied by the average width of a character
+in this font
+c) exclusively determined by the
+number of characters in the string
+d) undetermined
+
+50. Which of the
+following methods from the java.awt.Graphics class would be used to draw the outline of a
+rectangle with a single method call?
+
+a)
+fillRect()
+b)
+drawRect()
+c) fillPolygon()
+d) drawPolygon()
+e) drawLine()
+
+51. The Container methods add( Component comp ) and add( String name, Component comp) will throw an IllegalArgumentException
+if comp is a:
+
+a) button
+b) list
+c) window
+d) textarea
+e) container that contains
+this container
+52. Of the following AWT classes, which one(s) are responsible for implementing the components layout?
+
+a)
+LayoutManager
+b) GridBagLayout
+c) ActionListener
+d) WindowAdapter
+e) FlowLayout
+
+53. A component that should resize vertically but not horizontally should
+be placed in a:
+
+a)
+BorderLayout in the North or South location
+b) FlowLayout as the first
+component
+c) BorderLayout in the
+East or West location
+d) BorderLayout in the
+Center location
+e) GridLayout
+
+54. What type of object is the parameter for all methods of the
+MouseListener interface?
+
+
+
+55. Which of the following statements about event handling in JDK 1.1 and
+later are true?
+
+a)
+A class can implement multiple listener interfaces
+b) If a class implements a listener
+interface, it only has to overload the methods it uses
+c) All of the MouseMotionAdapter class
+methods have a void return type.
+
+56. Which of the
+following describe the sequence of method calls that result in a component
+being redrawn?
+
+a)
+invoke paint() directly
+b) invoke update which
+calls paint()
+c) invoke repaint() which invokes update(),
+which in turn invokes paint()
+d) invoke repaint() which invokes paint directly
+
+57. Which of these is a correct fragment within the
+web-app element of deployment descriptor. Select the two correct
+answer.
+
+<error-page>
+<error-code>404</error-code>
+<location>/error.jsp</location> </error-page>
+<error-page>
+<exception-type>mypackage.MyException</exception-type>
+<error-code>404</error-code>
+<location>/error.jsp</location> </error-page>
+<error-page> <exception-type>mypackage.MyException</exception-type>
+<error-code>404</error-code> </error-page>
+<error-page>
+<exception-type>mypackage.MyException</exception-type>
+<location>/error.jsp</location> </error-page>
+58. A
+bean with a property color is loaded using the following statement
+<jsp:usebean
+id="fruit" class="Fruit"/> 
+Which of the following statements may be used to set the of color
+property of the bean. Select the one correct answer.
+
+1. <jsp:setColor
+id="fruit" property="color" value="white"/>
+
+2. <jsp:setColor
+name="fruit" property="color" value="white"/>
+
+3.    <jsp:setValue
+name="fruit" property="color" value="white"/>
+
+4.    <jsp:setProperty
+name="fruit" property="color" value="white">
+
+5.    <jsp:setProperty
+name="fruit" property="color" value="white"/>
+
+6.     
+<jsp:setProperty id="fruit"
+property="color" value="white">
+
+59. What gets printed when the following JSP code is
+invoked in a browser. Select the one correct answer.
+<%=
+if(Math.random() < 0.5){ %>
+  hello
+<%=
+} else { %>
+  hi
+<%=
+} %>
+
+a.      
+The browser will print either hello or
+hi based upon the return value of random.
+
+b.     
+The string hello will always get
+printed.
+
+c.      
+The string hi will always get printed.
+
+d.     
+The JSP file will not compile.
+
+60. Given the following web application deployment descriptor:
+
+<servlet-class>MyServlet</servlet-class>
+...
+</servlet>
+<servlet-mapping>
+<servlet-name>myServlet</servlet-name>
+<url-pattern>*.jsp</url-pattern>
+</servlet-mapping>
+Which statements are true?
+
+1) servlet-mapping element should be inside servlet element
+2) url-pattern can’t be defined that way.
+3) if you make the http call: href="http://host/servlet/Hello.do">http://host/Hello.jsp the servlet container will execute MyServlet.
+4) It would work with any extension excepting jsp,html,htm
+61.Name the class that includes the getSession method that is used to get the HttpSession object.
+
+HttpServletRequest
+HttpServletResponse
+SessionContext
+SessionConfig
+
+
+62. What will be the result of running the following jsp
+file taking into account that the Web server has just been started and this is
+the first page loaded by the server?
+
+<html><body>
+
+<%=
+request.getSession(false).getId() %>
+
+</body></html>
+
+1)It won’t compile
+
+2)It will print the session id.
+
+3)It will produce a NullPointerException as the
+getSession(false) method’s call returns null, cause no session had been
+created.
+
+4)It will produce an empty page.
+
+63. Thepage directive is used to convey information about the page to JSP container.
+Which of these are legal syntax of page directive. Select the two correct
+statement
+
+<% page info="test page" %>
+<%@ page info="test page"
+session="false"%>
+<%@ page session="true" %>
+<%@ page
+isErrorPage="errorPage.jsp" %>
+<%@ page isThreadSafe=true %>
+
+
+64. Which
+of the following are methods of the Cookie Class?
+
+        1) setComment
+        2) getVersion
+        3) setMaxAge
+        4) getSecure
+
+
+
+
+50 COMMENTS ON 64 JAVA QUESTIONS FOR ANY JOB INTERVIEW
+
+Anirban Basak
+Posted 5/30/2006 at 10:34 am | Permalink
+What will be the output if you try to compile and run this:
+…..
+int i = 9;
+i = ++i;
+i = i++;
+System.out.println(i);
+…..
+Ans. it will print 10, NOT 11 in JAVA.
+to the moderators: it will print 11 in c/c++ but 10 in JAVA. I dont know the reason. If anybody knows, plz mailme.
+
+sekhar
+Posted 6/17/2006 at 1:42 am | Permalink
+java certification exam contains AWT and SWINGS questions??
+
+Gopala Krishna
+Posted 7/4/2006 at 9:53 am | Permalink
+8. Which of the following statements assigns “Hello Java” to the
+String variable s?
+a) String s = “Hello Java”;
+b) String s[] = “Hello Java”;
+c) new String s = “Hello Java”;
+d) String s = new String(”Hello Java”)
+Ans:- a and d
+
+Lucky Chawla
+Posted 7/6/2006 at 10:04 am | Permalink
+Ouestion 1
+c and e
+
+Lucky Chawla
+Posted 7/6/2006 at 10:05 am | Permalink
+Question 2
+ans c
+
+niranjan
+Posted 7/8/2006 at 1:29 pm | Permalink
+pls send me the update interview questions
+
+niranjan
+Posted 7/8/2006 at 1:30 pm | Permalink
+pls send me the update interview questions to my mail id
+
+Amrutha
+Posted 7/11/2006 at 10:59 am | Permalink
+it will be better if you provide answers to all the 64 questions, so that we can check our level.
+
+Amrit
+Posted 7/23/2006 at 11:20 pm | Permalink
+32. all three will be printed
+pine
+tree
+oops
+it’s because pine extends tree class,and else statement will execute because of failure of the if () right before it.
+
+Srinivas Balasani
+Posted 8/4/2006 at 5:20 am | Permalink
+1.Can main mathod be overloaded?
+
+Srinivas Balasani
+Posted 8/4/2006 at 5:22 am | Permalink
+1.it is better to put all the 64 questions answers in this site.
+
+pape
+Posted 8/7/2006 at 3:50 pm | Permalink
+Questions were thorough.. however only seems to test knowledge of coding and syntax. I think actual “thinking” questions are more helpful in testing a person’s knowledge, especially if the person hasn’t used java in a while. Questions about how something would work, performance, how you would solve a specific problem, etc.
+While questions are plenty, how good is it if we have no answers to check ourselves?
+
+Puneet
+Posted 8/17/2006 at 5:32 am | Permalink
+U can improve the interface as well as provide submit so that one is able to know his/her strong area as well as the weaker one. Also the wrong answers should have proper reason.
+
+Mushtak
+Posted 8/17/2006 at 3:29 pm | Permalink
+Difference between Abstrat and interface?
+
+Surya
+Posted 8/23/2006 at 2:56 am | Permalink
+Question 3
+Ans. b and e
+valid keywords are :
+http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html
+
+ved prakash
+Posted 9/29/2006 at 3:08 am | Permalink
+hi i think the answer for the question 1 is c where as the others are treated as normal methods and are not invoked directed by the jvm call.
+other options are correct .. but not reflect to the actual main method which can be understood by the jvm
+public static void main(String arg[]) is the syntax
+
+sai
+Posted 10/23/2006 at 4:04 am | Permalink
+for 2 ans is b not c
+
+Alok Srivastava
+Posted 11/1/2006 at 11:00 am | Permalink
+class MyPoint { void myMethod() { int x, y; x = 5; y = 3; System.out.print( ” ( ” + x + “, ” + y + ” ) ” ); switchCoords( x, y ); System.out.print( ” ( ” + x + “, ” + y + ” ) ” ); } void switchCoords( int x, int y ) { int temp; temp = x; x = y; y = temp; System.out.print( ” ( ” + x + “, ” + y + ” ) ” ); }}
+c is the answer..
+
+Alok Srivastava
+Posted 11/1/2006 at 11:05 am | Permalink
+public static void main( String args[] ){ int a = 5; System.out.println( cube( a ) );}int cube( int theNum ){ return theNum * theNum * theNum;}
+Ans: c - It won’t compile the code as the reference to non static member is not possible through the static reference.
+
+Alok Srivastava
+Posted 11/1/2006 at 11:10 am | Permalink
+switch( val ) { case 1: System.out.print( “P” ); case 2: case 3: System.out.print( “Q” ); break; case 4: System.out.print( “R” ); default: System.out.print( “S” );}
+Ans: P and Q will be printed when the code is run.
+
+abul
+Posted 11/10/2006 at 12:05 am | Permalink
+question 11: false. answer will be true if s = s.concat(s2).
+
+abul
+Posted 11/10/2006 at 12:09 am | Permalink
+question 2: i think the ans is c because argument 0 is “I”, argument 1 is “like” and argument 2 is “tests”.
+
+Alok Pandey
+Posted 11/14/2006 at 6:36 am | Permalink
+import java.io.*;
+class Write {
+public static void main(String[] args) throws Exception {
+File file = new File(”temp.test”);
+FileOutputStream stream = new FileOutputStream(file);
+// write integers here. . .
+}
+}
+Answer:
+DataOutputStream filter = new DataOutputStream(stream);
+for (int i = 0; i
+
+Alok Pandey
+Posted 11/14/2006 at 6:43 am | Permalink
+what is the difference between
+1. Abstract class and Interface
+2. doGet and doPost
+3. Override and Overload
+4. Runnable and Thread
+5. Jsp and Servlet
+6. Hashmap and Hashtable
+
+Rohit
+Posted 11/17/2006 at 11:38 am | Permalink
+Question 2: I think the right answer is “like”
+because
+[0]=”i”
+[1]=”like”
+[3]=”test”
+
+Nick
+Posted 11/28/2006 at 1:01 am | Permalink
+A good question - what is a difference between notify and notifyAll ?
+Give two examples of code where it is a correct thing to use one of them but not another one
+
+Sreenivas.P
+Posted 1/3/2007 at 11:39 pm | Permalink
+? Interfaces and abstract classes seem superficially to provide almost the same capability. How do you decide which to use ?
+———————–
+When To Use Interfaces ?
+———————
+Ans:An interface allows somebody to start from scratch to implement your interface or implement your interface in some other code whose original or primary purpose was quite different from your interface. To them, your interface is only incidental, something that have to add on to the their code to be able to use your package.
+—————————–
+When To Use Abstract classes ?
+——————————
+An abstract class, in contrast, provides more structure. It usually defines some default implementations and provides some tools useful for a full implementation. The catch is, code using it must use your class as the base. That may be highly inconvenient if the other programmers wanting to use your package have already developed their own class hierarchy independently. In Java, a class can inherit from only one base class.
+——————
+When to Use Both ?
+——————
+You can offer the best of both worlds, an interface and an abstract class. Implementors can ignore your abstract class if they choose. The only drawback of doing that is calling methods via their interface name is slightly slower than calling them via their abstract class name
+
+dip
+Posted 1/19/2007 at 11:49 pm | Permalink
+Q.what is System.out.println?
+System is an member of java.lang class and println is the member of PrintStream class in the package of java.io. out is an object of println.So through out System communicates with println.
+
+Srinivasan
+Posted 1/23/2007 at 1:17 am | Permalink
+1. Which
+of the following are valid definitions of an applicationÃ¢â‚¬â„¢s main( ) method?
+a) public static void main();
+b) public static void main( String args );
+c) public static void main( String args[] );
+d) public static void main( Graphics g );
+e) public static boolean main( String args[] );
+Ans: all the above declarations will compile successfully except the d option. But if you run the program only c option will run successfully. Here only the d and e are not valid one. if you keep a return value for the e option then it will be the valid one.
+So the answers are a,b,c.
+
+Srinivasan
+Posted 1/23/2007 at 1:20 am | Permalink
+3. Which of the following are Java keywords?
+a) array
+b) boolean
+c) Integer
+d) protect
+e) super
+Ans: boolean, Integer and super are the only java keywords
+
+Srinivasan
+Posted 1/23/2007 at 1:24 am | Permalink
+4. After the declaration:
+char[] c = new char[100];
+what is the value of c[50]?
+a) 50
+b) 49
+c) Ã¢â‚¬Ëœ\u0000Ã¢â‚¬Â²
+d) Ã¢â‚¬Ëœ\u0020Ã¢â‚¬Â²
+e) ” ”
+f) cannot be determined
+g) always null until a value is
+assigned
+Ans: g is the answer. It will always print a null value until you assign it explicitly.
+
+Srinivasan
+Posted 1/23/2007 at 1:29 am | Permalink
+5. After the declaration:
+int x;
+the range of x is:
+a) -2^31 to 2^31-1
+b) -2^16 to 2^16 -
+1
+c) -2^32 to 2^32
+d) -2^16 to 2^16
+e) cannot be determined; it depends on
+the machine
+Ans: As you know in java the integer value is 4bytes. An this can be a signed one and unsigned one. So its range will be within -2^31 to 2^31-1 (a is correct)
+
+Miriam Smith
+Posted 1/31/2007 at 8:10 pm | Permalink
+1. Which
+of the following are valid definitions of an applicationÃ¢â‚¬â„¢s main( ) method?
+c) public static void main( String args[] );
+e) public static boolean main( String args[] );
+2. If MyProg.java were compiled as an
+application and then run from the command line as:
+java MyProg I like tests
+what would be the value of args[ 1 ] inside
+the main( ) method?
+c) “like”
+3. Which of the following are Java keywords?
+b) boolean
+e) super
+4. After the declaration:
+char[] c = new char[100];
+what is the value of c[50]?
+Ã¢â‚¬Ëœ\u0000Ã¢â‚¬Â² is the default value
+g) always null until a value is
+assigned
+5. After the declaration:
+int x;
+the range of x is:
+a) -2^31 to 2^31-1
+6. Which identifiers are valid?
+a) _xpoints
+b) r2d2
+c) bBb$
+e) thisisCrazy
+7. Represent the number 6 as a hexadecimal
+literal.
+int x = 0×0006;
+8. Which of the following statements assigns “Hello Java” to the
+String variable s?
+a) String s = “Hello Java”;
+d) String s = new String(”Hello Java”);
+9. An integer, x has a binary value (using 1
+byte) of 10011100. What is the binary value of z after these statements:
+int y = 1 >
+performs signed shift while >>> performs an unsigned shift.
+11. The statement Ã¢â‚¬Â¦
+String s = “Hello” +
+“Java”;
+yields the same value for s as Ã¢â‚¬Â¦
+String s = “Hello”;
+String s2= “Java”;
+s.concat( s2 );
+False
+12. If you compile and execute an application
+with the following code in its main() method:
+String s = new String( “Computer” );
+if( s == “Computer” )
+System.out.println( “Equal A” );
+if( s.equals( “Computer” ) )
+System.out.println( “Equal B” );
+d) “Equal B” is the only
+thing that is printed.
+13. Consider the two statements:
+1. boolean passingScore = false && grade == 70;
+2. boolean passingScore = false & grade == 70;
+The expression
+grade == 70
+is evaluated:
+a) in both 1 and 2
+14. Given the variable declarations below:
+byte myByte;
+int myInt;
+long myLong;
+char myChar;
+float myFloat;
+double myDouble;
+Which one of the following assignments would
+need an explicit cast?
+b) myInt = myLong;
+e) myFloat = myDouble;
+15. Consider this class example:
+class MyPoint
+{ void myMethod()
+{ int x, y;
+x = 5; y = 3;
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+switchCoords( x, y );
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+}
+void switchCoords( int x, int y )
+{ int temp;
+temp = x;
+x = y;
+y = temp;
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+}
+}
+What is printed to standard output if myMethod()
+is executed?
+c) (5, 3) (3, 5) (5, 3)
+16. To declare an array of 31 floating
+point numbers representing snowfall for each day of March in Gnome, Alaska,
+which declarations would be valid?
+a) double snow[] = new double[31];
+d) double[] snow = new double[31];
+17. If arr[] contains only positive integer values, what does this
+function do?
+public int guessWhat( int arr[] )
+{ int x= 0;
+for( int i = 0; i 4 )
+{ System.out.println( “Test A” );
+}
+else if( val > 9 )
+{ System.out.println( “Test B” );
+}
+else System.out.println( “Test C” );
+Which values of val will
+result in “Test C” being printed:
+a) val 9
+e) val = 0
+f) no values for val will be satisfactory
+28. What exception might a wait()
+method throw?
+InterruptedException
+29. For the code:
+m = 0;
+while( m++
+404
+/error.jsp
+4.
+mypackage.MyException
+/error.jsp
+
+Miriam Smith
+Posted 1/31/2007 at 8:16 pm | Permalink
+18. Consider the code below:
+arr[0] = new int[4];
+arr[1] = new int[3];
+arr[2] = new int[2];
+arr[3] = new int[1];
+for( int n = 0; n 4 )
+{ System.out.println( “Test A” );
+}
+else if( val > 9 )
+{ System.out.println( “Test B” );
+}
+else System.out.println( “Test C” );
+Which values of val will
+result in “Test C” being printed:
+a) val 9
+e) val = 0
+f) no values for val will be satisfactory
+28. What exception might a wait()
+method throw?
+InterruptedException
+29. For the code:
+m = 0;
+while( m++
+
+Nemala Kalyani
+Posted 2/7/2007 at 1:52 am | Permalink
+Hi all,
+I have seen so many posts with different answers. I have answers for the questions which I think are correct to the best of my knowledge.
+Here we go-
+1. Which of the following are valid definitions of an applicationÃ¢â‚¬â„¢s main( ) method?
+Answer: c) public static void main( String args[] );
+Comments: e is incorrect because Boolean is not a valid return value when the method is called from JVM. Other options are syntactically wrong.
+2. If MyProg.java were compiled as an application and then run from the command line as: java MyProg I like tests
+Answer: c) “like”
+Comments: array index starts from zero in Java
+3. Which of the following are Java keywords?
+Answer: b and e
+4. After the declaration: char[] c = new char[100]; what is the value of c[50]?
+Answer: c) Ã¢â‚¬Ëœ\u0000Ã¢â‚¬Â²
+Comments: character arrays are initialized to Ã¢â‚¬Ëœ\u0000Ã¢â‚¬â„¢ by default.
+5. After the declaration: int x; the range of x is:
+Answer: -2 power 31 to (2 power 31)-1
+6. Which identifiers are valid?
+Answer: _xpoints
+r2d2
+bBb$
+thisisCrazy
+Comments: identifiers can contain only alphabets, numbers, _ and $. Also, they cannot start with a digit.
+7. Represent the number 6 as a hexadecimal literal.
+Answer: 0×06
+8. Which of the following statements assigns “Hello Java” to the String variable s?
+Answer: a) String s = “Hello Java”;
+d) String s = new String(”Hello Java”);
+9. An integer, x has a binary value (using 1
+byte) of 10011100. What is the binary value of z after these statements:
+int y = 1 > performs signed shift while >>> performs an unsigned shift.
+11. The statement Ã¢â‚¬Â¦
+String s = “Hello” +
+“Java”;
+yields the same value for s as Ã¢â‚¬Â¦
+String s = “Hello”;
+String s2= “Java”;
+s.concat( s2 );
+Answer: False
+Comments: the s.concat(s2) is lost since its not assigned to any string. Hence they are not equal.
+12. If you compile and execute an application
+with the following code in its main() method:
+String s = new String( “Computer” );
+if( s == “Computer” )
+System.out.println( “Equal A” );
+if( s.equals( “Computer” ) )
+System.out.println( “Equal B” );
+Answer: d) “Equal B” is the only thing that is printed.
+Comments: I donÃ¢â‚¬â„¢t knw how to explain it. :D. The catch here is, 2 strings cant be (= =) when new operator is used because a new string is created ( I mean a new reference) but when (equals) is used, the same string is compared and not the location or reference.
+13. Consider the two statements:
+1. boolean passingScore = false && grade == 70;
+2. boolean passingScore = false & grade == 70;
+The expression
+grade == 70
+Answer: d) in 2 but not 1
+Comments: The && operator is called the short circuit operator. It evaluates the second condition only when the first condition returns true. Hence grade = = 70 is not evaluated.
+15. Consider this class example:
+class MyPoint
+{ void myMethod()
+{ int x, y;
+x = 5; y = 3;
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+switchCoords( x, y );
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+}
+void switchCoords( int x, int y )
+{ int temp;
+temp = x;
+x = y;
+y = temp;
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+}
+}
+Answer: c) (5, 3) (3, 5) (5, 3)
+Comments: this is for the same reason that the concept of interchanging x and y does not hold good once the parameters are out of the switchCoords()
+
+Nemala Kalyani
+Posted 2/7/2007 at 2:08 am | Permalink
+16. To declare an array of 31 floating point numbers representing snowfall for each day of March in Gnome, Alaska, which declarations would be valid?
+Answers: a) double snow[] = new double[31];
+d) double[] snow = new double[31];
+Comments: B and C are incorrect because the size should not be declared in the left side.
+17. If arr[] contains only positive integer values, what does this function do?
+public int guessWhat( int arr[] )
+{ int x= 0;
+for( int i = 0; i 4 )
+{ System.out.println( “Test A” );
+}
+else if( val > 9 )
+{ System.out.println( “Test B” );
+}
+else System.out.println( “Test C” );
+Which values of val will result in “Test C” being printed:
+Answers: a) val
+
+Nemala Kalyani
+Posted 2/7/2007 at 2:11 am | Permalink
+17. If arr[] contains only positive integer values, what does this function do?
+public int guessWhat( int arr[] )
+{ int x= 0;
+for( int i = 0; i 4 )
+{ System.out.println( “Test A” );
+}
+else if( val > 9 )
+{ System.out.println( “Test B” );
+}
+else System.out.println( “Test C” );
+Which values of val will result in “Test C” being printed:
+Answers: a) val
+
+Waqas Ahmad
+Posted 3/8/2007 at 12:05 am | Permalink
+Q # 1:c
+Q # 2:b
+Q # 3:b and e
+Q # 4:g
+Q # 5:c
+Q # 6:b and e
+Q # 8:a and b
+Q # 11:True
+Q # 12:d
+Q # 13:c
+Q # 15:c
+Q # 16:a and d
+Q # 17:d
+Q # 18:c
+Q # 19:e
+
+h.s.
+Posted 3/19/2007 at 1:10 pm | Permalink
+#
+Anirban Basak said,
+What will be the output if you try to compile and run this:
+Ã¢â‚¬Â¦..
+int i = 9;
+i = ++i;
+i = i++;
+System.out.println(i);
+Ã¢â‚¬Â¦..
+Ans. it will print 10, NOT 11 in JAVA.
+to the moderators: it will print 11 in c/c++ but 10 in JAVA. I dont know the reason. If anybody knows, plz mailme.
+—————————————-
+This is because i = ++i will increment i before assigning it there for it is equivalent of saying i = 10; then it is i = i++ this means that i will be incremented after i is used so it will be like saying i = 10 then increment i which becomes 11 but then the assignment to i makes it 10 again. To try it just change the variable name from i to something else and you will see that the order of execution is the key point.
+
+Joe
+Posted 3/19/2007 at 1:35 pm | Permalink
+To Anirban Basak
+in your case you assin to the same variable
+-Joe
+
+Sharath chandra
+Posted 5/14/2007 at 5:36 am | Permalink
+@mushtak
+Q: Difference between abstract and interface..
+A: In Abstract class, its methods may contain some code part which is not possible in interfaces. sometimes an abstract class needs to be inherited from other class. in that case it cannot use multiple inheritance. but, an interface can hav multiple inheritance. Abstract classes cannot be instantiated.
+An interface is a proper abstract class.
+
+Casttro
+Posted 10/18/2007 at 6:26 am | Permalink
+Few answers from Waqas Ahmad are Wrong, Plz correct it
+Q # 1:c
+Q # 2:b
+Q # 3:b,c and e
+Q # 4:g
+Q # 5:c
+Q # 6:a,b,c and e
+Q # 8:a and d, B will never be right, Can’t assign a string to String array.
+Q # 11:True
+Q # 12:d
+Q # 13:c
+Q # 15:c
+Q # 16:a and d
+Q # 17:d
+Q # 18:c
+Q # 19:e
+
+sameer
+Posted 1/2/2008 at 7:43 am | Permalink
+hi plz give me the response of my ans.& feedback
+
+Vasanthy
+Posted 2/28/2008 at 2:19 pm | Permalink
+Consider the two statements:
+1. boolean passingScore = false && grade == 70; 2. boolean passingScore = false & grade == 70;The expression
+grade == 70
+is evaluated:
+e) invalid because false should be
+FALSE
+
+sanjib samal
+Posted 6/10/2008 at 12:34 am | Permalink
+question no-64
+Which
+of the following are methods of the Cookie Class?
+Ans- setMaxAge
+
+sanjib samal
+Posted 6/10/2008 at 12:40 am | Permalink
+63-The
+page directive is used to convey information about the page to JSP container.
+Which of these are legal syntax of page directive. Select the two correct
+statement
+ANS-c-
+d-
+
+Sibananda pani
+Posted 12/2/2008 at 7:10 am | Permalink
+the answers for upto 32 are :
+Java/J2EE Programmer Practice Test 1 (page 2)
+1. Which of the following are valid definitions of an application’s main( ) method?
+a) public static void main(); //compile but no main()
+b) public static void main( String args ); //same
+c) public static void main( String args[] ); //works
+d) public static void main( Graphics g );
+//not compiled n for this u hav to import java.awt.graphics
+e) public static boolean main( String args[] );
+// works but must return Boolean valueÃ¢â‚¬Â¦
+2. If MyProg.java were compiled as an application and then run from the command line as:
+java MyProg I like tests
+what would be the value of args[ 1 ] inside the main( ) method?
+a) MyProg
+b) “I”
+c) “like” (correct)
+d) 3
+e) 4
+f) null until a value is assigned
+3. Which of the following are Java keywords?
+a) array //no
+b) boolean //yes
+c) Integer //false
+d) protect //false
+e) super //true
+4. After the declaration:
+char[] c = new char[100];
+what is the value of c[50]?
+a) 50
+b) 49
+c) ‘\u0000′
+d) ‘\u0020′
+e) ” ”
+f) cannot be determined
+g) always null until a value is assigned //true
+DOUBT 5. After the declaration:
+int x;
+the range of x is:
+a) -231 to 231-1
+b) -216 to 216 - 1
+c) -232 to 232
+d) -216 to 216
+e) cannot be determined; it depends on the machine
+6. Which identifiers are valid?
+a) _xpoints
+b) r2d2
+c) bBb$
+d) set-flow //error
+e) thisisCrazy
+7. Represent the number 6 as a hexadecimal literal.
+8. Which of the following statements assigns “Hello Java” to the String variable s?
+a) String s = “Hello Java”; //correct
+b) String s[] = “Hello Java”; //false //cant convert type
+c) new String s = “Hello Java”; //false wrong literal new..
+d) String s = new String(”Hello Java”); //correct
+9. An integer, x has a binary value (using 1 byte) of 10011100. What is the binary value of z after these statements:
+int y = 1 <> performs signed shift while >>> performs an unsigned shift. //correct
+b) >>> performs a signed shift while >> performs an unsigned shift.
+c) << performs a signed shift while <<< performs an insigned shift.
+d) <<< performs a signed shift while << performs an unsigned shift.
+11. The statement …
+String s = “Hello” + “Java”;
+yields the same value for s as …
+String s = “Hello”;
+String s2= “Java”;
+s.concat( s2 ); //it will not store thts why It displays
+Only hello ,if we store in another var then displat all.
+True
+False //correctÃ¢â‚¬Â¦
+12. If you compile and execute an application with the following code in its main() method:
+String s = new String( “Computer” );
+if( s == “Computer” )
+System.out.println( “Equal A” );
+if( s.equals( “Computer” ) )
+System.out.println( “Equal B” );
+a) It will not compile because the String class does not support the = = operator.
+b) It will compile and run, but nothing is printed.
+c) “Equal A” is the only thing that is printed.
+d) “Equal B” is the only thing that is printed. //correct
+e) Both “Equal A” and “Equal B” are printed.
+13. Consider the two statements:
+1. boolean passingScore = false && grade == 70;
+2. boolean passingScore = false & grade == 70;
+The expression
+grade == 70
+is evaluated:
+a) in both 1 and 2
+b) in neither 1 nor 2 //correct (&& not defined for
+Boolean and integer)
+c) in 1 but not 2
+d) in 2 but not 1
+e) invalid because false should be FALSE
+14. Given the variable declarations below:
+byte myByte;
+int myInt;
+long myLong;
+char myChar;
+float myFloat;
+double myDouble;
+Which one of the following assignments would need an explicit cast?
+a) myInt = myByte;
+b) myInt = myLong; //required
+c) myByte = 3;
+d) myInt = myChar;
+e) myFloat = myDouble; //false
+f) myFloat = 3;
+g) myDouble = 3.0;
+15. Consider this class example:
+class MyPoint
+{ void myMethod()
+{ int x, y;
+x = 5; y = 3;
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+switchCoords( x, y );
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+}
+void switchCoords( int x, int y )
+{ int temp;
+temp = x;
+x = y;
+y = temp;
+System.out.print( ” ( ” + x + “, ” + y + ” ) ” );
+}
+}
+What is printed to standard output if myMethod() is executed?
+a) (5, 3) (5, 3) (5, 3)
+b) (5, 3) (3, 5) (3, 5)
+c) (5, 3) (3, 5) (5, 3) //correct
+16. To declare an array of 31 floating point numbers representing snowfall for each day of March in Gnome, Alaska, which declarations would be valid?
+a) double snow[] = new double[31]; //correct
+b) double snow[31] = new array[31];
+c) double snow[31] = new array;
+d) double[] snow = new double[31]; //correct
+String[] s;
+// illegal initialization
+s = { “abc”, “def”, “hij”);
+int[] arr = new int[] {1,2,3}; // legal
+17. If arr[] contains only positive integer values, what does this function do?
+public int guessWhat( int arr[] )
+{ int x= 0;
+for( int i = 0; i < arr.length; i++ )
+x = x < arr[i] ? arr[i] : x;
+return x;
+}
+a) Returns the index of the highest element in the array
+b) Returns true/false if there are any elements that repeat in the array
+c) Returns how many even numbers are in the array
+d) Returns the highest element in the array //correct
+e) Returns the number of question marks in the array
+18. Consider the code below:
+arr[0] = new int[4];
+arr[1] = new int[3];
+arr[2] = new int[2];
+arr[3] = new int[1];
+for( int n = 0; n < 4; n++ )
+System.out.println( /* what goes here? */ );
+Which statement below, when inserted as the body of the for loop, would print the number of values in each row?
+a) arr[n].length();
+b) arr.size;
+c) arr.size -1;
+d) arr[n][size];
+e) arr[n].length; //correct
+19. If size = 4, triArray looks like: //doubt
+int[][] makeArray( int size)
+{ int[][] triArray = new int[size] [];
+int val=1;
+for( int i = 0; i < triArray.length; i++ )
+{ triArray[i] = new int[i+1];
+for( int j=0; j 4 )
+{ System.out.println( “Test A” );
+}
+else if( val > 9 )
+{ System.out.println( “Test B” );
+}
+else System.out.println( “Test C” );
+Which values of val will result in “Test C” being printed:
+a) val 9
+e) val = 0 //true
+f) no values for val will be satisfactory
+28. What exception might a wait() method throw?
+// InterruptedException
+29. For the code:
+m = 0;
+while( m++ < 2 )
+System.out.println( m );
+Which of the following are printed to standard output?
+a) 0
+b) 1 //print
+c) 2 //print
+d) 3
+e) Nothing and an exception is thrown
+30. Consider the code fragment below:
+outer: for( int i = 1; i <3; i++ )
+{ inner: for( j = 1; j < 3; j++ )
+{ if( j==2 )
+continue outer;
+System.out.println( “i = ” +i “, j = ” + j );
+}
+}
+Which of the following would be printed to standard output?
+a) i = 1, j = 1 //correct
+b) i = 1, j = 2
+c) i = 1, j = 3
+d) i = 2, j = 1 //correct
+e) i = 2, j = 2
+f) i = 2, j = 3
+g) i = 3, j = 1
+h) i = 3, j = 2
+31. Consider the code below:
+void myMethod()
+{ try
+{
+fragile();
+}
+catch( NullPointerException npex )
+{
+System.out.println( “NullPointerException thrown ” );
+}
+catch( Exception ex )
+{
+System.out.println( “Exception thrown ” );
+}
+finally
+{
+System.out.println( “Done with exceptions ” );
+}
+System.out.println( “myMethod is done” );
+}
+What is printed to standard output if fragile() throws an IllegalArgumentException?
+a) “NullPointerException thrown”
+b) “Exception thrown”
+c) “Done with exceptions”
+d) “myMethod is done”
+e) Nothing is printed
+32. Consider the following code sample:
+class Tree{}
+class Pine extends Tree{}
+class Oak extends Tree{}
+public class Forest
+{ public static void main( String[] args )
+{ Tree tree = new Pine();
+if( tree instanceof Pine )
+System.out.println( “Pine” );
+if( tree instanceof Tree )
+System.out.println( “Tree” );
+if( tree instanceof Oak )
+System.out.println( “Oak” );
+else System.out.println( “Oops” );
+}
+}
+Select all choices that will be printed:
+a) Pine //print
+b) Tree //print
+c) Forest
+d) Oops //print
+e) (nothing printed).
+If u wnt more then send mail to :
+sibanada.pani@yahoo.com
+
+nick
+Posted 1/5/2009 at 4:44 pm | Permalink
+What will be the output if you try to compile and run this:
+Ã¢â‚¬Â¦..
+int i = 9;
+i = ++i;
+i = i++;
+System.out.println(i);
+Ã¢â‚¬Â¦..
+Ans. it will print 10, NOT 11 in JAVA.
+=====================================
+My understending of this “phenomena” is that there is a temporary hidden oject involved when it comes to increment.
+Hence, in second case (i++) this temp object will just hang around doing nothing.
+
+nick
+Posted 1/5/2009 at 4:48 pm | Permalink
+More to the previous answer.
+We deal with Autoboxing here!
+

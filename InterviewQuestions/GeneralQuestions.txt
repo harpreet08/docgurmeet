@@ -169,3 +169,287 @@ Talk about having fun by accomplishing something for the organization.
 50. Do you have any questions for me?
 Always have some questions prepared. Questions prepared where you will be an asset to the organization are good. How soon will I be able to be productive? and What type of projects will I be able to assist on? are examples.
 
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+http://www.techinterviews.com/40-student-interview-questions-from-netapp
+40 student interview questions from NetApp
+
+Why did you choose your major?
+
+
+Why did you choose your school?
+
+
+Describe a recent leadership experience.
+
+
+Which courses have you enjoyed the most? The least? Why?
+
+
+What is your GPA?
+
+
+If you could do so, how would you plan your education differently?
+
+
+Describe your most rewarding college experience. Your most challenging.
+
+
+Tell me about yourself.
+
+
+What do you consider to be your greatest strengths?
+
+
+If you could change one thing about yourself, what would it be?
+
+
+Describe a time you failed at something and how you handled it?
+
+
+What three keywords would your peers use to describe you, and why?
+
+
+Give me an example of something complex that you needed to effectively communicate to others. What made it complex? Why was it difficult to communicate?
+
+
+Tell me about an important goal that you set in the past. Were you successful? Why?
+
+
+Tell me about a situation where you had to speak up (be assertive) in order to put across a point that was important to you.
+
+
+Describe the most significant written document, report, or presentation, you have completed.
+
+
+Tell me about something you have done that is very creative.
+
+
+Describe a time when you were faced with problems or stress that tested your coping skills. What did you do?
+
+
+What motivated you to apply for this position?
+
+
+What interests you most about this job? Least?
+
+
+Why do you want to work for our company?
+
+
+What do you know about our company?
+
+
+What two or three things are most important to you in your job?
+
+
+If you were hiring a graduate for this position, what successful characteristics would you look for in a candidate?
+
+
+Describe three key skills or qualities you would bring to this position.
+
+
+Why should we hire you?
+
+
+Describe your job-related skills and experience, and how they relate to this position.
+
+
+What have you learned most from some of the jobs you have held?
+
+
+What did you enjoy most about your last job? Least?
+
+
+How would a former supervisor or professor describe you and your work?
+
+
+Describe a workplace challenge you faced and how you handled it.
+
+
+Tell me about a time you worked on a team. How did you handle it?
+
+
+Describe an experience involving a deadline. How were you able to finish on time?
+
+
+Describe a time you went above and beyond the call of duty to get a job done.
+
+
+Give me an example of your ability to lead others.
+
+
+Tell me about a time you wish you had done more planning. What did you learn?
+
+
+What are your short-range career goals?
+
+
+What are your long-range career goals? How are you preparing yourself to achieve them?
+
+
+What characteristics do you possess that will make you successful in your career?
+
+
+Who, or what, influenced you most with regard to your career objectives?
+
+
+What three keywords would your peers use to describe you, and why?
+
+
+Describe your job-related skills and experience, and how they relate to this position
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/hiring-an-it-guy-questions-to-ask
+
+
+Hiring an IT guy - questions to ask
+
+What port does telnet use?
+Ans: 23 by default
+
+
+What is SMTP?
+Ans: Short for Simple Mail Transfer Protocol, a protocol for sending e-mail messages between servers. Most e-mail systems that send mail over the Internet use SMTP to send messages from one server to another; the messages can then be retrieved with an e-mail client using either POP or IMAP. In addition, SMTP is generally used to send messages from a mail client to a mail server. This is why you need to specify both the POP or IMAP server and the SMTP server when you configure your e-mail application.
+
+How would you troubleshoot a printer?
+Ans: Here are a few simple techniques that will solve many printer problems.
+Reboot your computer. This generally solves most printing problems.
+If it’s not printing, or you’re getting a message about the Fax printer, change your default printer: Start - Settings - Printers/Faxes. Right-click the printer you want, and then select (left-click) Set as Default.
+Check and make sure all connections going to and coming from the printer are firmly in place.
+Check that the printer is on-line:
+Start - Settings - Printers, right-click the printer.
+If there isn’t a checkmark by “Set as Default”, left-click that option to select it.
+Print a test page. If that prints and the application you are using doesn’t, you probably will need to contact the application’s vendor for support.
+Turn off your printer for 10 seconds and turn it back on. Make a note of any error messages or flashing lights when the printer is turned back on.
+If your printer is connected directly to another computer, try rebooting that computer. If your printer is connected to a JetDirect box, try unplugging the JetDirect box for 10 seconds.
+You may wish to uninstall and then re-install your printer.
+
+
+How does traceroute work?
+Ans: When you execute a trace route command (ie trace route http://www.yahoo.com), your machine sends out 3 UDP packets with a TTL (Time-to-Live) of 1. When those packets reach the next hop router, it will decrease the TTL to 0 and thus reject the packet. It will send an ICMP Time-to-Live Exceeded (Type 11), TTL equal 0 during transit (Code 0) back to your machine - with a source address of itself, therefore you now know the address of the first router in the path.
+Next your machine will send 3 UDP packets with a TTL of 2, thus the first router that you already know passes the packets on to the next router after reducing the TTL by 1 to 1. The next router decreases the TTL to 0, thus rejecting the packet and sending the same ICMP Time-to-Live Exceeded with its address as the source back to your machine. Thus you now know the first 2 routers in the path.
+This keeps going until you reach the destination. Since you are sending UDP packets with the destination address of the host you are concerned with, once it gets to the destination the UDP packet is wanting to connect to the port that you have sent as the destination port, since it is an uncommon port, it will most like be rejected with an ICMP Destination Unreachable (Type 3), Port Unreachable (Code 3). This ICMP message is sent back to your machine, which will understand this as being the last hop, therefore trace route will exit, giving you the hops between you and the destination.
+The UDP packet is sent on a high port, destined to another high port. On a Linux box, these ports were not the same, although usually in the 33000. The source port stayed the same throughout the session, however the destination port was increase by one for each packet sent out.
+One note, traceroute actually sends 1 UDP packet of TTL, waits for the return ICMP message, sends the second UDP packet, waits, sends the third, waits, etc, etc, etc.
+If during the session, you receive * * *, this could mean that that router in the path does not return ICMP messages, it returns messages with a TTL too small to reach your machine or a router with buggy software. After a * * * within the path, trace route will still increment the TTL by 1, thus still continuing on in the path determination.
+
+
+Walk me through everything that happens in the network from the moment you punch in www.google.com in the address bar to when the browser displays the page?
+
+
+Can you work this weekend?
+
+
+What kind of people are your current users? Do you like them?
+
+
+What role do you think computer support analysts should play in the company?
+
+
+Assuming you have to work for a living and all jobs pay the same, how would you describe the job you want?
+
+
+When conflict arises on your team, how do you handle it?
+
+
+How do you stay current?
+
+
+What operating system do you prefer and why?
+
+
+What part of the project life cycle have you worked on?
+
+
+Describe the project or situation that best demonstrates your coding (or analytical) skills.
+
+
+What is the differece between local, global and universal groups?
+
+
+What is the major difference between FAT and NTFS?
+Ans: NTFS
+1)allows access local to w2k,w2k3,XP,win NT4 with SP4 & later may get access for somefile.
+2)Maximum size of partition is 2 Terabytes & more.
+3)Maximum File size is upto 16TB.
+4)File & folder Encryption is possible only in NTFS.
+FAT 32
+1)Fat 32 Allows access to win 95,98,win millenium,win2k,xp on local partition.
+2)Maximum size of partition is upto 2 TB.
+3)Maximum File size is upto 4 GB.
+4)File & folder Encryption is not possible.
+
+
+Name the FMSO roles and their functions.
+
+
+You’ve just been asked to create 20 new Users and update 2 GPOs, ASAP! You go to the Administrative Tools, and discover they are all gone. What do you do? What do you suspect happened?
+
+
+What is a Global Catalog?
+Ans: The global catalog is a distributed data repository that contains a searchable, partial representation of every object in every domain in a multidomain Active Directory forest. The global catalog is stored on domain controllers that have been designated as global catalog servers and is distributed through multimaster replication. Searches that are directed to the global catalog are faster because they do not involve referrals to different domain controllers.
+
+
+Explain the function of DNS.
+Ans : The main function of DNS is the mapping of IP addresses to human readable names. Three main components of DNS - resolver, name server, database of resource records (RRs)
+
+
+Explain a “Two-Way Transitive” trust.
+Ans: A two-way trust can be thought of as a combination of two, opposite-facing one-way trusts, so that, the trusting and trusted domains both trust each other (trust and access flow in both directions). This means that authentication requests can be passed between the two domains in both directions. Some two-way relationships can be either nontransitive or transitive depending on the type of trust being created. All domain trusts in an Active Directory forest are two-way, transitive trusts. When a new child domain is created, a two-way, transitive trust is automatically created between the new child domain and the parent domain.
+
+
+In speaking about trusts, what does “Non-transitive” mean?
+Ans: In a transitive trust relationship, the trust relationship extended to one domain is automatically extended to all other domains that trust that domain.
+And In a nontransitive trust relationship, the trust is bound by the two domains in the trust relationship; it does not flow to any other domains in the forest.
+
+
+Describe the lease process of DHCP.
+DHCP leases are used to reduce DHCP network traffic by giving clients specific addresses for set periods of time.
+
+
+Explain NTP.
+Ans : The Network Time Protocol (NTP) is a protocol for distributing the universal time (UTC) by means of synchronizing the clocks of computer systems over packet-switched, variable-latency data networks. NTP uses UDP port 123 as its transport layer. It is designed particularly to resist the effects of variable latency by using a jitter buffer.
+
+
+What is the 568B wiring scheme?
+http://www.conniq.com/Networking_Cat5wiring.htm
+EIA and TIA have produced many cable standards that are widely used in telecommunication and networking. The one that is often referred to in networking lessons is EIA/TIA-568 that's Commercial Building Telecommunications Cabling Standard.
+EIA/TIA-568 is the basis for Cat 5 cable wiring scheme. Wires inside a Cat 5 cable are color-coded. There are four pairs of copper wires, but only two pairs are used for transmit and receive. The pair and pin designation for Cat5 cable is defined in EIA/TIA-568A and EIA/TIA-568B. 568A is the original standard which later is updated by 568B. The difference between 568A and 568B is clearly illustrated in the table below.
+ 	568A	568B
+Pair	Wire	Pin	Wire	Pin
+1	White/Blue	5	White/Blue	5
+ 	 Blue	4	 Blue	4
+2	 White/Orange	3	 White/Orange	1
+ 	 Orange	6	 Orange	2
+3	 White/Green	1	 White/Green	3
+ 	 Green	2	 Green	6
+4	 White/Brown	7	 White/Brown	7
+ 	 Brown	8	 Brown	8
+Table: 568A vs. 568B
+Pin and pair designation in two EIA/TIA standards.
+
+This applies to Cat 5, Cat 5e, and Cat 6 cables. 
+The difference between 568A and 568B wiring scheme is in pair 2 and pair 3. In 568A, pin 3 (white/orange) and pin 6 (orange) combine in pair 2 while pin 1 (white/green) and pin 2 (green) in pair 3. In 568B, pin 1 (white/orange) and pin 2 (orange) combine in pair 2 while pin 3 (white/green) and pin 6 (green) in pair 3. Either 568A or 568B wiring scheme can be chosen but it must be used consistently throughout a network.
+
+
+What us your highest achievement while working in the IT field?
+
+
+What are your short term goals to achieve?
+
+
+You have a user call for support for the 5th time on the same issue. How would you handle the call and what would you do differently?
+
+
+List as many ways you can think of to move a file from a Windows machine to a Linux machine.
+
+
+Demonstrate recursiveness by implementing a factorial function.
+
+

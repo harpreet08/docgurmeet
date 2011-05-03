@@ -1,0 +1,88 @@
+http://www.techinterviews.com/java-web-development-interview-questions
+
+Java Web development interview questions
+
+Can we use the constructor, instead of init(), to initialize servlet? - Yes , of course you can use the constructor instead of init(). There’s nothing to stop you. But you shouldn’t. The original reason for init() was that ancient versions of Java couldn’t dynamically invoke constructors with arguments, so there was no way to give the constructur a ServletConfig. That no longer applies, but servlet containers still will only call your no-arg constructor. So you won’t have access to a ServletConfig or ServletContext.
+
+
+How can a servlet refresh automatically if some new data has entered the database? - You can use a client-side Refresh or Server Push.
+
+The code in a finally clause will never fail to execute, right? - Using System.exit(1); in try block will not allow finally code to execute.
+
+
+How many messaging models do JMS provide for and what are they? - JMS provide for two messaging models, publish-and-subscribe and point-to-point queuing.
+
+
+What information is needed to create a TCP Socket? - The Local System?s IP Address and Port Number. And the Remote System’s IPAddress and Port Number.
+
+
+What Class.forName will do while loading drivers? - It is used to create an instance of a driver and register it with the DriverManager. When you have loaded a driver, it is available for making a connection with a DBMS.
+
+
+How to Retrieve Warnings? - SQLWarning objects are a subclass of SQLException that deal with database access warnings. Warnings do not stop the execution of an application, as exceptions do; they simply alert the user that something did not happen as planned. A warning can be reported on a Connection object, a Statement object (including PreparedStatement and CallableStatement objects), or a ResultSet object. Each of these classes has a getWarnings method, which you must invoke in order to see the first warning reported on the calling object
+	SQLWarning warning = stmt.getWarnings();
+	if (warning != null)
+	{
+		while (warning != null)
+		{
+			System.out.println("Message: " + warning.getMessage());
+			System.out.println("SQLState: " + warning.getSQLState());
+			System.out.print("Vendor error code: ");
+			System.out.println(warning.getErrorCode());
+			warning = warning.getNextWarning();
+		}
+	}
+
+How many JSP scripting elements are there and what are they? - There are three scripting language elements: declarations, scriptlets, expressions.
+
+
+In the Servlet 2.4 specification SingleThreadModel has been deprecated, why? - Because it is not practical to have such model. Whether you set isThreadSafe to true or false, you should take care of concurrent client requests to the JSP page by synchronizing access to any shared objects defined at the page level.
+
+
+What are stored procedures? How is it useful? - A stored procedure is a set of statements/commands which reside in the database. The stored procedure is pre-compiled and saves the database the effort of parsing and compiling sql statements everytime a query is run. Each database has its own stored procedure language, usually a variant of C with a SQL preproceesor. Newer versions of db’s support writing stored procedures in Java and Perl too. Before the advent of 3-tier/n-tier architecture it was pretty common for stored procs to implement the business logic( A lot of systems still do it). The biggest advantage is of course speed. Also certain kind of data manipulations are not achieved in SQL. Stored procs provide a mechanism to do these manipulations. Stored procs are also useful when you want to do Batch updates/exports/houseKeeping kind of stuff on the db. The overhead of a JDBC Connection may be significant in these cases.
+
+
+How do I include static files within a JSP page? - Static resources should always be included using the JSP include directive. This way, the inclusion is performed just once during the translation phase. Do note that you should always supply a relative URL for the file attribute. Although you can also include static resources using the action, this is not advisable as the inclusion is then performed for each and every request.
+
+
+Why does JComponent have add() and remove() methods but Component does not? - because JComponent is a subclass of Container, and can contain other components and jcomponents.
+
+
+How can I implement a thread-safe JSP page? - You can make your JSPs thread-safe by having them implement the SingleThreadModel interface. This is done by adding the directive <%@ page isThreadSafe="false" % > within your JSP page.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/interview-questions-for-web-application-developers
+Interview questions for Web application developers
+
+What is the maximum length of a varchar field in SQL Server?
+
+
+How do you define an integer in SQL Server?
+
+
+How do you separate business logic while creating an ASP.NET application?
+
+
+If there is a calendar control to be included in each page of your application, and we do not intend to use the Microsoft-provided calendar control, how do you develop it? Do you copy and paste the code into each and very page of your application?
+
+
+How do you debug an ASP.NET application?
+
+
+How do you deploy an ASP.NET application?
+
+
+Name a few differences between .NET application and a Java application?
+
+
+Specify the best ways to store variables so that we can access them in various pages of ASP.NET application?
+
+
+What are the XML files that are important in developing an ASP.NET application?
+
+
+What is XSLT and what is its use?

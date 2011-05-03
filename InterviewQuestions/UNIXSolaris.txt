@@ -1,0 +1,652 @@
+http://www.techinterviews.com/unix-admin-questions
+Unix admin questions
+
+How do you list the files in an UNIX directory while also showing hidden files?
+ls -l / ls -a
+
+How do you execute a UNIX command in the background?
+Use ampersand '&'
+
+What UNIX command will control the default file permissions when files are created?
+umask
+
+
+Explain the read, write, and execute permissions on a UNIX directory.
+
+4->read
+2->write
+1->execute
+root have full permission-> 777
+777(4+2+1).
+rwxrwxrwx–>means
+first rwx –> user
+second rwx–> group
+third rwx –> other
+777 means full permission.
+—————-
+apply permission
+—————-
+chmod 755
+755 means–>
+user have full permission
+group&others have read and execution.
+
+
+What is the difference between a soft link and a hard link?
+ hard link means two inodes link to same file. soft link creates a seperate file
+softlink have different inode and permissions started with l.
+hardlink have samw node and permission not start with l.
+softlink–>
+ln -s file newfile
+//-s is symbolic(soft)
+ll -il //shows file with inode.
+newfile->file
+——————————–
+hardlink–>
+ln file newfile
+ll -il
+
+
+Give the command to display space usage on the UNIX file system.
+df -h or du 
+
+
+Explain iostat, vmstat and netstat.
+iostat returns disk and other data i/o statistics vmstat returns memory paging statistics, virtual and real, netsta returns network statistics. GENERALLY the first line or the command alone will return statistical averages since boottime; the commands can also be run with flags to report instantaneous snapshots every x seconds for y results (ie vmstat 5 5 gives a snapshot every 5 seconds 5 times in a row
+
+
+How would you change all occurrences of a value using VI?
+vi to substitute every occurance in a file: %s/OLD/NEW/g
+
+
+Give two UNIX kernel parameters that effect an Oracle install
+shared memory and semaphores: shmmmax, shmmmin, etc and seminfo_semmsl (both affect the memory useage and sharing at the kernel level and usually a reboot is necessary for them to take affect safely (kernel parameters can be updated live on many Unix OS’s but is not recommended unless you are at the expert level and have performed the task before successfully on a sandbox)
+
+
+Briefly, how do you install Oracle software on UNIX.
+Oracle can be installed from CD or better yet from CD’s copied in their entirety to a hard disk simply with the “runInstall” script. a) make sure the filesystems you will be installing to have enough space AND no previous Oracle installation upon them and b) MUST be run as the Oracle user NOT root. (ie: you need to have an oracle user account created with the proper rwx rights to the installation target filesystem) c) several key variables such as hostname, some kernel parameters, and a few other pre-installation tasks need to be performed dependent upon the OS Oracle will be run upon.
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/general-unix-interview-questions
+General UNIX interview questions
+
+What are the main differences between Apache 1.x and 2.x?
+
+What does the “route” command do?
+
+What are the read/write/execute bits on a directory mean?
+
+What does iostat do?
+
+what does vmstat do?
+
+What does netstat do?
+
+What is the most graceful way to bring a system into single user mode?
+
+How do you determine disk usage?
+
+What is AWK?
+
+What is SED?
+
+What is the difference between binaries in /bin, and /usr/bin?
+
+What is a dynamically linked file?
+
+What is a statically linked file?
+
+
+20 COMMENTS ON GENERAL UNIX INTERVIEW QUESTIONS
+
+
+Jaffar
+Posted 8/31/2005 at 6:08 am | Permalink
+QNo:10. What is SED?
+SED (which stands for Stream EDitor) is a simple but powerful computer program used to apply various pre-specified textual transformations to a sequential stream of text data.
+It reads input files line by line, edits each line according to rules specified in its simple language (the sed script), and then outputs the line.
+
+Jaffar
+Posted 8/31/2005 at 6:10 am | Permalink
+AWK is a complete pattern scanning and processing language, it is most commonly used as a Unix command-line filter to reformat the output of other commands.
+For example, to print only the second and sixth fields of the date command (the month and year) with a space separating them, at the Unix prompt, you would enter:
+date | awk ‘{print $2 ” ” $6}’
+
+lavanya
+Posted 9/6/2005 at 3:55 pm | Permalink
+Access rights (read/write/execute) on a directory means:
+->read indicates that it is possible to list files in the directory.
+->write indicates that it is possible to delete or move files in the directory.
+->execute indicates that it is possible to read files in the directory provided we must have read permission on individual files of that directory.
+
+lavanya
+Posted 9/6/2005 at 4:17 pm | Permalink
+QNO:8 How do u determine disk usage?
+The disk usage can be determined by using the command,du.THis command outputs the number of kilobytes used by each sub-directory.
+
+lavanya
+Posted 9/6/2005 at 4:20 pm | Permalink
+QNO 2:
+Browse the following URL to get information about ‘route’ command
+http://linux.about.com/od/commands/l/blcmdl8_route.htm
+
+lavanya
+Posted 9/6/2005 at 4:45 pm | Permalink
+Q NO:4) To know about iostat command,browse the following url:
+http://www.scit.wlv.ac.uk/cgi-bin/mansec?1M+iostat
+
+lavanya
+Posted 9/6/2005 at 4:47 pm | Permalink
+Q.no:5) TO know about vmstat command,browse the following url:
+http://www.scit.wlv.ac.uk/cgi-bin/mansec?1M+vmstat
+
+lavanya
+Posted 9/6/2005 at 4:48 pm | Permalink
+Q.no:6) TO know about netstat command,browse the following url:
+http://userpages.umbc.edu/~jack/ifsm498/netstat.html
+
+Dave Waddell
+Posted 9/18/2005 at 3:31 pm | Permalink
+comment 3 on directory execute permissions is incorrect;
+Execute permission on a directory means you can list the files in that directory.
+
+Musthafa
+Posted 10/21/2005 at 2:45 am | Permalink
+11. What is the difference between binaries in /bin, and /usr/bin?
+/bin - would contains the binaries frequently used by the normal user (as well as system administrator)
+/usr/bin - would contains the binaries rarely used by the normal user (as wel as system administrator)
+12. What is a dynamically linked file?
+soft link (created with ln -s). Source and destination files will have the different inode. If dest removed source will be available. If source removed dest also will available but no where to go.
+13. What is a statically linked file?
+hard link (created with ln). Source and dest will have the same inode. Making two different copies causes more disk space due to redundancy.
+
+Chris Sheldon
+Posted 10/28/2005 at 3:56 pm | Permalink
+Comment #10 is in error with all answers
+11. What is the difference between binaries in /bin, and /usr/bin?
+Under Solaris, there is no difference. /bin is a symbolic link pointing to /usr/bin. Under Linux (RHAS3) /bin is seemingly for standard unix programs like vi, cp, mv, rm which you’d need in a single user environment where as /usr/bin contains programs you’d want for a multiuser environment. Keep in mind that sometimes /usr is a different disk partition and when you start up in single user mode you only have / mounted.
+The /sbin directories are *supposed to* contain statically linked programs. This mas morphed into the idea of bin for user programs, sbin for admin programs.
+12. What is a dynamically linked file?
+This is confusing because of the use of the word ‘file’. A dynamically linked program is one that, when executed, loads shared libraries from /lib or /usr/lib in order to execute. The idea is that most programs use many of the same functions, so include a copy of a common function in *every* program on the file system. Instead, the function is placed in a shared library and when the program starts executing, the library is loaded which provides the program access to the function.
+13. What is a statically linked file?
+As above, confusing due to the use of the word ‘file’. A statically linked program is one that contains all the information (libraries) it needs to run. It does not need to load additional libaries in order to execute.
+
+Mahbubul
+Posted 12/8/2005 at 11:34 pm | Permalink
+What is MUTEX? I need answer for this question
+What is INODE?I need answer for this question
+
+Adhik
+Posted 2/25/2006 at 4:56 pm | Permalink
+Ans 7: kill -TERM 1
+
+Virat
+Posted 3/23/2006 at 3:10 am | Permalink
+for comment no: 12
+Mutex:
+Short for mutual exclusion object. In computer programming, a mutex is a program object that allows multiple program threads to share the same resource, such as file access, but not simultaneously. When a program is started, a mutex is created with a unique name. After this stage, any thread that needs the resource must lock the mutex from other threads while it is using the resource. The mutex is set to unlock when the data is no longer needed or the routine is finished.
+INode:
+a unique number associated with each filename. This number is used to look up an entry in the inode table which gives information on the type, size, and location of the file and the userid of the owner of the file.
+Regards,
+Virat
+
+Amar
+Posted 9/4/2006 at 8:22 pm | Permalink
+Access rights (read/write/execute) on a directory means:
+execute permission allows a user to enter the directory and perform read/write/execute files according to the permissions of the file. But you cannot ‘ls’ the directory until you have a read permission.
+It means you should know the filename.
+eg:
+[amar@darkstar ~]$ ls -l | grep Book
+d–x—— 6 amar amar 4096 Sep 5 11:27 BookScripting # directory only has
+execute permission
+[amar@darkstar ~]$ ls -l BookScripting/ # no read permission
+ls: BookScripting/: Permission denied # so ‘ls -l’ denied
+[amar@darkstar ~]$ ls -l BookScripting/test.sh
+-r-x—— 1 amar amar 37 Sep 5 11:27 BookScripting/test.sh
+[amar@darkstar ~]$ BookScripting/test.sh
+you can execute
+[amar@darkstar ~]$
+
+Divya
+Posted 10/20/2006 at 1:23 pm | Permalink
+quota -v
+Shows current disk usage and limits
+
+snark
+Posted 2/28/2007 at 2:04 am | Permalink
+Typical usage of route:
+/sbin/route -n:
+DISPLAY KERNEL ROUTING TABLES.
+
+Smi
+Posted 3/28/2007 at 5:16 pm | Permalink
+whats the diff between mutex and semaphores ?
+
+ganesh
+Posted 3/17/2008 at 11:49 pm | Permalink
+where INODE will be stored?
+
+Krunal
+Posted 7/5/2008 at 11:57 am | Permalink
+Inode is stored in File Management system ie in the Secondary Memory where os is stored
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/solaris-interview-questions
+Solaris interview questions
+
+List the files in current directory sorted by size ? - ls -l | grep ^- | sort -nr
+List the hidden files in current directory ? - ls -a1 | grep "^\."
+Delete blank lines in a file ? - cat sample.txt | grep -v ‘^$’ > new_sample.txt
+Search for a sample string in particular files ? - grep Ã¢â‚¬Å“DebugÃ¢â‚¬Â *.confHere grep uses the string Ã¢â‚¬Å“DebugÃ¢â‚¬Â to search in all files with extensionÃ¢â‚¬Å“.confÃ¢â‚¬Â under current directory.
+
+Display the last newly appending lines of a file during appendingdata to the same file by some processes ? - tail Ã¢â‚¬â€œf Debug.logHere tail shows the newly appended data into Debug.log by some processes/user.
+Display the Disk Usage of file sizes under each directory in currentDirectory ? - du -k * | sort Ã¢â‚¬â€œnr (or) du Ã¢â‚¬â€œk . | sort -nr
+Change to a directory, which is having very long name ? - cd CDMA_3X_GEN*Here original directory name is Ã¢â‚¬â€œ Ã¢â‚¬Å“CDMA_3X_GENERATION_DATAÃ¢â‚¬Â.
+Display the all files recursively with path under current directory ? - find . -depth -print
+Set the Display automatically for the current new user ? - export DISPLAY=`eval ‘who am i | cut -d"(" -f2 | cut -d")" -f1′`Here in above command, see single quote, double quote, grave ascent is used. Observe carefully.
+Display the processes, which are running under yourusername ? - ps Ã¢â‚¬â€œaef | grep MaheshvjHere, Maheshvj is the username.
+List some Hot Keys for bash shell ? - Ctrl+l Ã¢â‚¬â€œ Clears the Screen. Ctrl+r Ã¢â‚¬â€œ Does a search in previously given commands in shell. Ctrl+u - Clears the typing before the hotkey. Ctrl+a Ã¢â‚¬â€œ Places cursor at the beginning of the command at shell. Ctrl+e Ã¢â‚¬â€œ Places cursor at the end of the command at shell. Ctrl+d Ã¢â‚¬â€œ Kills the shell. Ctrl+z Ã¢â‚¬â€œ Places the currently running process into background.
+ Display the files in the directory by file size ? - ls Ã¢â‚¬â€œltr | sort Ã¢â‚¬â€œnr Ã¢â‚¬â€œk 5
+How to save man pages to a file ? - man <command> | col Ã¢â‚¬â€œb > <output-file>Example : man top | col Ã¢â‚¬â€œb > top_help.txt
+How to know the date & time for Ã¢â‚¬â€œ when script is executed ? - Add the following script line in shell script.eval echo "Script is executed at `date`" >> timeinfo.infHere, Ã¢â‚¬Å“timeinfo.infÃ¢â‚¬Â contains date & time details ie., when script is executed and history related to execution.
+How do you find out drive statistics ? - iostat -E
+Display disk usage in Kilobytes ? - du -k
+Display top ten largest files/directories ? - du -sk * | sort -nr | head
+How much space is used for users in kilobytes ? - quot -af
+How to create null file ? - cat /dev/null > filename1
+Access common commands quicker ? - ps -ef | grep -i $@
+Display the page size of memory ? - pagesize -a
+Display Ethernet Address arp table ? - arp -a
+Display the no.of active established connections to localhost ? - netstat -a | grep EST
+Display the state of interfaces used for TCP/IP traffice ? - netstat -i
+Display the parent/child tree of a process ? - ptree <pid> Example: ptree 1267
+Show the working directory of a process ? - pwdx <pid> Example: pwdx 1267
+Display the processes current open files ? - pfiles <pid> Example: pfiles 1267
+Display the inter-process communication facility status ? - ipcs
+Display the top most process utilizing most CPU ? - top Ã¢â‚¬â€œb 1
+Alternative for top command ? - prstat -a
+
+
+15 COMMENTS ON SOLARIS INTERVIEW QUESTIONS
+
+
+Alex
+Posted 5/6/2005 at 1:53 pm | Permalink
+I am looking to determine the total file size of my users, email the data daily, and have it reported in megs. I am using terminal and crontab sucessfully, but I can’t get the crontab entry to report the findings at the user account level. It seems to scan all the way to the end of a uses folder and then report that. Any suggestions?
+Alex
+
+Wing
+Posted 5/31/2005 at 4:23 am | Permalink
+I can’t install top in SunOS5.6 because of some administration issue.
+Furthermore, prstat -a didn’t run in my SunOS5.6. I would like to know whether are there any alternatives for top command in SunOS5.6?
+
+kumareasan
+Posted 6/27/2005 at 5:40 pm | Permalink
+pagesize, prtree, pfiles,pwdx,prstat this commends r not run in my system.
+THE CORRECT COMMAND IS :
+prtree : pstree(present user login tree)
+pwdx : pwd(present working path)
+prstate : pstat(present status)
+Thank U
+Regards,
+Kumareasan
+Linux Administrator in Tetra software India pvt ltd
+
+Jeff
+Posted 7/22/2005 at 9:18 am | Permalink
+This is pretty pathetic. Do folks actually expect candidates who can answer these questsions to be considered systems administrators in a Solaris environment?
+Where’s the questions about OBP?
+Where’s the questions about LOM?
+Where’s the hardware questions?
+Where’s the disksuite questions?
+What about packages? Jumpstart? JASS? SunVTS? obdiag, prtdiag, fmthard?
+What about slices versus disks?
+Shared memory? What’s /etc/system for?
+How about the ndd command? NFS? RPC?
+
+Robert
+Posted 7/22/2005 at 10:20 pm | Permalink
+I canÃ¢â‚¬â„¢t install top in SunOS5.6 because of some administration issue.
+Furthermore, prstat -a didnÃ¢â‚¬â„¢t run in my SunOS5.6. I would like to know whether are there any alternatives for top command in SunOS5.6?
+Tech Interviews comment by Wing
+Can you tell me what the administration issue is? Have you tried going to sun freeware and get the top package for SunOS 5.6 you will need Gzip to uncompress the file. Then you just run pkgadd -d {path}package-name and it will install without any issues.
+
+Robert
+Posted 7/22/2005 at 10:22 pm | Permalink
+How do you vi a file that is too big for the buffer. E.G. When I try to vi a file it says that it is too big and will not work. I know I can use wordpad or someother editor but I am wondering if it can be done with vi. Thanks in advance.
+
+Chris
+Posted 1/23/2006 at 9:57 pm | Permalink
+Comment to comment no. 4, I used to think it was pathetic too, until I got those kind of questions in an interview here in Singapore.
+
+Neil Hunt
+Posted 4/10/2006 at 11:15 pm | Permalink
+To sort by size in solaris use:
+ls -l | sort -nk5
+
+Rock
+Posted 4/25/2006 at 4:51 am | Permalink
+Just like we have “bdf” in HP-UX, is there any command in Solaris and Linux?
+
+Rav
+Posted 10/28/2006 at 3:41 am | Permalink
+with respect to kumareasan comment :
+Those commands are in Solaris and Solaris is not Linux. If command not working in your system means commands not exists :)
+-Ravi
+
+Suresh
+Posted 5/13/2007 at 11:06 pm | Permalink
+Rock said,
+Just like we have Ã¢â‚¬Å“bdfÃ¢â‚¬Â in HP-UX, is there any command in Solaris and Linux?
+In Linux u can use “df -h”
+I don’t know abt solaris i think u can use bdf in solaries
+
+Sivakumar - ACCENTURE
+Posted 9/5/2007 at 2:35 pm | Permalink
+For Solaris you can use df -k as an alternate for bdf of hp unix
+
+NamDesh
+Posted 5/12/2008 at 2:43 am | Permalink
+10. Display the processes, which are running under yourusername ?
+ps -u
+
+NamDesh
+Posted 5/12/2008 at 2:49 am | Permalink
+Display the processes, which are running under yourusername ?
+the command can be used as : ps -u username, or ps -fu username which will give the complete details of the processes running under a user.
+
+Sonu
+Posted 12/16/2008 at 3:30 pm | Permalink
+Answer for #1
+You can use this script under solaris(using “quot” as fundamental of script:-
+#!/usr/bin/bash
+cp /etc/passwd /tmp/passwd
+cut -f1 -d: /tmp/passwd>/tmp/userids
+quot -h / /usr /var > /tmp/quotaall
+for name in `cat /tmp/userids` ;
+do
+grep $name /tmp/quotaall | awk ‘{print $1}’ > /tmp/userusagelist
+sum=0;
+for i in `cat /tmp/userusagelist`;
+do
+sum=`expr $sum + $i`;
+done
+summbs=`expr $sum / 1024`;
+echo “$name is using $summbs MB”
+done
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/solaris-interview-questions-2
+Solaris interview questions
+
+What does the pkgadd command do?
+
+How do you create a solaris package?
+
+How do you view shared memory statistics?
+
+How do you get system diagnostics information?
+
+What is OBP and how do you access it?
+
+What is LOM and how do you access it?
+
+What is VTS?
+
+What is an alternative to the “top” command on Solaris?
+
+What is /etc/system for?
+
+What does ndd do?
+
+What does init 5 do?
+
+What does init 0 do?
+
+How do you boot from CD-ROM?
+
+What is jumpstart?
+
+How do you boot from a Network with jumpstart?
+
+What is JASS?
+
+What is the difference between NFS version 2 and NFS version 3?
+
+What is RPC? Why do I need it?
+
+Are kernel parameters tunable during runtime?
+
+What does fmthard do?
+
+
+26 COMMENTS ON SOLARIS INTERVIEW QUESTIONS
+
+
+praveena
+Posted 8/31/2005 at 8:42 am | Permalink
+What does the pkgadd command do?
+pkgadd is used to add a package to the solaris.It installs the package in the /usr/local directory by default.
+
+praveena
+Posted 8/31/2005 at 8:44 am | Permalink
+What is an alternative to the Ã¢â‚¬Å“topÃ¢â‚¬Â command on Solaris?
+The alternative to the top command is prstat command in solaris
+It will give the status of each and every process.
+
+Ananta Gampaa
+Posted 9/15/2005 at 12:25 pm | Permalink
+Comment for 16. The Solaris Security Toolkit, formerly known as the JumpStart Architecture and Security Scripts (JASS) toolkit, provides a flexible and extensible mechanism to harden and audit Solaris Operating Systems (OSs).
+
+Ananta Gampaa
+Posted 9/15/2005 at 12:25 pm | Permalink
+Comment 18. RPC:A call to a procedure in a different address space. In a traditional procedure call, the calling procedure and the called procedure are in the same address space on one machine. In a remote procedure call, the calling procedure invokes a procedure in a different address space and usually
+on a different machine.
+
+JP
+Posted 7/3/2006 at 12:53 am | Permalink
+Comment 11. init 5 will shutdown and Power-off the server.
+
+JP
+Posted 7/3/2006 at 12:54 am | Permalink
+Comment 12. init 0 will bring the server to the ok> prompt (Fourth monitor)
+
+JP
+Posted 7/3/2006 at 12:56 am | Permalink
+Comment 10: ndd command will hardcore the speed of the network interface card.
+
+JP
+Posted 7/3/2006 at 12:59 am | Permalink
+Comment 5: OBP is called as Open Boot PROM. This OBP can be accessiable thru ok> prompt (Fourth monitor)
+
+JP
+Posted 7/3/2006 at 1:04 am | Permalink
+Comment 4: You can get system diagonostics information thru prtdiag command. And you can execute this command by
+/usr/platform/’uname -m’/sbin/prtdiag -v|more
+
+Meeta Shukla
+Posted 7/17/2006 at 4:34 am | Permalink
+comment 13: Booting form CD-ROM can be done by the command
+ok >boot cdrom
+
+Meeta Shukla
+Posted 7/17/2006 at 4:37 am | Permalink
+comment 5: Open Boot PROM cand be accessed by two methods
+a. OK prompt > printenv,setenv,nvalias……
+b. #eeprom
+
+Sivakumar
+Posted 10/11/2006 at 1:08 am | Permalink
+What is /etc/system for?
+/etc/system is a kernal file of Solaris OS.
+What does fmthard do?
+fmthard will create partitions in a new disk as in a already created/designed disk.
+For example we can get output from prtvtoc command and give as a input to the new disk as follows.
+prtvtoc /dev/rmt/c0t0d0s0 > a | fmthard /dev/rmt/c1todos1
+
+suresh Krishnan
+Posted 11/15/2006 at 2:24 am | Permalink
+Commment 15 :How do you boot from a Network with jumpstart?
+boot net - install
+comment 13 :How do you boot from CD-ROM?
+boot cdrom
+
+Jagannath
+Posted 11/20/2006 at 3:42 pm | Permalink
+Comment 14: What is jumpstart?
+The Jumpstart feature is an automatic installation process available in the Solaris operating environment. It allows system administrators to categorize machines on their network and automatically install systems based on the category to which a system belongs.
+
+Srinivasa Murthy
+Posted 2/17/2007 at 1:23 pm | Permalink
+Q.14
+Make sure
+1. The Install server or boot server is in the same local network segment as client with network link up
+2. NFS service are running on Jumpstart server
+3. The tftp service are running. To start uncomment the tftp entry in /etc/initd.conf and restart the inet service.
+
+Smitha
+Posted 4/19/2007 at 4:38 am | Permalink
+6.What is LOM
+Short for LAN on motherboard. The term refers to a chip or chipset capable of network connections that has been embedded directly on the motherboard of a desktop, workstation or server. Instead of requiring a separate network interface card to access a local-area network, such as Ethernet, the circuits are attached to the motherboard. An advantage of a LOM system is an extra available PCI slot that is not being used by the network adapter.
+
+Smitha
+Posted 4/19/2007 at 4:41 am | Permalink
+20) What does fmthard do?
+The fmthard command updates the VTOC (Volume Table of Contents) on hard disks and, on systems, adds boot information,to the Solaris fdisk partition. One or more of the options,-s datafile, -d data, or -n volume_name must be used to request modifications to the disk label. To print disk label contents, see prtvtoc.The /dev/rdsk/c?[t?]d?s2 file must be the character special file of the device where the new label is to be installed. On systems, fdisk must be run on the drive before fmthard.
+
+Avneesh
+Posted 6/7/2007 at 6:04 am | Permalink
+for question 14 Jumpstart installation
+There is some rules kind of stuff for installing and configuruing the particular machine.
+because after insatlling fro the jumpstart procedure the machine should br configured accoring to the user requirements….
+
+Riju
+Posted 7/22/2007 at 12:34 pm | Permalink
+1. What does the pkgadd command do?
+Used for adding packages to the OS
+2. How do you create a solaris package?
+http://www.ibiblio.org/pub/packages/solaris/sparc/html/creating.solaris.packages.html
+3. How do you view shared memory statistics?
+swap -l -> displays swap usage
+prstat -> examines all active processes on the system and reports statistics based on the selected output mode and sort order
+vmstat -> reports information about processes, memory, paging, block IO, traps, and cpu activity
+pmap -> lists the virtual memory mappings underlying the given process
+4. How do you get system diagnostics information?
+prtdiag -v -> Shows mem, cpu, Power supply, add-on cards info, LEd status
+iostat -En -> Shows disk status.(look for hard error)
+/var/adm/messages -> Logs most commont failures and the entire system events
+Extended POST -> This can be done at boot time.
+ipmitool -> Shows voltage, fanspee, led status etc…
+5. What is OBP and how do you access it?
+Open Boot PROM -> Similar to a BIOS in a pc, but a lot more powerful
+Stop+A -> from OS (Not recommended)
+init 0 -> gracefully brings machine to ok> prompt from OS
+6. What is LOM and how do you access it?
+LOM -> Lights out manager
+Powerful CLI interface which helps to get info about the Server
+this can be connected via local (Serial management)
+or over the LAN (Net management)
+can be used for remote administration, diagnosing issues when machine fails to come up
+LOM will be active long soon as power is coming to the Server
+7. What is VTS?
+Sun Validation Test Suite -> tests and validates Sun hardware by verifying the configuration and functionality of hardware controllers, devices
+8. What is an alternative to the Ã¢â‚¬Å“topÃ¢â‚¬Â command on Solaris?
+prstat
+9. What is /etc/system for?
+The /etc/system file provides a static mechanism for adjusting the values of kernel parameters. Values specified in this file are read at boot time and are applied. Any changes that are made to the file are not applied to the operating system until the system is rebooted.
+10. What does ndd do?
+allows you to tune, tweak, set and reset various parameters related to the TCP/IP stack while the system is running
+11. What does init 5 do?
+Gracefully powers down the system (OS) and powers the machine off
+12. What does init 0 do?
+Gracefully powers down the system (OS) and drops to OBP ie ok> prompt
+13. How do you boot from CD-ROM?
+boot cdrom
+
+R.Chinna Venkanna Babu
+Posted 8/12/2007 at 4:02 am | Permalink
+What is the difference between pkgadd -d and patchadd -d command ?
+
+R.Chinna Venkanna Babu
+Posted 8/12/2007 at 4:07 am | Permalink
+when a software pkg is added, the pkgadd command uncompresses and copies file from installation media to the local system’s disk.
+patchadd is used to install unpacked patches to the solaris operating environment.
+
+Harry
+Posted 12/17/2007 at 4:11 am | Permalink
+What is the difference between a SPARC and a RISC?
+
+prashant
+Posted 4/30/2008 at 1:17 am | Permalink
+What is kernel tuning in sun solaris
+
+prabu
+Posted 5/13/2008 at 8:19 am | Permalink
+hi
+comment:23
+kernel tuning means to change kernel parameter in /etc/system
+for ex:
+#vi /etc/system file
+set_maxuser 41 (40)
+so whenever we want to edit and change the parameter in etc/system is called one kind of kernel tuning
+
+Saikrishna
+Posted 6/19/2008 at 11:13 pm | Permalink
+What we have to do when the /etc/format.dat file is corrupted?
+
+Satya
+Posted 7/22/2008 at 3:09 am | Permalink
+26.Can anyone suggest how to read the nth character from a file in Solaris 9 where the value of n is read from the user as input.
+
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/basic-sed-tricks
+Basic sed tricks
+
+What is sed? - sed is stream editor, a Unix tool for working with streams of text data. See the awful truth about sed.
+
+
+How do you substitute strings with sed? - Use ’s/old/new’ command, so sed ’s/hello/goodbye/’ would substitute the occurrence of the word hello to goodbye.
+
+
+How do you inject text with sed? - & in the substitution string defines the pattern found in the search string. As an example, here’s us trying to find a word ‘hello’ and replacing it with ‘hello and how are you’:
+     echo ‘hello there’ | sed ’s/^hello/& and how are you/’
+
+
+Can I find several patterns and refer to them in the replacement string? - Yes, use (pattern) and then refer to your patterns as \1, \2, \3 and so on.
+
+
+If the string is ‘old old old’ and I run ’s/old/new’, I get ‘new old old’ as the result. I need ‘new new new‘. - You forgot the global modifier, which would replace every occurrence of the pattern with the substitution. ’s/old/new/g‘ will work.
+
+
+But I want ‘old old new’ from the previous example. - Just use the numeric modifier saying you want the third occurrence to be replaced. ’s/old/new/3‘ will work.
+
+
+I wrote a rather complex sed script. How do I save and run it? - Assuming that your file is named myscript1.sed, you can invoke sed -f myscript1.sed.
+
+
+How do I delete trailing whitespaces from each line? - sed ’s/[ \t]*$//’ Here we’re replacing any occurrence of a space or a tab with nothing. Check sed one-liners for more examples.
+
+
+How do you print just a few first lines of the file? - sed 1q will give you just the first line, sed 10q the first 10 lines.
+
+
+How do you replace a pattern only if it’s found, so that it’s executed faster? - Nest the replacement statement: sed ‘/old/ s/old/new/g’ file.txt
