@@ -932,7 +932,15 @@ swapon -a
 
 ------------------------------------------------------
 
+http://ubuntuguide.net/stop-the-blinking-wireless-led-light-on-ubuntu-10-10-laptops
+Stop the blinking wireless LED light on Ubuntu 10.10 laptops
 
+# gksudo gedit /etc/modprobe.d/wlan.conf (or whatever wireless related file is there e.g. intel-5300-iwlagn-disable11n.conf)
+
+add this line at the end of the file,and save it.
+options iwlcore led_mode=1
+
+Now,restart your machine and problem should be fixed !
 
 
 -----------------------------------------------------
