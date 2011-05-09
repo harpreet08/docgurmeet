@@ -942,6 +942,10 @@ options iwlcore led_mode=1
 
 Now,restart your machine and problem should be fixed !
 
+Or. Reset the Wireless driver
+# sudo modprobe -r iwlagn
+# sudo modprobe iwlagn
+
 
 -----------------------------------------------------
 
