@@ -948,7 +948,15 @@ Or. Reset the Wireless driver
 
 
 -----------------------------------------------------
+Disable nVidia splash screen
 
+Add the line highlighted to your /etc/X11/xorg.cong under Devices section and reboot.
+Code:
+Section "Device"
+  Identifier "Nvidia 7800 Go GTX"
+  Driver     "nvidia"
+  Option     "NoLogo" "true"   # <-- This is the line to be added
+EndSection
 
 
 
