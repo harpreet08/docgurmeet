@@ -961,8 +961,10 @@ EndSection
 
 
 ------------------------------------------------------
+Wireshark - how to see capture interface as non-root
 
-
+# sudo apt-get install libcap2-bin
+# setcap cap_net_raw=+ep /usr/bin/dumpcap
 
 ------------------------------------------------------
 
