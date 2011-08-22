@@ -968,6 +968,11 @@ Wireshark - how to see capture interface as non-root
 
 ------------------------------------------------------
 
+VMware on amd64
+In order to install vmware on amd64 you have to install few extra libs:
+
+# aptitude install linux-headers-`uname -r` libx11-6 libx11-dev x-window-system-core x-window-system xspecs libxtst6 psmisc build-essential ia32-libs
+# /usr/bin/vmware-config.pl
 
 
 ------------------------------------------------------
