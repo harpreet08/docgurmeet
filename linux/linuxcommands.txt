@@ -976,7 +976,38 @@ In order to install vmware on amd64 you have to install few extra libs:
 
 
 ------------------------------------------------------
+lo: Disabled Privacy Extensions” and ipv6 disabling?
+http://askubuntu.com/questions/24594/lo-disabled-privacy-extensions-and-ipv6-disabling
 
+Disbale IPv6 in Ubuntu
+
+Method 1
+
+gksudo gedit  /etc/modprobe.d/aliases
+Find the line: alias net-pf-10 ipv6 change to alias net-pf-10 off
+
+If the above change is not working you need to change the following one alias net-pf-10 off ipv6
+
+Method 2
+
+Edit /etc/default/grub file
+# gksudo gedit  /etc/default/grub
+
+Change
+GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash”
+to
+GRUB_CMDLINE_LINUX_DEFAULT=”ipv6.disable=1 quiet splash”
+
+Save and exit the file
+
+Update the grub from the command line
+
+sudo update-grub
+Keep me informed.
+
+Regards,
+
+Ilias el Matani
 
 
 
