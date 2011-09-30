@@ -29,7 +29,7 @@ http://www.techinterviews.com/amazon-interview-questions
 
 Amazon interview questions
 
-Given a Binary Search Tree, write a program to print the kth smallest element without using any static/global variable. You canÃ¢â‚¬â„¢t pass the value k to any function also.
+Given a Binary Search Tree, write a program to print the kth smallest element without using any static/global variable. You can pass the value k to any function also.
 
 
 What are the 4 basics of OOP?

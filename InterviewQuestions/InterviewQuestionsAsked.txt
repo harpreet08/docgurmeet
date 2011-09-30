@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
+
+IYogi - 22-Sep-2011
+
+- What performace analysis tools have you used ?
+- What is your current project ? 
+- How much of your current project is web based ?
+- Describe a typical web application stack ?
+- Describe the Architectual frameworks you have used in your projects ?
+- Is your job on the technology side or managerial side? How much percentage of each ?
+- Describe the technology stack of a SOA application ? What do you understand by a SOA application ?
+- What are the key technologies have you used with certain degree of comfort ? What are your strength areas ?
+- What is your typical work profile ?
