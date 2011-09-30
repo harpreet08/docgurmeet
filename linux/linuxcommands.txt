@@ -1014,6 +1014,40 @@ Ilias el Matani
 -----------------------------------------------------
 
 
+https://wiki.archlinux.org/index.php/Chromium
+
+Open PDF files inside Chromium
+
+
+There are two ways to do this: The first one by using Google Chrome's own PDF rendering plugin, the second by allowing Chromium access to e. g. Adobe Reader via the mozplugger plugin. KDE users can also choose KParts Plugin and use any installed KDE application as an embedded viewer.
+
+
+libpdf.so - libpdf is Google's own implementation of a PDF renderer. While compatible, it is currently only part of Chrome releases, not Chromium ones.
+The easiest way to add it to the latter is using one of the packages provided in the AUR — chromium-stable-libpdf for the stable version of the browser, or for the dev version either chromium-libpdf if your Chromium package installed to /usr/lib/chromium or chromium-browser-libpdf if it installed to /opt/chromium-browser.
+To do it manually, download a Google Chrome release that corresponds to the version of Chromium you use:
+
+
+$ wget https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+$ wget https://dl-ssl.google.com/linux/direct/google-chrome-unstable_current_i386.deb
+$ wget https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+$ wget https://dl-ssl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
+
+
+Extract the deb file with
+$ ar vx <deb-file>
+
+
+Extract LZMA archive with
+$ tar -xJf <lzma-file>
+
+
+Move libpdf.so from opt/google/chrome/ to the appropriate directory as stated above. A change of its file permissions and ownership may be necessary (the permission of libpdf.so should be 755).
+
+
+Start Chromium and open about:plugins. "Chrome PDF Viewer" should now view; it may need to be enabled.
+
+
+Note: As a new version of Chromium will not update libpdf.so it may become incompatible. Thus and with respect to possible security fixes it is advisable to update both at the same time.
 
 
 ------------------------------------------------------
