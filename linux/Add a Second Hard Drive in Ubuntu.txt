@@ -1,0 +1,92 @@
+http://www.mikestechblog.com/joomla/operating-systems-section/operating-systems-ubuntu/53-add-a-second-hard-drive-in-ubuntu.html
+
+
+Add a Second Hard Drive in Ubuntu
+Operating Systems	 - Ubuntu Linux
+Since I was running out of disk space, I decided that I needed to add a second hard drive to my Ubuntu server. 
+First thing to do is install the second hard drive into your computer. I assume you already know how to do this. One thing I have learned with IDE drives and ubuntu, always use the Ultra DMA 80 conductor IDE cables on the drives. If you don't, you will find all kinds of disk errors in your log files.
+
+After you have your second hard drive installed in your computer, go into your computer's BIOS and make sure it is recognized there.
+
+Next, boot the computer up, and see if Ubuntu can see the second hard drive. To do this, open up the terminal window and type the following: sudo fdisk -l
+
+You should see the following:
+
+Disk /dev/sda: 41.1 GB, 41110142976 bytes
+255 heads, 63 sectors/track, 4998 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Disk identifier: 0x000c1e50
+
+Device Boot Start End Blocks Id System
+/dev/sda1 * 1 4905 39399381 83 Linux
+/dev/sda2 4906 4998 747022+ 5 Extended
+/dev/sda5 4906 4998 746991 82 Linux swap / Solaris
+
+Disk /dev/sdb: 500.1 GB, 500107862016 bytes
+255 heads, 63 sectors/track, 60801 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Disk identifier: 0xd89ff2c4
+
+
+Notice that the second hard drive (/dev/sdb: 500.1 GB) doesn't show any partitions like the first drive does. (/dev/sda: 41.1 GB)
+
+If, on the other hand, there is already data on your new hard drive,(you will see the partitions) and you want to keep the data, just skip the this part, as well as the formatting of the hard drive.
+
+DISCLAIMER: this is what MY computer tells me for my second hard drive. You need to make sure you tell it the correct hard drive for YOUR computer as displayed in the prevous fdisk command. If you incorrectly tell fdisk the wrong drive you will destroy your data! You have been warned!
+
+
+
+ 
+
+For the second hard drive, we need to create partitions. To do this, we use the following command: sudo fdisk /dev/sdb After the fdisk menu comes up, press n (for New partition). It will then ask you if you want an "extended" or "primary" partition on your hard drive. Press p, and then press 1 for one partition. After the partition has been defined, you need to write the table to the disk, by entering w.
+
+Next, we need to format our new hard drive. To do this, enter the following command: sudo mkfs /dev/sdb1 -t ext4
+
+Another disclaimer: like with fdisk before, you need to make sure you are using the correct hard drive with this command. It must be the same drive that you referenced in your fdisk command.
+
+Next you need to create a directory for a mount point. I usually create these directories in the /mnt directory (as that is what it is for..). Since in this case, my hard drive is labeled sdb, and I have (in this case..) put one partition on this hard drive, I am going to create a directory called, sdb1. If you have chosen to place more than one partition on your new hard drive, then you will need to create a separate directory for each partition. The command for this is:
+
+sudo mkdir /mnt/sdb1
+
+Next, you need to make this folder writable. to do this, use the following command:
+
+sudo chmod 777 /mnt/sdb1
+
+Again, use the appropriate names for the hard drive you are using above.
+
+Next, let's test things out by mounting the drive:
+
+sudo mount /dev/sdb1 /mnt/sdb1 -t ext4
+
+Now let's see if we can write a file on to the new drive, like so:
+
+touch /mnt/sdb1/test.txt then ls /mnt/sdb1/*
+
+By executing the last command, you should see the test.txt file. If so, congratulations, you now have a second hard drive on your computer. However, this is only a temporary mount point. The next time you reboot your computer, it will be gone. If you want this new hard drive to be permanently mounted, (who doesn't?) you need to edit your filesystem tab file like this:
+
+sudo vi /etc/fstab
+
+The vi editor will load and show the contents of the fstab file. It will look something like this:
+
+# /etc/fstab: static file system information.
+#
+# <file system> <mount point> <type> <options> <dump> <pass>
+proc /proc proc defaults 0 0
+# /dev/sda1
+UUID=0654cdd0-480c-4ebd-b9f1-c153be45a259 / ext4 defaults,errors=remount-ro 0 1
+# /dev/sda5
+UUID=bf55d909-3ece-44e5-8622-6d08ef034c9f none swap sw 0 0
+/dev/scd0 /media/cdrom0 udf,iso9660 user,noauto,exec 0 0
+/dev/fd0 /media/floppy0 auto rw,user,noauto,exec 0 0
+
+
+at the end of the file, add a line similar to following line with the appropriate folders for the mounting points you used previously. (these are mine..) 
+
+/dev/sdb1 /mnt/sdb1 ext4 defaults 0 0
+
+Save this file. You can reboot your computer if you like, or just use the following command:
+
+mount -a
+
+If you have done everything correctly, you will have a second hard drive. Enjoy your new hard drive in Ubuntu
+
