@@ -1,0 +1,60 @@
+http://www.techinterviews.com/java-swing-interview-questions
+
+Java Swing interview questions
+By admin | December 7, 2003
+1) Can a class be it’s own event handler? Explain how to implement this.
+
+Answer: Sure. an example could be a class that extends Jbutton and implements ActionListener. In the actionPerformed method, put the code to perform when the button is pressed.
+
+
+2) Why does JComponent have add() and remove() methods but Component does not?
+
+Answer: because JComponent is a subclass of Container, and can contain other components and jcomponents.
+
+3) How would you create a button with rounded edges?
+
+Answer: there’s 2 ways. The first thing is to know that a JButton’s edges are drawn by a Border. so you can override the Button’s paintComponent(Graphics) method and draw a circle or rounded rectangle (whatever), and turn off the border. Or you can create a custom border that draws a circle or rounded rectangle around any component and set the button’s border to it.
+
+4) If I wanted to use a SolarisUI for just a JTabbedPane, and the Metal UI for everything else, how would I do that?
+
+Answer: in the UIDefaults table, override the entry for tabbed pane and put in the SolarisUI delegate. (I don’t know it offhand, but I think it’s "com.sun.ui.motiflookandfeel.MotifTabbedPaneUI" - anything simiar is a good answer.)
+
+5) What is the difference between the ‘Font’ and ‘FontMetrics’ class?
+
+Answer: The Font Class is used to render ‘glyphs’ - the characters you see on the screen. FontMetrics encapsulates information about a specific font on a specific Graphics object. (width of the characters, ascent, descent)
+
+6) What class is at the top of the AWT event hierarchy?
+
+Answer: java.awt.AWTEvent. if they say java.awt.Event, they haven’t dealt with swing or AWT in a while.
+
+7) Explain how to render an HTML page using only Swing.
+
+Answer: Use a JEditorPane or JTextPane and set it with an HTMLEditorKit, then load the text into the pane.
+
+8) How would you detect a keypress in a JComboBox?
+
+Answer: This is a trick. most people would say ‘add a KeyListener to the JComboBox’ - but the right answer is ‘add a KeyListener to the JComboBox’s editor component.’
+
+9) Why should the implementation of any Swing callback (like a listener) execute quickly?
+
+A: Because callbacks are invoked by the event dispatch thread which will be blocked processing other events for as long as your method takes to execute.
+
+10) In what context should the value of Swing components be updated directly?
+
+A: Swing components should be updated directly only in the context of callback methods invoked from the event dispatch thread. Any other context is not thread safe?
+
+11) Why would you use SwingUtilities.invokeAndWait or SwingUtilities.invokeLater?
+
+A: I want to update a Swing component but I’m not in a callback. If I want the update to happen immediately (perhaps for a progress bar component) then I’d use invokeAndWait. If I don’t care when the update occurs, I’d use invokeLater.
+
+12) If your UI seems to freeze periodically, what might be a likely reason?
+
+A: A callback implementation like ActionListener.actionPerformed or MouseListener.mouseClicked is taking a long time to execute thereby blocking the event dispatch thread from processing other UI events.
+
+13) Which Swing methods are thread-safe?
+
+A: The only thread-safe methods are repaint(), revalidate(), and invalidate()
+
+14) Why won’t the JVM terminate when I close all the application windows?
+
+A: The AWT event dispatcher thread is not a daemon thread. You must explicitly call System.exit to terminate the JVM.

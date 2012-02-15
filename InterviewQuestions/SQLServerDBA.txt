@@ -1,0 +1,24 @@
+http://www.techinterviews.com/database-admin-interview-questions
+
+Database admin interview questions
+By admin | April 26, 2004
+What is a major difference between SQL Server 6.5 and 7.0 platform wise? SQL Server 6.5 runs only on Windows NT Server. SQL Server 7.0 runs on Windows NT Server, workstation and Windows 95/98.
+Is SQL Server implemented as a service or an application? It is implemented as a service on Windows NT server and workstation and as an application on Windows 95/98.
+What is the difference in Login Security Modes between v6.5 and 7.0? 7.0 doesn’t have Standard Mode, only Windows NT Integrated mode and Mixed mode that consists of both Windows NT Integrated and SQL Server authentication modes.
+What is a traditional Network Library for SQL Servers? Named Pipes.
+What is a default TCP/IP socket assigned for SQL Server? 1433
+If you encounter this kind of an error message, what you need to look into to solve this problem?
+[Microsoft][ODBC SQL Server Driver][Named Pipes]Specified SQL Server not found.
+Check if MS SQL Server service is running on the computer you are trying to log into
+Check on Client Configuration utility. Client and Server have to in sync.
+What is new philosophy for database devises for SQL Server 7.0? There are no devises anymore in SQL Server 7.0. It is file system now.
+When you create a database how is it stored? It is stored in two separate files: one file contains the data, system tables, other database objects, the other file stores the transaction log.
+Let’s assume you have data that resides on SQL Server 6.5. You have to move it SQL Server 7.0. How are you going to do it? You have to use transfer command.
+Do you know how to configure DB2 side of the application? Set up an application ID, create RACF group with tables attached to this group, attach the ID to this RACF group.
+What kind of LAN types do you know? Ethernet networks and token ring networks.
+What is the difference between them? With Ethernet, any devices on the network can send data in a packet to any location on the network at any time. With Token Ring, data is transmitted in ‘tokens’ from computer to computer in a ring or star configuration. Token ring speed is 4/16 Mbit/sec , Ethernet - 10/100 Mbit/sec.
+What protocol both networks use? TCP/IP. Transmission Control Protocol, Internet Protocol.
+How many bits IP Address consist of?An IP Address is a 32-bit number.
+How many layers of TCP/IP protocol combined of? Five. (Application, Transport, Internet, Data link, Physical).
+How do you define testing of network layers? Reviewing with your developers to identify the layers of the Network layered architecture, your Web client and Web server application interact with. Determine the hardware and software configuration dependencies for the application under test.
+How do you test proper TCP/IP configuration Windows machine? Windows NT: IPCONFIG/ALL, Windows 95: WINIPCFG, Ping or ping ip.add.re.ss

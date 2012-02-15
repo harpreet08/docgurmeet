@@ -1,0 +1,23 @@
+http://www.techinterviews.com/interview-questions-for-business-objects-developer
+
+Interview questions for Business Objects developer
+
+What is a universe?
+Analysis in business objects?
+Who launches the supervisor product in BO for the first time?
+
+How can you check the universe?
+What are universe parameters?
+Types of universes in business objects?
+What is security domain in BO?
+Where will you find the address of repository in BO?
+What is broad cast agent?
+In BO 4.1 version what is the alternative name for broadcast agent?
+What services the broadcast agent offers on the server side?
+How can you access your repository with different user profiles?
+How many built-in objects are created in BO repository?
+What are alerters in BO?
+What are different types of saving options in web intelligence?
+What is batch processing in BO?
+How can you first report in BO by using broadcast agent?
+Can we take report on Excel in BO?

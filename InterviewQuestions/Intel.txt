@@ -1,0 +1,306 @@
+http://www.techinterviews.com/large-list-of-intel-interview-questions
+
+Large list of Intel interview questions
+
+
+
+Insights of an inverter. Explain the working?
+
+
+Insights of a 2 input NOR gate. Explain the working?
+
+
+Insights of a 2 input NAND gate. Explain the working?
+
+
+Implement F= not (AB+CD) using CMOS gates?
+
+
+Insights of a pass gate. Explain the working?
+
+
+
+Why do we need both PMOS and NMOS transistors to implement a pass gate?
+
+
+What does the above code synthesize to?
+
+
+Cross section of a PMOS transistor?
+
+
+Cross section of an NMOS transistor?
+
+
+What is a D-latch? Write the VHDL Code for it?
+
+
+Differences between D-Latch and D flip-flop?
+
+
+Implement D flip-flop with a couple of latches? Write a VHDL Code for a D flip-flop?
+
+
+What is latchup? Explain the methods used to prevent it?
+
+
+What is charge sharing?
+
+
+While using logic design, explain the various steps that r followed to obtain the desirable design in a well defined manner?
+
+
+Why is OOPS called OOPS? (C++)
+
+
+What is a linked list? Explain the 2 fields in a linked list?
+
+
+Implement a 2 I/P and gate using Tran gates?
+
+
+Insights of a 4bit adder/Sub Circuit?
+
+
+For f = AB+CD if B is S-a-1, what r the test vectors needed to detect the fault?
+
+
+Explain various adders and diff between them?
+
+
+Explain the working of 4-bit Up/down Counter?
+
+
+A circuit has 1 input X and 2 outputs A and B. If X = HIGH for 4 clock ticks, A = 1. If X = LOW for 4 clock ticks, B = 1. Draw a state diagram for this Spec?
+
+
+Advantages and disadvantages of Mealy and Moore?
+
+Id vs. Vds Characteristics of NMOS and PMOS transistors?
+
+
+Explain the operation of a 6T-SRAM cell?
+
+
+Differences between DRAM and SRAM?
+
+
+Implement a function with both ratioed and domino logic and merits and demerits of each logic?
+
+
+Given a circuit and asked to tell the output voltages of that circuit?
+
+
+How can you construct both PMOS and NMOS on a single substrate?
+
+
+What happens when the gate oxide is very thin?
+
+
+What is setup time and hold time?
+
+
+Write a pseudo code for sorting the numbers in an array?
+
+
+What is pipelining and how can we increase throughput using pipelining?
+
+
+Explain about stuck at fault models, scan design, BIST and IDDQ testing?
+
+
+What is SPICE?
+
+
+Differences between IRSIM and SPICE?
+
+
+Differences between netlist of HSPICE and Spectre?
+
+
+What is FPGA?
+
+
+Draw the Cross Section of an Inverter? Clearly show all the connections between M1 and poly, M1 and diffusion layers etc?
+
+
+Draw the Layout of an Inverter?
+
+
+If the current thru the poly is 20nA and the contact can take a max current of 10nA how would u overcome the problem?
+
+
+Implement F = AB+C using CMOS gates?
+
+
+Working of a 2-stage OPAMP?
+
+
+6-T XOR gate?
+
+
+Differences between blocking and Non-blocking statements in Verilog?
+
+
+Differences between Signals and Variables in VHDL? If the same code is written using Signals and Variables what does it synthesize to?
+
+
+Differences between functions and Procedures in VHDL?
+
+
+What is component binding?
+
+
+What is polymorphism? (C++)
+
+
+What is hot electron effect?
+
+
+Define threshold voltage?
+
+
+Factors affecting Power Consumption on a chip?
+
+
+Explain Clock Skew?
+
+
+Why do we use a Clock tree?
+
+
+Explain the various Capacitances associated with a transistor and which one of them is the most prominent?
+
+
+Explain the Various steps in Synthesis?
+
+
+Explain ASIC Design Flow?
+
+
+Explain Custom Design Flow?
+
+
+Why is Extraction performed?
+
+
+What is LVS, DRC?
+
+
+Who provides the DRC rules?
+
+
+What is validation?
+
+
+What is Cross Talk?
+
+
+Different ways of implementing a comparator?
+
+
+What r the phenomenon which come into play when the devices are scaled to the sub-micron lengths?
+
+
+What is clock feed through?
+
+
+Implement an Inverter using a single transistor?
+
+
+What is Fowler-Nordheim Tunneling?
+
+
+Insights of a Tri-state inverter?
+
+If an/ap = 0.5, an/ap = 1, an/ap = 3, for 3 inverters draw the transfer characteristics?
+
+
+Differences between Array and Booth Multipliers?
+
+
+Explain the concept of a Clock Divider Circuit? Write a VHDL code for the same?
+
+
+Which gate is normally preferred while implementing circuits using CMOS logic, NAND or NOR? Why?
+
+
+Insights of a Tri-State Inverter?
+
+
+Basic Stuff related to Perl?
+
+
+Have you studied buses? What types?
+
+
+Have you studied pipelining? List the 5 stages of a 5 stage pipeline. Assuming 1 clock per stage, what is the latency of an instruction in a 5 stage machine? What is the throughput of this machine ?
+
+
+How many bit combinations are there in a byte?
+
+
+For a single computer processor computer system, what is the purpose of a processor cache and describe its operation?
+
+
+Explain the operation considering a two processor computer system with a cache for each processor.
+
+
+What are the main issues associated with multiprocessor caches and how might you solve them?
+
+
+Explain the difference between write through and write back cache.
+
+
+Are you familiar with the term MESI?
+
+
+Are you familiar with the term snooping?
+
+
+Describe a finite state machine that will detect three consecutive coin tosses (of one coin) that results in heads.
+
+
+In what cases do you need to double clock a signal before presenting it to a synchronous state machine?
+
+
+You have a driver that drives a long signal & connects to an input device. At the input device there is either overshoot, undershoot or signal threshold violations, what can be done to correct this problem?
+
+
+What are the total number of lines written by you in C/C++? What is the most complicated/valuable program written in C/C++?
+
+
+What compiler was used?
+
+
+What is the difference between = and == in C?
+
+
+Are you familiar with VHDL and/or Verilog?
+
+
+What types of CMOS memories have you designed? What were their size? Speed?
+
+
+What work have you done on full chip Clock and Power distribution? What process technology and budgets were used?
+
+
+What types of I/O have you designed? What were their size? Speed? Configuration? Voltage requirements?
+
+
+Process technology? What package was used and how did you model the package/system? What parasitic effects were considered?
+
+
+What types of high speed CMOS circuits have you designed?
+
+
+What transistor level design tools are you proficient with? What types of designs were they used on?
+
+
+What products have you designed which have entered high volume production?
+
+
+What was your role in the silicon evaluation/product ramp? What tools did you use?
+
+
+If not into production, how far did you follow the design and why did not you see it into production?

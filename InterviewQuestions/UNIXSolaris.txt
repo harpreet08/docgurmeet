@@ -1,0 +1,3263 @@
+http://www.techinterviews.com/unix-admin-questions
+Unix admin questions
+
+How do you list the files in an UNIX directory while also showing hidden files?
+ls -l / ls -a
+
+How do you execute a UNIX command in the background?
+Use ampersand '&'
+
+What UNIX command will control the default file permissions when files are created?
+umask
+
+
+Explain the read, write, and execute permissions on a UNIX directory.
+
+4->read
+2->write
+1->execute
+root have full permission-> 777
+777(4+2+1).
+rwxrwxrwx–>means
+first rwx –> user
+second rwx–> group
+third rwx –> other
+777 means full permission.
+—————-
+apply permission
+—————-
+chmod 755
+755 means–>
+user have full permission
+group&others have read and execution.
+
+
+What is the difference between a soft link and a hard link?
+ hard link means two inodes link to same file. soft link creates a seperate file
+softlink have different inode and permissions started with l.
+hardlink have samw node and permission not start with l.
+softlink–>
+ln -s file newfile
+//-s is symbolic(soft)
+ll -il //shows file with inode.
+newfile->file
+——————————–
+hardlink–>
+ln file newfile
+ll -il
+
+
+Give the command to display space usage on the UNIX file system.
+df -h or du 
+
+
+Explain iostat, vmstat and netstat.
+iostat returns disk and other data i/o statistics vmstat returns memory paging statistics, virtual and real, netsta returns network statistics. GENERALLY the first line or the command alone will return statistical averages since boottime; the commands can also be run with flags to report instantaneous snapshots every x seconds for y results (ie vmstat 5 5 gives a snapshot every 5 seconds 5 times in a row
+
+
+How would you change all occurrences of a value using VI?
+vi to substitute every occurance in a file: %s/OLD/NEW/g
+
+
+Give two UNIX kernel parameters that effect an Oracle install
+shared memory and semaphores: shmmmax, shmmmin, etc and seminfo_semmsl (both affect the memory useage and sharing at the kernel level and usually a reboot is necessary for them to take affect safely (kernel parameters can be updated live on many Unix OS’s but is not recommended unless you are at the expert level and have performed the task before successfully on a sandbox)
+
+
+Briefly, how do you install Oracle software on UNIX.
+Oracle can be installed from CD or better yet from CD’s copied in their entirety to a hard disk simply with the “runInstall” script. a) make sure the filesystems you will be installing to have enough space AND no previous Oracle installation upon them and b) MUST be run as the Oracle user NOT root. (ie: you need to have an oracle user account created with the proper rwx rights to the installation target filesystem) c) several key variables such as hostname, some kernel parameters, and a few other pre-installation tasks need to be performed dependent upon the OS Oracle will be run upon.
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/general-unix-interview-questions
+General UNIX interview questions
+
+What are the main differences between Apache 1.x and 2.x?
+
+What does the “route” command do?
+
+What are the read/write/execute bits on a directory mean?
+
+What does iostat do?
+
+what does vmstat do?
+
+What does netstat do?
+
+What is the most graceful way to bring a system into single user mode?
+
+How do you determine disk usage?
+
+What is AWK?
+
+What is SED?
+
+What is the difference between binaries in /bin, and /usr/bin?
+
+What is a dynamically linked file?
+
+What is a statically linked file?
+
+
+20 COMMENTS ON GENERAL UNIX INTERVIEW QUESTIONS
+
+
+Jaffar
+Posted 8/31/2005 at 6:08 am | Permalink
+QNo:10. What is SED?
+SED (which stands for Stream EDitor) is a simple but powerful computer program used to apply various pre-specified textual transformations to a sequential stream of text data.
+It reads input files line by line, edits each line according to rules specified in its simple language (the sed script), and then outputs the line.
+
+Jaffar
+Posted 8/31/2005 at 6:10 am | Permalink
+AWK is a complete pattern scanning and processing language, it is most commonly used as a Unix command-line filter to reformat the output of other commands.
+For example, to print only the second and sixth fields of the date command (the month and year) with a space separating them, at the Unix prompt, you would enter:
+date | awk ‘{print $2 ” ” $6}’
+
+lavanya
+Posted 9/6/2005 at 3:55 pm | Permalink
+Access rights (read/write/execute) on a directory means:
+->read indicates that it is possible to list files in the directory.
+->write indicates that it is possible to delete or move files in the directory.
+->execute indicates that it is possible to read files in the directory provided we must have read permission on individual files of that directory.
+
+lavanya
+Posted 9/6/2005 at 4:17 pm | Permalink
+QNO:8 How do u determine disk usage?
+The disk usage can be determined by using the command,du.THis command outputs the number of kilobytes used by each sub-directory.
+
+lavanya
+Posted 9/6/2005 at 4:20 pm | Permalink
+QNO 2:
+Browse the following URL to get information about ‘route’ command
+http://linux.about.com/od/commands/l/blcmdl8_route.htm
+
+lavanya
+Posted 9/6/2005 at 4:45 pm | Permalink
+Q NO:4) To know about iostat command,browse the following url:
+http://www.scit.wlv.ac.uk/cgi-bin/mansec?1M+iostat
+
+lavanya
+Posted 9/6/2005 at 4:47 pm | Permalink
+Q.no:5) TO know about vmstat command,browse the following url:
+http://www.scit.wlv.ac.uk/cgi-bin/mansec?1M+vmstat
+
+lavanya
+Posted 9/6/2005 at 4:48 pm | Permalink
+Q.no:6) TO know about netstat command,browse the following url:
+http://userpages.umbc.edu/~jack/ifsm498/netstat.html
+
+Dave Waddell
+Posted 9/18/2005 at 3:31 pm | Permalink
+comment 3 on directory execute permissions is incorrect;
+Execute permission on a directory means you can list the files in that directory.
+
+Musthafa
+Posted 10/21/2005 at 2:45 am | Permalink
+11. What is the difference between binaries in /bin, and /usr/bin?
+/bin - would contains the binaries frequently used by the normal user (as well as system administrator)
+/usr/bin - would contains the binaries rarely used by the normal user (as wel as system administrator)
+12. What is a dynamically linked file?
+soft link (created with ln -s). Source and destination files will have the different inode. If dest removed source will be available. If source removed dest also will available but no where to go.
+13. What is a statically linked file?
+hard link (created with ln). Source and dest will have the same inode. Making two different copies causes more disk space due to redundancy.
+
+Chris Sheldon
+Posted 10/28/2005 at 3:56 pm | Permalink
+Comment #10 is in error with all answers
+11. What is the difference between binaries in /bin, and /usr/bin?
+Under Solaris, there is no difference. /bin is a symbolic link pointing to /usr/bin. Under Linux (RHAS3) /bin is seemingly for standard unix programs like vi, cp, mv, rm which you’d need in a single user environment where as /usr/bin contains programs you’d want for a multiuser environment. Keep in mind that sometimes /usr is a different disk partition and when you start up in single user mode you only have / mounted.
+The /sbin directories are *supposed to* contain statically linked programs. This mas morphed into the idea of bin for user programs, sbin for admin programs.
+12. What is a dynamically linked file?
+This is confusing because of the use of the word ‘file’. A dynamically linked program is one that, when executed, loads shared libraries from /lib or /usr/lib in order to execute. The idea is that most programs use many of the same functions, so include a copy of a common function in *every* program on the file system. Instead, the function is placed in a shared library and when the program starts executing, the library is loaded which provides the program access to the function.
+13. What is a statically linked file?
+As above, confusing due to the use of the word ‘file’. A statically linked program is one that contains all the information (libraries) it needs to run. It does not need to load additional libaries in order to execute.
+
+Mahbubul
+Posted 12/8/2005 at 11:34 pm | Permalink
+What is MUTEX? I need answer for this question
+What is INODE?I need answer for this question
+
+Adhik
+Posted 2/25/2006 at 4:56 pm | Permalink
+Ans 7: kill -TERM 1
+
+Virat
+Posted 3/23/2006 at 3:10 am | Permalink
+for comment no: 12
+Mutex:
+Short for mutual exclusion object. In computer programming, a mutex is a program object that allows multiple program threads to share the same resource, such as file access, but not simultaneously. When a program is started, a mutex is created with a unique name. After this stage, any thread that needs the resource must lock the mutex from other threads while it is using the resource. The mutex is set to unlock when the data is no longer needed or the routine is finished.
+INode:
+a unique number associated with each filename. This number is used to look up an entry in the inode table which gives information on the type, size, and location of the file and the userid of the owner of the file.
+Regards,
+Virat
+
+Amar
+Posted 9/4/2006 at 8:22 pm | Permalink
+Access rights (read/write/execute) on a directory means:
+execute permission allows a user to enter the directory and perform read/write/execute files according to the permissions of the file. But you cannot ‘ls’ the directory until you have a read permission.
+It means you should know the filename.
+eg:
+[amar@darkstar ~]$ ls -l | grep Book
+d–x—— 6 amar amar 4096 Sep 5 11:27 BookScripting # directory only has
+execute permission
+[amar@darkstar ~]$ ls -l BookScripting/ # no read permission
+ls: BookScripting/: Permission denied # so ‘ls -l’ denied
+[amar@darkstar ~]$ ls -l BookScripting/test.sh
+-r-x—— 1 amar amar 37 Sep 5 11:27 BookScripting/test.sh
+[amar@darkstar ~]$ BookScripting/test.sh
+you can execute
+[amar@darkstar ~]$
+
+Divya
+Posted 10/20/2006 at 1:23 pm | Permalink
+quota -v
+Shows current disk usage and limits
+
+snark
+Posted 2/28/2007 at 2:04 am | Permalink
+Typical usage of route:
+/sbin/route -n:
+DISPLAY KERNEL ROUTING TABLES.
+
+Smi
+Posted 3/28/2007 at 5:16 pm | Permalink
+whats the diff between mutex and semaphores ?
+
+ganesh
+Posted 3/17/2008 at 11:49 pm | Permalink
+where INODE will be stored?
+
+Krunal
+Posted 7/5/2008 at 11:57 am | Permalink
+Inode is stored in File Management system ie in the Secondary Memory where os is stored
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/solaris-interview-questions
+Solaris interview questions
+
+List the files in current directory sorted by size ? - ls -l | grep ^- | sort -nr
+List the hidden files in current directory ? - ls -a1 | grep "^\."
+Delete blank lines in a file ? - cat sample.txt | grep -v ‘^$’ > new_sample.txt
+Search for a sample string in particular files ? - grep Ã¢â‚¬Å“DebugÃ¢â‚¬Â *.confHere grep uses the string Ã¢â‚¬Å“DebugÃ¢â‚¬Â to search in all files with extensionÃ¢â‚¬Å“.confÃ¢â‚¬Â under current directory.
+
+Display the last newly appending lines of a file during appendingdata to the same file by some processes ? - tail Ã¢â‚¬â€œf Debug.logHere tail shows the newly appended data into Debug.log by some processes/user.
+Display the Disk Usage of file sizes under each directory in currentDirectory ? - du -k * | sort Ã¢â‚¬â€œnr (or) du Ã¢â‚¬â€œk . | sort -nr
+Change to a directory, which is having very long name ? - cd CDMA_3X_GEN*Here original directory name is Ã¢â‚¬â€œ Ã¢â‚¬Å“CDMA_3X_GENERATION_DATAÃ¢â‚¬Â.
+Display the all files recursively with path under current directory ? - find . -depth -print
+Set the Display automatically for the current new user ? - export DISPLAY=`eval ‘who am i | cut -d"(" -f2 | cut -d")" -f1′`Here in above command, see single quote, double quote, grave ascent is used. Observe carefully.
+Display the processes, which are running under yourusername ? - ps Ã¢â‚¬â€œaef | grep MaheshvjHere, Maheshvj is the username.
+List some Hot Keys for bash shell ? - Ctrl+l Ã¢â‚¬â€œ Clears the Screen. Ctrl+r Ã¢â‚¬â€œ Does a search in previously given commands in shell. Ctrl+u - Clears the typing before the hotkey. Ctrl+a Ã¢â‚¬â€œ Places cursor at the beginning of the command at shell. Ctrl+e Ã¢â‚¬â€œ Places cursor at the end of the command at shell. Ctrl+d Ã¢â‚¬â€œ Kills the shell. Ctrl+z Ã¢â‚¬â€œ Places the currently running process into background.
+ Display the files in the directory by file size ? - ls Ã¢â‚¬â€œltr | sort Ã¢â‚¬â€œnr Ã¢â‚¬â€œk 5
+How to save man pages to a file ? - man <command> | col Ã¢â‚¬â€œb > <output-file>Example : man top | col Ã¢â‚¬â€œb > top_help.txt
+How to know the date & time for Ã¢â‚¬â€œ when script is executed ? - Add the following script line in shell script.eval echo "Script is executed at `date`" >> timeinfo.infHere, Ã¢â‚¬Å“timeinfo.infÃ¢â‚¬Â contains date & time details ie., when script is executed and history related to execution.
+How do you find out drive statistics ? - iostat -E
+Display disk usage in Kilobytes ? - du -k
+Display top ten largest files/directories ? - du -sk * | sort -nr | head
+How much space is used for users in kilobytes ? - quot -af
+How to create null file ? - cat /dev/null > filename1
+Access common commands quicker ? - ps -ef | grep -i $@
+Display the page size of memory ? - pagesize -a
+Display Ethernet Address arp table ? - arp -a
+Display the no.of active established connections to localhost ? - netstat -a | grep EST
+Display the state of interfaces used for TCP/IP traffice ? - netstat -i
+Display the parent/child tree of a process ? - ptree <pid> Example: ptree 1267
+Show the working directory of a process ? - pwdx <pid> Example: pwdx 1267
+Display the processes current open files ? - pfiles <pid> Example: pfiles 1267
+Display the inter-process communication facility status ? - ipcs
+Display the top most process utilizing most CPU ? - top Ã¢â‚¬â€œb 1
+Alternative for top command ? - prstat -a
+
+
+15 COMMENTS ON SOLARIS INTERVIEW QUESTIONS
+
+
+Alex
+Posted 5/6/2005 at 1:53 pm | Permalink
+I am looking to determine the total file size of my users, email the data daily, and have it reported in megs. I am using terminal and crontab sucessfully, but I can’t get the crontab entry to report the findings at the user account level. It seems to scan all the way to the end of a uses folder and then report that. Any suggestions?
+Alex
+
+Wing
+Posted 5/31/2005 at 4:23 am | Permalink
+I can’t install top in SunOS5.6 because of some administration issue.
+Furthermore, prstat -a didn’t run in my SunOS5.6. I would like to know whether are there any alternatives for top command in SunOS5.6?
+
+kumareasan
+Posted 6/27/2005 at 5:40 pm | Permalink
+pagesize, prtree, pfiles,pwdx,prstat this commends r not run in my system.
+THE CORRECT COMMAND IS :
+prtree : pstree(present user login tree)
+pwdx : pwd(present working path)
+prstate : pstat(present status)
+Thank U
+Regards,
+Kumareasan
+Linux Administrator in Tetra software India pvt ltd
+
+Jeff
+Posted 7/22/2005 at 9:18 am | Permalink
+This is pretty pathetic. Do folks actually expect candidates who can answer these questsions to be considered systems administrators in a Solaris environment?
+Where’s the questions about OBP?
+Where’s the questions about LOM?
+Where’s the hardware questions?
+Where’s the disksuite questions?
+What about packages? Jumpstart? JASS? SunVTS? obdiag, prtdiag, fmthard?
+What about slices versus disks?
+Shared memory? What’s /etc/system for?
+How about the ndd command? NFS? RPC?
+
+Robert
+Posted 7/22/2005 at 10:20 pm | Permalink
+I canÃ¢â‚¬â„¢t install top in SunOS5.6 because of some administration issue.
+Furthermore, prstat -a didnÃ¢â‚¬â„¢t run in my SunOS5.6. I would like to know whether are there any alternatives for top command in SunOS5.6?
+Tech Interviews comment by Wing
+Can you tell me what the administration issue is? Have you tried going to sun freeware and get the top package for SunOS 5.6 you will need Gzip to uncompress the file. Then you just run pkgadd -d {path}package-name and it will install without any issues.
+
+Robert
+Posted 7/22/2005 at 10:22 pm | Permalink
+How do you vi a file that is too big for the buffer. E.G. When I try to vi a file it says that it is too big and will not work. I know I can use wordpad or someother editor but I am wondering if it can be done with vi. Thanks in advance.
+
+Chris
+Posted 1/23/2006 at 9:57 pm | Permalink
+Comment to comment no. 4, I used to think it was pathetic too, until I got those kind of questions in an interview here in Singapore.
+
+Neil Hunt
+Posted 4/10/2006 at 11:15 pm | Permalink
+To sort by size in solaris use:
+ls -l | sort -nk5
+
+Rock
+Posted 4/25/2006 at 4:51 am | Permalink
+Just like we have “bdf” in HP-UX, is there any command in Solaris and Linux?
+
+Rav
+Posted 10/28/2006 at 3:41 am | Permalink
+with respect to kumareasan comment :
+Those commands are in Solaris and Solaris is not Linux. If command not working in your system means commands not exists :)
+-Ravi
+
+Suresh
+Posted 5/13/2007 at 11:06 pm | Permalink
+Rock said,
+Just like we have Ã¢â‚¬Å“bdfÃ¢â‚¬Â in HP-UX, is there any command in Solaris and Linux?
+In Linux u can use “df -h”
+I don’t know abt solaris i think u can use bdf in solaries
+
+Sivakumar - ACCENTURE
+Posted 9/5/2007 at 2:35 pm | Permalink
+For Solaris you can use df -k as an alternate for bdf of hp unix
+
+NamDesh
+Posted 5/12/2008 at 2:43 am | Permalink
+10. Display the processes, which are running under yourusername ?
+ps -u
+
+NamDesh
+Posted 5/12/2008 at 2:49 am | Permalink
+Display the processes, which are running under yourusername ?
+the command can be used as : ps -u username, or ps -fu username which will give the complete details of the processes running under a user.
+
+Sonu
+Posted 12/16/2008 at 3:30 pm | Permalink
+Answer for #1
+You can use this script under solaris(using “quot” as fundamental of script:-
+#!/usr/bin/bash
+cp /etc/passwd /tmp/passwd
+cut -f1 -d: /tmp/passwd>/tmp/userids
+quot -h / /usr /var > /tmp/quotaall
+for name in `cat /tmp/userids` ;
+do
+grep $name /tmp/quotaall | awk ‘{print $1}’ > /tmp/userusagelist
+sum=0;
+for i in `cat /tmp/userusagelist`;
+do
+sum=`expr $sum + $i`;
+done
+summbs=`expr $sum / 1024`;
+echo “$name is using $summbs MB”
+done
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/solaris-interview-questions-2
+Solaris interview questions
+
+What does the pkgadd command do?
+
+How do you create a solaris package?
+
+How do you view shared memory statistics?
+
+How do you get system diagnostics information?
+
+What is OBP and how do you access it?
+
+What is LOM and how do you access it?
+
+What is VTS?
+
+What is an alternative to the “top” command on Solaris?
+
+What is /etc/system for?
+
+What does ndd do?
+
+What does init 5 do?
+
+What does init 0 do?
+
+How do you boot from CD-ROM?
+
+What is jumpstart?
+
+How do you boot from a Network with jumpstart?
+
+What is JASS?
+
+What is the difference between NFS version 2 and NFS version 3?
+
+What is RPC? Why do I need it?
+
+Are kernel parameters tunable during runtime?
+
+What does fmthard do?
+
+
+26 COMMENTS ON SOLARIS INTERVIEW QUESTIONS
+
+
+praveena
+Posted 8/31/2005 at 8:42 am | Permalink
+What does the pkgadd command do?
+pkgadd is used to add a package to the solaris.It installs the package in the /usr/local directory by default.
+
+praveena
+Posted 8/31/2005 at 8:44 am | Permalink
+What is an alternative to the Ã¢â‚¬Å“topÃ¢â‚¬Â command on Solaris?
+The alternative to the top command is prstat command in solaris
+It will give the status of each and every process.
+
+Ananta Gampaa
+Posted 9/15/2005 at 12:25 pm | Permalink
+Comment for 16. The Solaris Security Toolkit, formerly known as the JumpStart Architecture and Security Scripts (JASS) toolkit, provides a flexible and extensible mechanism to harden and audit Solaris Operating Systems (OSs).
+
+Ananta Gampaa
+Posted 9/15/2005 at 12:25 pm | Permalink
+Comment 18. RPC:A call to a procedure in a different address space. In a traditional procedure call, the calling procedure and the called procedure are in the same address space on one machine. In a remote procedure call, the calling procedure invokes a procedure in a different address space and usually
+on a different machine.
+
+JP
+Posted 7/3/2006 at 12:53 am | Permalink
+Comment 11. init 5 will shutdown and Power-off the server.
+
+JP
+Posted 7/3/2006 at 12:54 am | Permalink
+Comment 12. init 0 will bring the server to the ok> prompt (Fourth monitor)
+
+JP
+Posted 7/3/2006 at 12:56 am | Permalink
+Comment 10: ndd command will hardcore the speed of the network interface card.
+
+JP
+Posted 7/3/2006 at 12:59 am | Permalink
+Comment 5: OBP is called as Open Boot PROM. This OBP can be accessiable thru ok> prompt (Fourth monitor)
+
+JP
+Posted 7/3/2006 at 1:04 am | Permalink
+Comment 4: You can get system diagonostics information thru prtdiag command. And you can execute this command by
+/usr/platform/’uname -m’/sbin/prtdiag -v|more
+
+Meeta Shukla
+Posted 7/17/2006 at 4:34 am | Permalink
+comment 13: Booting form CD-ROM can be done by the command
+ok >boot cdrom
+
+Meeta Shukla
+Posted 7/17/2006 at 4:37 am | Permalink
+comment 5: Open Boot PROM cand be accessed by two methods
+a. OK prompt > printenv,setenv,nvalias……
+b. #eeprom
+
+Sivakumar
+Posted 10/11/2006 at 1:08 am | Permalink
+What is /etc/system for?
+/etc/system is a kernal file of Solaris OS.
+What does fmthard do?
+fmthard will create partitions in a new disk as in a already created/designed disk.
+For example we can get output from prtvtoc command and give as a input to the new disk as follows.
+prtvtoc /dev/rmt/c0t0d0s0 > a | fmthard /dev/rmt/c1todos1
+
+suresh Krishnan
+Posted 11/15/2006 at 2:24 am | Permalink
+Commment 15 :How do you boot from a Network with jumpstart?
+boot net - install
+comment 13 :How do you boot from CD-ROM?
+boot cdrom
+
+Jagannath
+Posted 11/20/2006 at 3:42 pm | Permalink
+Comment 14: What is jumpstart?
+The Jumpstart feature is an automatic installation process available in the Solaris operating environment. It allows system administrators to categorize machines on their network and automatically install systems based on the category to which a system belongs.
+
+Srinivasa Murthy
+Posted 2/17/2007 at 1:23 pm | Permalink
+Q.14
+Make sure
+1. The Install server or boot server is in the same local network segment as client with network link up
+2. NFS service are running on Jumpstart server
+3. The tftp service are running. To start uncomment the tftp entry in /etc/initd.conf and restart the inet service.
+
+Smitha
+Posted 4/19/2007 at 4:38 am | Permalink
+6.What is LOM
+Short for LAN on motherboard. The term refers to a chip or chipset capable of network connections that has been embedded directly on the motherboard of a desktop, workstation or server. Instead of requiring a separate network interface card to access a local-area network, such as Ethernet, the circuits are attached to the motherboard. An advantage of a LOM system is an extra available PCI slot that is not being used by the network adapter.
+
+Smitha
+Posted 4/19/2007 at 4:41 am | Permalink
+20) What does fmthard do?
+The fmthard command updates the VTOC (Volume Table of Contents) on hard disks and, on systems, adds boot information,to the Solaris fdisk partition. One or more of the options,-s datafile, -d data, or -n volume_name must be used to request modifications to the disk label. To print disk label contents, see prtvtoc.The /dev/rdsk/c?[t?]d?s2 file must be the character special file of the device where the new label is to be installed. On systems, fdisk must be run on the drive before fmthard.
+
+Avneesh
+Posted 6/7/2007 at 6:04 am | Permalink
+for question 14 Jumpstart installation
+There is some rules kind of stuff for installing and configuruing the particular machine.
+because after insatlling fro the jumpstart procedure the machine should br configured accoring to the user requirements….
+
+Riju
+Posted 7/22/2007 at 12:34 pm | Permalink
+1. What does the pkgadd command do?
+Used for adding packages to the OS
+2. How do you create a solaris package?
+http://www.ibiblio.org/pub/packages/solaris/sparc/html/creating.solaris.packages.html
+3. How do you view shared memory statistics?
+swap -l -> displays swap usage
+prstat -> examines all active processes on the system and reports statistics based on the selected output mode and sort order
+vmstat -> reports information about processes, memory, paging, block IO, traps, and cpu activity
+pmap -> lists the virtual memory mappings underlying the given process
+4. How do you get system diagnostics information?
+prtdiag -v -> Shows mem, cpu, Power supply, add-on cards info, LEd status
+iostat -En -> Shows disk status.(look for hard error)
+/var/adm/messages -> Logs most commont failures and the entire system events
+Extended POST -> This can be done at boot time.
+ipmitool -> Shows voltage, fanspee, led status etc…
+5. What is OBP and how do you access it?
+Open Boot PROM -> Similar to a BIOS in a pc, but a lot more powerful
+Stop+A -> from OS (Not recommended)
+init 0 -> gracefully brings machine to ok> prompt from OS
+6. What is LOM and how do you access it?
+LOM -> Lights out manager
+Powerful CLI interface which helps to get info about the Server
+this can be connected via local (Serial management)
+or over the LAN (Net management)
+can be used for remote administration, diagnosing issues when machine fails to come up
+LOM will be active long soon as power is coming to the Server
+7. What is VTS?
+Sun Validation Test Suite -> tests and validates Sun hardware by verifying the configuration and functionality of hardware controllers, devices
+8. What is an alternative to the Ã¢â‚¬Å“topÃ¢â‚¬Â command on Solaris?
+prstat
+9. What is /etc/system for?
+The /etc/system file provides a static mechanism for adjusting the values of kernel parameters. Values specified in this file are read at boot time and are applied. Any changes that are made to the file are not applied to the operating system until the system is rebooted.
+10. What does ndd do?
+allows you to tune, tweak, set and reset various parameters related to the TCP/IP stack while the system is running
+11. What does init 5 do?
+Gracefully powers down the system (OS) and powers the machine off
+12. What does init 0 do?
+Gracefully powers down the system (OS) and drops to OBP ie ok> prompt
+13. How do you boot from CD-ROM?
+boot cdrom
+
+R.Chinna Venkanna Babu
+Posted 8/12/2007 at 4:02 am | Permalink
+What is the difference between pkgadd -d and patchadd -d command ?
+
+R.Chinna Venkanna Babu
+Posted 8/12/2007 at 4:07 am | Permalink
+when a software pkg is added, the pkgadd command uncompresses and copies file from installation media to the local system’s disk.
+patchadd is used to install unpacked patches to the solaris operating environment.
+
+Harry
+Posted 12/17/2007 at 4:11 am | Permalink
+What is the difference between a SPARC and a RISC?
+
+prashant
+Posted 4/30/2008 at 1:17 am | Permalink
+What is kernel tuning in sun solaris
+
+prabu
+Posted 5/13/2008 at 8:19 am | Permalink
+hi
+comment:23
+kernel tuning means to change kernel parameter in /etc/system
+for ex:
+#vi /etc/system file
+set_maxuser 41 (40)
+so whenever we want to edit and change the parameter in etc/system is called one kind of kernel tuning
+
+Saikrishna
+Posted 6/19/2008 at 11:13 pm | Permalink
+What we have to do when the /etc/format.dat file is corrupted?
+
+Satya
+Posted 7/22/2008 at 3:09 am | Permalink
+26.Can anyone suggest how to read the nth character from a file in Solaris 9 where the value of n is read from the user as input.
+
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/basic-sed-tricks
+Basic sed tricks
+
+What is sed? - sed is stream editor, a Unix tool for working with streams of text data. See the awful truth about sed.
+
+
+How do you substitute strings with sed? - Use ’s/old/new’ command, so sed ’s/hello/goodbye/’ would substitute the occurrence of the word hello to goodbye.
+
+
+How do you inject text with sed? - & in the substitution string defines the pattern found in the search string. As an example, here’s us trying to find a word ‘hello’ and replacing it with ‘hello and how are you’:
+     echo ‘hello there’ | sed ’s/^hello/& and how are you/’
+
+
+Can I find several patterns and refer to them in the replacement string? - Yes, use (pattern) and then refer to your patterns as \1, \2, \3 and so on.
+
+
+If the string is ‘old old old’ and I run ’s/old/new’, I get ‘new old old’ as the result. I need ‘new new new‘. - You forgot the global modifier, which would replace every occurrence of the pattern with the substitution. ’s/old/new/g‘ will work.
+
+
+But I want ‘old old new’ from the previous example. - Just use the numeric modifier saying you want the third occurrence to be replaced. ’s/old/new/3‘ will work.
+
+
+I wrote a rather complex sed script. How do I save and run it? - Assuming that your file is named myscript1.sed, you can invoke sed -f myscript1.sed.
+
+
+How do I delete trailing whitespaces from each line? - sed ’s/[ \t]*$//’ Here we’re replacing any occurrence of a space or a tab with nothing. Check sed one-liners for more examples.
+
+
+How do you print just a few first lines of the file? - sed 1q will give you just the first line, sed 10q the first 10 lines.
+
+
+How do you replace a pattern only if it’s found, so that it’s executed faster? - Nest the replacement statement: sed ‘/old/ s/old/new/g’ file.txt
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+
+Where can I see a list of kernel killed processes? Is there some way I can check which of my processes the kernel has killed? Sometimes I log onto my server and find that something that should've run all night just stopped 8 hours in and I'm unsure if it's the applications doing or the kernels.
+Ans 1: If the kernel killed a process (because the system ran out of memory), there will be a kernel log message. Check in /var/log/kern.log (on Debian/Ubuntu, other distributions might send kernel logs to a different file, but usually under /var/log under Linux).
+Note that if the OOM-killer (out-of-memory killer) triggered, it means you don't have enough virtual memory. Add more swap (or perhaps more RAM).
+Some process crashes are recorded in kernel logs as well (e.g. segmentation faults).
+If the processes were started from cron, you should have a mail with error messages. If the processes were started from a shell in a terminal, check the errors in that terminal. Run the process in screen to see the terminal again in the morning. This might not help if the OOM-killer triggered, because it might have killed the cron or screen process as well; but if you ran into the OOM-killer, that's the problem you need to fix.
+Ans 2: Process Accounting could help here.
+In brief:
+# apt-get install acct
+Then try commands like:
+lastcomm
+sa
+or on Ubuntu:
+# lastcomm -f /var/log/account/pacct
+# sa /var/log/account/pacct
+See:
+http://tldp.org/HOWTO/Process-Accounting/pasetup.html
+http://tldp.org/HOWTO/Process-Accounting/misccommands.html
+UPDATE
+Strangely, the pacct file has information about exit status, but neither lastcomm nor sa seem to print it.
+So as far as I can see, you'd have to write your own C program to access the information.
+UPDATE 2
+Here's a version that prints the exit code.
+The last two fields are "S" for signaled and "E" for exited, followed by the signal number or exit status.
+So in your case, you're probably looking for "S 15" meaning it got a SIGTERM.
+sleep                X mikel    stdin      0.00 secs Fri Mar 25 20:15 S  15
+Compared to "E 0" which means the process exited without an error.
+true                   mikel    stdin      0.00 secs Fri Mar 25 20:16 E   0
+Only minimally tested.
+http://mikelward.com/software/lastcomm.exitcode.patch
+http://mikelward.com/software/lastcomm
+
+---------------------------------------------------------------------------------------------------
+
+How do I see status of services ?
+Ans: # sudo service --status-all
+This command will tell you the what are the services are currently running and which are not started or stopped..
+
+---------------------------------------------------------------------------------------------------
+
+Is it possible to configure process hiding for certain user groups under a linux system?
+   For example: Users from group X should not see processes owned by users from group Y in ps/top or under /proc.
+   Is it possible to configure such a setup with SELinux?
+   (I vaguely remember a similar feature in the funny grsecurity patch set - but IIRC, it was more generic - and besides, I want to configure a stock linux distro without having to maintain a custom kernel.)
+   Edit: For better illustration, Solaris 10 has a similar feature. The example is not that generic, but one can configure that a user or some users can only see information of their own processes in ps etc.
+Ans: Actually, SELinux seems to allow such configurations:
+    From the first Howto (http://www.lurking-grue.org/selinuxHOWTO.html):
+    This time, you will see all processes on the system regardless of the domain they are in. When in sysadm_t domain, you have access to other domains which the user_t domain does not.
+    From the second Howto (http://www.lurking-grue.org/writingselinuxpolicyHOWTO.html):
+    The third line allows staff_t to run ps and see processes in the unprivileged user domains. staff_t is able to run ps and see everything in user_t and other user domains if any, whereas user_t can not.
+
+
+---------------------------------------------------------------------------------------------------
+
+I am designing a logging and reporting system for a web application. Within the web application some events can happen ("user logged in", "user performed action X", etc..).
+I would like the application to log these events in a flat log file.
+Then I would like to write another program that would periodically get run and extract data from this file to maintain a running aggregate report in a database table (like "how many events of type X happen per hour", or "get the daily total of event X").
+One of the challenges is to make sure that the reporting program doesn't process the same line twice.
+Is there a Unix way to design this type of system or to deal with the "keep track of lines already processed" kind of problem?
+I already thought about rotating the logs just before processing them and assigning unique line numbers to each line, but they both seem hacky.
+
+Rotating the logs before parsing them sounds like a good idea really, as long as your applications don't keep the log file open permanently. If they do, rotating them wont work - but since you're writing the logging framework, you can deal with this.
+
+If you want a simple scripted thing, you could use something like the following (could be done in pretty much any scripting language):
+
+#! /bin/bash
+
+process_line() {
+    # do the work here
+    echo "== $1 =="
+}
+
+logfile=$1
+statefile=${logfile}.state
+
+if [ -f ${statefile} ] ; then
+    processed=$(cat $statefile)
+else
+    processed=0
+fi
+
+curline=0
+IFS='
+'
+
+while read line ; do
+    if [ $curline -ge $processed ] ; then
+        echo processing $line
+        process_line "$line"
+    fi
+    curline=$(($curline+1))
+done < ${logfile}
+
+echo $curline > $statefile
+
+Basically, it saves up to where it processed input in a separate file ($statefile), and processes the input line by line from that point (skipping the already processed ones).
+This would need a bit more error handling obviously, and if the input is large, it's not optimal. (Could be made better by saving a byte offset and seeking, or using dd bs=1 skip=$already_read count=$(($size-$already_read)) to pipe out to another process rather than doing things line by line, but I'd go with perl if that kind of optimization is necessary.)
+As it is, the script will process lines twice if it's interrupted. You can limit the amount of "replay" by updating the state file after each line rather than once at the end.
+If you both process the logs and rotate them, you'll need to be careful with those state files. They would need to be rotated too, and the script run once after rotation to process the last lines of output.
+There is one thing that this approach does not deal with easily: partial lines. If the application is writing while the script runs, there is a chance that the script will see a partial last line. It won't be able to tell the difference, so it will record it as having been processed. (This is a problem you'll need to deal with with pretty much any approach.)
+This could be avoided by having an EOL marker in your log file format, and checking for that before processing the line. But that's not very pretty.
+Rather than doing the processing in bash in the script itself, you could use it like this (replace process_line with a plain echo):
+$ ./logger /var/log/app12.log | ./analyzer --logtype=app12
+./analyzer will get the data as input.
+
+
+---------------------------------------------------------------------------------------------------
+
+Is there some performace monitoring tool which would run in background gathering info about all system activity? Somethimes my system (Arch linux, 32 bit) slows down terribly and the top utility doesn't show anything.
+I imagine some daemon which would gather info and log it, so when the slowdown pass away I would be able to find what was the problem.
+
+Ans 1: Consider installing munin. It will monitor a wide variety of data and provide graphical output. This is better for monitoring trends.
+You may also want to consider run sar in the background. It can identify a number of issues including CPU, I/O, swap, and other issues. If you are experiencing problems, this may be your best for your current situation.
+
+Ans 2 : There are a lot of them. If you want it to be basic and command-line, take a loot to sar. Or you could use some monitoring tool with nice web ui. Personally I prefer zabbix, there are also monitorix (very simple to setup), nagios, zenoss and many others.
+Monitorix is probably what you want on this point.
+
+---------------------------------------------------------------------------------------------------
+
+I never quite understood why high disk I/O slowed the system so much. It's strange to me because I would expect the slow-down to affect only those processes dependent on the hard/optical drive data, but the slow-down affects even stuff loaded onto RAM. I'm here referring to iowait.
+Why does the processor wait, instead of doing other work? Can anyone explain this limitation and why it hasn't been solved in Linux kernel? Is there a kernel out there that doesn't have this problem?
+
+
+Ans 1: Operating systems make use of virtual memory so that more memory can be used than there is physical RAM available. When the kernel decides that it has a better use for a physical memory page, its content may be "paged out" for storage on disk. When such a virtual memory page is accessed while paged out, it generates a page fault and is moved back from the disk to RAM.
+Page faults are a disaster for performance because disk latency is measured in milliseconds, while RAM latency is measured in nanoseconds. (1 millisecond = a million nanoseconds!) Take a look at this visualization where 1 pixel = 1 nanosecond; zoom in at the top!
+Memory is not only used by user processes, but also by the kernel for things like file system caching. During file system activity, the kernel will cache recently used data. The assumption is that there is a good chance that the same data will be used again shortly, so caching should improve I/O performance.
+Physical memory being used for the file system cache cannot be used for processes, so during file system activity more process memory will be paged out and page faults will increase. Also, less disk I/O bandwidth is available for moving memory pages from and to the disk. As a result processes may stall.
+
+Ans 2: As far as I understand it, IOwait, means that a process, not the processor, is waiting for IO to become available. Processors have gained much more speed than hard drives, meaning more code will finish faster and then the disk will need to be read. When multiple more needs to be read than the drive can do fast enough, you end up with processor's waiting. The way it's decided who gets to read/write to the disk, is determined by the block scheduler, in most cases now CFQ. If you're using CFQ, and you need a process to use less of the overall IO time to increase system responsiveness, you can use ionice -c3 <processid> this is tells the system to only give this process IO when nothing else needs IO.
+this is still interesting and explains the iowait problem better. (http://users.ca.astound.net/~baspence/AIXtip/iowait.htm)
+
+
+
+---------------------------------------------------------------------------------------------------
+
+Is there any way in unix to find out who accessed certain file in last 1 week? It may be user or some script ftp it to some other place. Can I get a list of user name who accessed certain file? How can I find out who is accessing particular file??
+
+Ams: Unless you have extremely unusual logging policies in place, who accessed what file is not logged (that would be a huge amount of information). You can find out who was logged in at what time in the system logs; the last command gives you login history, and other logs such as /var/log/auth.log will tell you how users authenticated and from where they logged in (which terminal, or which host if remotely).
+The date at which a file was last read is called its access time, or atime for short. All unix filesystems can store it, but many systems don't record it, because it has a (usually small) performance penalty. ls -ltu /path/to/file or stat /path/to/file shows the file's access time.
+If a user accessed the file and wasn't trying to hide his tracks, his shell history (e.g. ~/.bash_history) may have clues.
+To find out what or who has a file open now, use lsof /path/to/file.
+To log what happens to a file in the future, use inotifywait. inotifywait -e /path/to will print a line /path/to/ ACCESS file when someone reads file. This interface won't tell you who accessed the file; you can call lsof /path/to/file as soon as this line appears, but there's a race condition (the access may be over by the time lsof gets going).
+If you really need to know who reads a file, put it on a loggedfs filesystem.
+
+
+---------------------------------------------------------------------------------------------------
+
+How does a kernel mount the root partition?
+Ans: Linux initially boots with a ramdisk (called an initrd, for "INITial RamDisk") as /. This disk has just enough on it to be able to find the real root partition (including any driver and filesystem modules required). It mounts the root partition onto a temporary mount point on the initrd, then invokes pivot_root(8) to swap the root and temporary mount points, leaving the initrd in a position to be umounted and the actual root filesystem on /.
+
+Will the possibility of loading grub2 modules make initrd obsolete? I believe grub2 modules can be used to load hardware support, but I'm not really familiar with either initrd or grub2. See my comment to the original question above?
+Ans 1: grub2 modules are not the same as kernel modules. I see some ability for grub2 to load kernel modules, but one thing I don't know is whether that will work for the Linux kernel or only for *BSD (where the bootloader loading kernel modules is normal). I suspect the kernel needs to be taught where to find the address map for loaded modules, and everyone needs to move to grub2 (grub1 is still standard in some distributions)
+Ans 2: C'mon, GRUB doesn't "mount" /boot, it just reads 'menu.lst' and some modules, it isn't part of LINUX kernel either. When you call the kernel, you will pass a "root" argument with the root partition. At worst, the kernel knows that just /boot has been mounted (LOL).
+Linux uses an initial ramdisk in compressed image format, and then mounts the real root filesystem by calling pivot_root. So Linux starts running from an image, and then from your local disk drive
+
+More Details : http://www.ibm.com/developerworks/linux/library/l-linuxboot/
+
+---------------------------------------------------------------------------------------------------
+
+What potential ills can be brought by 'deleting' a live kernel?
+
+The Linux kernel is completely loaded into RAM on boot. After the system is booted, it never goes back and tries to read anything from that file. The same goes for drivers, once loaded into the kernel.
+If you deleted the only kernel image on disk, the only consequence is that the system cannot be successfully rebooted unless you install a replacement kernel image before reboot.
+As for other OSes, I imagine it is the same, simply due to the nature of OS kernels. They're intentionally small bits of code that stay running all the time, so there is no incentive to keep going back to disk to "look" at the code again. It's always in memory. (RAM or VM.)
+
+
+---------------------------------------------------------------------------------------------------
+
+What does it mean when code is executed in [kernel|user] mode ?
+
+Kernel Mode
+A program running in this mode has full access to the underlying hardware. It can execute any CPU instruction, access any memory address and essentially do anything it wants.
+User Mode Code executing in this mode is restricted to hardware modification via the OS's API. It cannot access the hardware directly at all.
+The interesting thing here is that on the common architectures, this is enforced via hardware--not just the OS. In particular, the x86 architecture has protection rings.
+The big advantage to this kind of separation is that when a program crashes running in user mode, it isn't always fatal. In fact, on modern systems, it usually isn't.
+Check out Jeff's writeup. It's his usual good stuff. (http://www.codinghorror.com/blog/2008/01/understanding-user-and-kernel-mode.html)
+
+
+---------------------------------------------------------------------------------------------------
+Question: What would happen if a hard drive failed while the Linux kernel was running. Since the kernel image itself is loaded completely into RAM, I don't imagine there would be any kernel failures. Obviously any software that attempted to access the disk would fail.
+Is there any chance that the system would continue running indefinitely? If not, what would cause it to panic (or at least become inoperable)?
+Please consider each of the following scenarios:
+The kernel may or may not have the swapfile enabled.
+No attempts to load kernel modules are made after the failure.
+Does it make a difference if certain parts of the filesystem are on different disks?
+
+Answer: Hardware failures always run some risk of crashing the Kernel since those code paths generally have had much less testing, but normally, a failed hard drive should not crash the Kernel. What exactly happens depends on the nature of the failure. Perhaps only certain sectors are now unreadable rendering parts of the /home partition unreadable, the system will still be runnable for a sysadmin to analyze the problem. If the root filesystem becomes unusable, the system is pretty much dead regardless of a Kernel crash as even a simple shell won't be available. If a swap partition becomes unavailable, programs that are using swap will segment fault when it comes time to read in any swapped out data. If the hard drive that crashed is simply extra storage, it may have little affect besides some filesystems becoming unreadable.
+It can also depend on what kind of errors the hard drive is throwing. I've seen a drive effectively disappear and besides the file systems disappearing, everything ran ok. I've also seen a hard drive continually hanging the system and throwing errors after a long timeout causing the whole system performance to degrade. If using a layer like MD running RAID1/4/5, a severe error will normally just cause the Kernel to mark the disk as failed, and it will ignore it relying on the remaining drives to keep the system running.
+
+---------------------------------------------------------------------------------------------------
+
+Understanding the linux kernel source ?
+I am trying to understand how a function, say mkdir works by looking at the kernel source. This is an attempt to understand the kernel internals and navigate between various functions. I know mkdir is defined in sys/stat.h. I found the prototype like,
+/* Create a new directory named PATH, with permission bits MODE.  */
+extern int mkdir (__const char *__path, __mode_t __mode)
+     __THROW __nonnull ((1));
+Now I need to see on which C file this function is implemented. From the source directory, I tried
+ack "int mkdir"
+which displayed
+security/inode.c
+103:static int mkdir(struct inode *dir, struct dentry *dentry, int mode)
+tools/perf/util/util.c
+4:int mkdir_p(char *path, mode_t mode)
+tools/perf/util/util.h
+259:int mkdir_p(char *path, mode_t mode);
+But none of them matches the definition in sys/stat.h.
+Questions
+Which file has mkdir implementation?
+With a function definition like the above, how can I find out which file has the implementation? Is there any pattern which kernel follows in defining and implementing methods?
+I am using this version of kernel.
+
+Ans: System calls aren't handled like regular function calls. It takes special code to make the transition from user space to kernel space, basically a bit of inline assembly code injected into your program at the call site. The kernel side code that "catches" the system call is also low-level stuff you probably don't need to understand deeply, at least at first.
+In include/linux/syscalls.h under your kernel source directory, you find this:
+asmlinkage long sys_mkdir(const char __user *pathname, int mode);
+Then in /usr/include/asm*/unistd.h, you find this:
+#define __NR_mkdir                              83
+__SYSCALL(__NR_mkdir, sys_mkdir)
+This code is saying mkdir(2) is system call #83. That is to say, system calls are called by number, not by address as with normal functions, because it's not really a function in the way you understand it. The inline assembly glue code I mentioned above uses this to make the transition from user to kernel space, taking your parameters along with it. Another bit of evidence that things are a little weird here is that there isn't always a strict parameter list for system calls: open(2), for instance, can take either 2 or 3 parameters, a trick C++ knows how to do, but C doesn't, yet the syscall interface is nominally C-compatible.
+To answer your first question, there is no single file where mkdir() exists. Linux supports many different file systems and each one has its own implementation of the "mkdir" operation. The abstraction layer that lets the kernel hide all that behind a single system call is called the VFS. So, you probably want to start digging in fs/namei.c, with vfs_mkdir(). The actual implementations of the low-level file system modifying code are elsewhere. For instance, the ext3 implementation is called ext3_mkdir(), defined in fs/ext3/namei.c.
+As for your second question, yes there are patterns to all this, but not a single rule. What you actually need is a fairly broad understanding of how the kernel works in order to figure out where you should look for any particular system call. Not all system calls involve the VFS, so their kernel-side call chains don't all start in fs/namei.c. mmap(2), for instance, starts in mm/mmap.c, because it's part of the memory management ("mm") subsystem of the kernel.
+I recommend you get a copy of "Understanding the Linux Kernel" by Bovet and Cesati.
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------

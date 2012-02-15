@@ -1,0 +1,199 @@
+http://www.techinterviews.com/interview-questions-for-linux-admin
+
+Interview questions for Linux admin
+
+Advantages/disadvantages of script vs compiled program.
+
+
+Name a replacement for PHP/Perl/MySQL/Linux/Apache and show main differences.
+
+Why have you choosen such a combination of products?
+
+
+Differences between two last MySQL versions. Which one would you choose and when/why?
+
+
+Main differences between Apache 1.x and 2.x. Why is 2.x not so popular? Which one would you choose and when/why?
+
+
+Which Linux distros do you have experience with?
+
+
+Which distro you prefer? Why?
+
+
+Which tool would you use to update Debian / Slackware / RedHat / Mandrake / SuSE ?
+
+
+You’re asked to write an Apache module. What would you do?
+
+
+Which tool do you prefer for Apache log reports?
+
+
+Your portfolio. (even a PHP guest book may work well)
+
+
+What does ‘route’ command do?
+
+
+Differences between ipchains and iptables.
+
+
+What’s eth0, ppp0, wlan0, ttyS0, etc.
+
+
+What are different directories in / for?
+
+
+Partitioning scheme for new webserver. Why?
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/linux-command-line-qa
+
+Linux command line Q&A
+
+You need to see the last fifteen lines of the files dog, cat and horse. What command should you use? 
+tail -15 dog cat horse 
+The tail utility displays the end of a file. The -15 tells tail to display the last fifteen lines of each specified file.
+
+
+Who owns the data dictionary? 
+The SYS user owns the data dictionary. The SYS and SYSTEM users are created when the database is created.
+
+
+You routinely compress old log files. You now need to examine a log from two months ago. In order to view its contents without first having to decompress it, use the _________ utility. 
+zcat. The zcat utility allows you to examine the contents of a compressed file much the same way that cat displays a file.
+
+
+You suspect that you have two commands with the same name as the command is not producing the expected results. What command can you use to determine the location of the command being run? 
+which 
+The which command searches your path until it finds a command that matches the command you are looking for and displays its full path.
+
+
+You locate a command in the /bin directory but do not know what it does. What command can you use to determine its purpose. 
+whatis. The whatis command displays a summary line from the man page for the specified command.
+
+
+You wish to create a link to the /data directory in bob’s home directory so you issue the command ln /data /home/bob/datalink but the command fails. What option should you use in this command line to be successful. 
+Use the -F option 
+In order to create a link to a directory you must use the -F option.
+
+
+When you issue the command ls -l, the first character of the resulting display represents the file’s ___________. 
+type. The first character of the permission block designates the type of file that is being displayed.
+
+
+What utility can you use to show a dynamic listing of running processes? __________ 
+top. The top utility shows a listing of all running processes that is dynamically updated.
+
+
+Where is standard output usually directed? 
+to the screen or display 
+By default, your shell directs standard output to your screen or display.
+
+
+You wish to restore the file memo.ben which was backed up in the tarfile MyBackup.tar. What command should you type? 
+tar xf MyBackup.tar memo.ben 
+This command uses the x switch to extract a file. Here the file memo.ben will be restored from the tarfile MyBackup.tar.
+
+
+You need to view the contents of the tarfile called MyBackup.tar. What command would you use? 
+tar tf MyBackup.tar 
+The t switch tells tar to display the contents and the f modifier specifies which file to examine.
+
+
+You want to create a compressed backup of the users’ home directories. What utility should you use? 
+tar. You can use the z modifier with tar to compress your archive at the same time as creating it.
+
+
+What daemon is responsible for tracking events on your system? 
+syslogd. The syslogd daemon is responsible for tracking system information and saving it to specified log files.
+
+
+You have a file called phonenos that is almost 4,000 lines long. What text filter can you use to split it into four pieces each 1,000 lines long? 
+split. The split text filter will divide files into equally sized pieces. The default length of each piece is 1,000 lines.
+
+
+You would like to temporarily change your command line editor to be vi. What command should you type to change it? 
+set -o vi 
+The set command is used to assign environment variables. In this case, you are instructing your shell to assign vi as your command line editor. However, once you log off and log back in you will return to the previously defined command line editor.
+
+
+What account is created when you install Linux? 
+root. Whenever you install Linux, only one user account is created. This is the superuser account also known as root.
+
+
+What command should you use to check the number of files and disk space used and each user’s defined quotas? 
+repquota. The repquota command is used to get a report on the status of the quotas you have set including the amount of allocated space and amount of used space.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/linux-network-administrator-questions
+Linux network administrator questions
+
+
+Give an example of set of shell commands that will give you the number of files in a directory
+
+
+How do you tell what process has a TCP port open in Linux
+
+
+On a Red Hat Linux Variant how do you control whether a service starts when the system boots
+
+
+How do you tell the amount of free disk space left on a volume
+
+
+Give an example of a set of shell commands to tell how many times Ã¢â‚¬Å“bobÃ¢â‚¬Â has logged on to the system this month
+
+
+Give an example of a recursively copying a directory from one location to another.
+
+
+How do you modify the IP and Net mask of a system running a Red Hat Variant of Linux
+
+
+Give an example of a set of shell commands that will give you the number of Ã¢â‚¬Å“httpdÃ¢â‚¬Â processes running on a Linux box.
+
+
+On CentOS or Fedora based system using the package management application, how do you tell what package provided the file Ã¢â‚¬Å“libnss_ldap.soÃ¢â‚¬Â
+
+
+What is the difference between VTP client, server, and transparent
+
+
+What is the maximum length of CAT6
+
+
+How does one set up a layer two link to share VLANs
+
+
+How does one implement redundant links at Layer 2
+
+
+What is the difference between a hub, switch, and a router? What are the security advantages of switch vs. hub?
+
+
+Show an example of using telnet to learn the headers of an http server.
+
+
+In what OSI layer does PPP exist
+
+
+What’s the difference between TCP and UDP
+
+
+Given a DNS server that has just started (with an empty cache) and host contacting this DNS server (using it’s OS setting) to learn an address for google.com, list the steps the DNS server will take to learn it with IP addresses (each step will have multiple possible IP addresses Ã¢â‚¬â€œ you need choose only one per step).
+
+
+Why are layer 2 loops bad, and what protocol was designed to prevent them
+
+
+Given a radius server at 10.0.0.2 and a shared key of Ã¢â‚¬Ëœabc123′ show the IOS commands necessary to authenticate switch users against the radius server, while still allowing the use of local username / password pairs

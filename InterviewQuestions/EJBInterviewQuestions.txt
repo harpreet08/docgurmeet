@@ -1,0 +1,313 @@
+http://www.techinterviews.com/ejb-interview-questions
+
+
+EJB interview questions
+
+Is it possible for an EJB client to marshal an object of class java.lang.Class to an EJB? - Technically yes, spec. compliant NO! - The enterprise bean must not attempt to query a class to obtain information about the declared members that are not otherwise accessible to the enterprise bean because of the security rules of the Java language.
+
+
+Is it legal to have static initializer blocks in EJB? - Although technically it is legal, static initializer blocks are used to execute some piece of code before executing any constructor or method while instantiating a class. Static initializer blocks are also typically used to initialize static fields - which may be illegal in EJB if they are read/write - In EJB this can be achieved by including the code in either the ejbCreate(), setSessionContext() or setEntityContext() methods.
+
+Is it possible to stop the execution of a method before completion in a SessionBean? - Stopping the execution of a method inside a Session Bean is not possible without writing code inside the Session Bean. This is because you are not allowed to access Threads inside an EJB.
+
+
+What is the default transaction attribute for an EJB? - There is no default transaction attribute for an EJB. Section 11.5 of EJB v1.1 spec says that the deployer must specify a value for the transaction attribute for those methods having container managed transaction. In WebLogic, the default transaction attribute for EJB is SUPPORTS.
+
+
+What is the difference between session and entity beans? When should I use one or the other? - An entity bean represents persistent global data from the database; a session bean represents transient user-specific data that will die when the user disconnects (ends his session). Generally, the session beans implement business methods (e.g. Bank.transferFunds) that call entity beans (e.g. Account.deposit, Account.withdraw)
+
+
+Is there any default cache management system with Entity beans ? In other words whether a cache of the data in database will be maintained in EJB ? - Caching data from a database inside the Application Server are what Entity EJB’s are used for.The ejbLoad() and ejbStore() methods are used to synchronize the Entity Bean state with the persistent storage(database). Transactions also play an important role in this scenario. If data is removed from the database, via an external application - your Entity Bean can still be “alive” the EJB container. When the transaction commits, ejbStore() is called and the row will not be found, and the transaction rolled back.
+
+
+Why is ejbFindByPrimaryKey mandatory? - An Entity Bean represents persistent data that is stored outside of the EJB Container/Server. The ejbFindByPrimaryKey is a method used to locate and load an Entity Bean into the container, similar to a SELECT statement in SQL. By making this method mandatory, the client programmer can be assured that if they have the primary key of the Entity Bean, then they can retrieve the bean without having to create a new bean each time - which would mean creating duplications of persistent data and break the integrity of EJB.
+
+
+Why do we have a remove method in both EJBHome and EJBObject? - With the EJBHome version of the remove, you are able to delete an entity bean without first instantiating it (you can provide a PrimaryKey object as a parameter to the remove method). The home version only works for entity beans. On the other hand, the Remote interface version works on an entity bean that you have already instantiated. In addition, the remote version also works on session beans (stateless and stateful) to inform the container of your loss of interest in this bean.
+
+
+How can I call one EJB from inside of another EJB? - EJBs can be clients of other EJBs. It just works. Use JNDI to locate the Home Interface of the other bean, then acquire an instance reference, and so forth.
+
+
+What is the difference between a Server, a Container, and a Connector? - An EJB server is an application, usually a product such as BEA WebLogic, that provides (or should provide) for concurrent client connections and manages system resources such as threads, processes, memory, database connections, network connections, etc. An EJB container runs inside (or within) an EJB server, and provides deployed EJB beans with transaction and security management, etc. The EJB container insulates an EJB bean from the specifics of an underlying EJB server by providing a simple, standard API between the EJB bean and its container. A Connector provides the ability for any Enterprise Information System (EIS) to plug into any EJB server which supports the Connector architecture. See Sun’s J2EE Connectors for more in-depth information on Connectors.
+
+
+How is persistence implemented in enterprise beans? - Persistence in EJB is taken care of in two ways, depending on how you implement your beans: container managed persistence (CMP) or bean managed persistence (BMP) For CMP, the EJB container which your beans run under takes care of the persistence of the fields you have declared to be persisted with the database - this declaration is in the deployment descriptor. So, anytime you modify a field in a CMP bean, as soon as the method you have executed is finished, the new data is persisted to the database by the container. For BMP, the EJB bean developer is responsible for defining the persistence routines in the proper places in the bean, for instance, the ejbCreate(), ejbStore(), ejbRemove() methods would be developed by the bean developer to make calls to the database. The container is responsible, in BMP, to call the appropriate method on the bean. So, if the bean is being looked up, when the create() method is called on the Home interface, then the container is responsible for calling the ejbCreate() method in the bean, which should have functionality inside for going to the database and looking up the data.
+
+
+What is an EJB Context? - EJBContext is an interface that is implemented by the container, and it is also a part of the bean-container contract. Entity beans use a subclass of EJBContext called EntityContext. Session beans use a subclass called SessionContext. These EJBContext objects provide the bean class with information about its container, the client using the bean and the bean itself. They also provide other functions. See the API docs and the spec for more details.
+
+
+Is method overloading allowed in EJB? - Yes you can overload methods
+
+
+Should synchronization primitives be used on bean methods? - No. The EJB specification specifically states that the enterprise bean is not allowed to use thread primitives. The container is responsible for managing concurrent access to beans at runtime.
+
+
+Are we allowed to change the transaction isolation property in middle of a transaction? - No. You cannot change the transaction isolation level in the middle of transaction.
+
+
+For Entity Beans, What happens to an instance field not mapped to any persistent storage, when the bean is passivated? - The specification infers that the container never serializes an instance of an Entity bean (unlike stateful session beans). Thus passivation simply involves moving the bean from the “ready” to the “pooled” bin. So what happens to the contents of an instance variable is controlled by the programmer. Remember that when an entity bean is passivated the instance gets logically disassociated from it’s remote object. Be careful here, as the functionality of passivation/activation for Stateless Session, Stateful Session and Entity beans is completely different. For entity beans the ejbPassivate method notifies the entity bean that it is being disassociated with a particular entity prior to reuse or for dereference.
+
+
+What is a Message Driven Bean, what functions does a message driven bean have and how do they work in collaboration with JMS? - Message driven beans are the latest addition to the family of component bean types defined by the EJB specification. The original bean types include session beans, which contain business logic and maintain a state associated with client sessions, and entity beans, which map objects to persistent data. Message driven beans will provide asynchrony to EJB based applications by acting as JMS message consumers. A message bean is associated with a JMS topic or queue and receives JMS messages sent by EJB clients or other beans. Unlike entity beans and session beans, message beans do not have home or remote interfaces. Instead, message driven beans are instantiated by the container as required. Like stateless session beans, message beans maintain no client-specific state, allowing the container to optimally manage a pool of message-bean instances. Clients send JMS messages to message beans in exactly the same manner as they would send messages to any other JMS destination. This similarity is a fundamental design goal of the JMS capabilities of the new specification. To receive JMS messages, message driven beans implement the javax.jms.MessageListener interface, which defines a single “onMessage()” method. When a message arrives, the container ensures that a message bean corresponding to the message topic/queue exists (instantiating it if necessary), and calls its onMessage method passing the client’s message as the single argument. The message bean’s implementation of this method contains the business logic required to process the message. Note that session beans and entity beans are not allowed to function as message beans.
+
+
+Does RMI-IIOP support code downloading for Java objects sent by value across an IIOP connection in the same way as RMI does across a JRMP connection? - Yes. The JDK 1.2 support the dynamic class loading.
+The EJB container implements the EJBHome and EJBObject classes. For every request from a unique client, does the container create a separate instance of the generated EJBHome and EJBObject classes? - The EJB container maintains an instance pool. The container uses these instances for the EJB Home reference irrespective of the client request. while refering the EJB Object classes the container creates a separate instance for each client request. The instance pool maintainence is up to the implementation of the container. If the container provides one, it is available otherwise it is not mandatory for the provider to implement it. Having said that, yes most of the container providers implement the pooling functionality to increase the performance of the application server. The way it is implemented is again up to the implementer.
+
+
+What is the advantage of putting an Entity Bean instance from the “Ready State” to “Pooled state”? - The idea of the “Pooled State” is to allow a container to maintain a pool of entity beans that has been created, but has not been yet “synchronized” or assigned to an EJBObject. This mean that the instances do represent entity beans, but they can be used only for serving Home methods (create or findBy), since those methods do not relay on the specific values of the bean. All these instances are, in fact, exactly the same, so, they do not have meaningful state. Jon Thorarinsson has also added: It can be looked at it this way: If no client is using an entity bean of a particular type there is no need for cachig it (the data is persisted in the database). Therefore, in such cases, the container will, after some time, move the entity bean from the “Ready State” to the “Pooled state” to save memory. Then, to save additional memory, the container may begin moving entity beans from the “Pooled State” to the “Does Not Exist State”, because even though the bean’s cache has been cleared, the bean still takes up some memory just being in the “Pooled State”.
+
+
+Can a Session Bean be defined without ejbCreate() method? - The ejbCreate() methods is part of the bean’s lifecycle, so, the compiler will not return an error because there is no ejbCreate() method. However, the J2EE spec is explicit: the home interface of a Stateless Session Bean must have a single create() method with no arguments, while the session bean class must contain exactly one ejbCreate() method, also without arguments. Stateful Session Beans can have arguments (more than one create method) stateful beans can contain multiple ejbCreate() as long as they match with the home interface definition. You need a reference to your EJBObject to startwith. For that Sun insists on putting a method for creating that reference (create method in the home interface). The EJBObject does matter here. Not the actual bean.
+
+
+Is it possible to share an HttpSession between a JSP and EJB? What happens when I change a value in the HttpSession from inside an EJB? - You can pass the HttpSession as parameter to an EJB method, only if all objects in session are serializable.This has to be consider as “passed-by-value”, that means that it’s read-only in the EJB. If anything is altered from inside the EJB, it won’t be reflected back to the HttpSession of the Servlet Container.The “pass-by-reference” can be used between EJBs Remote Interfaces, as they are remote references. While it IS possible to pass an HttpSession as a parameter to an EJB object, it is considered to be “bad practice (1)” in terms of object oriented design. This is because you are creating an unnecessary coupling between back-end objects (ejbs) and front-end objects (HttpSession). Create a higher-level of abstraction for your ejb’s api. Rather than passing the whole, fat, HttpSession (which carries with it a bunch of http semantics), create a class that acts as a value object (or structure) that holds all the data you need to pass back and forth between front-end/back-end. Consider the case where your ejb needs to support a non-http-based client. This higher level of abstraction will be flexible enough to support it. (1) Core J2EE design patterns (2001)
+
+
+Is there any way to read values from an entity bean without locking it for the rest of the transaction (e.g. read-only transactions)? We have a key-value map bean which deadlocks during some concurrent reads. Isolation levels seem to affect the database only, and we need to work within a transaction. - The only thing that comes to (my) mind is that you could write a ‘group accessor’ - a method that returns a single object containing all of your entity bean’s attributes (or all interesting attributes). This method could then be placed in a ‘Requires New’ transaction. This way, the current transaction would be suspended for the duration of the call to the entity bean and the entity bean’s fetch/operate/commit cycle will be in a separate transaction and any locks should be released immediately. Depending on the granularity of what you need to pull out of the map, the group accessor might be overkill.
+
+
+What is the difference between a “Coarse Grained” Entity Bean and a “Fine Grained” Entity Bean? - A ‘fine grained’ entity bean is pretty much directly mapped to one relational table, in third normal form. A ‘coarse grained’ entity bean is larger and more complex, either because its attributes include values or lists from other tables, or because it ‘owns’ one or more sets of dependent objects. Note that the coarse grained bean might be mapped to a single table or flat file, but that single table is going to be pretty ugly, with data copied from other tables, repeated field groups, columns that are dependent on non-key fields, etc. Fine grained entities are generally considered a liability in large systems because they will tend to increase the load on several of the EJB server’s subsystems (there will be more objects exported through the distribution layer, more objects participating in transactions, more skeletons in memory, more EJB Objects in memory, etc.)
+
+
+What is EJBDoclet? - EJBDoclet is an open source JavaDoc doclet that generates a lot of the EJB related source files from custom JavaDoc comments tags embedded in the EJB source file.
+
+
+
+I want to know what are the transactions used when there is one to many relationship between two tables
+
+
+what is the difference between EJBContext and SessionContext objects? - Session beans use a subclass of EJBContext, called SessionContext.
+
+
+How to communicate a session bean or an entity bean from a jsp page
+
+
+How to position the jar files of struts in an apache server
+
+
+When a value in a table changes will the value in the CMP Entity bean change as well
+
+
+How to connect a entity bean from a session bean?
+
+
+Why does the EJB architecture need Home and Remote interface? What is significance of both? Can both class reside on different JVM?
+
+
+How to use SessionContext in EJB?
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/j2ee-ejb-interview-questions
+
+
+J2EE EJB interview questions
+
+What is the relationship between local interfaces and container-managed relationships? - Entity beans that have container-managed relationships with other entity beans, must be accessed in the same local scope as those related beans, and therefore typically provide a local client view. In order to be the target of a container-managed relationship, an entity bean with container-managed persistence must provide a local interface.
+
+
+What does a remove method do for different cases of beans? - Stateless Session : Does not do anything to the bean as moving the bean from free pool to cache are managed by the container depending on load. Stateful Session: Removes the bean from the cache. Entity Bean: Deletes the bean (data) from persistent storage
+
+
+How does a container-managed relationship work? - An entity bean accesses related entity beans by means of the accessor methods for its container-managed relationship fields, which are specified by the cmr-field elements of its abstract persistence schema defined in the deployment descriptor. Entity bean relationships are defined in terms of the local interfaces of the related beans, and the view an entity bean presents to its related beans is defined by its local home and local interfaces. Thus, an entity bean can be the target of a relationship from another entity bean only if it has a local interface.
+
+
+What is the new basic requirement for a CMP entity bean class in 2.0 from that of ejb 1.1? - It must be abstract class. The container extends it and implements methods which are required for managing the relationships
+
+
+What are the basic classes required in the client for invoking an EJB? - The home and the remote interfaces, the implementation of the Naming Context Factory, the stubs and skeletons. In some App servers the stubs and the skeletons can be dynamically downloaded from the server
+
+
+What is the difference between Message Driven Beans and Stateless Session beans? - In several ways, the dynamic creation and allocation of message-driven bean instances mimics the behavior of stateless session EJB instances, which exist only for the duration of a particular method call. However, message-driven beans are different from stateless session EJBs (and other types of EJBs) in several significant ways:
+Message-driven beans process multiple JMS messages asynchronously, rather than processing a serialized sequence of method calls.
+Message-driven beans have no home or remote interface, and therefore cannot be directly accessed by internal or external clients. Clients interact with message-driven beans only indirectly, by sending a message to a JMS Queue or Topic.
+Only the container directly interacts with a message-driven bean by creating bean instances and passing JMS messages to those instances as necessary.
+The Container maintains the entire lifecycle of a message-driven bean; instances cannot be created or removed as a result of client requests or other API calls.
+
+
+What is the need for Clustering? - To scale the application so that it is highly available and has high throughput.
+
+
+What are the benefits of Clustering and workload management? - They are
+It balances client processing requests, allowing incoming work requests to be distributed according to a configured Workload Management selection policy.
+It provides fail over capability by redirecting client requests to a running server when one or more servers are unavailable. This improves the availability of applications and administrative services.
+It enables systems to be scaled up to serve a higher client load than provided by the basic configuration. With server groups and clones additional instances of servers can easily be added to the configuration.
+It enables servers to be transparently maintained and upgraded while applications remain available for users.
+It centralizes administration of application servers and other objects.
+
+
+What are the types of Scaling? - There are two types of scaling: Vertical Scaling and Horizontal Scaling.
+
+
+What is Vertical Scaling? - When multiple server clones of an application server are defined on the same physical m/c, it is called Vertical Scaling. The objective is to use the processing power of that m/c more efficiently.
+
+
+What is Horizontal Scaling? - When Clones of an application server are defined on multiple physical m/c, it is called Horizontal Scaling. The objective is to use more than one less powerful m/c more efficiently.
+
+
+What is a Server Group? - A server group is a template of an Application Server(and its contents) i.e, it is a logical representation of the application server. It has the same structure and attributes as the real Application Server, but it is not associated with any node, and does not correspond to any real server process running on any node.
+
+
+What is a Clone? - The copies of a server group are called Clones. But unlike a Server Group Clones are associated with a node and are real server process running in that node.
+
+
+What is Ripple Effect? - The process of propagating the changes in the properties of a server group during runtime to all the associated clones is called Ripple Effect.
+
+
+What level of Load Balancing is possible with EJBs? - The workload management service provides load balancing for the following types of enterprise beans: Homes of entity or session beans, Instances of entity beans, Instances of stateless session beans.
+
+
+What is the basic requirement for in-memory replication in Weblogic? - The data in session should consist only of Serialized objects. Only setAttribute function should be used to set objects in session.
+
+
+How JDBC services can be used in clustered environment? - Identical DataSource has to be created in each clustered server instances and configure to use different connection pools.
+
+
+What are the services that should not be used in a Clustered Environment? - Non-clustered services:
+File Services
+Time services
+Weblogic events
+Weblogic Workspaces (In WebLogic 5.1)
+
+
+Mention some tools to cluster Web Servers? - Web Servers can be clustered using Edge Server or DNS.
+
+
+What is in-memory replication? - The process by which the contents in the memory of one physical m/c are replicated in all the m/c in the cluster is called in-memory replication.
+Difference Between Abstraction and Encapsulation - Abstraction is removing some distinctions between objects, so as to show their commonalities. Encapsulation is hiding the details of the implementation of an object so that there are no external dependencies on the particular implementation.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/advanced-ejb-interview-questions
+Advanced EJB interview questions
+
+
+Are enterprise beans allowed to use Thread.sleep()? - Enterprise beans make use of the services provided by the EJB container, such as life-cycle management. To avoid conflicts with these services, enterprise beans are restricted from performing certain operations: Managing or synchronizing threads
+
+
+Is it possible to write two EJB’s that share the same Remote and Home interfaces, and have different bean classes? if so, what are the advantages/disadvantages? - It’s certainly possible. In fact, there’s an example that ships with the Inprise Application Server of an Account interface with separate implementations for CheckingAccount and SavingsAccount, one of which was CMP and one of which was BMP.
+
+
+Is it possible to specify multiple JNDI names when deploying an EJB? - No. To achieve this you have to deploy your EJB multiple times each specifying a different JNDI name.
+
+
+Is there any way to force an Entity Bean to store itself to the db? I don’t wanna wait for the container to update the db, I want to do it NOW! Is it possible? - Specify the transaction attribute of the bean as RequiresNew. Then as per section 11.6.2.4 of the EJB v 1.1 spec EJB container automatically starts a new transaction before the method call. The container also performs the commit protocol before the method result is sent to the client.
+
+
+I am developing a BMP Entity bean. I have noticed that whenever the create method is invoked, the ejbLoad() and the ejbStore() methods are also invoked. I feel that once my database insert is done, having to do a select and update SQL queries is major overhead. is this behavior typical of all EJB containers? Is there any way to suppress these invocations? - This is the default behaviour for EJB. The specification states that ejbLoad() will be called before every transaction and ejbStore() after every transaction. Each Vendor has optimizations, which are proprietary for this scenario.
+
+
+Can an EJB send asynchronous notifications to its clients? - Asynchronous notification is a known hole in the first versions of the EJB spec. The recommended solution to this is to use JMS, which is becoming available in J2EE-compliant servers. The other option, of course, is to use client-side threads and polling. This is not an ideal solution, but it’s workable for many scenarios.
+
+
+How can I access EJB from ASP? - You can use the Java 2 Platform, Enterprise Edition Client Access Services (J2EETM CAS) COM Bridge 1.0, currently downloadable from Sun
+
+
+Is there a guarantee of uniqueness for entity beans? - There is no such guarantee. The server (or servers) can instantiate as many instances of the same underlying Entity Bean (with the same PK) as it wants. However, each instance is guaranteed to have up-to-date data values, and be transactionally consistent, so uniqueness is not required. This allows the server to scale the system to support multiple threads, multiple concurrent requests, and multiple hosts.
+
+
+How do the six transaction attributes map to isolation levels like “dirty read”? Will an attribute like “Required” lock out other readers until I’m finished updating? - The Transaction Attributes in EJB do not map to the Transaction Isolation levels used in JDBC. This is a common misconception. Transaction Attributes specify to the container when a Transaction should be started, suspended(paused) and committed between method invocations on Enterprise JavaBeans. For more details and a summary of Transaction Attributes refer to section 11.6 of the EJB 1.1 specification.
+
+
+I have created a remote reference to an EJB in FirstServlet. Can I put the reference in a servlet session and use that in SecondServlet? - Yes. The EJB client (in this case your servlet) acquires a remote reference to an EJB from the Home Interface; that reference is serializable and can be passed from servlet to servlet. If it is a session bean, then the EJB server will consider your web client’s servlet session to correspond to a single EJB session, which is usually (but not always) what you want.
+
+
+Can the primary key in the entity bean be a Java primitive type such as int? - The primary key can’t be a primitive type–use the primitive wrapper classes, instead. For example, you can use java.lang.Integer as the primary key class, but not int (it has to be a class, not a primitive)
+
+
+What’s new in the EJB 2.0 specification? - Following are the main features supported in EJB 2.0: Integration of EJB with JMS, Message Driven Beans, Implement additional Business methods in Home interface which are not specific for bean instance, EJB QL.
+
+
+How many types of protocol implementations does RMI have? - RMI has at least three protocol implementations: Java Remote Method Protocol(JRMP), Internet Inter ORB Protocol(IIOP), and Jini Extensible Remote Invocation(JERI). These are alternatives, not part of the same thing, All three are indeed layer 6 protocols for those who are still speaking OSI reference model.
+
+
+What is the need of Remote and Home interfaces. Why can’t there be one? - In a few words, I would say that the main reason is because there is a clear division of roles and responsabilities between the two interfaces. The home interface is your way to communicate with the container, that is who is responsable of creating, locating even removing one or more beans. The remote interface is your link to the bean, that will allow you to remotely access to all its methods and members. As you can see there are two distinct elements (the container and the beans) and you need two different interfaces for accessing to both of them.
+
+
+What is the difference between Java Beans and EJB? - Java Beans are client-side objects and EJBs are server side object, and they have completely different development, lifecycle, purpose.
+
+
+Question With regard to Entity Beans, what happens if both my EJB Server and Database crash, what will happen to unsaved changes? Is there any transactional log file used? - Actually, if your EJB server crashes, you will not even be able to make a connection to the server to perform a bean lookup, as the server will no longer be listening on the port for incoming JNDI lookup requests. You will lose any data that wasn’t committed prior to the crash. This is where you should start looking into clustering your EJB server. Any unsaved and uncommited changes are lost the moment your EJB Server crashes. If your database also crashes, then all the saved changes are also lost unless you have some backup or some recovery mechanism to retrieve the data. So consider database replication and EJB Clustering for such scenarios, though the occurence of such a thing is very very rare. Thx, Uma All databse have the concept of log files(for exampe oracle have redo log files concept). So if data bases crashes then on starting up they fill look up the log files to perform all pending jobs. But is EJB crashes, It depend upon the container how frequenlty it passivates or how frequesntly it refreshes the data with Database.
+
+
+Question Can you control when passivation occurs? - The developer, according to the specification, cannot directly control when passivation occurs. Although for Stateful Session Beans, the container cannot passivate an instance that is inside a transaction. So using transactions can be a a strategy to control passivation. The ejbPassivate() method is called during passivation, so the developer has control over what to do during this exercise and can implement the require optimized logic. Some EJB containers, such as BEA WebLogic, provide the ability to tune the container to minimize passivation calls. Taken from the WebLogic 6.0 DTD - “The passivation-strategy can be either “default” or “transaction”. With the default setting the container will attempt to keep a working set of beans in the cache. With the “transaction” setting, the container will passivate the bean after every transaction (or method call for a non-transactional invocation).”
+
+
+Does RMI-IIOP support dynamic downloading of classes? - No, RMI-IIOP doesn’t support dynamic downloading of the classes as it is done with CORBA in DII (Dynamic Interface Invocation).Actually RMI-IIOP combines the usability of Java Remote Method Invocation (RMI) with the interoperability of the Internet Inter-ORB Protocol (IIOP).So in order to attain this interoperability between RMI and CORBA,some of the features that are supported by RMI but not CORBA and vice versa are eliminated from the RMI-IIOP specification.
+
+
+Does EJB 1.1 support mandate the support for RMI-IIOP ? What is the meaning of “the client API must support the Java RMI-IIOP programming model for portability, but the underlying protocol can be anything” ? - EJB1.1 does mandate the support of RMI-IIOP. There are 2 types of implementations that an EJB Server might provide: CORBA-based EJB Servers and Proprietry EJB Servers. Both support the RMI-IIOP API but how that API is implemented is a different story. (NB: By API we mean the interface provided to the client by the stub or proxy). A CORBA-based EJB Server actually implements its EJB Objects as CORBA Objects (it therefore encorporates an ORB and this means that EJB’s can be contacted by CORBA clients (as well as RMI-IIOP clients) A proprietry EJB still implements the RMI-IIOP API (in the client’s stub) but the underlying protocol can be anything. Therefore your EJB’s CANNOT be contacted by CORBA clients. The difference is that in both cases, your clients see the same API (hence, your client portability) BUT how the stubs communicate with the server is different.
+
+
+The EJB specification says that we cannot use Bean Managed Transaction in Entity Beans. Why? - The short, practical answer is… because it makes your entity beans useless as a reusable component. Also, transaction management is best left to the application server - that’s what they’re there for. It’s all about atomic operations on your data. If an operation updates more than one entity then you want the whole thing to succeed or the whole thing to fail, nothing in between. If you put commits in the entity beans then it’s very difficult to rollback if an error occurs at some point late in the operation.
+
+
+Can I invoke Runtime.gc() in an EJB? - You shouldn’t. What will happen depends on the implementation, but the call will most likely be ignored. You should leave system level management like garbage collection for the container to deal with. After all, that’s part of the benefit of using EJBs, you don’t have to manage resources yourself.
+
+
+What is clustering? What are the different algorithms used for clustering? - Clustering is grouping machines together to transparantly provide enterprise services.The client does not now the difference between approaching one server or approaching a cluster of servers.Clusters provide two benefits: scalability and high availability. Further information can be found in the JavaWorld article J2EE Clustering.
+
+
+What is the advantage of using Entity bean for database operations, over directly using JDBC API to do database operations? When would I use one over the other? - Entity Beans actually represents the data in a database. It is not that Entity Beans replaces JDBC API. There are two types of Entity Beans Container Managed and Bean Mananged. In Container Managed Entity Bean - Whenever the instance of the bean is created the container automatically retrieves the data from the DB/Persistance storage and assigns to the object variables in bean for user to manipulate or use them. For this the developer needs to map the fields in the database to the variables in deployment descriptor files (which varies for each vendor). In the Bean Managed Entity Bean - The developer has to specifically make connection, retrive values, assign them to the objects in the ejbLoad() which will be called by the container when it instatiates a bean object. Similarly in the ejbStore() the container saves the object values back the the persistance storage. ejbLoad and ejbStore are callback methods and can be only invoked by the container. Apart from this, when you use Entity beans you dont need to worry about database transaction handling, database connection pooling etc. which are taken care by the ejb container. But in case of JDBC you have to explicitly do the above features. what suresh told is exactly perfect. ofcourse, this comes under the database transations, but i want to add this. the great thing about the entity beans of container managed, whenever the connection is failed during the transaction processing, the database consistancy is mantained automatically. the container writes the data stored at persistant storage of the entity beans to the database again to provide the database consistancy. where as in jdbc api, we, developers has to do manually.
+
+
+What is the role of serialization in EJB? - A big part of EJB is that it is a framework for underlying RMI: remote method invocation. You’re invoking methods remotely from JVM space ‘A’ on objects which are in JVM space ‘B’ — possibly running on another machine on the network. To make this happen, all arguments of each method call must have their current state plucked out of JVM ‘A’ memory, flattened into a byte stream which can be sent over a TCP/IP network connection, and then deserialized for reincarnation on the other end in JVM ‘B’ where the actual method call takes place. If the method has a return value, it is serialized up for streaming back to JVM A. Thus the requirement that all EJB methods arguments and return values must be serializable. The easiest way to do this is to make sure all your classes implement java.io.Serializable.
+
+
+What is EJB QL? - EJB QL is a Query Language provided for navigation across a network of enterprise beans and dependent objects defined by means of container managed persistence. EJB QL is introduced in the EJB 2.0 specification. The EJB QL query language defines finder methods for entity beans with container managed persistenceand is portable across containers and persistence managers. EJB QL is used for queries of two types of finder methods: Finder methods that are defined in the home interface of an entity bean and which return entity objects. Select methods, which are not exposed to the client, but which are used by the Bean Provider to select persistent values that are maintained by the Persistence Manager or to select entity objects that are related to the entity bean on which the query is defined.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/tough-interview-questions-on-ejb
+Tough interview questions on EJB
+
+How EJB Invocation happens? - Retrieve Home Object reference from Naming Service via JNDI. Return Home Object reference to the client. Create me a new EJB Object through Home Object interface. Create EJB Object from the Ejb Object. Return EJB Object reference to the client. Invoke business method using EJB Object reference. Delegate request to Bean (Enterprise Bean).
+
+
+Is it possible to share an HttpSession between a JSP and EJB? What happens when I change a value in the HttpSession from inside an EJB? - You can pass the HttpSession as parameter to an EJB method, only if all objects in session are serializable.This has to be consider as passed-by-value, that means that it’s read-only in the EJB. If anything is altered from inside the EJB, it won’t be reflected back to the HttpSession of the Servlet Container.The pass-by-reference can be used between EJBs Remote Interfaces, as they are remote references. While it is possible to pass an HttpSession as a parameter to an EJB object, it is considered to be bad practice in terms of object-oriented design. This is because you are creating an unnecessary coupling between back-end objects (EJBs) and front-end objects (HttpSession). Create a higher-level of abstraction for your EJBs API. Rather than passing the whole, fat, HttpSession (which carries with it a bunch of http semantics), create a class that acts as a value object (or structure) that holds all the data you need to pass back and forth between front-end/back-end. Consider the case where your EJB needs to support a non HTTP-based client. This higher level of abstraction will be flexible enough to support it.
+
+
+The EJB container implements the EJBHome and EJBObject classes. For every request from a unique client, does the container create a separate instance of the generated EJBHome and EJBObject classes? - The EJB container maintains an instance pool. The container uses these instances for the EJB Home reference irrespective of the client request. while refering the EJB Object classes the container creates a separate instance for each client request. The instance pool maintenance is up to the implementation of the container. If the container provides one, it is available otherwise it is not mandatory for the provider to implement it. Having said that, yes most of the container providers implement the pooling functionality to increase the performance of the application server. The way it is implemented is, again, up to the implementer.
+
+
+Can the primary key in the entity bean be a Java primitive type such as int? - The primary key can’t be a primitive type. Use the primitive wrapper classes, instead. For example, you can use java.lang.Integer as the primary key class, but not int (it has to be a class, not a primitive).
+
+
+Can you control when passivation occurs? - The developer, according to the specification, cannot directly control when passivation occurs. Although for Stateful Session Beans, the container cannot passivate an instance that is inside a transaction. So using transactions can be a a strategy to control passivation. The ejbPassivate() method is called during passivation, so the developer has control over what to do during this exercise and can implement the require optimized logic. Some EJB containers, such as BEA WebLogic, provide the ability to tune the container to minimize passivation calls. Taken from the WebLogic 6.0 DTD -”The passivation-strategy can be either “default” or “transaction”. With the default setting the container will attempt to keep a working set of beans in the cache. With the “transaction” setting, the container will passivate the bean after every transaction (or method call for a non-transactional invocation).
+
+
+What is the advantage of using Entity bean for database operations, over directly using JDBC API to do database operations? When would I use one over the other? - Entity Beans actually represents the data in a database. It is not that Entity Beans replaces JDBC API. There are two types of Entity Beans Container Managed and Bean Mananged. In Container Managed Entity Bean - Whenever the instance of the bean is created the container automatically retrieves the data from the DB/Persistance storage and assigns to the object variables in bean for user to manipulate or use them. For this the developer needs to map the fields in the database to the variables in deployment descriptor files (which varies for each vendor). In the Bean Managed Entity Bean - The developer has to specifically make connection, retrive values, assign them to the objects in the ejbLoad() which will be called by the container when it instatiates a bean object. Similarly in the ejbStore() the container saves the object values back the the persistance storage. ejbLoad and ejbStore are callback methods and can be only invoked by the container. Apart from this, when you use Entity beans you dont need to worry about database transaction handling, database connection pooling etc. which are taken care by the ejb container.
+
+
+What is EJB QL? - EJB QL is a Query Language provided for navigation across a network of enterprise beans and dependent objects defined by means of container managed persistence. EJB QL is introduced in the EJB 2.0 specification. The EJB QL query language defines finder methods for entity beans with container managed persistenceand is portable across containers and persistence managers. EJB QL is used for queries of two types of finder methods: Finder methods that are defined in the home interface of an entity bean and which return entity objects. Select methods, which are not exposed to the client, but which are used by the Bean Provider to select persistent values that are maintained by the Persistence Manager or to select entity objects that are related to the entity bean on which the query is defined.
+
+
+Brief description about local interfaces? - EEJB was originally designed around remote invocation using the Java Remote Method Invocation (RMI) mechanism, and later extended to support to standard CORBA transport for these calls using RMI/IIOP. This design allowed for maximum flexibility in developing applications without consideration for the deployment scenario, and was a strong feature in support of a goal of component reuse in J2EE. Many developers are using EJBs locally, that is, some or all of their EJB calls are between beans in a single container. With this feedback in mind, the EJB 2.0 expert group has created a local interface mechanism. The local interface may be defined for a bean during development, to allow streamlined calls to the bean if a caller is in the same container. This does not involve the overhead involved with RMI like marshalling etc. This facility will thus improve the performance of applications in which co-location is planned. Local interfaces also provide the foundation for container-managed relationships among entity beans with container-managed persistence.
+
+
+What are the special design care that must be taken when you work with local interfaces? - It is important to understand that the calling semantics of local interfaces are different from those of remote interfaces. For example, remote interfaces pass parameters using call-by-value semantics, while local interfaces use call-by-reference. This means that in order to use local interfaces safely, application developers need to carefully consider potential deployment scenarios up front, then decide which interfaces can be local and which remote, and finally, develop the application code with these choices in mind. While EJB 2.0 local interfaces are extremely useful in some situations, the long-term costs of these choices, especially when changing requirements and component reuse are taken into account, need to be factored into the design decision.
+
+
+What happens if remove( ) is never invoked on a session bean? - In case of a stateless session bean it may not matter if we call or not as in both cases nothing is done. The number of beans in cache is managed by the container. In case of stateful session bean, the bean may be kept in cache till either the session times out, in which case the bean is removed or when there is a requirement for memory in which case the data is cached and the bean is sent to free pool.
+
+
+What is the difference between Message Driven Beans and Stateless Session beans? - In several ways, the dynamic creation and allocation of message-driven bean instances mimics the behavior of stateless session EJB instances, which exist only for the duration of a particular method call. However, message-driven beans are different from stateless session EJBs (and other types of EJBs) in several significant ways: Message-driven beans process multiple JMS messages asynchronously, rather than processing a serialized sequence of method calls. Message-driven beans have no home or remote interface, and therefore cannot be directly accessed by internal or external clients. Clients interact with message-driven beans only indirectly, by sending a message to a JMS Queue or Topic. Only the container directly interacts with a message-driven bean by creating bean instances and passing JMS messages to those instances as necessary. The Container maintains the entire lifecycle of a message-driven bean; instances cannot be created or removed as a result of client requests or other API calls.
+
+
+How can I call one EJB from inside of another EJB? - EJBs can be clients of other EJBs. It just works. Use JNDI to locate the Home Interface of the other bean, then acquire an instance reference, and so forth.
+
+
+What is an EJB Context? - EJBContext is an interface that is implemented by the container, and it is also a part of the bean-container contract. Entity beans use a subclass of EJBContext called EntityContext. Session beans use a subclass called SessionContext. These EJBContext objects provide the bean class with information about its container, the client using the bean and the bean itself. They also provide other functions. See the API docs and the spec for more details.

@@ -1,0 +1,221 @@
+Pitney Bowse, A. Adhikari, 12 Jan 2011
+----------------------------------------
+
+
+- What are the +ve and -ve of using a ORM framework like Hibernate ? What are the key challenges you faced in implementing a ORM framework ?
+- Given a simple CRUD application and given a slightly complex e.g. a school registration application, what would you choose for persistence ? What would you use a framework and why ?
+- You must have used various styles of web servies, haven't you ??
+- What frameworks have you used to implement transactions in BPEL ?
+- How do you implement security in BPEL ? How would you validate and authenticate a client invoking a BPEL instance ?
+- What process engine have you used for running BPEL instances ? Which version ?
+- Did you choose graphical editors or hand coding ? How much of hands-on are you with BPEL ?
+- How do communicate across BPEL instances with one instance of BPEL providing info to another instance of the same BPEL process type ?
+- Design a school application for Delhi schools ? What are the major entities ?
+- For the above school application, what would be the technology stack ? What would be key framework choices ?
+- What would be your choice of UI for the above application to make it convienient for students and staff ?
+- What type of reporting engine would you choose for the above school application ?
+- What are the key challenges you faced in a reasonably sized application in the past 5 years ? Describe in detail ? What was the application ?
+- Have you worked in situations where you have a US client and you report from India ? What sort of managerials difficulties you face ?
+- Why are you changing jobs frequently and what is that you look for in your next job ?
+
+
+
+
+Encore Capital Group, 09-Dec-2011
+------------------------------------
+
+Can you tell us something about yourself ?
+How is web services different from JMS ?
+Have you used SQL Stored procedures ?
+What are the advantages of using Spring ?
+How have you implemented automated testing on a Continous Integration platform ?
+Have you done automated integration tests on a CI platform ?
+What are the methods/adaptors available in Spring for logging ?
+How will you use Spring AOP to filter specific calls e.g. in logging ? ie how would you configure Spring to use different log for different classes ?
+Which stype of web services you prefer - SOAP or REST ?
+What Spring modules have you used ?
+What MVC frameworks have you used ?
+
+Do you have any questions for us ?
+
+
+
+Information Mosiac, 09-Dec-2011
+---------------------------------
+
+What are your core areas in Java you are comfortable talking about ?
+Name the key classes in Java concurrency package ?
+How do you implement concurrency i.e. prevent muliple threads to prevent changes to the same code / resource ?
+What is the difference between Hashmap and Hashtable ?
+How is hashing implemented internally in JDK/JVM ? What is the significance of using hashing ?
+How do annotations work internally ? What kind of annotations have used used ? Have you made custom annotations ? Give us a example ?
+How is the run time performance of the application using annotations vs. not using them ?
+Give us a example where you have used marker interfaces ?
+What is a typical challenge you have faced in multi threaded applications ?
+         Memory-interference, race conditions, deadlock, live lock and starvation are example of some problems comes in multi-threading and concurrent programming.
+         (http://javarevisited.blogspot.com/2011/07/java-multi-threading-interview.html)
+What are the key classes in java concurrency package ?
+What is a concurrent hashmap ?
+How is 
+
+Encore Capital Group, 09-Dec-2011
+------------------------------------
+
+Can you tell us something about yourself ?
+How is web services different from JMS ?
+Have you used SQL Stored procedures ?
+What arlog4j implemented internally ? What design patterns log4j uses ?
+         Hibernate : Composite design. DAO Design Pattern, Abstract Factory, MVC, Data Transfer, Proxy, Facade 
+         Log4J: Abstract Factory, Factory Method, Observer, Mediator
+What are the logging grameworks you have used ?
+What are the test frameworks you have used ? Have you writtent JUnit test cases yourself ? What do you look for when running test cases ?
+How do you ensure that a test case running is a good test cases ?
+Who runs integration test cases ? What are the tools you / your colleagues have used in running integration test cases ?
+Have you developed your own frameworks ?
+What are the new features in JDK 1.6 ? What are the new features in JDK 1.7 ?
+JDK 1.6 is known to have performance improvements ? How has this been achieved ?
+What design patterns are you familiar with ?
+	Examples of GoF Design Patterns used in JDK. (http://stackoverflow.com/questions/1673841/examples-of-gof-design-patterns)
+How many types of lists are implemented in JDK ?
+How do traverse a tree ?
+	1) Travel using Recusrion. 2) Travel using stack 3)Traversal using parent child link. (http://myarch.com/treeiter/traditways)
+	4) Tree traversal using tree iterator (http://myarch.com/treeiter/guide)
+	If using DefaultMutableTreeNode, 4 methods -> breadthFirstEnumeration, depthFirstEnumeration, preorderEnumeration, postorderEnumeration
+What performance tests you run on your applications ?
+What are the considerations and how do you optimize a SQL Qeuery ? On SQL side what are the strategies typically used ? What are the tools you use ?
+Given a fixed database schema and a fixed set of tables what are the considerations and choices you make for maximizing SQL performance ?
+What kind of testing tools you use ?
+What are the integration strategies typically used ? Name JMS and others ?
+Why is a serial UUID used ? What happens when this is corrupt / wrong ? How is a Serial UUID generated ?
+How do you convert a object into a XML / datbase row ?
+How does JSON work ? 
+How do you serialize and then deserialize objects ?
+	ObjectOutputStream.writeObject() [combined with FileOutputStream] - serialize and write 
+	ObjectInputStream.readObject()   [combined with FileInputStream]  - read and deserialize
+How do you secure inter process communication across JVMs ?
+	Sounds like you want a distributed cache. I'd recommend looking at Ehcache and this documentation on cache topologies.(http://stackoverflow.com/questions/8447108/cross-application-concurrent-hashmap)
+What are the considerations for performance tuning a application ? What are the design strategies for maximizing performance of a application ?
+How do you add a node to a cluster ?
+In how many ways can you talk to a database from Java ?
+Explain Future interfaces in Java ?
+What is the difference bewtween warning and exception ? What happens when a warning is encountered ? Is warning throwable ? What substructure / package warnings belong to ?
+How do you convert XML to XML ie one XML object to another type of XML object ?
+Have you used Java reflection ? Give us some examples ?
+How will you use a non serializable object and serialize it ? 
+      [Hint : You may have to parse it field by field for its entire tree and use reflection]
+What is the version of GWT you have used ? What are key features newly implemented ?
+What do you do in scenarios of memeory leaks ? How do you detect and prevent memory leaks ?
+	1) Whenever a class manages its own memory 2) Another common source of memory leaks is caches 3) A third common source of memory leaks is listeners and other callbacks
+	(http://www.codeproject.com/KB/books/EffectiveJava.aspx)
+
+
+(General)
+Why are you jumping frequently ?
+What are your salary expectaions ?
+
+
+Information Mosiac, 06-Dec-2011
+-------------------------------
+
+
+What advantages spring provide ?
+What use Spring rather than using the new operator? What is the difference? What are the advantages?
+What is the alternative to Spring/Hibernate stack combination ?
+What query langugages Hibernate support
+What are you most comfortable in Spring ?
+Spring core. What is the defintion. Won't add ons for Transaction / Security be considered a part of spring core ?
+Hibernate collections - Dot operator. What is the challenge in getting set vs. a field and how would you implement a set collection inside a collection ? Example - Get all employees where Address is a set of further values?
+
+Which database have you used ?
+Deffered constraint
+T/SQL vs. P SQl
+difference Stored procedure vs. functions and usage scenarios
+Update data using view - provided some conditions are satisfied (what conditions ????)
+How do you cascade delete 
+
+Differences - Agile / Waterfall
+Which scenarios which methodooly (Agile /waterfall)
+Challenges in implementing agile.
+
+What are your expectations from the company? What are your expecations from the role?
+Questions for us ?
+
+
+
+--------------------------------------------------------------------------------
+
+Encore, 29-Nov-2011
+-------------------------------
+
+
+- Breifly describe about your yourself and the kind of work you have been doing recently ?
+- What do you know about memory management in Java ?
+- Descibe the details of the garbage collector and various types and under what circumstances will they work ?
+- How does strong and weak references affect garbage collection ?
+- How would you introduce a new functionality into servlet code using minimal code changes and using configuration ? [Hint : Filters]
+- Describe servlet chaining ?
+- Describe the scenarios in which you haveused JMS ? Describe the challenges you faced ?
+- How have you enabled Spring integration with Websphere Application server using JMS ? What other options are there ?
+- How would you manage a JMS based transaction using multiple resource managers - One Resource manager should be using Database, another for logging and another to manage the JMS transaction. Describe the challenges involved ?
+- How would you manage / solve / use the above scenario (multiple resource managers) using Spring ?
+- Which application server have you used - Websphere or Weblogic or other.
+- Please describe the various topologies for clustering of websphere / weblogic application servers ?
+- What are the considerations you would choose to design a system using messaging (JMS) with clustering support and running over Websphere / Spring Container.
+- Describe the difference between wait() and join() from a Java Threads perspective ? When would you use what ?
+- What packages have you used in java concurrency ?
+- What have you used in Generics in the Java API ?
+- What kind of web applications have you worked on ?
+- Explain the concept of dynamic proxies ?
+
+
+--------------------------------------------------------------------------------
+
+
+
+Xebia - 10-Nov-2011
+-------------------
+
+- What are key metrics for you as a architect to ensure project delivery compliance with the company standards set for the client.
+- How do you ensure as a architect with responsibility of delievery of multiple projects that the project standards are being measured, followed and cmplied to. Generic guidelines are OK, but how do you measure and convince to client. 
+- What do you measure  in ensuring product quality and how do you measure and improve upon. How would you train tour team. (Hint : Look for Defect Injection Rate)
+- When setting up the SOA centre of excellence, what was your main metrics to measure success, what were the KPI. How was the budget approved and how were the sucess guarenteed. How was the management reporting and what kind of complliance metrics were used.
+- What kind of support was provided by you on the SOA Centre of Excellence.
+- How much time would you allocate for training for a SOA project in present industrial scenarios. How do measure training effectiveness. What kind of planning would you do and how would you structure your team to maximize training effectiveness in minimum time.
+
+
+--------------------------------------------------------------------------------
+
+
+Symphony Services - 05-Nov-2011
+-------------------------------
+
+Tell me something about yourself ?
+What is a daemon thread ?
+What are the application servers you have used ?
+What are your strong areas in Java ? Is it threads, or Collections or something else ?
+What are the frameworks you have used ? 
+Have you used Hibernate directly or Spring + Hibernate ?
+How do you configure a web server (e.g. Apache) in front of a application server (e.g. WAS) ?
+How much of coding hands-on you do ?
+What kind of performance problems have you faced and how did you solve them ?
+Have you used Stored procedures ?
+How much do you know about JMS ?
+What are the databases you have worked on ?
+
+
+
+--------------------------------------------------------------------------------
+
+IYogi - 22-Sep-2011
+-------------------
+
+- What performace analysis tools have you used ?
+- What is your current project ? 
+- How much of your current project is web based ?
+- Describe a typical web application stack ?
+- Describe the Architectual frameworks you have used in your projects ?
+- Is your job on the technology side or managerial side? How much percentage of each ?
+- Describe the technology stack of a SOA application ? What do you understand by a SOA application ?
+- What are the key technologies have you used with certain degree of comfort ? What are your strength areas ?
+- What is your typical work profile ?
+

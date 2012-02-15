@@ -1,0 +1,88 @@
+http://www.techinterviews.com/basic-programming-questions
+
+Basic programming questions
+
+Design a data structure such that given a stream of numbers, you can find the maximum of the numbers at any point and also all the numbers.
+
+
+Given an array of 1s and 0s arrange the 1s together and 0s together in a single scan of the array. Optimize the boundary conditions.
+
+
+Find the common ancestor of two given nodes in a binary tree, how do you exploit the properties of a given BST for the same problem.
+
+
+You’re given a function getsort(data) that sorts the data given. The function sorts in place and does not use any extra memory. How do you validate the function with respect to 1) it sorts 2) it does not use extra memory
+
+
+Explain the Traveling Salesman problem? What is an NP-complete problem? What is the Hamiltonian cycle problem?
+
+
+Find out the least common ancestor in a binary tree.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/amazon-interview-questions
+
+Amazon interview questions
+
+Given a Binary Search Tree, write a program to print the kth smallest element without using any static/global variable. You canÃ¢â‚¬â„¢t pass the value k to any function also.
+
+
+What are the 4 basics of OOP?
+
+
+Define Data Abstraction. What is its importance?
+
+
+Given an array of size n. It contains numbers in the range 1 to n. Each number is present at least once except for 2 numbers. Find the missing numbers.
+
+
+Given an array of size n. It contains numbers in the range 1 to n. Find the numbers which aren’t present.
+
+
+Given a string,find the first un-repeated character in it? Give some test cases
+
+
+You are given a dictionary of all valid words. You have the following 3 operations permitted on a word: delete a character, insert a character, replace a character. Now given two words - word1 and word2 - find the minimum number of steps required to convert word1 to word2. (one operation counts as 1 step.)
+
+
+Given a cube of size n*n*n (i.e made up of n^3 smaller cubes), find the number of smaller cubes on the surface. Extend this to k-dimension.
+
+
+What is a C array and illustrate the how is it different from a list.
+
+
+What is the time and space complexities of merge sort and when is it preferred over quick sort?
+
+
+Write a function which takes as parameters one regular expression(only ? and * are the special characters) and a string and returns whether the string matched the regular expression.
+
+
+Given n red balls and m blue balls and some containers, how would you distribute those balls among the containers such that the probability of picking a red ball is maximized, assuming that the user randomly chooses a container and then randomly picks a ball from that.
+
+
+Find the second largest element in an array with minimum no of comparisons and give the minimum no of comparisons needed on an array of size N to do the same.
+
+
+Given an array of size n, containing every element from 1 to n+1, except one. Find the missing element.
+
+
+How do you convert a decimal number to its hexa-decimal equivalent.Give a C code to do the same
+
+
+Explain polymorphism. Provide an example.
+
+
+Given an array all of whose elements are positive numbers, find the maximum sum of a subsequence with the constraint that no 2 numbers in the sequence should be adjacent in the array. So 3 2 7 10 should return 13 (sum of 3 and 10) or 3 2 5 10 7 should return 15 (sum of 3, 5 and 7)
+
+
+You are given some denominations of coins in an array (int denom[])and infinite supply of all of them. Given an amount (int amount), find the minimum number of coins required to get the exact amount. What is the method called?
+
+
+Given an array of size n. It contains numbers in the range 1 to n. Each number is present at least once except for 1 number. Find the missing number.
+
+

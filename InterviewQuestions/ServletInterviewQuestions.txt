@@ -1,0 +1,594 @@
+http://www.techinterviews.com/servlet-interview-questions
+
+Servlet interview questions
+
+What is a servlet?
+Servlets are modules that extend request/response-oriented servers,such as Java-enabled web servers. For example, a servlet might be responsible for taking data in an HTML order-entry form and applying the business logic used to update a company’s order database. Servlets are to servers what applets are to browsers. Unlike applets, however, servlets have no graphical user interface.
+
+
+Whats the advantages using servlets over using CGI?
+Servlets provide a way to generate dynamic documents that is both easier to write and faster to run. Servlets also address the problem of doing server-side programming with platform-specific APIs: they are developed with the Java Servlet API, a standard Java extension.
+
+
+What are the general advantages and selling points of Servlets?
+A servlet can handle multiple requests concurrently, and synchronize requests. This allows servlets to support systems such as online
+real-time conferencing. Servlets can forward requests to other servers and servlets. Thus servlets can be used to balance load among several servers that mirror the same content, and to partition a single logical service over several servers, according to task type or organizational boundaries.
+
+
+Which package provides interfaces and classes for writing servlets? javax
+
+
+What’s the Servlet Interface?
+The central abstraction in the Servlet API is the Servlet interface. All servlets implement this interface, either directly or, more
+commonly, by extending a class that implements it such as HttpServlet.Servlets > Generic Servlet > HttpServlet > MyServlet.
+The Servlet interface declares, but does not implement, methods that manage the servlet and its communications with clients. Servlet writers provide some or all of these methods when developing a servlet.
+
+
+When a servlet accepts a call from a client, it receives two objects. What are they?
+ServletRequest (which encapsulates the communication from the client to the server) and ServletResponse (which encapsulates the communication from the servlet back to the client). ServletRequest and ServletResponse are interfaces defined inside javax.servlet package.
+
+
+What information does ServletRequest allow access to?
+Information such as the names of the parameters passed in by the client, the protocol (scheme) being used by the client, and the names
+of the remote host that made the request and the server that received it. Also the input stream, as ServletInputStream.Servlets use the input stream to get data from clients that use application protocols such as the HTTP POST and GET methods.
+
+
+What type of constraints can ServletResponse interface set on the client?
+It can set the content length and MIME type of the reply. It also provides an output stream, ServletOutputStream and a Writer through
+
+
+which the servlet can send the reply data.
+
+
+Explain servlet lifecycle?
+Each servlet has the same life cycle: first, the server loads and initializes the servlet (init()), then the servlet handles zero or more client requests (service()), after that the server removes the servlet (destroy()). Worth noting that the last step on some servers is done when they shut down.
+
+
+How does HTTP Servlet handle client requests?
+An HTTP Servlet handles client requests through its service method. The service method supports standard HTTP client requests by dispatching each request to a method designed to handle that request.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+Basic Java servlet interview questions
+
+What is the difference between CGI and Servlet?
+
+
+What is meant by a servlet?
+
+
+What are the types of servlets? What is the difference between 2 types of Servlets?
+
+
+What is the type of method for sending request from HTTP server ?
+
+
+What are the exceptions thrown by Servlets? Why?
+
+
+What is the life cycle of a servlet?
+
+
+What is meant by cookies? Why is Cookie used?
+
+
+What is HTTP Session?
+
+
+What is the difference between GET and POST methods?
+
+
+How can you run a Servlet Program?
+
+
+What is the middleware? What is the functionality of Webserver?
+
+
+What webserver is used for running the Servlets?
+
+
+How do you invoke a Servelt? What is the difference in between doPost and doGet methods?
+
+
+What is the difference in between the HTTPServlet and Generic Servlet? Explain their methods? Tell me their parameter names also?
+
+
+What are session variable in Servlets?
+
+
+What is meant by Session? Tell me something about HTTPSession Class?
+
+
+What is Session Tracking?
+
+
+Difference between doGet and doPost?
+
+
+What are the methods in HttpServlet?
+
+
+What are the types of SessionTracking? Why do you use Session Tracking in HttpServlet?
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/general-java-servlet-questions
+General Java Servlet questions
+
+
+
+
+What is the servlet?
+
+
+What are the JSP atrributes?
+
+
+What is the need of super.init(config) in servlets?
+
+
+How to know whether we have to use jsp or servlet in our project?
+
+
+Can we call destroy() method on servlets from service method?
+
+
+What is the Servlet Interface?
+
+
+
+What is the difference between GenericServlet and HttpServlet?
+
+
+How we can check in particular page the session will be alive or not?
+
+
+What is the importance of deployment descriptor in servlet?
+When we increase the buffer size in our project using page directive attribute ‘buffer’ what changes we observe?
+
+
+What is the difference between ServetConfig and ServletContext..?
+When a servlet accepts a call from a client, it receives two objects. What are they?
+
+
+What are the differences between GET and POST service methods?
+In which conditions we have to use the ServletContext?
+
+
+What methods will be called in which order?((i.e)service(),doget(),dopost())
+Servlet is Java class. Then why there is no constructor in Servlet? Can we write the constructor in Servlet
+
+
+What is the use of ServletConfig and ServletContext..?
+
+
+What information that the ServletRequest interface allows the servlet access to?
+
+
+What is the difference between ServletContext and ServletConfig?
+When do you have action=get?
+
+
+What is a Singleton class. How do you write it?
+
+
+What is difference between sendRedirect() and forward()..? Which one is faster then other and which works on server?
+
+
+What information that the ServletResponse interface gives the servlet methods for replying to the client?
+
+
+Can I invoke a JSP error page from a servlet?
+
+
+Can a init(ServletConfig config) method be overrided in servlets?
+
+
+How many ServletConfig and servlet context objects are present in one application?
+Do we have a constructor in servlet? can we explictly provide a constructor in servlet programme as in java program?
+
+
+What are the uses of Servlets?
+
+
+Can I just abort processing a JSP?
+
+
+Is servlet is used to create a dynamic webpage or Static webpage or both?
+
+
+If you want a servlet to take the same action for both GET and POST request, what should you do?
+
+
+What is the difference between JSP and SERVLETS?
+
+
+What are the advantages using servlets than using CGI?
+
+
+What is a better approach for enabling thread-safe servlets and JSPs? SingleThreadModel Interface or synchronization?
+
+
+We have two applications in that we have two servlets each.How they(servlets) communicate with each other?
+
+
+How the server will know (i.e) when it can invoke init, service,destroy methods of servlet life cycle?
+
+
+How to communicate between two servlets?
+
+
+What is the difference between servlets and applets?
+
+
+How will u pass the argument from one servlet to another servlet?
+
+
+What method used to add a jsp to the servlet?
+
+
+How HTTP Servlet handles client requests?
+
+
+How to get one Servlet’s Context Information in another Servlet?
+
+
+Difference between single thread and multi thread model servlet
+
+
+What is the super class of All servlets?
+
+
+How are Servlet Applet communication achieved?
+
+
+What is servlet context and what it takes actually as parameters?
+
+
+What is the servlet life cycle?
+
+
+Types of Servlets?
+
+
+Why is that we deploy servlets in a webserver.What exactly is a webserver?
+
+
+Which code line must be set before any of the lines that use the PrintWriter?
+
+
+39 COMMENTS ON GENERAL JAVA SERVLET QUESTIONS
+
+
+Viswanathan Ramasamy
+Posted 11/23/2005 at 2:18 am | Permalink
+Servlets are Java technologyÃ¢â‚¬â„¢s answer to Common Gateway Interface (CGI)
+programming. They are programs that run on a Web server, acting as a middle
+layer between a request coming from a Web browser or other HTTP client
+and databases or applications on the HTTP server.Their job is to:
+1. Read any data sent by the user.
+2. Look up any other information about the request that is
+embedded in the HTTP request.
+3. Generate the results.
+4. Format the results inside a document.
+5. Set the appropriate HTTP response parameters.
+6. Send the document back to the client.
+for omer information on this refer : http://pdf.coreservlets.com/CSAJSP-Chapter1.pdf
+
+Manish
+Posted 4/26/2006 at 7:56 am | Permalink
+Servlet is a java interface for distributed n-tire programming. It process request of HttpClient and send result through response by residing in Web server.
+
+Manish
+Posted 4/26/2006 at 7:57 am | Permalink
+Super.init(config) in servlet - to get servelt context.
+
+Manish
+Posted 4/26/2006 at 7:59 am | Permalink
+Q5 >> In Httpsevletimplementation, i mean in doGet,doPost we can not call destory method of service.
+
+Manish
+Posted 4/26/2006 at 7:59 am | Permalink
+Servlet interface is a java interface to implement sevice methods
+
+Manish
+Posted 4/26/2006 at 8:02 am | Permalink
+Httpservlet implements Generic servlet and has additional features regrading to http.
+
+Rashmi Babtiwale
+Posted 7/3/2006 at 6:59 am | Permalink
+I need a little help with session tracking in servlets. Can anyone tell me in brief as to what all methods are used for session tracking?
+
+Sahil
+Posted 8/13/2006 at 10:54 am | Permalink
+In Servlet i am using sendRedirect(), to redirect to some other url, but i want that the page from which i am redirecting should wait for some specified time and then it redirect to the specific page. Is there any method available?
+Note: Like in 10 seconds ur directed to http://www.yahoo.com
+
+Sahil Pandey
+Posted 8/13/2006 at 10:59 am | Permalink
+Can we call destroy() method on servlets from service method?
+Yes, we can call the destroy() in the service() of the servlet but it won’t destroy the existing objects,and it won’t does the natural task that container can do when it calls destroy().
+
+Sahil Pandey
+Posted 8/13/2006 at 11:05 am | Permalink
+Q.How we can check in particular page the session will be alive or not?
+Ans: By calling isAlive().
+
+Sahil Pandey
+Posted 8/13/2006 at 11:11 am | Permalink
+Q.What are the differences between GET and POST service methods?
+Ans:
+GET() is default method while POST() is not.
+GET() is insecure(Data get disposed)ex.google. but POST is secure.
+GET() is limited to data, we cant sent long stream of data,limited only to 2K, while this is not with POST().
+All popular search engines uses GET().
+GET() is used for sending insecure data while POST() is for secure data.
+Note: Also check for doDelete(),doPut() etc.
+
+Sahil Pandey
+Posted 8/13/2006 at 11:18 am | Permalink
+Q.What is difference between sendRedirect() and forward()..? Which one is faster then other and which works on server?
+Ans:
+By using sendRedirect() one can redirect to a particular url in a existing web application and can out side url.
+eg.
+sendRedirect(”urlpattern”);
+and
+sendRedirect(”www.yahoo.com”);
+Note: in this the WEB BROWSER is the main working horse. in this the client had to do(web Browser)
+In forward() we can only forward the particular url pattern available inside the web aaplication. In this web container is the main working horse.
+eg.
+forward(”urlpattern”);
+This work on the server
+About the speed i am not sure. According to me forward() is faster
+
+Sahil Pandey
+Posted 8/13/2006 at 11:24 am | Permalink
+Q.What are the advantages using servlets than using CGI?
+Ans:
+About CGI
+Pearl is used to write CGI prog. that is not platform dependent.
+separate address space for every request..
+no thread concept is there in Pearl.
+Servlet.
+Written in java that is Platform Independent.
+same object is shared for every request.
+Threads run in behind to track all the request
+
+Sahil Pandey
+Posted 8/13/2006 at 11:27 am | Permalink
+Q.Which code line must be set before any of the lines that use the PrintWriter?
+Ans:
+PrintWriter pw=res.getWriter();
+
+vijayakumar .D.R.
+Posted 8/18/2006 at 7:08 am | Permalink
+what is servlet interface ?
+Defines methods that all servlets must implement.
+A servlet is a small Java program that runs within a Web server. Servlets receive and respond to requests from Web clients, usually across HTTP, the HyperText Transfer Protocol.
+To implement this interface, you can write a generic servlet that extends javax.servlet.GenericServlet or an HTTP servlet that extends javax.servlet.http.HttpServlet.
+This interface defines methods to initialize a servlet, to service requests, and to remove a servlet from the server. These are known as life-cycle methods and are called in the following sequence:
+The servlet is constructed, then initialized with the init method.
+Any calls from clients to the service method are handled.
+The servlet is taken out of service, then destroyed with the destroy method, then garbage collected and finalized.
+In addition to the life-cycle methods, this interface provides the getServletConfig method, which the servlet can use to get any startup information, and the getServletInfo method, which allows the servlet to return basic information about itself, such as author, version, and copyright.
+
+Gaurav
+Posted 9/4/2006 at 1:27 am | Permalink
+Generic servlet responds to all protocols but http servlets responds only to http protocol.
+
+nowshad
+Posted 11/13/2006 at 3:27 am | Permalink
+Q.What is the difference between ServetConfig and ServletContext..?
+Ans.Both are interfaces. The servlet engine implements the ServletConfig interface in order to pass configuration information to a servlet. The server passes an object that implements the ServletConfig interface to the servlet’s init() method.
+The ServletContext interface provides information to servlets regarding the environment in which they are running. It also provides standard way for servlets to write events to a log file.
+
+atul agarwal
+Posted 1/17/2007 at 10:30 am | Permalink
+Super.init(config) in servlet —-when u choose to override this method you should call this method means without calling getServletCofig or getInitParameter we can get a cofiguration data.
+
+Sandeep
+Posted 2/3/2007 at 10:09 am | Permalink
+The Java Servlet API allows a software developer to add dynamic content to a Web server using the Java platform
+A Servlet is an object that receives a request (ServletRequest) and generates a response (ServletResponse) based on the request
+
+Naga,
+Posted 2/15/2007 at 10:11 am | Permalink
+What is the servlet life cycle?
+ans>
+init(..)–>service(..)–>destroy().
+1)web container calls the init(SercletConfig config)
+method whenever the Servlet Object is Created.
+2)service(..) method is called whenever the client made the request
+3) destroy() method is called whenever the webcontainer is going to remove the servlet Object …………..
+
+Vikram
+Posted 2/19/2007 at 4:14 pm | Permalink
+What is the servlet?
+servlet is a server side program.It is similar to CGI but differs in persistance.The life of CGI is till it serves a task, varus once the servlet is started it persistant and can serve multiple request.
+
+Vikram
+Posted 2/19/2007 at 4:27 pm | Permalink
+7.What is the difference between GenericServlet and HttpServlet?
+Http servlet extends javax.servlet.GenericServlet an abstract class that implements most of the basic servlet methog.
+Generic servlet on the other hand implements the Servlet interface.
+
+Gayathri
+Posted 2/20/2007 at 3:19 pm | Permalink
+When we increase the buffer size in our project using page directive attribute Ã¢â‚¬ËœbufferÃ¢â‚¬â„¢ what changes we observe?
+We cannot use the and action as the buffer is flushed before the target page is invoked.
+
+Gayathri
+Posted 2/20/2007 at 3:20 pm | Permalink
+jsp:include and jsp:forward
+
+Kumarvijay
+Posted 4/9/2007 at 10:48 pm | Permalink
+For session tracking as i know there are 4 types one is using 1)cookie 2)URL Rewriting 3)Authentication 4)Hidden Field . As browser can disable cookies we can go for hidden field but the problem with hidden field is u can use it only in form . So we go for Authentication but this is not good practice Best method is URL rewriting as it will work even cookies are disable in browser..
+If u need more about this drop me a mail..At Kumarvijay.walikar@gmail.com
+
+Kumarvijay
+Posted 4/9/2007 at 10:58 pm | Permalink
+Why Servlet Better than CGI?
+In CGI for every client request a new process object is created But in Servlet only one object is created whenever the first request comes to that servelt. And after that for every new request a thread is launched and
+all thread share the common object so its scalable.
+And its platform independent.
+
+sridhar
+Posted 4/27/2007 at 6:45 am | Permalink
+javax.http.HttpServlet class has no abstract methods but it is abstract class (i know that abstract classes no need to have atleast one abstract method) ..what is the intention in that
+
+suresh
+Posted 5/18/2007 at 6:32 am | Permalink
+Can we call destroy() method on servlets from service method?
+
+Suman
+Posted 6/22/2007 at 9:00 am | Permalink
+
+7.	What is the difference between GenericServlet and HttpServlet?
+Ans: the Generic Servlet was used before 1990 and is of primitive nature whereas HTTPServlet has come in 1990 with added features to GenericServlet. Although the SuperClass to HTTPServlet is : javax.servlet.Servlets.GenericServlets.
+18.	What information that the ServletRequest interface allows the servlet access to?
+Ans: The ServletRequest interface allows the the Client to send the request to the server for accessing the required response through the Servlet Response which is received by the Client from the Server.
+44.	What is the super class of All servlets?
+Ans: the super class of all servlets is : - javax.servlet.Servlets
+48.	Types of Servlets?
+Ans: There are 2 types of servlets a. Generic servlet
+b. HTTP Servlet.
+49.	Why is that we deploy servlets in a webserver.What exactly is a webserver?
+Ans.: If we don't deploy the servlet in the webserver then it will be difficult to compile the servlet using the weblogic/tomcat etc..We deploy the servlet in the Web.xml file. A web Server is the Server which basically helps in communicating between the Client and the Serverin order to get the Request and send the response using alias for security purpose.
+ 
+Rafi
+Posted 6/23/2007 at 12:37 pm | Permalink
+Q.What is the difference between JSP and SERVLETS?
+Ans:
+1.For jsp java code is used in html tag.
+For servlet html tag is used in java code.
+2.It is very difficult to write so many println()
+in a sevlet to generate a html page.
+But in case of jsp no need of that.
+
+Mike Mountrakis
+Posted 7/8/2007 at 6:16 am | Permalink
+1. What is the servlet?
+A Servlet is a class that prototypes objects living within the Application Server or Plain HTTP Server.
+They are the implementation part of the application,
+while the Application Server or HTTP Server ensures the integrity of the HTTP communication.
+Normally, Servlets extend HttpServlet class and
+implement one (or maybe both) of the following two methods
+public void doGet()
+public void doPost()
+And for sure initialization method:
+public void init(ServletConfig config)
+2. What are the JSP atrributes?
+JSP attributes are the attributes that are used by JSP Components,
+For example can be the length of a text field or the foreground color of a label.
+3. What is the need of super.init(config) in servlets?
+Initialize attributes of the parent class for example the class reference count.
+Normally the developer implements the init() method adding initialization code for his
+own child - class attributes and the first row in the implementation must be the call to the superclass init():
+public void init(ServletConfig config)
+{
+super.init(config);
+/*
+Your initialization code fits here…
+*/
+}
+4. How to know whether we have to use jsp or servlet in our project?
+Depends what we have to design. For example an application that needs to have a brawser based GUI has
+no other JAVA options than using JSP. On the other hand, a servlet can interact with a siple POST/GET
+event without any other forms.
+5. Can we call destroy() method on servlets from service method?
+Calling destroy() results to destroy the brawser’s session with the Servlet instance.
+It will not affect the servlet container, meaning that if one client reaches a code point calling destroy(),
+the servlet will remain persistent for all other sessions.
+6. What is the Servlet Interface?
+A Set of Methods that servlets must implement.
+7. What is the difference between GenericServlet and HttpServlet?
+In GenericServlet you have to implement the Presentation Layer methods if for example you wish to use XML.
+HttpServelt is a Servlet subclass implementing Http protocol.
+8. How we can check in particular page the session will be alive or not?
+Use isAlive() method
+9. What is the importance of deployment descriptor in servlet?
+10. When we increase the buffer size in our project using page directive attribute Ã¢â‚¬ËœbufferÃ¢â‚¬â„¢ what changes we observe?
+Ability to receive and transmit over HTTP.
+12. When a servlet accepts a call from a client, it receives two objects. What are they?
+ServletRequest request, ServletResponse response for a GenericServlet originated class.
+HttpServletRequest request, HttpServletResponse response for HttpServlet originated class
+The client brawser’s request and response.
+15. What methods will be called in which order?((i.e)service(),doget(),dopost())
+init() -> doGet() -> destroy()
+16. Servlet is Java class. Then why there is no constructor in Servlet? Can we write the constructor in Servlet
+init() is called instead by the HTTP server.
+Michael Mountrakis
+http://www.illumine.gr
+
+Rohan Ambasta
+Posted 7/28/2007 at 2:46 am | Permalink
+Why the GenericServlet class is abstract ?
+object cannot be created for an Interface . But the webcontainer provides an object for the interface.comment !
+
+saurabh kushwaha
+Posted 9/20/2007 at 6:37 am | Permalink
+What is a Singleton class. How do you write it?
+A class whch cn have only one instance.
+make the construtor of the class private
+add a staic method that return object type of that class.
+code :
+class SingletonClass
+{
+SingletonClass singletonclass = null;
+private SingletonClass()
+{
+}
+public static SingletonClass getInstance()
+{
+singletonclass = new SingletonClass();
+return singletonclass;
+}
+}
+
+sameer
+Posted 11/13/2007 at 5:07 am | Permalink
+What is servlet?
+servlet is a multi threading program and it is a middle ware b/w the client request to the client response.
+
+praveenoruganti
+Posted 11/14/2007 at 6:50 am | Permalink
+Advantages of Servlets:
+With so many choices for servers-side software development, one can wonder why Java servlet technology is superior to others. Server-side Java technologies give us platform independence, efficiency, access to other enterprise Java APIs, reusability, and modularity.
+As Java servlets enjoy the same benefits of a regular Java program, they are platform-independent and can be ported across various platforms that support Java.
+As compared with predecessors of Java servlet technology, Java servlets performs quite exceedingly well. Due to its distinct and unique multi-threading capability, it is possible for hundreds and even thousands of users can access the same servlet simultaneously without affecting the load of the web server.
+Since servlets are an extension of the Java platform, they can access all of the Java APIs. A Java servlet can send and receive email, invoke methods of objects using Java RMI or CORBA, object directory information using the JNDI package, make use of an Enterprise JavaBean (EJB), or may other part of the ever-growing platform.
+Software reusability is the essential mantra for software development. As servlets are web components, they can be reused easily. Also Java, as an OO language, helps to encapsulate shared functionality to be reused. Thus Java servlets are reusable.
+
+rohit
+Posted 11/27/2007 at 12:32 am | Permalink
+When you want a servlet to take the same action for both GET and POST request, what should you do?
+The service method should be used to perform the task. there are two ways to implement this.
+1 call service method from doGET and doPOST methods by passing the response and request parameters.
+2 code only the service method..
+
+siri
+Posted 12/28/2007 at 3:21 pm | Permalink
+Difference between single thread and multi thread model servlet
+Ans) Typically, a servlet class is instantiated the first time it is invoked. The same instance will be used over several client requests, so all members that are declared in that servlet are shared accross clients. That is what is meant by multi threaded model, multiple clients that access the same instance.
+There are situations where you want to protect your servlet member variables from being modified by different clients. In this case, you can have your servlet implement the marker interface SingleThreadModel. Every time a client makes a request to a servlet that implements this interface, the engine will create a new instance of the servlet. For performance reasons, the engine can also maintain a instance pool, handing out instances as they are needed. Or it could also serialize client requests, executing one after another.
+
+siri
+Posted 12/28/2007 at 3:33 pm | Permalink
+Is servlet is used to create a dynamic webpage or Static webpage or both?
+You can do any thing. But server side programming is designed to generate dynamic web pages/designs. If static pages are needed, make it simple with static HTMLmpages.
+
+siri
+Posted 12/28/2007 at 3:46 pm | Permalink
+Why is that we deploy servlets in a webserver.What exactly is a webserver
+ans) Web server is nothing but program written in Java etc.Ex:Tomcat 5.0
+The webserver is exactly running in the JVM.so,whataver the program is written for Tomcat is running in JVM and displaying.
+We deploy the class file of the served, & servlet needed to execute run time environment & web server provide the run time environment for executing the servlet, each server has the own JVM
+A Web server handles the HTTP protocol. When the Web server receives an HTTP request, it responds with an HTTP response, such as sending back an HTML page. To process a request, a Web server may respond with a static HTML page or image, send a redirect, or delegate the dynamic response generation to some other program such as CGI scripts, JSPs (JavaServer Pages), servlets, ASPs (Active Server Pages), server-side JavaScripts, or some other server-side technology. Whatever their purpose, such server-side programs generate a response, most often in HTML, for viewing in a Web browser. Understand that a Web server’s delegation model is fairly simple. When a request comes into the Web server, the Web server simply passes the request to the program best able to handle it. The Web server doesn’t provide any functionality beyond simply providing an environment in which the server-side program can execute and pass back the generated responses

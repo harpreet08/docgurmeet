@@ -1,0 +1,899 @@
+Networking interview questions
+
+http://www.techinterviews.com/networking-interview-questions
+Networking interview questions
+
+
+Q1. Name of seven layers in Open System Interconnection model.
+A. They are Application, Presentation, Session, Transport, Network, Data link, and Physical.
+
+
+Q2. What is the time complexity of matrix multiplication ?
+
+void Mult_Matrix(matrix A, matrix B, matrix C)
+{
+int i, j, k;
+for ( i = 1; i < N; i++)
+for ( j = 1; j < N; j++ )
+{
+C[i][j] = 0;
+for ( k = 0; k < N; k++ )
+C[i][j] = A[i][j]*B[k][j];
+}
+retrun;
+}
+
+A. The time comlexity of matrix mulitiplication is O(N^3)
+
+
+Q3. What is the null pointer in C++ ?
+A. The null pointer is a special C++ pointer value that can be used for any pointer that doesn’t pointer anywhere. It can be written as the constant NULL form stlib.h
+
+Q4. What is the goal of the shortest distance algorithm ?
+A. The goal is to completely fill the distance array so that for each vertex v, the value of distance[v] is the weight of the shortest path from start to v.
+
+Q5. What is the difference between an abstract class and an interface?
+A. An abstract class may have fields and some implemented methods.
+
+An interface has no implementation; only constants and method declarations.
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+Network programming interview questions
+http://www.techinterviews.com/network-programming-interview-questions
+
+Question 1: How does the race condition occur?
+It occurs when two or more processes are reading or writing some shared data and the final result depends on who runs precisely when.
+
+
+Question 2: What is multiprogramming?
+Multiprogramming is a rapid switching of the CPU back and forth between processes.
+
+
+Question 3: Name the seven layers of the OSI Model and describe them briefly.
+Physical Layer - covers the physical interface between devices and the rules by which bits are passed from one to another.
+Data Link Layer - attempts o make the physical link reliable and provides the means to activate, maintain, and deactivate the link.
+Network Layer - provides for the transfer of information between end systems across some sort communications network.
+Transport Layer - provides a mechanism for the exchange of data between end system.
+Session Layer - provides the mechanism for controlling the dialogue between applications in end systems.
+Presentation Layer - defines the format of the data to be exchanged between applicationsand offers application programs a set of data transformation services.
+Application Layer - provides a means for application programs to access the OSI environment.
+
+
+Question 4: What is the difference between TCP and UDP?
+TCP and UDP are both transport-level protocols. TCP is designed to provide reliable communication across a variety of reliable and unreliable networks and internets.
+UDP provides a connectionless service for application-level procedures. Thus, UDP is basically
+an unreliable service; delivery and duplicate protection are not guareented.
+
+Question 5: What does a socket consists of?
+The combination of an IP address and a port number is called a socket.
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/network-developer-interview-questions-2
+Network developer interview questions
+
+
+How does TCP handshake work?
+
+
+How does SSL handshake work?
+
+
+What is the difference between passive FTP and active FTP?
+
+
+What is the difference between socket and session?
+
+
+How does network management station work?
+
+
+What are the different phases in VPN establishment?
+
+
+How does DH (deffie helman) work?
+
+
+What is TCP window sizing?
+
+
+What is MTU?
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+http://www.techinterviews.com/network-developer-interview-questions
+Network developer interview questions
+
+What ports does FTP traffic travel over?
+
+
+What ports does mail traffic utilize?
+
+
+What ports do HTTP and HTTPS use?
+
+
+Why is NTP required in an NFS network?
+
+Name some common mal software on the server side
+
+
+What is CPAN? How do you access it?
+
+What is PEAR?
+
+
+What advantages does mod_perl have over a perl CGI?
+
+
+What is required to do SSL in Apache 1.x?
+
+
+What is Tcl?
+
+
+What is a servlet engine/container?
+
+
+What is BIND?
+
+
+Name the steps to setup a slave zone in BIND
+
+
+Name the steps to setup a primary zone in BIND
+
+
+What commands would you use under Solaris or Linux to modify/view an LDAP tree?
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/network-administrator-interview-questions
+Network administrator interview questions
+
+What is the difference between layer 2 and layer 3 in the OSI model?
+
+What is the difference between a hub, switch, and router?
+
+What is a VLAN?
+
+What is the difference between TCP and UDP?
+
+How do you distinguish a DNS problem from a network problem?
+
+What is a runt, Giant, and collision?
+
+What is a broadcast storm?
+
+What is the purpose of VRRP?
+
+What is a VPN?
+
+What information about a peer would I need to establish a VPN?
+
+What is a full-class C in CIDR notation?
+
+What is a default route?
+
+What is a metric?
+
+What is a MAC address?
+
+What is ARP/RARP?
+
+Describe a TCP connection sequence
+
+What is MTU?
+
+What other TCP setting can you modify besides MTU to shorten packets?
+
+
+50 COMMENTS ON NETWORK ADMINISTRATOR INTERVIEW QUESTIONS
+
+
+Srinivas
+Posted 8/21/2005 at 10:34 pm | Permalink
+What is the difference between TCP and UDP
+TCP is a connection oriented protocol, which means that everytime a packet is sent say from host A to B, we will get an acknowledgement. Whereas UDP on the other hand, is a connection less protocol.
+Where will it be used : TCP -> Say you have a file transfer and you need to ensure that the file reaches intact, and time is not a factor, in such a case we can use TCP.
+UDP-> Media Streaming, question is say you are watching a movie…would you prefer that your movie comes..perfectly….but u need to wait a long time before you see the next frame ?..or would you prefer the movie to keep streaming…Yes…The second option is definely better….This is when we need UDP
+
+Srinivas Rajagopalan
+Posted 8/21/2005 at 10:38 pm | Permalink
+What is a MAC address?
+MAC is a machines Physical address, The internet is addressed based on a logical addressing approach. Say,when the packet reaches say the bridge connection a LAN, the question is..how does it identify, which computer it needs to send the packet to. For this it uses the concept of ARP, Address Resolution Protocol, which it uses over time to build up a table mapping from the Logical addresses to the Physical addresses. Each computer is identified using its MAC/Physical address ( u can use the ipconfig -all option to get ur MAC address).
+
+Poornima Rathinam
+Posted 11/14/2005 at 4:20 pm | Permalink
+What is MTU
+The MTU is the “Maximum Transmission Unit” used by the TCP protocol. TCP stands for Transmission Control Prototcol. The MTU determines the size of packets used by TCP for each transmission of data. Too large of an MTU size may mean retransmissions if the packet encounters a router along its route that can’t handle that large a packet. Too small of an MTU size means relatively more overhead and more acknowledgements that have to be sent and handled. The MTU is rated in “octets” or groups of 8 bits. The so-called “official” internet standard MTU is 576, but the standard rating for ethernet is an MTU of 1500.
+
+Vivek Kumar
+Posted 11/28/2005 at 4:57 am | Permalink
+Ques 2: Diffrence Betw. Switch , Hub, Router..
+Hub: 1.it is a layer1 device..used to connect various machine on Lan.
+2.It forwards broadcast by default.
+3.It supports one collision domain and one broadcast domain.
+4.it works on Bus topolog resulting less speed.
+Switch: 1. A layer2 device.
+2. Forward broadcast first time only.
+3. one broadcast domain & colliosion domains depends on no. of ports.
+4.It is based on Star Topology giving 100mbps to every pc on Lan.
+Router: 1. Does not Broadcast by default.
+2. breaks up Broadcast domain.
+3. Also called Layer3 switch.
+
+Vivek Kumar
+Posted 11/28/2005 at 5:08 am | Permalink
+Ques 9: VPN’s
+VPN(Virtual Private Network )… these are bascially the logical networks on the physical line… you can have many VPN oveer same line..
+Need of VPN arises when your company need to increase the network but don’t want to buy any more switches.. take an eg. your dept. your room is packed with employees and ur company need to add 4 more persons to ur deptt. what will they do.. the solution is to create VPN’s…you can configure the switch ports in other deptts. and create a specific VLAN of ur deptt.so that the persons can sit there and access to the required pcs.
+
+Vivek Kumar
+Posted 11/28/2005 at 5:22 am | Permalink
+Ques 12: Default Route…
+While configuring the Routers we need to give the specific routes if we are configuring a Static route..and for Default..we need not give the single route,, we just have to set the default route command on the router and we set this command on the router of last resort…that is it discovers the near by routes itself..
+
+Vivek Kumar
+Posted 11/28/2005 at 5:28 am | Permalink
+Ques 15:
+ARP: Stands for Address Resolution Protocol…whenever a request is sent by a node on one network to the node on another network the Physical address(MAC) is required and for this the IP address need to be flow over the network..whenver a router with that network (IP) gets the msg. the required MAC address is sent through the network this process of converting the IP address to MAC address is Called ARP..and the reverse thats the convertion of the Mac address to the IP address is called RARP ( Reverse Address Resolution Protocol)
+
+piyush
+Posted 2/28/2006 at 4:11 pm | Permalink
+What is the difference between layer 2 and layer 3 in the OSI model?
+
+piyush
+Posted 2/28/2006 at 4:12 pm | Permalink
+how to configure DNS in windows O/S with the command or stepes..
+
+Vijesh Chandran
+Posted 3/7/2006 at 5:23 am | Permalink
+What is the difference between layer 2 and layer 3 in the OSI model?
+Layer 2 is responsible for switching data whereas Layer 3 is responsible for routing the data.
+Layer3: With information gathered from user, Internet protocol make one IP packet with source IP and Destination IP and other relevant information. It can then route packet through router to the destination.
+Layer2: Soon after it receives IP packet from layer 3, it encapsulate it with frame header (ATM header in case of ATM technology) and send it out for switching. In case of ethernet it will send data to MAC address there by it can reach to exact destination.
+
+Aneesh
+Posted 3/30/2006 at 6:37 am | Permalink
+6)A RUNT is a packet that is too small to traverse the network. Network protocols such as Ethernet often require that packets be a minimum number of bytes in order to travel the network. Runts are often the result of packet collisions along a busy network or can result from faulty hardware that is forming the packets or from corrupted data being sent across the network.
+A giant is a packet that is too large to traverse the network. Network protocols such as Ethernet often require that packets can not be over a specific number of bytes in order to travel the network.
+
+Anjan Mitra
+Posted 6/22/2006 at 1:42 pm | Permalink
+3.
+VLANs logically segment switched networks based on the functions, project teams, or applications of the organization regardless of the physical location or connections to the network.
+VLANs provide segmentation based on broadcast domains.
+All workstations and servers used by a particular workgroup share the same VLAN, regardless of the physical connection or location.
+VLANs are created to provide segmentation services traditionally provided by physical routers in LAN configurations.
+VLANs address scalability, security, and network management. Routers in VLAN topologies provide broadcast filtering, security, and traffic flow management.
+
+"MAHWISH QURESHI"
+Posted 7/3/2006 at 3:57 am | Permalink
+can u tell me
+wot iz Default Mask and Subnet Mask?and there use
+wot iz PSTN,Broadband ,Baseband signalling
+4 Methods to convert digital data into analog signal
+also tell me the difference between SWITCH & HUB.
+give any example of DSL,ISDN,PSTN networks
+thanx
+
+sujit singh
+Posted 10/18/2006 at 2:58 am | Permalink
+What is deffrence between broadcast domain and collision domain.
+
+Chris
+Posted 11/2/2006 at 12:25 am | Permalink
+What is a VPN?
+A VPN stands for Virtual Private Network. In english it is a direct tunnel into a remote network. It allows users to work with certain applications, printers, network drives and shares as if they where sitting in the office.
+
+Chris
+Posted 11/2/2006 at 12:36 am | Permalink
+How do you distinguish a DNS problem from a network problem?
+The first thing to do is to ping any switches, routers, or any other devices on the network. If your pings come back complete with 0% lost, then it will most likely be a DNS issue. If you can ping other devices but can not ping the switch that sits in front of the DNS, then it will be a network issue.
+
+Neha
+Posted 11/28/2006 at 5:00 am | Permalink
+7 Broadcast Storm
+A broadcast storm means that your network is overwhelmed with constant broadcast or multicast traffic. Broadcast storms can eventually lead to a complete loss of network connectivity as the packets proliferate.
+If a certain broadcast transmit threshold is reached, the port drops all broadcast traffic. Firewalls are one of the best ways to protect your network against broadcast storms.
+A state in which a message that has been broadcast across a network results in even more responses, and each response results in still more responses in a snowball effect. A severe broadcast storm can block all other network traffic, resulting in a network meltdown. Broadcast storms can usually be prevented by carefully configuring a network to block illegal broadcast messages.
+
+Neha
+Posted 11/28/2006 at 5:20 am | Permalink
+What is a metric?
+Routing tables contain information used by switching software to select the best route.
+Routing algorithms have used many different metrics to determine the best route. Sophisticated routing algorithms can base route selection on multiple metrics, combining them in a single (hybrid) metric. All the following metrics have been used:
+Ã¢â‚¬Â¢Path length
+Ã¢â‚¬Â¢Reliability
+Ã¢â‚¬Â¢Delay
+Ã¢â‚¬Â¢Bandwidth
+Ã¢â‚¬Â¢Load
+Ã¢â‚¬Â¢Communication cost
+
+Ajay
+Posted 12/19/2006 at 5:32 am | Permalink
+What is the difference between layer 2 and layer 3 of OSI model?
+In the hirarchical design of the osi model , layer 3 is used fot the determinning the path of packet delivery and method of the packet to deliver. for that the routing and the routed protocol works .On the layer two , packets are segmented to data enclosed with the mac address to which the data needs to deliver . on layer 2 , ARP works to resolve the IP address to mac address .
+
+Ajay Wankhede
+Posted 12/19/2006 at 5:37 am | Permalink
+What is the difference between a hub, switch, and router?
+Hub works on layer 1 of OSI model
+Swich works on layer 2 of OSI model
+Router works on layer 3 of OSI model
+Hub does not seperate collision and broadcost domain
+swich seperate collision domain but does not seperate broadcost domain.
+router does seperate collision and broadcost domain
+
+ashok
+Posted 2/23/2007 at 3:22 am | Permalink
+liunx
+what is primary name server and their uses ?
+what is secondary name server and their uses ?
+how can we identify the port numbers eg:tcp,udp etc in redhat linux (EL4)
+
+khawaja M Jawad
+Posted 3/10/2007 at 2:41 am | Permalink
+What is the difference between Layer 3 Switch and a Router ????
+What elements are required to install Windows 2003 server???
+
+Bsingh
+Posted 3/11/2007 at 11:02 pm | Permalink
+Hi,
+Please give me an example of the critical situation where you have to decide yourself without any help provided and you made a excellent decision? How did it arise? What did you do to solve an issue?
+
+vijayalaxmi
+Posted 3/12/2007 at 1:59 am | Permalink
+can u please give me some interview questions on winrunner,loadrunner,manual,and qtp
+
+Ashish Arya
+Posted 3/23/2007 at 4:14 am | Permalink
+What is a full-class C in CIDR notation?
+Ans :
+For class A ..default subnet mask is 255.0.0.0 so CIDR notation is /8
+For class B ..default subnet mask is 255.255.0.0 so CIDR notation is /16
+For class C ..default subnet mask is 255.255.255.0 so CIDR notation is /24
+
+Mubarak Pathanamthitta
+Posted 4/5/2007 at 12:05 am | Permalink
+Private(Reserved) And Public IPÃ¢â‚¬â„¢s?
+A computer on the Internet is identified by its IP address. In order to avoid address conflicts, IP addresses are publicly registered with the Network Information Centre (NIC). Computers on private TCP/IP LANs however do not need public addresses, since they do not need to be accessed by the public. For this reason, the NIC has reserved certain addresses that will never be registered publicly. These are known as private IP addresses, and are found in the following ranges:
+From 10.0.0.0 to 10.255.255.255
+From 172.16.0.0 to 172.31.255.255
+From 192.168.0.0 to 192.168.255.255
+
+Irfan
+Posted 4/22/2007 at 11:03 am | Permalink
+Q: When I ping an IP address the result comes out succesfull, but when I ping with host name no result comes, ping fails. why?
+
+mamatha
+Posted 4/24/2007 at 4:07 am | Permalink
+what is socket?
+
+M.SRINIVAS RAO
+Posted 5/2/2007 at 4:28 pm | Permalink
+The purpose of the VRRP packet is to communicate to all VRRP routers the priority and the state of the Master router associated with the Virtual Router ID.
+VRRP packets are sent encapsulated in IP packets. They are sent to the IPv4 multicast address assigned to VRRP.
+
+M.SRINIVAS RAO
+Posted 5/2/2007 at 4:32 pm | Permalink
+Describe a TCP connection sequence?
+The TCP three-way handshake describes the mechanism of message exchange that allows a pair of TCP devices to move from a closed state to a ready-to-use, established connection. Connection establishment is about more than just passing messages between devices to establish communication. The TCP layers on the devices must also exchange information about the sequence numbers each device wants to use for its first data transmission, as well as parameters that will control how the connection operates. The former of these two data exchange functions is usually called sequence number synchronization, and is such an important part of connection establishment that the messages that each device sends to start the connection are called SYN (synchronization) messages.
+You may recall from the TCP fundamentals section that TCP refers to each byte of data individually, and uses sequence numbers to keep track of which bytes have been sent and received. Since each byte has a sequence number, we can acknowledge each byte, or more efficiently, use a single number to acknowledge a range of bytes received
+
+M.SRINIVAS RAO
+Posted 5/2/2007 at 4:33 pm | Permalink
+What is Socket?
+When a computer program needs to connect to a local or wide area network such as the Internet, it uses a software component called a socket. The socket opens the network connection for the program, allowing data to be read and written over the network. It is important to note that these sockets are software, not hardware, like a wall socket. So, yes, you have a much greater chance of being shocked by a wall socket than by a networking socket.
+Sockets are a key part of Unix and Windows-based operating systems. They make it easy for software developers to create network-enabled programs. Instead of constructing network connections from scratch for each program they write, developers can just include sockets in their programs. The sockets allow the programs to use the operating system’s built-in commands to handle networking functions. Because they are used for a number of different network protocols (i.e. HTTP, FTP, telnet, and e-mail), many sockets can be open at one time.
+
+M.SRINIVAS RAO
+Posted 5/2/2007 at 4:37 pm | Permalink
+When I ping an IP address the result comes out succesfull, but when I ping with host name no result comes, ping fails. why?
+Because the denied permission had been assigned to ping command (HOST NAME). Check the Firewall( windows and firewall software)
+
+M.SRINIVAS RAO
+Posted 5/2/2007 at 4:45 pm | Permalink
+how to configure DNS in windows O/S with the command or stepes….?
+Netsh commands for Interface IP. You can use commands in the Netsh Interface IP context to configure the TCP/IP protocol (including addresses, default gateways, DNS servers, and WINS servers) and to display configuration and statistical information.
+USE HELP COMMAND FOR MORE INFORMATION (netsh/?)
+
+Edwin C
+Posted 5/17/2007 at 8:43 am | Permalink
+Question.
+The socket offer 5 functions that could be used to receive data. That is read, readv,recv, recvfrom, and recvmsg. Determine which among the 5 functions support connection oriented and which support connectionless oriented. Find reasons why support different connection orientation as well as the format of every function and meaning of their arguments
+
+Neel
+Posted 8/3/2007 at 11:15 am | Permalink
+RARP:-
+RARP is a TCP/ IP protocol term similar to ARP. RARP is the method that some machines use to determine their own IP address. Essentially, a machine sends out a packet that includes a machine hardware address. A server on the same network receives the packet and looks up the hardware address. The server then sends back the associated IP address of that machine. It is used for machines that do not have the capability to store their own IP addresses locally.
+ARP:-
+Address Resolution Protocol. ARP is the protocol used by IP (as in TCP/IP) for address resolution. Address resolution refers to the ability of a station to resolve another station’s MAC (hardware) address given its IP address.
+
+S.BHanerjee
+Posted 9/13/2007 at 3:54 am | Permalink
+What the Purpose of VLAN?
+What is OSPF?
+What is Spanning Tree protocol?
+
+surya prakash MR
+Posted 9/13/2007 at 6:49 am | Permalink
+When I ping an IP address the result comes out succesfull, but when I ping with host name no result comes, ping fails. why?
+On the network when you ping an IP address if ping request completed with 0% of loss that mean you are able to reach that Device(ip address)
+But when u ping hostname if u get the result as RTO that means Ping is been disabled for hostname in firewall or router
+If u get ping could not find the host address that means DNS issue.Mean Name resolution is not happening.
+
+Sanket Naik
+Posted 9/26/2007 at 10:15 am | Permalink
+what is ospf?
+– Open Sortest Path First(ospf) is an interior gatway routing protocol(IGP). developed by Internet Engineering Task Force(IETF) in 1988.
+OSPF is universal routing protocol. can be used by anybody. Its a link state protocol. many advantages over distance vector protocols like fast convergance,etc.
+
+Sameer
+Posted 9/28/2007 at 9:32 pm | Permalink
+Question 11
+What is a full-class C in CIDR notation
+CIDR specifies an IP address range using a combination of an IP address and its associated network mask. CIDR notation uses the following format -
+xxx.xxx.xxx.xxx/n
+Full Class C in CIDR notation can be represented by
+Example 10.16.0.0/16
+This is a 256 class C = FIRST CLASS B
+Now they here are a few more
+10.16.0.0/17 is a 128 class C
+10.16.0.0/16 is a 64 class C and so on.
+Any comments are welcome
+
+sunil
+Posted 10/12/2007 at 9:29 am | Permalink
+Every network adapter has what’s called a Media Access Control address (usually shortened to MAC address). It’s a six-byte identifying number permanently embedded in the firmware of the adapter, and is readable by the network and the operating system of the device on which the adapter is installed. All modems have a MAC address; so do all Ethernet cards. The address must follow the standards set by the Institute of Electrical and Electronics Engineers (IEEE), which sets computer networking standards. Basically, the address is a six-pair set of hexadecimal numbers, for example, a1-c2-e3-44-5f-6d
+
+Neelam
+Posted 11/20/2007 at 1:30 am | Permalink
+What the Purpose of VLAN?
+VLANs can enhance network security.
+VLANs increase the number of broadcast domains while decreasing their size.
+Network adds, moves, and changes are achieved by configuring a port into the appropriate VLAN.
+A group of users needing high security can be put into a VLAN so that no users outside of the VLAN can communicate with them.
+As a logical grouping of users by function, VLANs can be considered independent from their physical or geographic locations.
+What is OSPF?
+Open Shortest Path First
+OSPF) is a non-proprietary link-state routing protocol limited to use with the TCP/IP stack. Open Shortest Path First (OSPF) is an open standards routing protocol thatÃ¢â‚¬â„¢s been implemented by a wide variety of network vendors, including Cisco. If you have multiple routers and not all of them are Cisco, So your remaining options are basically RIPv1, RIPv2, or OSPF. If itÃ¢â‚¬â„¢s a large network, then, really, your only options are OSPF
+OSPF provides the following features:
+Consists of areas and autonomous systems
+Minimizes routing update traffic
+Allows scalability
+Supports VLSM/CIDR
+Has unlimited hop count
+Allows multi-vendor deployment (open standard)
+Characteristic of OSPF
+Type of protocol - Link-state
+Classless support - Yes
+VLSM support - Yes
+Auto summarization - No
+Manual summarization - Yes
+Discontiguous support - Yes
+Route propagation - Multicast on change
+Path metric - Bandwidth
+Hop count limit - None
+Convergence - Fast
+Peer authentication - Yes
+Hierarchical network - Yes (using areas)
+Updates Event - Triggered
+What is Spanning Tree protocol?
+In a Layer 2 environment (switching or bridging), however, no routing protocols are used, and active redundant paths are neither allowed nor desirable. Instead, some form of bridging provides data transport between networks or switch ports. The Spanning Tree Protocol (STP) provides network link redundancy so that a Layer 2 switched network can recover from failures without intervention in a timely manner. It vigilantly monitors the network to find all links, making sure that no loops occur by shutting down any redundant links. STP uses the spanning-tree algorithm (STA) to first create a topology database, then search out and destroy redundant links.
+
+Harry
+Posted 12/17/2007 at 4:29 am | Permalink
+Irfan,
+Possibly the DNS entry of the server with host name) you are accessing successfully through IP address is not done. You need to ask your System administrator to do that. Once done, then ur server can be accessed using IP as well as its host name.
+
+M.Rizwan shah
+Posted 4/27/2008 at 11:38 pm | Permalink
+Yes Its very nice to get these important points here.Actually I want to correct some thing, you mention in switch question that it broadcast first time only, Actually this is not the case, The correct statement is, Swithch boradcast every time,whenever it detects a new machine is attatched with it,in order to build its table.
+
+rashid
+Posted 8/20/2008 at 10:48 pm | Permalink
+well switch broadcast everytime when new machine is added into a Network after getting a mac address it add this address into its cam table along with its associated port , switch is a layer 2 device i.e Data link layer ,switch also broadcast when it can’t find any mac address in its cam table , also switch each port is a seperate Collision Domain , for a switch of 100MBPS it mean switch each port is working on 100MBPS , 10/100MBPS means switch can work on 10MBPS and 100MBPS
+it can also auto detect the 10/100MBPS
+
+rashid
+Posted 8/20/2008 at 11:00 pm | Permalink
+transport layer TCP & UDP
+data is segmented in this layer
+we have segments
+TCP — acknowledgments , sequence numbers
+concept of windowing , error recovery
+Concept of sockets and port numbers
+UDP — fast transmission without error recovery , no sequence no’s , no windowing
+lower over head
+Network layer or layer 3 : we have packets in network layer , logical addresses ,
+router work on this layer
+protocol for this layer is IP
+router breaks broadcast domains
+by default routers do not forward
+broadcasts
+Data link or layer 2
+Frames are form in this layer
+physical addresses or MAC addresses
+Ethernet is the main protocol
+for this layer
+Switch work on data link layer
+switch breaks collision domains
+switch each port is a seperate
+collision domain
+features of data link
+mac address
+error discovery ,error recovery is performed by TCP in Transport layer
+switch builds cam tables
+if u want more detail how switch build cam table etc or how routers make routing decisions etc plz ask thank you
+
+Sabeesh Chorode
+Posted 9/3/2008 at 1:48 am | Permalink
+Answer to Qtn No.1
+The layer2 ,datalink layer is responsible for moving frames
+from one hop(node)to the next.Whereas in layer3 i,e network
+layer is responsible for the delivery of individual packets
+from source host to destination host.
+
+Rimkick
+Posted 10/15/2008 at 11:31 am | Permalink
+A default route is the path used by the device when no other routes have been created. Generally it is the next hop out of a device to a router, out to the LAN or out to the WAN. Each hop along the way will have a default route. A router must have a default created and if having multiple ports, it must have one port set up as the default port with the route. Routes have 3 parts, network, gateway, cost with a port being an option. A default route days that all traffic will use this route if no other routes have been created,
+
+Fahad
+Posted 10/29/2008 at 9:09 am | Permalink
+What is the best disaster recovery plan of a company?
+
+siva
+Posted 12/9/2008 at 5:27 am | Permalink
+Difference between layer2 and layer3
+Layer2:- It is used to send data using mac address and by frames.
+Layer3:- It is used to send data using ip address and by packets
+
+kishore
+Posted 2/4/2009 at 3:15 am | Permalink
+dear sir
+why do we use c range of ip address(192 range) in organizations .
+plse let me know
+thanking you sir
+kishore
+
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+Cisco-specific network engineer questions
+
+What is a wildcard mask, and how is it different from a netmask?
+
+
+How do you configure a Cisco switch or router? What are the steps needed?
+
+
+How would I place an interface into trunking mode?
+
+
+How do you shutdown an interface on a router or switch?
+
+
+What is VTP?
+
+
+What is VMPS?
+
+
+What is SPAN/RSPAN?
+
+
+What is flow/netflow?
+
+
+What is TACACS? Radius?
+
+nalini
+Posted 12/22/2005 at 9:43 pm | Permalink
+4.
+on router or switch to shutdown the interface commands are:
+router>enable
+router#config t
+router(config)#int s0
+router(conf_if)#no shutdown
+
+Jason Welcker
+Posted 12/24/2005 at 5:51 pm | Permalink
+3.
+conf t
+int foo
+switchport mode trunk
+exit
+4.
+conf t
+int foo
+shutdown
+exit
+Where foo equals the interface you’d like to trunk/shutdown.
+5. Virtual trunking protocol allows easier management of VLANs over multiple switches by implementing VTP Server(s) and a VTP domain. When you configure a new VLAN on one VTP server, the VLAN is distributed through all switches in the domain. This reduces the need to configure the same VLAN everywhere. There is much more to VTP, but I assume in an interview you wouldn’t need to get as deep as VTP Pruning, VTP transparent mode, etc..
+
+Anjan
+Posted 6/22/2006 at 1:06 pm | Permalink
+9. TACACS+ is a security application used with AAA that provides centralized validation of users attempting to gain access to a router or network access server.
+TACACS+ services are maintained in a database on a TACACS+ daemon running on a UNIX, Windows NT, or Windows 2000 workstation.
+TACACS+ provides for separate and modular authentication, authorization, and accounting facilities
+RADIUS is a distributed client/server system used with AAA that secures networks against unauthorized access.
+AAA means Authentication Authorization Accounting
+
+Anjan
+Posted 6/22/2006 at 1:12 pm | Permalink
+6. A VLAN Membership Policy Server or “VMPS” is a network switch that contains a mapping of device information to VLAN.
+
+Ranjha Singh
+Posted 11/3/2006 at 10:37 am | Permalink
+TACACS+ & RADIUS is protocol, which is used to authentication not a application.
+
+rocky
+Posted 12/10/2006 at 9:13 pm | Permalink
+1. What is a wildcard mask, and how is it different from a netmask?
+> netmask determines the subnet part of the ip address
+example
+255.255.0.0 class b. the netmask is 255.255
+wildcard mask is the opposite. u see this in ospf.
+0.0.255.255 .. the 255.255 here defines the host portion. its a wild thing really
+2. How do you configure a Cisco switch or router? What are the steps needed?
+>enable
+#configure terminal
+configs are slightly similar
+3. How would I place an interface into trunking mode?
+en
+config t
+int s0/0
+switchport mode trunk encapsulation dot1q|isl
+4. How do you shutdown an interface on a router or switch?
+en
+config t
+int s0/0
+shutdown
+5. What is VTP?
+virtual trunking protocol. set up on switches to manage vlans.
+6. What is VMPS?
+VLAN membership policy server. maps information regarding vlan
+7. What is SPAN/RSPAN?
+Switched port analyzer. remote switched port analyzer.
+you can monitor traffic flowing to a port from another port.
+8. What is flow/netflow?
+protocol for collecting IP information
+9. What is TACACS? Radius?
+terminal access controller access control system
+remote access dial in user service
+security enabled by aaa
+authentication, authorization, accounting
+provides a means of validation of users gaining access to a router
+accounting not used with radius.
+
+Hariharan
+Posted 5/25/2007 at 1:25 am | Permalink
+Netmask defines the class. whereas wildcard mask defines the allow or deny which is used in the access-list. Means, 0.0.0.255 represents… 0=match; 1=ignore; so here in this wc mask all 0 octets should match exactly where as .255 octet can be anything.
+
+sandeep yadav
+Posted 5/30/2007 at 4:03 am | Permalink
+on router or switch to shutdown the interface commands are:
+router>enable
+router#config t
+router(config)#int s0
+router(conf_if)# shutdown
+this will shut your active interface
+
+Ameet Mathrani
+Posted 8/17/2007 at 10:12 am | Permalink
+Following is wrong:
+nalini said,
+4.
+on router or switch to shutdown the interface commands are:
+router>enable
+router#config t
+router(config)#int s0
+router(conf_if)#no shutdown
+Right way:
+on the interface of the router/switch,which you want to shutdown,just enter the command “shutdown”
+
+Jah
+Posted 9/21/2007 at 2:48 pm | Permalink
+The wildcard mask is usually a string of binary digits shown over the subnet number, telling the router which parts of the subnet number to look at. A binary “0″ over a particular digit in the subnet number says “Pay attention to this digit.” A “1″ says “Ignore this digit.” In a wildcard mask, all the binary “0″s in a conventional subnet mask are replaced by “1″s and all the “1″s are replaced by “0″s.
+
+prajith mp
+Posted 2/26/2008 at 11:07 pm | Permalink
+for trunk mode in switch interface
+#int fa 0/1
+#switchport trunk allow vlan (vlans you required seperated with coma)
+#switchport mode trunk [isl](encapsulation dot1q)
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+Security interview questions for network admin
+
+What is a firewall?
+
+Describe, genrally, how to manage a firewall
+
+What is a Denial of Service attack?
+
+What is a “spoofed” packet?
+
+What is a SYN Flood?
+
+What do you do if you are a victim of a DoS?
+
+What is GPG/PGP?
+
+What is SSH?
+
+What is SSL? How do you create certificates?
+
+What would you do if you discovered a UNIX or Network device on your network has been compromised?
+
+What would you do if you discovered a Windows system on your network has been comrpromised?
+
+What is DNS Hijacking?
+
+What is a log host?
+
+What is IDS or IDP, and can you give me an example of one?
+
+Why are proxy servers useful?
+
+What is web-caching?
+
+
+
+19 COMMENTS ON SECURITY INTERVIEW QUESTIONS FOR NETWORK ADMIN
+
+
+anju
+Posted 2/28/2006 at 4:14 pm | Permalink
+A firewall is simply a program or hardware device that filters the information coming through the Internet connection into your private network or computer system. If an incoming packet of information is flagged by the filters, it is not allowed through.
+Firewalls use one or more of three methods to control traffic flowing in and out of the network:
+* Packet filtering - Packets (small chunks of data) are analyzed against a set of filters. Packets that make it through the filters are sent to the requesting system and all others are discarded.
+* Proxy service - Information from the Internet is retrieved by the firewall and then sent to the requesting system and vice versa.
+* Stateful inspection - A newer method that doesn’t examine the contents of each packet but instead compares certain key parts of the packet to a database of trusted information. Information traveling from inside the firewall to the outside is monitored for specific defining characteristics, then incoming information is compared to these characteristics. If the comparison yields a reasonable match, the information is allowed through. Otherwise it is discarded.
+
+Ranjha Singh
+Posted 11/3/2006 at 10:43 am | Permalink
+DNS Hijacking mean hijacker spoof the ip of any DNS query. Lets example. user send a DNS requset for YAHOO.com and Hijacker hijack this packet & answer on behalf of DNS and give the wrong IP Assres.
+
+Ranjha Singh
+Posted 11/3/2006 at 10:52 am | Permalink
+SSL is Secure Socket Layer. CA Genrates the certificates.
+
+SUNIL ARORA
+Posted 11/3/2006 at 11:02 am | Permalink
+Denial of Service attack means server or machine receive so many packets from the single or multiple network sources or spoofed resources so that its all resources will be used to in responce of those packets & after that it will hang or not responding. Then it will start to denial to its services.
+
+bob saget
+Posted 12/8/2006 at 2:29 pm | Permalink
+Why are you answering these questions people? These are questoins for a ‘job interview’ not for you to show off your clearly impeccable grasp of the english language.
+
+virendra yadav
+Posted 5/8/2007 at 6:37 am | Permalink
+. FireWall is nothing but it is used to avoid the unwanted trafic or unauthorised entry. The Firewall has 2 types 1. Hardware & 2.Software. Now the most familiar used firewall is PIX from the make of cisco. and other firewalls like nokia and so on..
+furtherÃ¢â‚¬Â¦ as a security measure it also depends on the network designer and implementer that how to use a Firewall mean to say the security measures like how to present the content filtering and Url filtering which type of firewall should be used and where to put it..
+20d3
+
+Harish P
+Posted 6/5/2007 at 7:32 pm | Permalink
+9). What is SSL? How do you create certificates?
+Ans : SSL: Secure Sockets Layer, a protocol developed by Netscape for transmitting private documents via the internet. SSL works by useing a private key to encrypt data that`s transferred over the SSL connection. Both Netscape Navigator and Internet Explorer support SSL and many Web sites use the protocol to obtain confidential user information, such as credit card numbers. By convention, Web pages that require an SSL connection start with https: instead of http .
+
+Naveen
+Posted 7/2/2007 at 6:35 am | Permalink
+(1)A firewall is simply a program or hardware device that filters the information coming through the Internet connection into your private network or computer system. If an incoming packet of information is flagged by the filters, it is not allowed through.
+
+Sunil Reddy
+Posted 7/26/2007 at 12:53 pm | Permalink
+What is a firewall?
+Firewall is a device or a software which restricts the unauthorised accesses to and from the network……….Guys its that simple no need to beat around the bush
+Cheers
+Sunil Reddy.M
+Security Consultant
+
+deepak kajla
+Posted 9/3/2007 at 1:24 am | Permalink
+ssh=secure shell used for remotely logged in another clint systems through a linux administrator.
+
+DPK
+Posted 11/27/2007 at 2:50 am | Permalink
+SSH is a secure way of connecting to a Server or Remote host. This protocols replaces the Telnet applications.
+SSH uses 3 different ways of authentications,
+1. Preshared Key authentication
+2. Public/Private key authentication
+3. Host based authentication
+SSHkeygen tool is used to generate Public and Private keys for a host.
+
+Venkat
+Posted 5/13/2008 at 2:07 am | Permalink
+Firewall is a program or hardware device
+which performs the following operations
+1. Packet Filtering (Main Purpose of a F/W)
+2. Address Translations and
+3. Routing Packets (Leastly)
+If you give this answer in any interview interviwer will not ask any more questions
+
+Ashish Mishra
+Posted 5/18/2008 at 2:49 pm | Permalink
+Fire-wall -As the naem suggest Fire wall it is a wall between ur network ad the public network .All the data coming from out side is get filtered o by ur firewall divice it can be a hardware or software that restricts the entry of data packets.it governs by the rules and regulation set by ur admin.
+let me give u a simple example-: lets Assume a Water tank fitted at the top of ur building the tank get fill by the pipe line cuming from outside the building now once the tank filled the water will suplied to each house of that building if the water that filled on tank is polluted thn it effect the health of all the pple consuming that water
+wat i mean here is if the water enters into the tank himself polluted if we put sum filter equipment between that water pipe filling the tank then we will get clean water thts it
+
+Venkat
+Posted 5/19/2008 at 6:05 am | Permalink
+For any straight question everyone expects straight answer not an explanation.
+Please ensure you are giving straight answer,
+Not stories
+
+Ashish Mishra
+Posted 5/20/2008 at 1:19 am | Permalink
+what is SYN flood ?
+A sync- Flood is a attack that consist of TCP packets.The attacker flooded ur machine with TCP packets that causes to reboot the system also and if ur connected to some remote machine thn u will get disconnected.There are various tools available for sync attack u can try to learn more from them some of them are hping ,jwddos, or u can also write ur own tool using socket programming
+
+Ashish Mishra
+Posted 5/23/2008 at 9:20 am | Permalink
+Proxy Servers
+A proxy server is server tht sits between ur machine and web server with whom ur communicating.
+Proxy server is useful in hiding ur machine IP
+By using proxy server u can get quick reply and reponse as the request are handle by the proxy.
+
+Ravindra
+Posted 12/15/2008 at 12:32 am | Permalink
+Firewall?
+Firewall is a device/a program which separates trusted network from an untrusted network.There are 4 types of firewall
+1>packet filters
+2>circuit level firewall–>acts on session layer
+3>application level/proxy–>acts on application level
+4>state full–>performs all the operations above said.
+the above said can be included in an hardware or used like a software
+ex:—Hardware–>CISCO PIX,Fortinet,Juniper,netscreen,sonic wall
+ex:software—>checkpoint,iptables,
+
+Ravindra
+Posted 12/15/2008 at 12:49 am | Permalink
+How do we create certificates in SSL?
+The client1(like yahoo/gmail) goes to a CA(certificate authority)like satyam in India which is authorised to give certificates.
+This certificate usally contains public key(here we use asymetric encryprion for non-repudiation),date of expiry,who has issued this certificate.The client2(like a comp in internet cafe which initiates the connection) when receives this certificate can verify abt the client1 with CA.
+to understand the whole process of the SSL
+let me put it in this way(in points)
+1>comp says hello(random no.+ ciphers+ algorithms)
+2>gmails says(random number+chosen cipher+chosen algorithm from comp hello msg)
+3>gmail again sends certificate negotiation done packet
+4>comp req client key req
+(pre master key/public key/or nothing)
+5>masterkeys are sent by both(comp and gmail)
+6>comp sends change cipher spec(encryption will be done here after)
+7>it sends a fineshed msg(hash+MAC)
+8>gmail verifies the hash and MAC
+9>point 4,5,6,7 will be done now from gmail side
+10>hash and mac will be verified by client now
+11>ssl has been created now
+one more thing what is MAC?
+since we are using a ssl v3 now
+i will stick to it only data is broken in to parts one is encrypted with MD-5 and other half with SHA-1 and these two are XOR’ed and Resultant is MAC(message authentication code)
+
+Ravindra
+Posted 12/15/2008 at 12:54 am | Permalink
+DOS attack?
+denial of service attack is the last step taken by an hacker when he can not enter the perimeter of a protected n/w.remember a good sys admin will never need a firewall to protect his n/w.
+dos attack is done to limit legitimate users from accessing the required data and thus availability is stopped from (AIC triad-availability,integrity,confidentiality).

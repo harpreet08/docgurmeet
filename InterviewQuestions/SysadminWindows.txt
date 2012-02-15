@@ -1,0 +1,98 @@
+http://www.techinterviews.com/sysadmin-sample-interview-questions
+
+Sysadmin sample interview questions
+
+Why was it that you left the last job that you were at?
+
+
+What do you think your top 3 strengths are?
+
+
+What is most important to you in a job?
+
+
+Major difference between FAT and NTFS on a local machine?
+
+
+How many passwords by default are remembered in an active directory?
+
+
+What is a C name record (in DNS)?
+
+
+What is a LM host file used for?
+
+
+Can you name the FSMO roles in active directory?
+
+
+What tolls would you use to gage the effect of group policy before using any tools?
+
+
+Explain Active Directory sites and services and linked cost routing?
+
+
+When would you use circular logging and exchange?
+
+
+Exhange related question - as an echange admin if someone asked you how to determine if mail was delivered or not which tool would you use?
+Can you explain how you configurated SMS.
+
+
+Rate yourself in 3 different areas (1-5, 5 is expert)
+
+
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+
+http://www.techinterviews.com/some-pc-and-networking-questions
+Some PC and networking questions
+
+Workers can not print from the printer, there user log on are correct and are allowed to print from that printer in active directory. How would you resolve this issue?
+
+
+What is the difference between hub and switch?
+
+
+Your hard drive is partitioned as follows: 8 gigs for OS drive C, 8 gigs for Hot Swappable dirve D and rest is free as dirve E. Your drive C crashes, how would you reboot your system without installing a new operating system?
+
+
+Your computer gives you “non-disk error” before you log on what would you do to make your computer work?
+
+
+
+1.	Workers can not print from the printer, there user logon are correct and are allowed to print from that printer in active directory. How would you resolve this issue?
+This is vague and could have multiple responses. Here are a few.
+1. Verify printer is set as default.
+2. Verify users have local privileges set properly to print.
+3. Is print server delivering correct drivers?
+4. Is local naming convention for printer correct?
+5. If pre Win2000 workstation, naming convention must be less than 12 characters.
+6. Make sure no viruses present. Some Viruses can shut down IPC shares and printing services.
+
+
+
+2.	What is the difference between hub and switch?
+A hub is not smart and allows all connected nodes/networks to communicate with each other. You a are limited to 10/100Mb half duplex operation on a hub. To hook two hubs togethor you would use a crossover cable. Most hubs also have a crossover port which will allow you to use a regular cable to hook two hubs/switches togethor.
+A switch on the other hand can be an OSI Model layer 2 or 3 device. A switch forwards information by mac address. The mack address is a hard coded alpha numeric number that is used to identify a network adapter. Whenever a call is made to another computer, the switch looks in it’s mac address table and see’s if this node is directly connected to the switch by looking it up in the mac address database. If it is not, however, if forwards it down all switch ports looking for the destination. A layer 2 switch is even smarter. It can actually route traffic based on it’s layer 3 address. It will look up the destination in it’s mac address table first, if does not find it, it will forward it by looking at the route table and send it on it’s merry way to it’s destination. A switch will also allow you to set a switch port at 10/100Mb full duplex to increase node communication speed.
+Hubs should be used in smaller networking environments and switches should be used whenever you need to segment your network or you are having problems with collisions on your ethernet network. If you have over a 100 clients in a location, it’s a good idea to uses switches.
+If you intend on using them both, you would normally use the switch as the backbone and the hubs as connections. Each hub would have it’s own switch port on the switch. I normally reccommend that if your going to use a switch in place of a hub then get rid of all your hubs and move completely to switches. This will allow for increased network performance, a more structured segmenting of the network, and better traffic control. Hubs, since they are not smart, send broadcasts down all ports unlike a switch, which can cause performance degradation on the network. This causes all clients/nodes to have to respond to the broadcast.
+
+
+
+3.	Your hard drive is partitioned as follows: 8 gigs for OS drive C, 8 gigs for Hot Swappable drive D and rest is free as drive E. Your drive C crashes, how would you reboot your system without installing a new operating system?
+This is also vague and poorly put together. It is represented as a single HDD but the reference to Hot Swappable would infer a secondary device. Perhaps he misunderstands the technology. As it is unclear, this could have multiple responses as well. Here are a few.
+1. It is hard to tell how many physical disks there are based on the description? If it is hardware related and the first drive has literally crashed physically (head crash for example) the second drive may have an OS. As it is the only drive referred to as Hot Swappable, you may be able to remove the drive that crashed and change jumper settings on the second drive making it the primary drive. Then it will reboot provided it has an OS.
+2. If this is a single drive with an NT OS and it is setup with multiple boot partitions, you may be able to boot to one of the other partitions.
+3. You may be able to use the original OS CD or floppy disk and repair the OS installation. This is provided the HDD is ok and the partition is the only problem.
+4. If Hot Swappable means a secondary physical drive, where the first partition is mirrored, then down the computer and swap the drives. Re-power up.
+
+
+
+4.	Your computer gives you Ã¢â‚¬Å“non-disk errorÃ¢â‚¬Â before you log on what would you do to make your computer work?
+Again there are potentially multiple scenarios here.
+1. Make sure a non OS floppy is not present in A:
+2. Make sure hard drive has not crashed.
+3. Based on OS, boot from floppy and re-sys disk, or use CD to repair OS.

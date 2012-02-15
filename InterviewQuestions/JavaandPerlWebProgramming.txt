@@ -1,0 +1,38 @@
+http://www.techinterviews.com/java-web-programming-interview-questions
+
+Java and Perl Web programming interview questions
+By admin | December 7, 2003
+Q1: How can we store the information returned from querying the database? and if it is too big, how does it affect the performance? In Java the return information will be stored in the ResultSet object. Yes, if the ResultSet is getting big, it will slow down the process and the performance as well. We can prevent this situation by give the program a simple but specific query statement.
+Q2: What is index table and why we use it? Index table are based on a sorted ordering of the values. Index table provides fast access time when searching.
+Q3: In Java why we use exceptions? Java uses exceptions as a way of signaling serious problems when you execute a program. One major benefit of having an error signaled by an exception is that it separates the code that deals with errors from the code that is executed when things are moving along smoothly. Another positive aspect of exceptions is that they provide a way of enforcing a response to particular errors.
+Q4: Write a code in Perl that makes a connection to Database.
+#!/usr/bin/perl
+#makeconnection.pl
+
+use DBI;
+	my $dbh = DBI->connect('dbi:mysql:test','root','foo')||die "Error opening database:
+$DBI::errstrn";
+	print"Successful connect to databasen";
+
+	$dbh->disconnect || die "Failed to disconnectn";
+Q5: Write a code in Perl that select all data from table Foo?
+#!usr/bin/perl
+#connect.pl
+
+use DBI;
+my ($dbh, $sth, $name, $id);
+$dbh= DBI->connect('dbi:mysql:test','root','foo')
+	|| die "Error opening database: $DBI::errstrn";
+	$sth= $dbh->prepare("SELECT * from Foo;")
+		|| die "Prepare failed: $DBI::errstrn";
+	$sth->execute()
+		|| die "Couldn't execute query: $DBI::errstrn";
+	while(( $id, $name) = $sth->fetchrow_array)
+	{
+		print "$name has ID $idn";
+	}
+	$sth->finish();
+
+$dbh->disconnect
+	|| die "Failed to disconnectn";
+

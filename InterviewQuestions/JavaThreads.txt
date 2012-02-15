@@ -1,0 +1,28 @@
+http://www.techinterviews.com/java-threads-question-set
+Java threads question set
+
+
+Do I need to use synchronized on setValue(int)? - It depends whether the method affects method local variables, class static or instance variables. If only method local variables are changed, the value is said to be confined by the method and is not prone to threading issues.
+
+
+Do I need to use synchronized on setValue(int)? - It depends whether the method affects method local variables, class static or instance variables. If only method local variables are changed, the value is said to be confined by the method and is not prone to threading issues.
+
+What is the SwingUtilities.invokeLater(Runnable) method for? - The static utility method invokeLater(Runnable) is intended to execute a new runnable thread from a Swing application without disturbing the normal sequence of event dispatching from the Graphical User Interface (GUI). The method places the runnable object in the queue of Abstract Windowing Toolkit (AWT) events that are due to be processed and returns immediately. The runnable objectÃ¢â‚¬â„¢s run() method is only called when it reaches the front of the queue. The deferred effect of the invokeLater(Runnable) method ensures that any necessary updates to the user interface can occur immediately, and the runnable work will begin as soon as those high priority events are dealt with. The invoke later method might be used to start work in response to a button click that also requires a significant change to the user interface, perhaps to restrict other activities, while the runnable thread executes.
+
+
+What is the volatile modifier for? - The volatile modifier is used to identify variables whose values should not be optimized by the Java Virtual Machine, by caching the value for example. The volatile modifier is typically used for variables that may be accessed or modified by numerous independent threads and signifies that the value may change without synchronization.
+
+
+Which class is the wait() method defined in? - The wait() method is defined in the Object class, which is the ultimate superclass of all others. So the Thread class and any Runnable implementation inherit this method from Object. The wait() method is normally called on an object in a multi-threaded program to allow other threads to run. The method should should only be called by a thread that has ownership of the objectÃ¢â‚¬â„¢s monitor, which usually means it is in a synchronized method or statement block.
+
+
+Which class is the wait() method defined in? I get incompatible return type for my threadÃ¢â‚¬â„¢s getState( ) method! - It sounds like your application was built for a Java software development kit before Java 1.5. The Java API Thread class method getState() was introduced in version 1.5. Your thread method has the same name but different return type. The compiler assumes your application code is attempting to override the API method with a different return type, which is not allowed, hence the compilation error.
+
+
+What is a working thread? - A working thread, more commonly known as a worker thread is the key part of a design pattern that allocates one thread to execute one task. When the task is complete, the thread may return to a thread pool for later use. In this scheme a thread may execute arbitrary tasks, which are passed in the form of a Runnable method argument, typically execute(Runnable). The runnable tasks are usually stored in a queue until a thread host is available to run them. The worker thread design pattern is usually used to handle many concurrent tasks where it is not important which finishes first and no single task needs to be coordinated with another. The task queue controls how many threads run concurrently to improve the overall performance of the system. However, a worker thread framework requires relatively complex programming to set up, so should not be used where simpler threading techniques can achieve similar results.
+
+
+What is a green thread? - A green thread refers to a mode of operation for the Java Virtual Machine (JVM) in which all code is executed in a single operating system thread. If the Java program has any concurrent threads, the JVM manages multi-threading internally rather than using other operating system threads. There is a significant processing overhead for the JVM to keep track of thread states and swap between them, so green thread mode has been deprecated and removed from more recent Java implementations. Current JVM implementations make more efficient use of native operating system threads.
+
+
+What are native operating system threads? - Native operating system threads are those provided by the computer operating system that plays host to a Java application, be it Windows, Mac or GNU/Linux. Operating system threads enable computers to run many programs simultaneously on the same central processing unit (CPU) without clashing over the use of system resources or spending lots of time running one program at the expense of another. Operating system thread management is usually optimised to specific microprocessor architecture and features so that it operates much faster than Java green thread processing.

@@ -1,0 +1,220 @@
+http://www.techinterviews.com/sysadmin-interview-questions
+
+Sysadmin interview questions
+
+What is a level 0 backup?
+
+
+What is an incremental backup?
+
+
+What steps are required to perform a bare-metal recovery?
+
+
+Name key files or directories on a UNIX system that should always be backed up.
+
+
+Name key files or directories on a Windows system that should always be backed up.
+
+
+What is RAID 0?
+
+
+What is RAID 0+1? Why is it better than 0?
+
+
+What is RAID-5?
+
+
+Why would you NOT want to encapsulate a root directory with Veritas?
+
+
+What is concatenation?
+
+
+What is striping?
+
+
+What is a spindle?
+
+
+Q1: level 0 backup is normal or full backup. A normal backup disregards
+the archive bit in all files and backs up all files and folders selected, regardless of when they were modified. A normal backup is the most complete type of backup, and the only type of backup that can be used to back up the registry and other critical system files. A normal backup takes the longest amount of time to back up and recover. A normal backup clears the archive bit on all files after backing up.
+Q2. An incremental backup is the quickest method for performing backups of data. An incremental backup only backs up files that have been created or modified (their archive bit is set to 1) since the last normal or incremental backup. An incremental backup also clears the archive bit (sets the archive bit back to 0) of all files that it backs up.
+Q3. reinstall the os.
+start -> run -> type “ntbackup” -> ok -> next -> select restore -> next -> select backup files -> next -> finish
+
+vamsi
+Posted 9/16/2005 at 2:46 am | Permalink
+11Q What is striping?
+A technique for spreading data over multiple disk drives. Disk striping can speed up operations that retrieve data from disk storage. The computer system breaks a body of data into units and spreads these units across the available disks. Systems that implement disk striping generally allow the user to select the data unit size or stripe width.
+Disk striping is available in two types. Single user striping uses relatively large data units, and improves performance on a single-user workstation by allowing parallel transfers from different disks. Multi-user striping uses smaller data units and improves performance in a multi-user environment by allowing simultaneous (or overlapping) read operations on multiple disk drives.
+
+Vivek Kumar
+Posted 11/26/2005 at 2:35 am | Permalink
+Question 6: RAID’s are of 2 types H/W and S/W RAID.
+RAID 0 is bascially a type of S/W RAID that ships with Windows Server..
+It is a highly perfomance striped volume without parity..
+The data is distributed into different parts and the placed over different volumes and hence improving the responce time.. you can use this with disks Betw. 2 to 32. you can not mirror a striped volume rather u can make fault toulerent by backing it up..
+
+Patsy Farkas
+Posted 12/23/2005 at 12:21 pm | Permalink
+Please send me the answers for
+Name key files or directories on a UNIX system that should always be backed up.
+Name key files or directories on a Windows system that should always be backed up.
+What is RAID 0?
+What is RAID 0+1? Why is it better than 0?
+What is RAID-5?
+Why would you NOT want to encapsulate a root directory with Veritas?
+What is concatenation?
+What is striping?
+What is a spindle?
+
+ksahu
+Posted 12/26/2005 at 2:19 am | Permalink
+What is RAID 0?
+What is RAID 0+1? Why is it better than 0?
+What is RAID-5?
+
+swapnatummala
+Posted 1/5/2006 at 5:20 am | Permalink
+ple send me the answers for these questions:
+What is RAID 0?
+What is RAID 0+1? Why is it better than 0?
+What is RAID-5?
+Why would you NOT want to encapsulate a root directory with Veritas?
+What is concatenation?
+What is striping?
+What is a spindle?
+
+elumalai
+Posted 1/27/2006 at 10:56 am | Permalink
+#5.RAID-REDUNDANT ARRAY OF INDEPENDENT DISKS.
+RAID 0-EACH FILE HAS A BACKUP.
+
+oghma
+Posted 2/5/2006 at 6:50 pm | Permalink
+Q4: /etc, /boot, /home
+Q5: “%SystemDrive%\Documents and Settings”
+
+myke
+Posted 2/21/2006 at 6:06 am | Permalink
+Number 10 answer is http://en.wikipedia.org/wiki/Concatenation
+
+Ashish
+Posted 4/26/2006 at 11:24 am | Permalink
+Q6: Level 0 — Striped Disk Array without Fault Tolerance: Provides data striping (spreading out blocks of each file across multiple disk drives) but no redundancy. This improves performance but does not deliver fault tolerance. If one drive fails then all data in the array is lost.
+
+Raja
+Posted 6/16/2006 at 7:42 am | Permalink
+raid 0: its a striping process that means datas dividing
+raid 1: its a mirroring process so that raid 1 s better than raid 0
+raid5:this s also striping and parity process
+in this raid 5 used 4 partations.4 th one s spare
+in case 2 nd paratation s failed spare (i mean 4 th ) s activate to 2 nd partation
+
+Jeff
+Posted 10/12/2006 at 12:52 pm | Permalink
+RAID 0:
+Striping. Data is spread across multiple disks. No redundancy.
+RAID 1:
+Mirrioring. Data written to a mirror is duplicated to a second disk or volume.
+RAID 0+1:
+Striping + Mirroring: Data is striped across 2 or more disks, then duplicated to identical disk setups. This provides speed, as well as redundancy.
+RAID 1+0:
+Mirroring + Striping: _MIRRORS_ are striped across multiple disks. Faster than 0+1, but not as redundant.
+RAID 5:
+RAID with parity. Data is striped across multiple disks. A disk or disks in a RAID-5 set is reserved for parity information. This way data can be reconstructed using the pairity information.
+Why would you NOT want to do root-disk encapsulation with Veritas?
+This is not nessacarily the case anymore with versions of VxFS greater than 4.5. root disk encapsulation requires kernel-level drivers in most cases. Because of this, encapsulating the root partition can make it unreadable in a bare-metal recovery situation.
+What is Concatination?
+Concatination is a process whereby multple disk drives are combined into a larger volume. e.g. 2 drives, 1 30 GB drive, and a 10 GB drive are combined to present a 40GB drive to the OS.
+What is Striping?
+Striping is a process whereby data is split across multiple disks. This is typically done with identical drives. Data being written is split into small blocks (8-32K typically) and written across as many drives that are in the striped volume. The block-size is typically called an ‘interlace’ or ‘interleave’ factor. This makes writing and reading data much faster than writing to a single disk.
+What is a spindle?
+Spindles are the center-points of disk drives.. the rotating shaft. The reason this question could be relevant is that when discussing RAID, it’s not uncommon to hear terms like “Spliting data across as many spindles as possible to achieve performance”… i think this term has started to fall out of use however.
+
+Jeff
+Posted 10/12/2006 at 12:59 pm | Permalink
+# What is a level 0 backup?
+Level 0 backups are also known as “full” backups. ALL data on a system is copied.
+# What is an incremental backup?
+An Incremental backup is copying data that has only changed since the last FULL backup.
+# What steps are required to perform a bare-metal recovery?
+Most bare-metal recovery solutions require that a minimal OS be installed back onto the system. There is software out there that can assist with this. However it’s usually easier to just boot a box from a CD or network server, install a base OS, and recover from the last known good backup.
+# Name key files or directories on a UNIX system that should always be backed up.
+SOLARIS systems:
+/etc - System configuration information.
+/var/adm - additional log directory for Solaris.
+/var/log - preserve log data for forensics if needed.
+LINUX Systems:
+/etc - system configuration information.
+/boot - Linux kernel information
+/var/log - Log data for forensics if needed.
+# Name key files or directories on a Windows system that should always be backed up
+c:\ :)
+
+Perry Bryant
+Posted 10/18/2006 at 11:36 am | Permalink
+1. What is a level 0 backup? Level 0 backup is normal or full backup. A normal backup disregards the archive bit in all files and backs up all files and folders selected, regardless of when they were modified. A normal backup is the most complete type of backup, and the only type of backup that can be used to back up the registry and other critical system files. A normal backup takes the longest amount of time to back up and recover. A normal backup clears the archive bit on all files after backing up.
+2. What is an incremental backup? An incremental backup is the quickest method for performing backups of data. An incremental backup only backs up files that have been created or modified (their archive bit is set to 1) since the last normal or incremental backup. An incremental backup also clears the archive bit (sets the archive bit back to 0) of all files that it backs up.
+3. What steps are required to perform a bare-metal recovery? Reinstall the OS.
+start -> run -> type Ã¢â‚¬Å“ntbackupÃ¢â‚¬Â -> ok -> next -> select restore -> next -> select backup files -> next -> finish
+4. Name key files or directories on a UNIX system that should always be backed up.
+5. Name key files or directories on a Windows system that should always be backed up.
+6. What is RAID 0? Striped Disk Array without Fault Tolerance: Provides data striping (spreading out blocks of each file across multiple disk drives) but no redundancy. This improves performance but does not deliver fault tolerance. If one drive fails then all data in the array is lost.
+7.What is RAID 0+1? Why is it better than 0?
+Ã‚Â· RAID 0: Striping. Data is spread across multiple disks. No redundancy.
+Ã‚Â· RAID 1: Mirroring. Data written to a mirror is duplicated to a second disk or volume.
+Ã‚Â· RAID 0+1: Striping + Mirroring: Data is striped across 2 or more disks, and then duplicated to identical disk setups. This provides speed, as well as redundancy.
+Ã‚Â· RAID 1+0: Mirroring + Striping: _MIRRORS_ are striped across multiple disks. Faster than 0+1, but not as redundant.
+Ã‚Â· RAID 5: RAID with parity. Data is striped across multiple disks. A disk or disks in a RAID-5 set is reserved for parity information. This way data can be reconstructed using the parity information.
+8. Why would you NOT want to encapsulate a root directory with Veritas? Encapsulating the root partition can make it unreadable in a bare-metal recovery situation.
+9. What is concatenation? Concatenation is the operation of joining two character strings end to end.
+10. What is striping? A technique for spreading data over multiple disk drives. Disk striping can speed up operations that retrieve data from disk storage. The computer system breaks a body of data into units and spreads these units across the available disks. Systems that implement disk striping generally allow the user to select the data unit size or stripe width. Disk striping is available in two types. Single user striping uses relatively large data units, and improves performance on a single-user workstation by allowing parallel transfers from different disks. Multi-user striping uses smaller data units and improves performance in a multi-user environment by allowing simultaneous (or overlapping) read operations on multiple disk drives.
+11. What is a spindle? Spindles are the center-points of disk drives.. the rotating shaft. The reason this question could be relevant is that when discussing RAID, itÃ¢â‚¬â„¢s not uncommon to hear terms like Ã¢â‚¬Å“Splitting data across as many spindles as possible to achieve performanceÃ¢â‚¬Â
+12. What is RAID? REDUNDANT ARRAY OF INDEPENDENT DISKS.
+RAID 0-EACH FILE HAS A BACKUP.
+
+Basha
+Posted 12/23/2006 at 8:45 am | Permalink
+I can put 30 HDD in a Dell server(configuration of Raid 5)in between two HDD was get problem. on that time wat we have to do??
+I have out 2 New HDD ….
+If I put 2 new HDD wat about the Configuration of Raid 5??or we have configure RAID 5..
+How??
+
+Kilgore Trout
+Posted 1/26/2007 at 10:03 am | Permalink
+Why would you NOT want to do root-disk encapsulation with Veritas?
+Because it loses the slice information.
+
+sankaranarayanan
+Posted 2/1/2007 at 8:42 am | Permalink
+Raid 0, Raid 1, Raid 5
+Raid 0 is with out Fault tolerance.nothing will be retrived.
+Raid 1…Disk mirroring is the basic function occurs.
+1) It creats exact copy of one physical harddisk to another.
+2 It uses one controller
+3 If one drive fails system will boot with other drive.
+4 slow performance.
+5 Increased cost every mirror must be seperate physical device thus you must purchase twice the storage capacity.
+6 no protection from controller failure.: if controller failure , the mirrored drives as just inaccesible.
+Raid 5: Disk stripping with parity.
+It is completely Software based and higly secured technology.
+1 Raid 5 is in-expensive, but very convinient.
+2 The parity information is stored distributed in different disk .
+3 If one of the disk fails , it is hot swappable.
+4 Parity information is stored in other Harddisk is automatically updated to failed one.
+5 If more than one disk fails, it should be restored from backup.
+Regards,
+sankarnarayanan.G
+
+Chuck
+Posted 1/18/2008 at 10:22 am | Permalink
+Note: Raid 1 does not imply a single controller. Raid 1 means that each block is replicated to one or more secondary disks. It has nothing to do with the number of controllers and/or paths to each disk/lun.
+Note: Raid 5 does not imply something is hot swapable, that is hardware dependent. Raid 5 merely implies that parity information is written across all disks allowing it to sustain a single disk failure because the data on the failed disk can be reconstructed using the parity information located on the other disks. A Raid 5 set with a failed disk is classified as “degraded”. Note that some raid 5 configurations allow for more than 1 disk failure.
+
+Chuck
+Posted 1/18/2008 at 10:25 am | Permalink
+Regarding level 0 backups and incremental backups.
+I keep seeing people refer to the “archive bit” in files… On Unix, with Netbackup specifically, the archive bit means absolutely nothing. An incremental backup will pick up all files _modified_ since the last backup - be it incremental or full. Hence it is using the mtime of the file. If you were to “touch /etc/passwd” this file would now be included in the next incremental backup.

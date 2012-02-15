@@ -1,0 +1,81 @@
+http://www.techinterviews.com/java-on-oracle-interview-questions
+
+Java on Oracle interview questions
+
+What is JServer and what is it used for? Oracle JServer Option is a Java Virtual Machine (Java VM) which runs within the Oracle database server’s address space. Oracle also provides a JServer Accelerator to compile Java code natively. This speeds up the execution of Java code by eliminating interpreter overhead.
+How does one install the Oracle JServer Option?Follow these steps to activate the Oracle JServer/ JVM option:
+Make sure your database is started with large java_pool_size (>20M) and shared_pool_size (>50M) INIT.ORA parameter values.
+Run the $ORACLE_HOME/javavm/install/initjvm.sql script from SYS AS SYSDBA to install the Oracle JServer Option on a database.
+Grant JAVAUSERPRIV to users that wants to use Java:
+SQL> GRANT JAVAUSERPRIV TO SCOTT;
+The rmjvm.sql script can be used to deinstall the JServer option from your database.
+Follow the steps in the Oracle Migrations Guide to upgrade or downgrade the JServer option from one release to
+another.
+ce code into the database? Use the “CREATE OR REPLACE JAVA SOURCE” command or “loadjava” utility. Loaded code can be viewed by selecting from the USER_SOURCE view.
+Why does one need to publish Java in the database? Publishing Java classes on the database makes it visible on a SQL and PL/SQL level. It is important to publish your code before calling it from SQL statements or PL/SQL code.
+What is JDBC and what is it used for? JDBC is a set of classes and interfaces written in Java to allow other Java programs to send SQL statements to a relational database management system. Oracle provides three categories of JDBC drivers: (a) JDBC Thin Driver (No local Net8 installation required/ handy for applets), (b) JDBC OCI for writing stand-alone Java applications, (c) JDBC KPRB driver (default connection) for Java Stored Procedures and Database JSP’s.
+How does one connect with the JDBC Thin Driver?
+The the JDBC thin driver provides the only way to access Oracle from the Web (applets). It is smaller and faster than the OCI drivers, and doesn’t require a pre-installed version of the JDBC drivers.
+import java.sql.*;
+class dbAccess {
+  public static void main (String args []) throws SQLException
+  {
+        DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+
+        Connection conn = DriverManager.getConnection
+             ("jdbc:oracle:thin:@hostname:1526:orcl", "scott", "tiger");
+                             // @machineName:port:SID,   userid,  password
+
+        Statement stmt = conn.createStatement();
+        ResultSet rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
+        while (rset.next())
+              System.out.println (rset.getString(1));   // Print col 1
+        stmt.close();
+  }
+}
+How does one connect with the JDBC OCI Driver? One must have Net8 (SQL*Net) installed and working before attempting to use one of the OCI drivers.
+import java.sql.*;
+class dbAccess {
+  public static void main (String args []) throws SQLException
+  {
+        try {
+              Class.forName ("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+              e.printStackTrace();
+        }
+
+        Connection conn = DriverManager.getConnection
+             ("jdbc:oracle:oci8:@hostname_orcl", "scott", "tiger");
+                     // or oci7 @TNSNames_Entry,    userid,  password
+
+        Statement stmt = conn.createStatement();
+        ResultSet rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
+        while (rset.next())
+              System.out.println (rset.getString(1));   // Print col 1
+        stmt.close();
+  }
+}
+How does one connect with the JDBC KPRB Driver? One can obtain a handle to the default or current connection (KPRB driver) by calling the OracleDriver.defaultConenction() method. Please note that you do not need to specify a database URL, username or password as you are already connected to a database session. Remember not to close the default connection. Closing the default connection might throw an exception in future releases of Oracle.
+import java.sql.*;
+class dbAccess {
+  public static void main (String args []) throws SQLException
+  {
+        Connection conn = (new oracle.jdbc.driver.OracleDriver()).defaultConnection();
+
+        Statement stmt = conn.createStatement();
+        ResultSet rset = stmt.executeQuery("select BANNER from SYS.V_$VERSION");
+        while (rset.next())
+              System.out.println (rset.getString(1));   // Print col 1
+        stmt.close();
+  }
+}
+What is SQLJ and what is it used for? SQLJ is an ANSI standard way of coding SQL access in Java. It provides a Java precompiler that translates SQLJ call to JDBC calls. The idea is similar to that of other Oracle Precompilers.
+How does one deploy SQLJ programs? Use the sqlj compiler to compile your *.sqlj files to *.java and *.ser files. The *.ser files contain vendor specific database code. Thereafter one invokes the javac compiler to compile the .java files to *.class files. The *.class and *.ser files needs to be deployed.
+What is JDeveloper and what is it used for? JDeveloper is the Oracle IDE (Integrated Development Environment) for developing SQLJ and JDBC programs, applets, stored procedures, EJB’s, JSP’s etc.
+What is InfoBus DAC and what is it used for? InfoBus DAC (Data Aware Controls) is a standard Java extension used in JDeveloper to create data aware forms. It replaced the JBCL interface that were used in JDeveloper V1 and V2.
+What is a JSP and what is it used for? Java Server Pages (JSP) is a platform independent presentation layer technology that comes with SUN’s J2EE platform. JSPs are normal HTML pages with Java code pieces embedded in them. JSP pages are saved to *.jsp files. A JSP compiler is used in the background to generate a Servlet from the JSP page.
+What is the difference between ASP and JSP? Active Server Pages (ASP) is a Microsoft standard, which is easier to develop than Java Server Pages (JSP). However ASP is a proprietary technology and is less flexible than JSP. For more information about ASP, see the Oracle ASP FAQ.
+How does one invoke a JSP? A JSP gets invoked when you call a *.jsp file from your Web Server like you would call a normal *.html file. Obviously your web server need to support JSP pages and must be configured properly to handle them.
+How does a JSP gets executed? The first time you call a JSP, a servlet (*.java) will be created and compiled to a .class file. The class file is then executed on the server. Output produced by the servlet is returned to the web browser. Output will typically be HTML or XML code.
+What is a Java Stored Procedure/ Trigger? A Java Stored Procedure is a procedure coded in Java (as opposed to PL/SQL) and stored in the Oracle database. Java Stored procedures are executed by the database JVM in database memory space. Java Stored Procedures can be developed in JDBC or SQLJ. Interfacing between PL/SQL and Java are extremely easy. Please note that Java Stored procedures are by default executed with invokers rights. PL/SQL procedures are by default executed with defines rights.
+This entry was posted in Database. Bookmark the permalink. Post a comment or leave a trackback: Trackback URL.
