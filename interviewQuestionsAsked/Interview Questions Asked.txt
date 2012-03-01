@@ -1,7 +1,17 @@
 Infogain, March 1 2012
 --------------------------------
 
-
+Tell me something about yourself ?
+What are the contents of a typical proposal you prepare ?
+Please highlight about the technological portions of a proposal you prepare ?
+How do you choose and describe the criterion which you use to make choices of frameworks and tooling stack ? Take a exmaple of a typical portal application ?
+How do you do capacity planning for a application when doing a proposal ?
+Geven a scenario  where you have to support say, 100 users how do you do capacity planning and sizing for a typical portal application, say, internal employee portal for a large organization ?
+What do you know about cloud computing ?
+What cloud computing tools have you used ?
+On cloudfoundry, which plan have you got and how do you use that ?
+Have you heard about the Microsoft Azure platform ?
+Have you worked on Groovy, Grails, Ruby? What are the advantages that you know of ?
 
 
 
