@@ -1,0 +1,13 @@
+Tell me something about yourself? 
+  
+As a Senior Consultant in the Advanced Technologies Domain (repeated later) for the Enterprise Business Solutions, I am presently working with Genisys Software and have been involved in with a variety of Clients and Projects across my association with various companies I have worked for and through inidiviual or open source channel that I get regularly involved with. 
+
+I have played the roles of Lead Architect, a Solution Designer and a Business Analyst and for some pretty large customers like specifics like British Telecom, ING Vysya Limited, B.D.A. Bangalore with some of their key projects and established myself as the front face for the organizations that I work for or the business entitiy I represent.
+  
+With my vast and varied experience I have accumlated in 12.5 years as a Technology Consultant working in the enterprise domain, people have always looked upon me to guide them with various technological and chiefly domain specific issues within the various projects that they work on. I have worked predominatly in the solution definition phase working with and coordinating with mutiple organizations across different time zones and varied interests and stakes for integrated solution delievery. Pre-Sales, Business Development, Relationship management have always been hands-in-hand in my work style beyong the core focus of application development.
+  
+I will describe myself as an extrovert and aggressive person who likes to go around with people, helping them out with their technological problems besides havind a fun time doing this. I like working with professionals who are both smart and brilliant at the same time and who use their intelligence and creativity at creating value for their own-self, their peers and for the organizations that they work for. 
+
+I like doing system design and application systems architecture would what would call as my core competency. To realise this, I have worked on various technologies which include Java at it's core with frameworks like J2EE, Spring and application frameworks like Struts and J2EE. I have desined application utlitizing some best practices like Domain Driven Design and architectual principlies like seperation of concerns ??? <insert more>. At a middleware level I have worked chielfy IBM SOA stack that includes Portal Server, Process Server and have used Rational Software Architcect and Websphere Integration Developer to realize the same.
+
+I have worked on various on Generic SPD like the good old Waterfall model, Agile, XP. Also some proprietry SDP approaches like General Motors SDP, Sapient Approach to name a few. 

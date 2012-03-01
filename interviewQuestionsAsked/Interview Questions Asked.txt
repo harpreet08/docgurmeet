@@ -1,3 +1,10 @@
+Infogain, March 1 2012
+--------------------------------
+
+
+
+
+
 Sify - Happy - 24 Feb 2012,
 --------------------------------
 
@@ -8,6 +15,9 @@ Sify - Happy - 24 Feb 2012,
 - Have your used Spring ? Have you used Spring / Hibernate ? Spring MVC ?
 - Transactions ? Transaction attributes ?
 - How do you ensure Transaction isolation ? How many isolation levels ?
+- Design patterns - Observer
+- Design patterns - Template Method and applications ?
+- Entitiy Derivation - Hospital Management Application
 
 
 
